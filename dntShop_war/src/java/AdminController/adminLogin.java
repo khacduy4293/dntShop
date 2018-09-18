@@ -74,7 +74,6 @@ public class adminLogin extends HttpServlet {
                 session.setAttribute("admin_login_email", adminFacade.login(email, password).get(0).getEmail());
                 session.setAttribute("admin_login_pass", adminFacade.login(email, password).get(0).getPassword());
                 session.setAttribute("admin_login_name", adminFacade.login(email, password).get(0).getFullName());
-                session.setAttribute("admin_login_role", adminFacade.login(email, password).get(0).getAdminRole());
                 SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
                 String createDate = formatter.format(adminFacade.login(email, password).get(0).getCreatedDate());  
                 session.setAttribute("admin_login_createdate", createDate);

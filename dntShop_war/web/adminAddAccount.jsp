@@ -75,14 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword">Password<span style="color:red">*</span></label>
                                                     <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Role</label>
-                                                    <select class="form-control" name="role">
-                                                        <option value="Employee">Employee</option>
-                                                        <option value="Manager">Manager</option>                                                
-                                                    </select>
-                                                </div>
+                                                </div>                                               
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input</label>
                                                     <input type="file" id="exampleInputFile" name="inputImage">

@@ -17,7 +17,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,8 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author Duy
  */
 @Entity
-@Table(name = "Admins", catalog = "dntShop", schema = "dbo", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Email"})})
+@Table(name = "Admins", catalog = "dntShop", schema = "dbo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Admins.findAll", query = "SELECT a FROM Admins a"),
@@ -36,7 +34,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Admins.findByEmail", query = "SELECT a FROM Admins a WHERE a.email = :email"),
     @NamedQuery(name = "Admins.findByPassword", query = "SELECT a FROM Admins a WHERE a.password = :password"),
     @NamedQuery(name = "Admins.findByFullName", query = "SELECT a FROM Admins a WHERE a.fullName = :fullName"),
-    @NamedQuery(name = "Admins.findByAdminRole", query = "SELECT a FROM Admins a WHERE a.adminRole = :adminRole"),
     @NamedQuery(name = "Admins.findByAvatar", query = "SELECT a FROM Admins a WHERE a.avatar = :avatar"),
     @NamedQuery(name = "Admins.findByCreatedDate", query = "SELECT a FROM Admins a WHERE a.createdDate = :createdDate"),
     @NamedQuery(name = "Admins.findByIsStatus", query = "SELECT a FROM Admins a WHERE a.isStatus = :isStatus")})
@@ -66,11 +63,6 @@ public class Admins implements Serializable {
     private String fullName;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "AdminRole", nullable = false, length = 100)
-    private String adminRole;
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 200)
     @Column(name = "Avatar", nullable = false, length = 200)
     private String avatar;
@@ -87,12 +79,11 @@ public class Admins implements Serializable {
         this.adminID = adminID;
     }
 
-    public Admins(String adminID, String email, String password, String fullName, String adminRole, String avatar) {
+    public Admins(String adminID, String email, String password, String fullName, String avatar) {
         this.adminID = adminID;
         this.email = email;
         this.password = password;
         this.fullName = fullName;
-        this.adminRole = adminRole;
         this.avatar = avatar;
     }
 
@@ -126,14 +117,6 @@ public class Admins implements Serializable {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
-    }
-
-    public String getAdminRole() {
-        return adminRole;
-    }
-
-    public void setAdminRole(String adminRole) {
-        this.adminRole = adminRole;
     }
 
     public String getAvatar() {

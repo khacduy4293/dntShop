@@ -90,10 +90,7 @@ public class adminAddAccount extends HttpServlet {
                                 continue;
                             case "password":
                                 bra.setPassword(item.getString());
-                                continue;
-                            case "role":
-                                bra.setAdminRole(item.getString());
-                                continue;     
+                                
                         }
                     } else {                       
                         String fileName = new File(item.getName()).getName();

@@ -8,7 +8,6 @@ create table Admins
 	Email varchar(100) not null,
 	[Password] varchar(30) not null,
 	FullName nvarchar(50) not null,
-	AdminRole nvarchar(100) not null,
 	Avatar varchar(200) not null,
 	CreatedDate date default getDate(),
 	IsStatus bit default 1
@@ -108,15 +107,15 @@ create table OrdersDetails (
 	IsStatus bit default 1
 )	
 go
-insert Admins(AdminID, Email, [Password], FullName, AdminRole, Avatar) values
-('AD001','duy@mail.com', '123456', 'Tu Khac Duy', 'Manager', 'images/Avatars/default-avatar.jpg'),
-('AD002','thao@mail.com', '123456', 'Le Phuong Thao', 'Employee', 'images/Avatars/default-avatar3.jpg'),
-('AD003','nga@mail.com', '123456', 'Tran Quynh Nga', 'Employee', 'images/Avatars/default-avatar4.jpg'),
-('AD004','tuyet@mail.com', '123456', 'Nguyen Minh Tuyet', 'Employee', 'images/Avatars/default-avatar5.jpg'),
-('AD005','ngan@mail.com', '123456', 'Tran Le Ngan', 'Employee', 'images/Avatars/default-avatar4.jpg'),
-('AD006','thang@mail.com', '123456', 'Nguyen Quoc Thang', 'Manager', 'images/Avatars/default-avatar2.jpg'),
-('AD007','tuan@mail.com', '123456', 'Tran Quoc Tuan', 'Manager', 'images/Avatars/default-avatar1.jpg'),
-('AD008','nam@mail.com', '123456', 'Nguyen Hoang Nam', 'Manager', 'images/Avatars/default-avatar2.jpg')
+insert Admins(AdminID, Email, [Password], FullName, Avatar) values
+('AD001','duy@mail.com', '123456', 'Tu Khac Duy', 'images/Avatars/default-avatar.jpg'),
+('AD002','thao@mail.com', '123456', 'Le Phuong Thao', 'images/Avatars/default-avatar3.jpg'),
+('AD003','nga@mail.com', '123456', 'Tran Quynh Nga', 'images/Avatars/default-avatar4.jpg'),
+('AD004','tuyet@mail.com', '123456', 'Nguyen Minh Tuyet','images/Avatars/default-avatar5.jpg'),
+('AD005','ngan@mail.com', '123456', 'Tran Le Ngan', 'images/Avatars/default-avatar4.jpg'),
+('AD006','thang@mail.com', '123456', 'Nguyen Quoc Thang', 'images/Avatars/default-avatar2.jpg'),
+('AD007','tuan@mail.com', '123456', 'Tran Quoc Tuan', 'images/Avatars/default-avatar1.jpg'),
+('AD008','nam@mail.com', '123456', 'Nguyen Hoang Nam', 'images/Avatars/default-avatar2.jpg')
 go
 
 insert Customers(CustomerID, Email, [Password], FirstName, LastName, Gender, Phone, Avatar) values

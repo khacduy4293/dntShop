@@ -68,8 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <thead>
                                                 <tr>
                                                     <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Role</th>
+                                                    <th>Email</th>                                                    
                                                     <th>Avatar</th>
                                                     <th>Created Date</th>
                                                     <th>Status</th>
@@ -81,7 +80,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <tr>
                                                     <td>${e.fullName}</td>
                                                     <td>${e.email}</td>
-                                                    <td>${e.adminRole}</td>
                                                     <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>
                                                     <td><fmt:formatDate value="${e.createdDate}" pattern="dd-MM-yyyy" /></td>
                                                     <td>                                                       
