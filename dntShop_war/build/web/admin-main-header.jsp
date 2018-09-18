@@ -31,7 +31,7 @@
                         <li class="user-header">
                             <img src="<%= session.getAttribute("admin_login_avatar")%>" class="img-circle"/>
                             <p>
-                                <%= session.getAttribute("admin_login_name")%> - <%= session.getAttribute("admin_login_role")%>
+                                <%= session.getAttribute("admin_login_name")%> - Administrator
                                 <small>Member since <%= session.getAttribute("admin_login_createdate")%></small>
                             </p>
                         </li>                       
