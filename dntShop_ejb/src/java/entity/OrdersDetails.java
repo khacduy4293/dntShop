@@ -7,7 +7,6 @@
 package entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,15 +37,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class OrdersDetails implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OdID", nullable = false)
     private Integer odID;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
-    @Column(name = "SellingPrice", nullable = false, precision = 18, scale = 2)
-    private BigDecimal sellingPrice;
+    @Column(name = "SellingPrice", nullable = false)
+    private int sellingPrice;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Quantity", nullable = false)
@@ -67,7 +65,7 @@ public class OrdersDetails implements Serializable {
         this.odID = odID;
     }
 
-    public OrdersDetails(Integer odID, BigDecimal sellingPrice, int quantity) {
+    public OrdersDetails(Integer odID, int sellingPrice, int quantity) {
         this.odID = odID;
         this.sellingPrice = sellingPrice;
         this.quantity = quantity;
@@ -81,11 +79,11 @@ public class OrdersDetails implements Serializable {
         this.odID = odID;
     }
 
-    public BigDecimal getSellingPrice() {
+    public int getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(BigDecimal sellingPrice) {
+    public void setSellingPrice(int sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 

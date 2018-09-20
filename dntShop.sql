@@ -82,7 +82,7 @@ create table Wishlist (
 	WishlistID int identity(1,1) primary key,
 	CustomerID varchar(10) not null foreign key references Customers(CustomerID),
 	ProductID varchar(10) foreign key references Products(ProductID) not null,
-	Quantity int not null
+	DateCreated date default getDate()
 )
 go
 create table Orders (
@@ -104,7 +104,7 @@ create table OrdersDetails (
 	OdID int identity(1,1) primary key,
 	OrderID varchar(10) not null foreign key references Orders(OrderID),
 	ProductID varchar(10) foreign key references Products(ProductID) not null,
-	SellingPrice decimal(18,2) not null,
+	SellingPrice int not null,
 	Quantity int not null,
 	IsStatus bit default 1
 )	
