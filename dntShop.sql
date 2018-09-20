@@ -65,6 +65,7 @@ create table Ratings (
 	ProductID varchar(10) not null,
 	CustomerID varchar(10) not null,
 	Rate int not null,
+	Content nvarchar(200),
 	RatingDate date default getdate(),
 	CONSTRAINT FK_RatingProduct FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
 	CONSTRAINT FK_RatingEmail FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
