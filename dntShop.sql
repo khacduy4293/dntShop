@@ -55,6 +55,7 @@ create table Customers (
 	LastName nvarchar(50) not null,
 	Gender bit default 1,
 	Phone varchar(20),
+	[Address] nvarchar(max), 
 	Avatar varchar(200) not null,
 	CreatedDate date default getDate(),
 	IsStatus bit default 1
@@ -65,7 +66,7 @@ create table Ratings (
 	ProductID varchar(10) not null,
 	CustomerID varchar(10) not null,
 	Rate int not null,
-	Content nvarchar(200),
+	Content nvarchar(max),
 	RatingDate date default getdate(),
 	CONSTRAINT FK_RatingProduct FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
 	CONSTRAINT FK_RatingEmail FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)

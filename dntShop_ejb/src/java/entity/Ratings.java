@@ -49,8 +49,8 @@ public class Ratings implements Serializable {
     @NotNull
     @Column(name = "Rate", nullable = false)
     private int rate;
-    @Size(max = 200)
-    @Column(name = "Content", length = 200)
+    @Size(max = 2147483647)
+    @Column(name = "Content", length = 2147483647)
     private String content;
     @Column(name = "RatingDate")
     @Temporal(TemporalType.DATE)

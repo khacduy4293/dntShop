@@ -20,7 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -31,8 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Duy
  */
 @Entity
-@Table(name = "Customers", catalog = "dntShop", schema = "dbo", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"Email"})})
+@Table(name = "Customers", catalog = "dntShop", schema = "dbo")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Customers.findAll", query = "SELECT c FROM Customers c"),
@@ -43,6 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customers.findByLastName", query = "SELECT c FROM Customers c WHERE c.lastName = :lastName"),
     @NamedQuery(name = "Customers.findByGender", query = "SELECT c FROM Customers c WHERE c.gender = :gender"),
     @NamedQuery(name = "Customers.findByPhone", query = "SELECT c FROM Customers c WHERE c.phone = :phone"),
+    @NamedQuery(name = "Customers.findByAddress", query = "SELECT c FROM Customers c WHERE c.address = :address"),
     @NamedQuery(name = "Customers.findByAvatar", query = "SELECT c FROM Customers c WHERE c.avatar = :avatar"),
     @NamedQuery(name = "Customers.findByCreatedDate", query = "SELECT c FROM Customers c WHERE c.createdDate = :createdDate"),
     @NamedQuery(name = "Customers.findByIsStatus", query = "SELECT c FROM Customers c WHERE c.isStatus = :isStatus")})
@@ -81,6 +80,9 @@ public class Customers implements Serializable {
     @Size(max = 20)
     @Column(name = "Phone", length = 20)
     private String phone;
+    @Size(max = 2147483647)
+    @Column(name = "Address", length = 2147483647)
+    private String address;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 200)
@@ -91,11 +93,11 @@ public class Customers implements Serializable {
     private Date createdDate;
     @Column(name = "IsStatus")
     private Boolean isStatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerEmail")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerID")
     private Collection<Wishlist> wishlistCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerEmail")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerID")
     private Collection<Ratings> ratingsCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerEmail")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerID")
     private Collection<Orders> ordersCollection;
 
     public Customers() {
@@ -168,6 +170,14 @@ public class Customers implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getAvatar() {

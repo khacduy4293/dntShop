@@ -43,6 +43,9 @@ public class adminUpdateBrand extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        String id = request.getParameter("bra_id");
+        request.setAttribute("bra", braFacade.find(id));
+        request.getRequestDispatcher("adminUpdateBrand.jsp").forward(request, response);
     }
 
     /**
@@ -57,6 +60,7 @@ public class adminUpdateBrand extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     /**
