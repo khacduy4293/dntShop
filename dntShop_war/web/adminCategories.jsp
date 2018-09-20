@@ -88,10 +88,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     </td>
                                                     <td>                                                
                                                         <c:if test="${e.isStatus eq true}">
-                                                            <button class="btn btn-danger">Disable</button>
+                                                            <a href="adminDisableCategory?cate_id=${e.categoryID}"><button class="btn btn-danger">Disable</button></a>
                                                         </c:if>
                                                         <c:if test="${e.isStatus eq false}">
-                                                            <button class="btn btn-success">Enable</button>                                        
+                                                            <a href="adminEnableCategory?cate_id=${e.categoryID}"><button class="btn btn-success">Enable</button></a>                                        
                                                         </c:if>
                                                         <button class="btn btn-info">Update</button>    
                                                     </td>
