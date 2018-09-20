@@ -66,11 +66,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="exampleInputBrandName">Brand Name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputBrandName" name="brandName" placeholder="Enter fullname">
+                                                    <input type="text" class="form-control" id="exampleInputBrandName" name="brandName" value="" placeholder="Enter fullname">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ..."></textarea>
+                                                    <textarea class="form-control" rows="3" name="descrip" value="" placeholder="Enter ..."></textarea>
                                                 </div>                                         
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Logo input</label>
