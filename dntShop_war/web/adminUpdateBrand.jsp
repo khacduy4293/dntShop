@@ -59,38 +59,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddBrand" method="post" enctype="multipart/form-data">
+                                        <form action="" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                                
                                                 <h4 class="modal-title">Modal Default</h4>
                                             </div>                                       
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="exampleInputBrandName">Brand Name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputBrandName" name="brandName" placeholder="Enter fullname">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ..."></textarea>
-                                                </div>                                         
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Logo input</label>
-                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
-                                                    <p class="help-block"><img id="blah" src="#" alt="" class="img-circle" width="80px" height="80px"/></p>
-                                                </div>
+                                                    <input type="text" class="form-control" id="exampleInputBrandName" name="brandName" value="${bra.brandName}" placeholder="Enter fullname">
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ...">${bra.descriptions}</textarea>
+                                            </div>                                         
+                                            <div class="form-group">
+                                                <label for="exampleInputFile">Logo input</label>
+                                                <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
+                                                <p class="help-block"><img id="blah" src="${bra.brandImages}" alt="" class="img-circle" width="80px" height="80px"/></p>
                                             </div>
-                                        </form>    
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                        </div><!-- /.example-modal -->
-                    </section><!-- /.content -->
-                </div><!-- /.content-wrapper -->
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>    
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                    </div><!-- /.example-modal -->
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
 
-                <!-- Main Footer -->
+            <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
             <!-- /.control-sidebar -->
             <!-- Add the sidebar's background. This div must be placed

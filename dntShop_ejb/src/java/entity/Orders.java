@@ -48,9 +48,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Orders.findByProcessStatus", query = "SELECT o FROM Orders o WHERE o.processStatus = :processStatus"),
     @NamedQuery(name = "Orders.findByIsStatus", query = "SELECT o FROM Orders o WHERE o.isStatus = :isStatus")})
 public class Orders implements Serializable {
-    @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", nullable = false)
-    @ManyToOne(optional = false)
-    private Customers customerID;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -102,9 +99,9 @@ public class Orders implements Serializable {
     private Boolean isStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderID")
     private Collection<OrdersDetails> ordersDetailsCollection;
-    @JoinColumn(name = "CustomerEmail", referencedColumnName = "Email", nullable = false)
+    @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", nullable = false)
     @ManyToOne(optional = false)
-    private Customers customerEmail;
+    private Customers customerID;
 
     public Orders() {
     }
@@ -221,12 +218,12 @@ public class Orders implements Serializable {
         this.ordersDetailsCollection = ordersDetailsCollection;
     }
 
-    public Customers getCustomerEmail() {
-        return customerEmail;
+    public Customers getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerEmail(Customers customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setCustomerID(Customers customerID) {
+        this.customerID = customerID;
     }
 
     @Override
@@ -252,14 +249,6 @@ public class Orders implements Serializable {
     @Override
     public String toString() {
         return "entity.Orders[ orderID=" + orderID + " ]";
-    }
-
-    public Customers getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(Customers customerID) {
-        this.customerID = customerID;
     }
     
 }

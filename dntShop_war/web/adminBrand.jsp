@@ -10,31 +10,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta charset="UTF-8">
         <title>Brands Manager</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-    </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
-    <body class="skin-blue sidebar-mini">
-        <div class="wrapper">
+        </head>
+        <!--
+        BODY TAG OPTIONS:
+        =================
+        Apply one or more of the following classes to get the
+        desired effect
+        |---------------------------------------------------------|
+        | SKINS         | skin-blue                               |
+        |               | skin-black                              |
+        |               | skin-purple                             |
+        |               | skin-yellow                             |
+        |               | skin-red                                |
+        |               | skin-green                              |
+        |---------------------------------------------------------|
+        |LAYOUT OPTIONS | fixed                                   |
+        |               | layout-boxed                            |
+        |               | layout-top-nav                          |
+        |               | sidebar-collapse                        |
+        |               | sidebar-mini                            |
+        |---------------------------------------------------------|
+        -->
+        <body class="skin-blue sidebar-mini">
+            <div class="wrapper">
 
-            <!-- Main Header -->
+                <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -99,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <c:if test="${e.isStatus eq false}">
                                                             <a href="adminEnableBrand?bra_id=${e.brandID}"><button class="btn btn-success">Enable</button></a>                                        
                                                         </c:if>
-                                                        <button class="btn btn-info">Update</button>    
+                                                        <a href="adminUpdateBrand?bra_id=${e.brandID}"><button class="btn btn-info">Update</button></a>    
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

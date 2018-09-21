@@ -55,6 +55,7 @@ create table Customers (
 	LastName nvarchar(50) not null,
 	Gender bit default 1,
 	Phone varchar(20),
+	[Address] nvarchar(max), 
 	Avatar varchar(200) not null,
 	CreatedDate date default getDate(),
 	IsStatus bit default 1
@@ -65,6 +66,7 @@ create table Ratings (
 	ProductID varchar(10) not null,
 	CustomerID varchar(10) not null,
 	Rate int not null,
+	Content nvarchar(max),
 	RatingDate date default getdate(),
 	CONSTRAINT FK_RatingProduct FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
 	CONSTRAINT FK_RatingEmail FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
@@ -80,7 +82,7 @@ create table Wishlist (
 	WishlistID int identity(1,1) primary key,
 	CustomerID varchar(10) not null foreign key references Customers(CustomerID),
 	ProductID varchar(10) foreign key references Products(ProductID) not null,
-	Quantity int not null
+	DateCreated date default getDate()
 )
 go
 create table Orders (
@@ -102,7 +104,7 @@ create table OrdersDetails (
 	OdID int identity(1,1) primary key,
 	OrderID varchar(10) not null foreign key references Orders(OrderID),
 	ProductID varchar(10) foreign key references Products(ProductID) not null,
-	SellingPrice decimal(18,2) not null,
+	SellingPrice int not null,
 	Quantity int not null,
 	IsStatus bit default 1
 )	

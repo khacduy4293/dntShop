@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -33,30 +36,31 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ratings.findAll", query = "SELECT r FROM Ratings r"),
     @NamedQuery(name = "Ratings.findByRatingID", query = "SELECT r FROM Ratings r WHERE r.ratingID = :ratingID"),
     @NamedQuery(name = "Ratings.findByRate", query = "SELECT r FROM Ratings r WHERE r.rate = :rate"),
+    @NamedQuery(name = "Ratings.findByContent", query = "SELECT r FROM Ratings r WHERE r.content = :content"),
     @NamedQuery(name = "Ratings.findByRatingDate", query = "SELECT r FROM Ratings r WHERE r.ratingDate = :ratingDate")})
 public class Ratings implements Serializable {
-    @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", nullable = false)
-    @ManyToOne(optional = false)
-    private Customers customerID;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RatingID", nullable = false)
     private Integer ratingID;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Rate", nullable = false)
     private int rate;
+    @Size(max = 2147483647)
+    @Column(name = "Content", length = 2147483647)
+    private String content;
     @Column(name = "RatingDate")
     @Temporal(TemporalType.DATE)
     private Date ratingDate;
     @JoinColumn(name = "ProductID", referencedColumnName = "ProductID", nullable = false)
     @ManyToOne(optional = false)
     private Products productID;
-    @JoinColumn(name = "CustomerEmail", referencedColumnName = "Email", nullable = false)
+    @JoinColumn(name = "CustomerID", referencedColumnName = "CustomerID", nullable = false)
     @ManyToOne(optional = false)
-    private Customers customerEmail;
+    private Customers customerID;
 
     public Ratings() {
     }
@@ -86,6 +90,14 @@ public class Ratings implements Serializable {
         this.rate = rate;
     }
 
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public Date getRatingDate() {
         return ratingDate;
     }
@@ -102,12 +114,12 @@ public class Ratings implements Serializable {
         this.productID = productID;
     }
 
-    public Customers getCustomerEmail() {
-        return customerEmail;
+    public Customers getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerEmail(Customers customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setCustomerID(Customers customerID) {
+        this.customerID = customerID;
     }
 
     @Override
@@ -133,14 +145,6 @@ public class Ratings implements Serializable {
     @Override
     public String toString() {
         return "entity.Ratings[ ratingID=" + ratingID + " ]";
-    }
-
-    public Customers getCustomerID() {
-        return customerID;
-    }
-
-    public void setCustomerID(Customers customerID) {
-        this.customerID = customerID;
     }
     
 }
