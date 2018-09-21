@@ -1,2 +1,4 @@
 /dntShop_war/dist/
 /dntShop_ejb/build/
+/dntShop_ejb/nbproject/private/
+/dntShop_war/nbproject/private/
