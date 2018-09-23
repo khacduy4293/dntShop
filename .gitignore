@@ -1,4 +1,9 @@
 /dntShop_war/dist/
 /dntShop_ejb/build/
+<<<<<<< HEAD
+/dntShop_ejb/nbproject/private/
+/dntShop_war/nbproject/private/
+=======
 /dntShop_war/build/
 /dntShop_ejb/dist/
+>>>>>>> 428ba98e945ee55092372f09affb7f8384323bd7
