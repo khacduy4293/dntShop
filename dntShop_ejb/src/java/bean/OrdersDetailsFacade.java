@@ -7,9 +7,11 @@
 package bean;
 
 import entity.OrdersDetails;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,14 @@ public class OrdersDetailsFacade extends AbstractFacade<OrdersDetails> implement
 
     public OrdersDetailsFacade() {
         super(OrdersDetails.class);
+    }
+    
+@Override
+    public List<OrdersDetails> findByOrderId(String id) {
+        Query q=em.createQuery("SELECT o FROM OrdersDetails o WHERE o.orderID = :orderid");
+        q.setParameter("orderid", id);
+                
+        return q.getResultList();
     }
     
 }

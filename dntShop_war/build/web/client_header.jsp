@@ -1,5 +1,13 @@
 
+<%@page import="entity.Cart"%>
 <header class="shop_header_area carousel_menu_area">
+    <%
+            Cart cart = (Cart) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new Cart();
+                session.setAttribute("cart", cart);
+            }
+        %>
     <link href="css/loginstyle.css" type="text/css" rel="stylesheet">
     <div id="modal-wrapper" class="modal">
 
@@ -114,7 +122,7 @@
                     <ul class="navbar-nav justify-content-end">
                         <li class="search_icon"><a href="#"><i class="icon-magnifier icons"></i></a></li>
                         <li class="user_icon"><a href="login.jsp"><i class="fa fa-sign-in"></i></a></li>
-                        <li class="cart_cart"><a href="#"><i class="icon-handbag icons"></i></a></li>
+                        <li class="cart_cart"><a href="#"><%=cart.countItem()%> <i class="icon-handbag icons"> </i></a></li>
                     </ul>
                 </div>
             </nav>

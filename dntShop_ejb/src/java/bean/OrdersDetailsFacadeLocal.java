@@ -30,5 +30,6 @@ public interface OrdersDetailsFacadeLocal {
     List<OrdersDetails> findRange(int[] range);
 
     int count();
+    List<OrdersDetails> findByOrderId(String id);
     
 }
