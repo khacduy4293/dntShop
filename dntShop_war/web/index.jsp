@@ -1,3 +1,5 @@
+<%@page import="entity.Cart"%>
+<%@page import="bean.ProductsFacadeLocal"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -36,7 +38,13 @@
         <![endif]-->
     </head>
     <body>
-        
+        <%
+            Cart cart = (Cart) session.getAttribute("cart");
+            if (cart == null) {
+                cart = new Cart();
+                session.setAttribute("cart", cart);
+            }
+        %>
         <!--================Menu Area =================-->
         <jsp:include page="client_header.jsp"></jsp:include>
         <!--================End Menu Area =================-->
@@ -159,7 +167,7 @@
                                 <div class="l_p_text">
                                     <ul>
                                         <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                        <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
+                                        <li><a class="add_cart_btn" href="AddProductToCart?command=plus&productID=PR001">Add To Cart</a></li>
                                         <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                     </ul>
                                     <h4>Womens Libero</h4>

@@ -915,7 +915,7 @@ i:before {
 }
 
 .cart_cart a:before {
-  content: "0";
+  content:"0" ;
   height: 20px;
   width: 20px;
   border-radius: 50%;
@@ -930,6 +930,7 @@ i:before {
   background: #d91522;
   line-height: 20px;
 }
+
 
 /* End Carousel Header css
 ============================================================================================ */
