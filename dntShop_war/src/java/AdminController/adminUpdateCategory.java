@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package AdminController;
 
-import bean.BrandsFacadeLocal;
-import entity.Brands;
+import bean.CategoriesFacadeLocal;
+import entity.Categories;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,17 +25,18 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  *
  * @author Duy
  */
-@WebServlet(name = "adminUpdateBrand", urlPatterns = {"/adminUpdateBrand"})
-public class adminUpdateBrand extends HttpServlet {
+@WebServlet(name = "adminUpdateCategory", urlPatterns = {"/adminUpdateCategory"})
+public class adminUpdateCategory extends HttpServlet {
     String bra_id="";
     
-    @EJB BrandsFacadeLocal brandFacade;
-    
+    @EJB
+    CategoriesFacadeLocal cateFacade;
+
     private static final long serialVersionUID = 1L;
 
     // location to store file uploaded
-    private static final String UPLOAD_DIRECTORY = "images/Brands";
-    
+    private static final String UPLOAD_DIRECTORY = "images/Categories";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -47,15 +47,16 @@ public class adminUpdateBrand extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        bra_id = request.getParameter("bra_id");
-        request.setAttribute("bra", brandFacade.find(bra_id));
-        request.getRequestDispatcher("adminUpdateBrand.jsp").forward(request, response);
+        bra_id = request.getParameter("cate_id");
+        request.setAttribute("cate", cateFacade.find(bra_id));
+        request.getRequestDispatcher("adminUpdateCategory.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
         // configures upload settings
         DiskFileItemFactory factory = new DiskFileItemFactory();
         
@@ -74,8 +75,8 @@ public class adminUpdateBrand extends HttpServlet {
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(request);
 
-            Brands bra = brandFacade.find(bra_id);
-
+            Categories bra = cateFacade.find(bra_id);
+            
             if (formItems != null && formItems.size() > 0) {
                 // iterates over form's fields
                 for (FileItem item : formItems) {
@@ -83,37 +84,34 @@ public class adminUpdateBrand extends HttpServlet {
                     if (item.isFormField()) {
                         // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
                         switch (item.getFieldName()) {
-                            case "brandName":
-                                System.out.println("BraName: " + item.getString());
-                                bra.setBrandName(item.getString());
+                            case "cateName":
+                                //System.out.println("cateName: " + item.getString());
+                                bra.setCategoryName(item.getString());
                                 continue;                        
-                            case "descrip":
-                                System.out.println("Description: " + item.getString());
-                                bra.setDescriptions(item.getString());
+                           
                         }
                     } else {                       
-                        String fileName = new File(item.getName()).getName();
-                        
+                        String fileName = new File(item.getName()).getName();                       
                         if (fileName.isEmpty()) {
-                            // do not thing
+                            //do not thing
                         } else {
                             String newfileName= fileName.substring(fileName.lastIndexOf('.'));
                             String filePath = uploadPath + File.separator + bra_id + newfileName;
                             File storeFile = new File(filePath);
                             // saves the file on disk
                             item.write(storeFile);
-                            String brandImage = (UPLOAD_DIRECTORY + "/" + bra_id + newfileName);
-                            bra.setBrandImages(brandImage);                            
+                            String brandImage = (UPLOAD_DIRECTORY + "/" + bra_id + newfileName);                           
+                            bra.setCategoryImage(brandImage);                            
                         }
                     }
                 }
             }
-            brandFacade.edit(bra);
+            cateFacade.edit(bra);
         } catch (Exception ex) {
             ex.getStackTrace();
         }
-        // redirects client to message page      
-        getServletContext().getRequestDispatcher("/adminViewBrand").forward(request, response);
+        
+        getServletContext().getRequestDispatcher("/adminViewCategories").forward(request, response);
     }
 
 }

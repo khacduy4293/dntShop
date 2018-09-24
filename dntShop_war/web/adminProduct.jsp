@@ -10,31 +10,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta charset="UTF-8">
         <title>Products Manager</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-    </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
-    <body class="skin-blue sidebar-mini">
-        <div class="wrapper">
+        </head>
+        <!--
+        BODY TAG OPTIONS:
+        =================
+        Apply one or more of the following classes to get the
+        desired effect
+        |---------------------------------------------------------|
+        | SKINS         | skin-blue                               |
+        |               | skin-black                              |
+        |               | skin-purple                             |
+        |               | skin-yellow                             |
+        |               | skin-red                                |
+        |               | skin-green                              |
+        |---------------------------------------------------------|
+        |LAYOUT OPTIONS | fixed                                   |
+        |               | layout-boxed                            |
+        |               | layout-top-nav                          |
+        |               | sidebar-collapse                        |
+        |               | sidebar-mini                            |
+        |---------------------------------------------------------|
+        -->
+        <body class="skin-blue sidebar-mini">
+            <div class="wrapper">
 
-            <!-- Main Header -->
+                <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -85,7 +85,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td>${e.price}</td>
                                                     <td>${e.categoryID.categoryName}</td>
                                                     <td>${e.brandID.brandName}</td>
-                                                    <td></td>
+                                                    <td>
+                                                        <c:if test="${not empty e.image1}">
+                                                            <img id="blah1" src="images/Products/${e.image1}" alt="" class="user-image" width="80px" height="80px"/>
+                                                        </c:if>
+                                                        <c:if test="${not empty e.image2}">
+                                                            <img id="blah2" src="images/Products/${e.image2}" alt="" class="user-image" width="80px" height="80px"/>
+                                                        </c:if> 
+                                                        <c:if test="${not empty e.image3}">
+                                                            <img id="blah3" src="images/Products/${e.image3}" alt="" class="user-image" width="80px" height="80px"/>
+                                                        </c:if> 
+                                                        <c:if test="${not empty e.image4}">
+                                                            <img id="blah4" src="images/Products/${e.image4}" alt="" class="user-image" width="80px" height="80px"/>
+                                                        </c:if> 
+                                                    </td>
                                                     <td>${e.descriptions}</td>
                                                     <td>${e.feature}</td>
                                                     <td>                                                       
@@ -98,12 +111,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     </td>
                                                     <td>                                                
                                                         <c:if test="${e.isStatus eq true}">
-                                                            <a href="adminDisableProduct?pro_id=${e.productID}"><button class="btn btn-danger">Disable</button>
+                                                            <a href="adminDisableProduct?pro_id=${e.productID}"><button class="btn btn-danger">Disable</button></a>
                                                         </c:if>
                                                         <c:if test="${e.isStatus eq false}">
-                                                            <a href="adminEnableProduct?pro_id=${e.productID}"><button class="btn btn-success">Enable</button>                                        
+                                                            <a href="adminEnableProduct?pro_id=${e.productID}"><button class="btn btn-success">Enable</button></a>                                        
                                                         </c:if>
-                                                        <button class="btn btn-info">Update</button>    
+                                                        <a href="adminUpdateProduct?pro_id=${e.productID}"><button class="btn btn-info">Update</button></a>    
                                                     </td>
                                                 </tr>   
                                             </c:forEach>
@@ -138,9 +151,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
             });
         </script>
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-              Both of these plugins are recommended to enhance the
-              user experience. Slimscroll is required when using the
-              fixed layout. -->
+
     </body>
 </html>

@@ -38,7 +38,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="adminChangePassword.jsp" class="btn btn-default btn-flat">Change Password</a>
+                                <a href="adminChangeProfile.jsp" class="btn btn-default btn-flat">Edit Your Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a href="adminLogin" class="btn btn-default btn-flat">Sign out</a>

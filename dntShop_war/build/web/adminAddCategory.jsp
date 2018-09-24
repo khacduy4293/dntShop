@@ -68,8 +68,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>                                                                                 
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input<span style="color:red">*</span></label>
-                                                    <input type="file" id="exampleInputFile" name="inputImage" required="true">
-                                                    <p class="help-block">Example block-level help text here.</p>
+                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" required="true">
+                                                    <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
@@ -93,6 +93,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
 
+                    reader.onload = function(e) {
+                        $('#blah')
+                                .attr('src', e.target.result)
+                                .width(80)
+                                .height(80);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </body>
 </html>
