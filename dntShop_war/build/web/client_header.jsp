@@ -122,7 +122,7 @@
                     <ul class="navbar-nav justify-content-end">
                         <li class="search_icon"><a href="#"><i class="icon-magnifier icons"></i></a></li>
                         <li class="user_icon"><a href="login.jsp"><i class="fa fa-sign-in"></i></a></li>
-                        <li class="cart_cart"><a href="#"><%=cart.countItem()%> <i class="icon-handbag icons"> </i></a></li>
+                        <li class="cart_cart"><a href="cart.jsp"><i class="icon-handbag icons"> </i></a><span><%=cart.countItem()%></span></li>
                     </ul>
                 </div>
             </nav>
