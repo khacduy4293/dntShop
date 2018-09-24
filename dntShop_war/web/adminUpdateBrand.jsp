@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="" method="post" enctype="multipart/form-data">
+                                        <form action="adminUpdateBrand" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                                
                                                 <h4 class="modal-title">Modal Default</h4>
                                             </div>                                       

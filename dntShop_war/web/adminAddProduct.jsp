@@ -94,10 +94,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <div class="form-group">
                                             <label>Feature</label>
-                                            <select class="form-control" name="feature">                                                
-                                                <option value="New">New</option>
-                                                <option value="Hot">Hot</option>
+                                            <select class="form-control" name="feature">
                                                 <option>--</option>
+                                                <option value="New" selected="true">New</option>
+                                                <option value="Hot">Hot</option>                                             
                                             </select>
                                         </div>     
                                     </div><!-- /.col -->       
@@ -106,29 +106,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Product Image <span style="color:red">*</span></label>
-                                            <input type="file" id="exampleInputFile1" name="inputImage1" required="true">
-                                            <p class="help-block">Example block-level help text here.</p>
+                                            <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" required="true">
+                                            <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 2</label>
-                                            <input type="file" id="exampleInputFile2" name="inputImage2">
-                                            <p class="help-block">Example block-level help text here.</p>
+                                            <input type="file" id="exampleInputFile2" name="inputImage2" onchange="readURL2(this);" >
+                                            <p class="help-block"><img id="blah2" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 3</label>
-                                            <input type="file" id="exampleInputFile3" name="inputImage3">
-                                            <p class="help-block">Example block-level help text here.</p>
+                                            <input type="file" id="exampleInputFile3" name="inputImage3" onchange="readURL3(this);">
+                                            <p class="help-block"><img id="blah3" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 4</label>
-                                            <input type="file" id="exampleInputFile4" name="inputImage4">
-                                            <p class="help-block">Example block-level help text here.</p>
+                                            <input type="file" id="exampleInputFile4" name="inputImage4" onchange="readURL4(this);">
+                                            <p class="help-block"><img id="blah4" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                 </div>
@@ -152,5 +152,63 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah')
+                                .attr('src', e.target.result)
+                                .width(80)
+                                .height(80);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL2(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah2')
+                                .attr('src', e.target.result)
+                                .width(80)
+                                .height(80);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL3(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah3')
+                                .attr('src', e.target.result)
+                                .width(80)
+                                .height(80);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            function readURL4(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $('#blah4')
+                                .attr('src', e.target.result)
+                                .width(80)
+                                .height(80);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        </script>
     </body>
 </html>

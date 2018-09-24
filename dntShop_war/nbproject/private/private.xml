@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToCart.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/css/loginstyle.css</file>
@@ -11,5 +12,8 @@
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/CartServlet.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/index.jsp</file>
         </group>
+=======
+        <group/>
+>>>>>>> 4eda3cad985c24549f726d77f7e349a5a75fbdd1
     </open-files>
 </project-private>

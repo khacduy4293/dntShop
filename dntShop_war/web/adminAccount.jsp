@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <tr>
                                                     <td>${e.fullName}</td>
                                                     <td>${e.email}</td>
-                                                    <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>
+                                                    <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>                                 
                                                     <td><fmt:formatDate value="${e.createdDate}" pattern="dd-MM-yyyy" /></td>
                                                     <td>                                                       
                                                         <c:if test="${e.isStatus eq true}">
@@ -96,8 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                         <c:if test="${e.isStatus eq false}">
                                                             <a href="adminEnableAccount?admin_id=${e.adminID}"><button class="btn btn-success">Enable</button></a>                                        
-                                                        </c:if>
-                                                        <button class="btn btn-info">Update</button>    
+                                                        </c:if>                                                         
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

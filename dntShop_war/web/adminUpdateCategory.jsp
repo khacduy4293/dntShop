@@ -6,35 +6,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Add Brand</title>
-
+        <title>Add Account</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
+    </head>
+    <!--
+    BODY TAG OPTIONS:
+    =================
+    Apply one or more of the following classes to get the
+    desired effect
+    |---------------------------------------------------------|
+    | SKINS         | skin-blue                               |
+    |               | skin-black                              |
+    |               | skin-purple                             |
+    |               | skin-yellow                             |
+    |               | skin-red                                |
+    |               | skin-green                              |
+    |---------------------------------------------------------|
+    |LAYOUT OPTIONS | fixed                                   |
+    |               | layout-boxed                            |
+    |               | layout-top-nav                          |
+    |               | sidebar-collapse                        |
+    |               | sidebar-mini                            |
+    |---------------------------------------------------------|
+    -->
+    <body class="skin-blue sidebar-mini">
+        <div class="wrapper">
 
-        </head>
-        <!--
-        BODY TAG OPTIONS:
-        =================
-        Apply one or more of the following classes to get the
-        desired effect
-        |---------------------------------------------------------|
-        | SKINS         | skin-blue                               |
-        |               | skin-black                              |
-        |               | skin-purple                             |
-        |               | skin-yellow                             |
-        |               | skin-red                                |
-        |               | skin-green                              |
-        |---------------------------------------------------------|
-        |LAYOUT OPTIONS | fixed                                   |
-        |               | layout-boxed                            |
-        |               | layout-top-nav                          |
-        |               | sidebar-collapse                        |
-        |               | sidebar-mini                            |
-        |---------------------------------------------------------|
-        -->
-        <body class="skin-blue sidebar-mini">
-            <div class="wrapper">
-
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -59,30 +57,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddBrand" method="post" enctype="multipart/form-data">
-                                            <div class="modal-header">                                                
+                                        <form action="adminUpdateCategory" method="post" enctype="multipart/form-data">
+                                            <div class="modal-header">                                             
                                                 <h4 class="modal-title">Modal Default</h4>
-                                            </div>                                       
+                                            </div>                                        
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label for="exampleInputBrandName">Brand Name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputBrandName" name="brandName" placeholder="Enter fullname">
-                                                </div>
+                                                    <label for="exampleInputCateName">Category Name<span style="color:red">*</span></label>
+                                                    <input type="text" class="form-control" id="exampleInputCateName" name="cateName" value="${cate.categoryName}" placeholder="Enter fullname" required="true">
+                                                </div>                                                                                 
                                                 <div class="form-group">
-                                                    <label>Description</label>
-                                                    <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ..."></textarea>
-                                                </div>                                         
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Logo input</label>
+                                                    <label for="exampleInputFile">Image input<span style="color:red">*</span></label>
                                                     <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
-                                                    <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
+                                                    <p class="help-block"><img id="blah" src="${cate.categoryImage}" alt="" class="user-image" width="80px" height="80px"/></p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
                                             </div>
-                                        </form>    
+                                        </form>
                                     </div><!-- /.modal-content -->
                                 </div><!-- /.modal-dialog -->
                             </div><!-- /.modal -->

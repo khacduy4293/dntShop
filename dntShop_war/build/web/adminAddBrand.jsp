@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Logo input</label>
                                                     <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
-                                                    <p class="help-block"><img id="blah" src="#" alt="" class="img-circle" width="80px" height="80px"/></p>
+                                                    <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">

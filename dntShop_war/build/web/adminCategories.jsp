@@ -93,7 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <c:if test="${e.isStatus eq false}">
                                                             <a href="adminEnableCategory?cate_id=${e.categoryID}"><button class="btn btn-success">Enable</button></a>                                        
                                                         </c:if>
-                                                        <button class="btn btn-info">Update</button>    
+                                                            <a href="adminUpdateCategory?cate_id=${e.categoryID}"><button class="btn btn-info">Update</button></a>    
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

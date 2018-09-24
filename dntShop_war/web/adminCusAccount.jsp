@@ -71,6 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th>Gender</th>
                                                     <th>Avatar</th>
                                                     <th>Phone</th>
+                                                    <th>Address</th>
                                                     <th>Created Date</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -91,6 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     </td>
                                                     <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>
                                                     <td>${e.phone}</td>
+                                                    <td>${e.address}</td>
                                                     <td><fmt:formatDate value="${e.createdDate}" pattern="dd-MM-yyyy" /></td>
                                                     <td>                                                       
                                                         <c:if test="${e.isStatus eq true}">
