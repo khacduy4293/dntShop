@@ -69,11 +69,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="form-group">
                                             <label for="exampleInputPrice">Price<span style="color:red">*</span></label>
                                             <input type="number" class="form-control" id="exampleInputPrice" name="price" value="${pro.price}" placeholder="Enter price" required="true">
-                                        </div>                          
+                                        </div>
                                         <div class="form-group">
-                                            <label>Description</label>
-                                            <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ...">${pro.descriptions}</textarea>
-                                        </div> 
+                                                <label for="exampleInputDiscount">Discount<span style="color:red">*</span></label>
+                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" value="${pro.discountProduct}" placeholder="Enter price" required="true">
+                                            </div>
                                     </div><!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -137,6 +137,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>   
                                     </div><!-- /.col -->       
                                 </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ...">${pro.descriptions}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">

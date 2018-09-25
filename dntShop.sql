@@ -33,6 +33,7 @@ create table Products (
 	ProductID varchar(10) primary key,
 	ProductName nvarchar(100) not null,
 	Price int not null,
+	DiscountProduct int not null,
 	CategoryID varchar(10) not null, 
 	BrandID varchar(10) not null,
 	Descriptions nvarchar(max),
@@ -190,9 +191,14 @@ insert Categories(CategoryID, CategoryName, CategoryImage) values
 ('CA004','Accessories','images/Categories/shop04.png')
 go
 
-insert Products(ProductID, ProductName, Price, CategoryID, BrandID, Descriptions, Feature) values
-('PR001', 'Boys Over The Head Basic Hoody', 6,'CA003', 'BR001','Finish off an outfit in style with boohoo''s range of boys'' tops. Go for a layered look with shirts and vests or keep it casual with a cute tee!','New'),
-('PR002', 'Boys Over The Head Basic Hoody', 6,'CA003', 'BR001','Finish off an outfit in style with boohoo''s range of boys'' tops. Go for a layered look with shirts and vests or keep it casual with a cute tee!','New'),
-('PR003', 'Boys Over The Head Basic Hoody', 6,'CA003', 'BR001','Finish off an outfit in style with boohoo''s range of boys'' tops. Go for a layered look with shirts and vests or keep it casual with a cute tee!','New'),
-('PR004', 'Boys Over The Head Basic Hoody', 6,'CA003', 'BR001','Finish off an outfit in style with boohoo''s range of boys'' tops. Go for a layered look with shirts and vests or keep it casual with a cute tee!','New')
+insert Products(ProductID, ProductName, Price,DiscountProduct, CategoryID, BrandID, Descriptions, Feature, Image1, Image2, Image3, Image4) values
+('PR001', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR002', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR003', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR004', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR005', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR006', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR007', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR008', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
+('PR009', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png')
 go

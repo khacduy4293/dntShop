@@ -109,6 +109,10 @@ public class adminAddProduct extends HttpServlet {
                                 //System.out.println("price: " + item.getString());
                                 bra.setPrice(Integer.parseInt(item.getString()));
                                 continue;
+                            case "discount":
+                                //System.out.println("price: " + item.getString());
+                                bra.setDiscountProduct(Integer.parseInt(item.getString()));
+                                continue;
                             case "descrip":
                                 //System.out.println("price: " + item.getString());
                                 bra.setDescriptions(item.getString());
@@ -186,7 +190,7 @@ public class adminAddProduct extends HttpServlet {
                                     item.write(storeFile4);
                                     String brandImage4 = (bra_id + "-4" + newfileName);
                                     bra.setImage4(brandImage4);
-                                }                    
+                                }
                         }
                     }
                 }

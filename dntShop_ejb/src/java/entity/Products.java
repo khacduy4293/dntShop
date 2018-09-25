@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Products.findByProductID", query = "SELECT p FROM Products p WHERE p.productID = :productID"),
     @NamedQuery(name = "Products.findByProductName", query = "SELECT p FROM Products p WHERE p.productName = :productName"),
     @NamedQuery(name = "Products.findByPrice", query = "SELECT p FROM Products p WHERE p.price = :price"),
+    @NamedQuery(name = "Products.findByDiscountProduct", query = "SELECT p FROM Products p WHERE p.discountProduct = :discountProduct"),
     @NamedQuery(name = "Products.findByDescriptions", query = "SELECT p FROM Products p WHERE p.descriptions = :descriptions"),
     @NamedQuery(name = "Products.findByFeature", query = "SELECT p FROM Products p WHERE p.feature = :feature"),
     @NamedQuery(name = "Products.findByImage1", query = "SELECT p FROM Products p WHERE p.image1 = :image1"),
@@ -60,6 +61,10 @@ public class Products implements Serializable {
     @NotNull
     @Column(name = "Price", nullable = false)
     private int price;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "DiscountProduct", nullable = false)
+    private int discountProduct;
     @Size(max = 2147483647)
     @Column(name = "Descriptions", length = 2147483647)
     private String descriptions;
@@ -100,10 +105,11 @@ public class Products implements Serializable {
         this.productID = productID;
     }
 
-    public Products(String productID, String productName, int price) {
+    public Products(String productID, String productName, int price, int discountProduct) {
         this.productID = productID;
         this.productName = productName;
         this.price = price;
+        this.discountProduct = discountProduct;
     }
 
     public String getProductID() {
@@ -128,6 +134,14 @@ public class Products implements Serializable {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getDiscountProduct() {
+        return discountProduct;
+    }
+
+    public void setDiscountProduct(int discountProduct) {
+        this.discountProduct = discountProduct;
     }
 
     public String getDescriptions() {

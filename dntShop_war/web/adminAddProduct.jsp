@@ -9,31 +9,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta charset="UTF-8">
         <title>Add New Product</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-    </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
-    <body class="skin-blue sidebar-mini">
-        <div class="wrapper">
+        </head>
+        <!--
+        BODY TAG OPTIONS:
+        =================
+        Apply one or more of the following classes to get the
+        desired effect
+        |---------------------------------------------------------|
+        | SKINS         | skin-blue                               |
+        |               | skin-black                              |
+        |               | skin-purple                             |
+        |               | skin-yellow                             |
+        |               | skin-red                                |
+        |               | skin-green                              |
+        |---------------------------------------------------------|
+        |LAYOUT OPTIONS | fixed                                   |
+        |               | layout-boxed                            |
+        |               | layout-top-nav                          |
+        |               | sidebar-collapse                        |
+        |               | sidebar-mini                            |
+        |---------------------------------------------------------|
+        -->
+        <body class="skin-blue sidebar-mini">
+            <div class="wrapper">
 
-            <!-- Main Header -->
+                <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -69,11 +69,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <div class="form-group">
                                                 <label for="exampleInputPrice">Price<span style="color:red">*</span></label>
                                                 <input type="number" class="form-control" id="exampleInputPrice" name="price" placeholder="Enter price" required="true">
-                                            </div>                          
+                                            </div>
                                             <div class="form-group">
-                                                <label>Description</label>
-                                                <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ..."></textarea>
-                                            </div> 
+                                                <label for="exampleInputDiscount">Discount<span style="color:red">*</span></label>
+                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" placeholder="Enter price" required="true">
+                                            </div>                                           
                                         </div><!-- /.col -->
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -103,6 +103,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div><!-- /.col -->       
                                 </div><!-- /.row -->
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control" rows="3" name="descrip" placeholder="Enter ..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">                                   
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Product Image <span style="color:red">*</span></label>

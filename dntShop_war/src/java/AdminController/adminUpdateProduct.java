@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package AdminController;
 
 import bean.BrandsFacadeLocal;
@@ -30,15 +29,16 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  */
 @WebServlet(name = "adminUpdateProduct", urlPatterns = {"/adminUpdateProduct"})
 public class adminUpdateProduct extends HttpServlet {
-    String bra_id="";
-    
+
+    String bra_id = "";
+
     @EJB
     BrandsFacadeLocal brandFacade;
     @EJB
     CategoriesFacadeLocal cateFacade;
     @EJB
     ProductsFacadeLocal proFacade;
-    
+
     private static final long serialVersionUID = 1L;
 
     // location to store file uploaded
@@ -50,19 +50,17 @@ public class adminUpdateProduct extends HttpServlet {
         PrintWriter out = response.getWriter();
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        bra_id=request.getParameter("pro_id");
+        bra_id = request.getParameter("pro_id");
         request.setAttribute("pro", proFacade.find(bra_id));
         request.setAttribute("listBrand", brandFacade.findAll());
         request.setAttribute("listCate", cateFacade.findAll());
         request.getRequestDispatcher("adminUpdateProduct.jsp").forward(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -85,7 +83,7 @@ public class adminUpdateProduct extends HttpServlet {
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(request);
 
-            Products bra = proFacade.find(bra_id);          
+            Products bra = proFacade.find(bra_id);
 
             if (formItems != null && formItems.size() > 0) {
                 // iterates over form's fields
@@ -99,6 +97,10 @@ public class adminUpdateProduct extends HttpServlet {
                                 bra.setProductName(item.getString());
                                 continue;
                             case "price":
+                                //System.out.println("price: " + item.getString());
+                                bra.setPrice(Integer.parseInt(item.getString()));
+                                continue;
+                            case "discount":
                                 //System.out.println("price: " + item.getString());
                                 bra.setPrice(Integer.parseInt(item.getString()));
                                 continue;
@@ -175,7 +177,7 @@ public class adminUpdateProduct extends HttpServlet {
                                     item.write(storeFile4);
                                     String brandImage4 = (bra_id + "-4" + newfileName);
                                     bra.setImage4(brandImage4);
-                                }                    
+                                }
                         }
                     }
                 }
