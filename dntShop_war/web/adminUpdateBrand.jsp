@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Add Brand</title>
+        <title>Edit Brand</title>
 
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
 
@@ -44,12 +44,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Page Header
-                            <small>Optional description</small>
+                            Brand Manager
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-diamond"></i> Brands</a></li>
+                            <li class="active">Edit</li>
                         </ol>
                     </section>
 
@@ -61,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="modal-content">
                                         <form action="adminUpdateBrand" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                                
-                                                <h4 class="modal-title">Modal Default</h4>
+                                                <h4 class="modal-title">Edit Brand</h4>
                                             </div>                                       
                                             <div class="modal-body">
                                                 <div class="form-group">

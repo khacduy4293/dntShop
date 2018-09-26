@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Change Password</title>
+        <title>Admin Profile</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         </head>
         <!--
@@ -42,12 +42,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Page Header
-                            <small>Optional description</small>
+                            Your Admin Profile
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-user-secret"></i> Admin</a></li>
+                            <li class="active">Profile</li>
                         </ol>
                     </section>
 

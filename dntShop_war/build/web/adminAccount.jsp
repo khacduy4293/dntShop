@@ -50,12 +50,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Admin Account
-                            <small>Optional description</small>
+                            Admin Manager                           
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-user-secret"></i> Admin Account</a></li>
+                            <li class="active">View</li>
                         </ol>
                     </section>
 
@@ -65,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-xs-12">
                                 <div class="box">
                                     <div class="box-header">
-                                        <h3 class="box-title">Data Table With Full Features</h3>
+                                        <h3 class="box-title">Admin List</h3>
                                     </div><!-- /.box-header -->
                                     <div class="box-body">
                                         <table id="example1" class="table table-bordered table-striped">
@@ -96,10 +95,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     </td>
                                                     <td><c:if test="${sessionScope.admin_login_id ne e.adminID}">
                                                             <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableAccount?admin_id=${e.adminID}"><button class="btn btn-danger">Disable</button></a>
+                                                                <a href="adminDisableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
                                                             </c:if>
                                                             <c:if test="${e.isStatus eq false}">
-                                                                <a href="adminEnableAccount?admin_id=${e.adminID}"><button class="btn btn-success">Enable</button></a>                                        
+                                                                <a href="adminEnableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
                                                             </c:if>   
                                                         </c:if>                                                                                                                                                             
                                                     </td>

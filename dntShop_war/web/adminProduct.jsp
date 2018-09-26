@@ -32,13 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         |---------------------------------------------------------|
         -->
         <body class="skin-blue sidebar-mini">
-            <%
+        <%
             session.setAttribute("currentAdminPage", "product");
             session.setAttribute("currentAdminPageChild", "viewProduct");
         %>
-            <div class="wrapper">
+        <div class="wrapper">
 
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -48,12 +48,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Products Manager
-                            <small>Optional description</small>
+                            Products Manager                       
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-archive"></i> Product</a></li>
+                            <li class="active">View</li>
                         </ol>
                     </section>
 
@@ -63,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-xs-12">
                                 <div class="box">
                                     <div class="box-header">
-                                        <h3 class="box-title">Data Table With Full Features</h3>
+                                        <h3 class="box-title">Product List</h3>
                                     </div><!-- /.box-header -->
                                     <div class="box-body">
                                         <table id="example1" class="table table-bordered table-striped">
@@ -75,10 +74,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th>Discount(%)</th>
                                                     <th>Category</th>
                                                     <th>Brand</th>
-                                                    <th>Image</th>                                   
+                                                    <th style="width: 150px">Image</th>                                   
                                                     <th>Feature</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th style="width: 70px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -113,14 +112,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Disable</span>
                                                         </c:if>
                                                     </td>
-                                                    <td>                                                
-                                                        <c:if test="${e.isStatus eq true}">
-                                                            <a href="adminDisableProduct?pro_id=${e.productID}"><button class="btn btn-danger">Disable</button></a>
-                                                        </c:if>
-                                                        <c:if test="${e.isStatus eq false}">
-                                                            <a href="adminEnableProduct?pro_id=${e.productID}"><button class="btn btn-success">Enable</button></a>                                        
-                                                        </c:if>
-                                                        <a href="adminUpdateProduct?pro_id=${e.productID}"><button class="btn btn-info">Update</button></a>    
+                                                    <td> 
+                                                        <div class="btn-group">
+                                                            <a href="adminUpdateProduct?pro_id=${e.productID}"><button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button></a> 
+                                                                    <c:if test="${e.isStatus eq true}">
+                                                                <a href="adminDisableProduct?pro_id=${e.productID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
+                                                                    </c:if>
+                                                                    <c:if test="${e.isStatus eq false}">
+                                                                <a href="adminEnableProduct?pro_id=${e.productID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
+                                                                    </c:if>
+                                                        </div>
+
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

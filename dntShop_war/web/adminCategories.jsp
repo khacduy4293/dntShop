@@ -10,28 +10,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <meta charset="UTF-8">
         <title>Brands Manager</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-    </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
-    <body class="skin-blue sidebar-mini">
+        </head>
+        <!--
+        BODY TAG OPTIONS:
+        =================
+        Apply one or more of the following classes to get the
+        desired effect
+        |---------------------------------------------------------|
+        | SKINS         | skin-blue                               |
+        |               | skin-black                              |
+        |               | skin-purple                             |
+        |               | skin-yellow                             |
+        |               | skin-red                                |
+        |               | skin-green                              |
+        |---------------------------------------------------------|
+        |LAYOUT OPTIONS | fixed                                   |
+        |               | layout-boxed                            |
+        |               | layout-top-nav                          |
+        |               | sidebar-collapse                        |
+        |               | sidebar-mini                            |
+        |---------------------------------------------------------|
+        -->
+        <body class="skin-blue sidebar-mini">
         <%
             session.setAttribute("currentAdminPage", "category");
             session.setAttribute("currentAdminPageChild", "viewCategory");
@@ -48,12 +48,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Brands Manager
-                            <small>Optional description</small>
+                            Category Manager                        
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-list"></i> Categories</a></li>
+                            <li class="active">View</li>
                         </ol>
                     </section>
 
@@ -63,7 +62,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="col-xs-12">
                                 <div class="box">
                                     <div class="box-header">
-                                        <h3 class="box-title">Data Table With Full Features</h3>
+                                        <h3 class="box-title">Categories List</h3>
                                     </div><!-- /.box-header -->
                                     <div class="box-body">
                                         <table id="example1" class="table table-bordered table-striped">
@@ -73,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th>Category Name</th>
                                                     <th>Image</th>
                                                     <th>Status</th>
-                                                    <th>Action</th>
+                                                    <th style="width: 70px">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -90,14 +89,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Disable</span>
                                                         </c:if>
                                                     </td>
-                                                    <td>                                                
-                                                        <c:if test="${e.isStatus eq true}">
-                                                            <a href="adminDisableCategory?cate_id=${e.categoryID}"><button class="btn btn-danger">Disable</button></a>
-                                                        </c:if>
-                                                        <c:if test="${e.isStatus eq false}">
-                                                            <a href="adminEnableCategory?cate_id=${e.categoryID}"><button class="btn btn-success">Enable</button></a>                                        
-                                                        </c:if>
-                                                            <a href="adminUpdateCategory?cate_id=${e.categoryID}"><button class="btn btn-info">Update</button></a>    
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a href="adminUpdateCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button></a>  
+                                                            <c:if test="${e.isStatus eq true}">
+                                                                <a href="adminDisableCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
+                                                            </c:if>
+                                                            <c:if test="${e.isStatus eq false}">
+                                                                <a href="adminEnableCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
+                                                            </c:if>
+                                                        </div>
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Add New Product</title>
+        <title>Edit Product</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         </head>
         <!--
@@ -43,12 +43,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Page Header
-                            <small>Optional description</small>
+                            Product Manager
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                            <li class="active">Here</li>
+                            <li><a href="#"><i class="fa fa-archive"></i> Products</a></li>
+                            <li class="active">Edit</li>
                         </ol>
                     </section>
 
@@ -57,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box box-default">
                             <form action="adminUpdateProduct" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Select2</h3>
+                                    <h3 class="box-title">Edit Product</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
