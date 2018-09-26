@@ -19,7 +19,8 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="adminDashboard.jsp"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminDashboard.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="#"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
             <li class="${sessionScope.currentAdminPage.equals("customer")?"active":""}"><a href="adminViewCustomer"><i class="fa fa-users"></i> <span>Customer Account</span></a></li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("admin")?"active":""}">
                 <a href="#"><i class="fa fa-user-secret"></i> <span>Admin Account</span> <i class="fa fa-angle-left pull-right"></i></a>

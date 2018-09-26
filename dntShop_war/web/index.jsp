@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <jsp:include page="client-layout.jsp"/>
-        <title>DTNShop</title>
+        <title>DNTShop - Home</title>
     </head>
     <body>
         <!-- HEADER -->
