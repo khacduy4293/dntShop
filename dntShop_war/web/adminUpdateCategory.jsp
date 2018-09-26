@@ -5,9 +5,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Edit Category</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
+        <title>Edit Category</title>
+        
     </head>
     <!--
     BODY TAG OPTIONS:
@@ -85,10 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+            
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->

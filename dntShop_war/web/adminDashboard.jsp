@@ -5,9 +5,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Admin | Dashboard</title>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
+        <title>Admin | Dashboard</title>
+        
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -33,9 +33,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <%
             session.setAttribute("currentAdminPage", "report");
         %>
-            <div class="wrapper">
+        <div class="wrapper">
 
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -108,17 +108,86 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                             </div><!-- ./col -->
                         </div><!-- /.row -->
+                        <!-- TABLE: LATEST ORDERS -->
+                        <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Latest Orders</h3>
+                                <div class="box-tools pull-right">
+                                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="table-responsive">
+                                    <table class="table no-margin">
+                                        <thead>
+                                            <tr>
+                                                <th>Order ID</th>
+                                                <th>Item</th>
+                                                <th>Status</th>
+                                                <th>Popularity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                                <td>Samsung Smart TV</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td><div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                                <td>Samsung Smart TV</td>
+                                                <td><span class="label label-info">Processing</span></td>
+                                                <td><div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                                <td>Samsung Smart TV</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td><div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td><span class="label label-danger">Delivered</span></td>
+                                                <td><div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div></td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                                <td>Call of Duty IV</td>
+                                                <td><span class="label label-success">Shipped</span></td>
+                                                <td><div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div><!-- /.table-responsive -->
+                            </div><!-- /.box-body -->
+                            <div class="box-footer clearfix">
+                                <a href="javascript::;" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
+                                <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                            </div><!-- /.box-footer -->
+                        </div><!-- /.box -->
                     </section><!-- /.content -->
                 </div><!-- /.content-wrapper -->
 
                 <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+            
         </div><!-- ./wrapper -->
-
+        
         <!-- REQUIRED JS SCRIPTS -->
 
     </body>

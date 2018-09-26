@@ -7,10 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Admin Account</title>
-
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
+            <title>Admin Account</title>
 
         </head>
         <!--
@@ -96,11 +94,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td><c:if test="${sessionScope.admin_login_id ne e.adminID}">
                                                             <c:if test="${e.isStatus eq true}">
                                                                 <a href="adminDisableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
-                                                            </c:if>
-                                                            <c:if test="${e.isStatus eq false}">
+                                                                    </c:if>
+                                                                    <c:if test="${e.isStatus eq false}">
                                                                 <a href="adminEnableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
-                                                            </c:if>   
-                                                        </c:if>                                                                                                                                                             
+                                                                    </c:if>   
+                                                                </c:if>                                                                                                                                                             
                                                     </td>
                                                 </tr>   
                                             </c:forEach>
@@ -116,11 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div><!-- /.content-wrapper -->
 
             <!-- Main Footer -->
-            <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            <!-- /.control-sidebar -->
-            <!-- Add the sidebar's background. This div must be placed
-                 immediately after the control sidebar -->
-            <div class="control-sidebar-bg"></div>
+            <jsp:include page="admin-main-footer.jsp"></jsp:include>            
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->       
