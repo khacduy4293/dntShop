@@ -9,31 +9,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <meta charset="UTF-8">
         <title>Admin Account</title>
-        
+
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        
-    </head>
-    <!--
-    BODY TAG OPTIONS:
-    =================
-    Apply one or more of the following classes to get the
-    desired effect
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
-    |LAYOUT OPTIONS | fixed                                   |
-    |               | layout-boxed                            |
-    |               | layout-top-nav                          |
-    |               | sidebar-collapse                        |
-    |               | sidebar-mini                            |
-    |---------------------------------------------------------|
-    -->
-    <body class="skin-blue sidebar-mini">
+
+        </head>
+        <!--
+        BODY TAG OPTIONS:
+        =================
+        Apply one or more of the following classes to get the
+        desired effect
+        |---------------------------------------------------------|
+        | SKINS         | skin-blue                               |
+        |               | skin-black                              |
+        |               | skin-purple                             |
+        |               | skin-yellow                             |
+        |               | skin-red                                |
+        |               | skin-green                              |
+        |---------------------------------------------------------|
+        |LAYOUT OPTIONS | fixed                                   |
+        |               | layout-boxed                            |
+        |               | layout-top-nav                          |
+        |               | sidebar-collapse                        |
+        |               | sidebar-mini                            |
+        |---------------------------------------------------------|
+        -->
+        <body class="skin-blue sidebar-mini">
         <%
             session.setAttribute("currentAdminPage", "admin");
             session.setAttribute("currentAdminPageChild", "viewAccount");
@@ -94,13 +94,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Banned</span>
                                                         </c:if>
                                                     </td>
-                                                    <td>                                                
-                                                        <c:if test="${e.isStatus eq true}">
-                                                            <a href="adminDisableAccount?admin_id=${e.adminID}"><button class="btn btn-danger">Disable</button></a>
-                                                        </c:if>
-                                                        <c:if test="${e.isStatus eq false}">
-                                                            <a href="adminEnableAccount?admin_id=${e.adminID}"><button class="btn btn-success">Enable</button></a>                                        
-                                                        </c:if>                                                         
+                                                    <td><c:if test="${sessionScope.admin_login_id ne e.adminID}">
+                                                            <c:if test="${e.isStatus eq true}">
+                                                                <a href="adminDisableAccount?admin_id=${e.adminID}"><button class="btn btn-danger">Disable</button></a>
+                                                            </c:if>
+                                                            <c:if test="${e.isStatus eq false}">
+                                                                <a href="adminEnableAccount?admin_id=${e.adminID}"><button class="btn btn-success">Enable</button></a>                                        
+                                                            </c:if>   
+                                                        </c:if>                                                                                                                                                             
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

@@ -20,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminViewEmployee", urlPatterns = {"/adminViewEmployee"})
-public class adminViewEmployee extends HttpServlet {
+@WebServlet(name = "adminViewAccount", urlPatterns = {"/adminViewAccount"})
+public class adminViewAccount extends HttpServlet {
 
     @EJB AdminsFacadeLocal adminFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

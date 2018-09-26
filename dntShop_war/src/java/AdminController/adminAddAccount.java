@@ -115,7 +115,7 @@ public class adminAddAccount extends HttpServlet {
             ex.getStackTrace();
         }
         // redirects client to message page      
-        getServletContext().getRequestDispatcher("/adminViewEmployee").forward(request, response);
+        getServletContext().getRequestDispatcher("/adminViewAccount").forward(request, response);
     }
 
 }

@@ -24,7 +24,7 @@
             <li class="treeview ${sessionScope.currentAdminPage.equals("admin")?"active":""}">
                 <a href="#"><i class="fa fa-user-secret"></i> <span>Admin Account</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li class="${sessionScope.currentAdminPageChild.equals("viewAccount")?"active":""}"><a href="adminViewEmployee"><i class="fa fa-circle-o"></i>View</a></li>
+                    <li class="${sessionScope.currentAdminPageChild.equals("viewAccount")?"active":""}"><a href="adminViewAccount"><i class="fa fa-circle-o"></i>View</a></li>
                     <li class="${sessionScope.currentAdminPageChild.equals("addAccount")?"active":""}"><a href="adminAddAccount.jsp"><i class="fa fa-circle-o"></i>Create</a></li>
                 </ul>
             </li>

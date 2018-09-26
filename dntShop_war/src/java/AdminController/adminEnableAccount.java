@@ -34,7 +34,7 @@ public class adminEnableAccount extends HttpServlet {
         Admins ad = adminFacade.find(id);
         ad.setIsStatus(Boolean.TRUE);
         adminFacade.edit(ad);
-        request.getRequestDispatcher("adminViewEmployee").forward(request, response);
+        request.getRequestDispatcher("adminViewAccount").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
