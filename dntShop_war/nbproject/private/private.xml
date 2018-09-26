@@ -2,10 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/adminBrand.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/adminCategories.jsp</file>
-        </group>
         <group name="GitHub"/>
+        <group>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/cart.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/Client/css/style.css</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/loginForm.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/Client/css/loginStyle.css</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/index.jsp</file>
+        </group>
     </open-files>
 </project-private>
