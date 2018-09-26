@@ -6,129 +6,7 @@
     </head>
     <body>
         <!-- HEADER -->
-        <header>
-            <!-- TOP HEADER -->
-            <div id="top-header">
-                <div class="container">
-                    <ul class="header-links pull-left">
-                        <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
-                        <li><a href="#"><i class="fa fa-envelope-o"></i> email@email.com</a></li>
-                        <li><a href="#"><i class="fa fa-map-marker"></i> 1734 Stonecoal Road</a></li>
-                    </ul>
-                    <ul class="header-links pull-right">
-                        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
-                        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- /TOP HEADER -->
-
-            <!-- MAIN HEADER -->
-            <div id="header">
-                <!-- container -->
-                <div class="container">
-                    <!-- row -->
-                    <div class="row">
-                        <!-- LOGO -->
-                        <div class="col-md-3">
-                            <div class="header-logo">
-                                <a href="#" class="logo">
-                                    <img src="./img/logo.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- /LOGO -->
-
-                        <!-- SEARCH BAR -->
-                        <div class="col-md-6">
-                            <div class="header-search">
-                                <form>
-                                    <select class="input-select">
-                                        <option value="0">All Categories</option>
-                                        <option value="1">Category 01</option>
-                                        <option value="1">Category 02</option>
-                                    </select>
-                                    <input class="input" placeholder="Search here">
-                                    <button class="search-btn">Search</button>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- /SEARCH BAR -->
-
-                        <!-- ACCOUNT -->
-                        <div class="col-md-3 clearfix">
-                            <div class="header-ctn">
-                                <!-- Wishlist -->
-                                <div>
-                                    <a href="#">
-                                        <i class="fa fa-heart-o"></i>
-                                        <span>Your Wishlist</span>
-                                        <div class="qty">2</div>
-                                    </a>
-                                </div>
-                                <!-- /Wishlist -->
-
-                                <!-- Cart -->
-                                <div class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        <span>Your Cart</span>
-                                        <div class="qty">3</div>
-                                    </a>
-                                    <div class="cart-dropdown">
-                                        <div class="cart-list">
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product01.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-
-                                            <div class="product-widget">
-                                                <div class="product-img">
-                                                    <img src="./img/product02.png" alt="">
-                                                </div>
-                                                <div class="product-body">
-                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                                </div>
-                                                <button class="delete"><i class="fa fa-close"></i></button>
-                                            </div>
-                                        </div>
-                                        <div class="cart-summary">
-                                            <small>3 Item(s) selected</small>
-                                            <h5>SUBTOTAL: $2940.00</h5>
-                                        </div>
-                                        <div class="cart-btns">
-                                            <a href="#">View Cart</a>
-                                            <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /Cart -->
-
-                                <!-- Menu Toogle -->
-                                <div class="menu-toggle">
-                                    <a href="#">
-                                        <i class="fa fa-bars"></i>
-                                        <span>Menu</span>
-                                    </a>
-                                </div>
-                                <!-- /Menu Toogle -->
-                            </div>
-                        </div>
-                        <!-- /ACCOUNT -->
-                    </div>
-                    <!-- row -->
-                </div>
-                <!-- container -->
-            </div>
-            <!-- /MAIN HEADER -->
-        </header>
+        <jsp:include  page="client-header.jsp"></jsp:include>
         <!-- /HEADER -->
 
         <!-- NAVIGATION -->
@@ -250,7 +128,7 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">Category</p>
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h3 class="product-name"><a href="#">product test</a></h3>
                                                 <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
                                                 <div class="product-rating">
                                                     <i class="fa fa-star"></i>
@@ -260,13 +138,14 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                                 <div class="product-btns">
+                         
                                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                     <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
                                                     <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                                 </div>
                                             </div>
                                             <div class="add-to-cart">
-                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn" onclick='addProductToCart("PR001")' ><i class="fa fa-shopping-cart"></i> add to cart</a>
                                             </div>
                                         </div>
                                         <!-- /product -->
@@ -1032,5 +911,25 @@
 
             <!-- bottom footer -->
             <jsp:include page="client-footer.jsp"/>
-    </body>
+    
+        </body>
+        <script type="text/javascript">
+            function addProductToCart(productid)
+            {
+                $.ajax({
+                    url: "AddProductToCart?command=plus&productID="+productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                }); }
+            
+        </script>
 </html>
