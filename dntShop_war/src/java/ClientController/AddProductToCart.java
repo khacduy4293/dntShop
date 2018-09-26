@@ -36,60 +36,7 @@ public class AddProductToCart extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        /*HttpSession session = request.getSession();
-            Cart cart = (Cart) session.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart();
-            }
-        String productId=request.getParameter("productId");
-        int qty = Integer.parseInt(request.getParameter("qty"));
-        Products products=productsFacade.find(productId);
-        cart.addToCart(products, qty);
-         session.setAttribute("cart", cart);
-            HashMap<Products, Integer> items = cart.getCartItem();
-            session.setAttribute("cartItems", items);
-            session.setAttribute("subTotal", cart.subTotal());
-            HashMap<String, String> cartmini = new HashMap<>();
-            cartmini.put("status", "SUCCESS");
-            cartmini.put("message", "Product was added to your shopping cart.");
-            String cartminiHTML="";
-            for (Products product : items.keySet()) {
-                cartminiHTML="<tr>\n" +
-"                                            <th scope=\"row\">\n" +
-"                                                <img src=\"img/icon/close-icon.png\" alt=\"\">\n" +
-"                                            </th>\n" +
-"                                            <td>\n" +
-"                                                <div class=\"media\">\n" +
-"                                                    <div class=\"d-flex\">\n" +
-"                                                        <img src=\""+product.getImage1()+"\" alt=\"\">\n" +
-"                                                    </div>\n" +
-"                                                    <div class=\"media-body\">\n" +
-"                                                        <h4>"+product.getProductName()+" </h4>\n" +
-"                                                    </div>\n" +
-"                                                </div>\n" +
-"                                            </td>\n" +
-"                                            <td><p class=\"red\">$150</p></td>\n" +
-"                                            <td>\n" +
-"                                                <div class=\"quantity\">\n" +
-"                                                    <h6>Quantity</h6>\n" +
-"                                                    <div class=\"custom\">\n" +
-"                                                        <button onclick=\"var result = document.getElementById('sst2'); var sst2 = result.value; if( !isNaN( sst2 ) &amp;&amp; sst2 > 0 ) result.value--;return false;\" class=\"reduced items-count\" type=\"button\"><i class=\"icon_minus-06\"></i></button>\n" +
-"                                                        <input type=\"text\" name=\"qty\" id=\"sst2\" maxlength=\"12\" value=\""+items.get(items)+"\" title=\"Quantity:\" class=\"input-text qty\">\n" +
-"                                                        <button onclick=\"var result = document.getElementById('sst2'); var sst2 = result.value; if( !isNaN( sst2 )) result.value++;return false;\" class=\"increase items-count\" type=\"button\"><i class=\"icon_plus\"></i></button>\n" +
-"                                                    </div>\n" +
-"                                                </div>\n" +
-"                                            </td>\n" +
-"                                            <td><p>"+product.getPrice()+"</p></td>\n" +
-"                                        </tr>";
-            }
-                
-            cartmini.put("cartmini", cartminiHTML);
-            cartmini.put("stickycart", cartminiHTML);
-            cartmini.put("sidebar", cartminiHTML);
-            Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-            String json = gson.toJson(cartmini);
-            out.print(json);*/
+        PrintWriter out = response.getWriter();      
         HttpSession session = request.getSession();
         String command = request.getParameter("command");
         String productID = request.getParameter("productID");
@@ -117,7 +64,6 @@ public class AddProductToCart extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
         session.setAttribute("cart", cart);
-        response.sendRedirect("index.jsp");
                 
             
         }
