@@ -30,6 +30,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         |---------------------------------------------------------|
         -->
         <body class="skin-blue sidebar-mini">
+        <%
+            session.setAttribute("currentAdminPage", "report");
+        %>
             <div class="wrapper">
 
                 <!-- Main Header -->
@@ -77,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="icon">
                                         <i class="ion ion-stats-bars"></i>
                                     </div>
-                                    
+
                                 </div>
                             </div><!-- ./col -->
                             <div class="col-lg-3 col-xs-6">

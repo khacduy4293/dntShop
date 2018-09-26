@@ -33,7 +33,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
     -->
-    <body class="skin-blue sidebar-mini">       
+    <body class="skin-blue sidebar-mini">
+        <%
+            session.setAttribute("currentAdminPage", "admin");
+            session.setAttribute("currentAdminPageChild", "viewAccount");
+        %>
         <div class="wrapper">
 
             <!-- Main Header -->

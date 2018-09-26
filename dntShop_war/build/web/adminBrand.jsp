@@ -32,9 +32,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         |---------------------------------------------------------|
         -->
         <body class="skin-blue sidebar-mini">
-            <div class="wrapper">
+        <%
+            session.setAttribute("currentAdminPage", "brand");
+            session.setAttribute("currentAdminPageChild", "viewBrand");
+        %>
+        <div class="wrapper">
 
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>

@@ -32,6 +32,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     |---------------------------------------------------------|
     -->
     <body class="skin-blue sidebar-mini">
+        <%
+            session.setAttribute("currentAdminPage", "customer");
+        %>
         <div class="wrapper">
 
             <!-- Main Header -->
