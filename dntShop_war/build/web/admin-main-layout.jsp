@@ -1,5 +1,6 @@
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="icon" href="img/user-male-fav.png" type="image/x-icon" />
 <!-- Bootstrap 3.3.4 -->
 <link href="Admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!-- Font Awesome Icons -->
