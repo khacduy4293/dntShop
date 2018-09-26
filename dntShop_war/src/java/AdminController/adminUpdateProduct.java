@@ -102,7 +102,7 @@ public class adminUpdateProduct extends HttpServlet {
                                 continue;
                             case "discount":
                                 //System.out.println("price: " + item.getString());
-                                bra.setPrice(Integer.parseInt(item.getString()));
+                                bra.setDiscountProduct(Integer.parseInt(item.getString()));
                                 continue;
                             case "descrip":
                                 //System.out.println("price: " + item.getString());

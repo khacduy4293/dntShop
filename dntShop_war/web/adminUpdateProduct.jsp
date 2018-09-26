@@ -71,7 +71,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <div class="form-group">
                                                 <label for="exampleInputDiscount">Discount<span style="color:red">*</span></label>
-                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" value="${pro.discountProduct}" placeholder="Enter price" required="true">
+                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" value="${pro.discountProduct}" placeholder="Enter discount" required="true">
                                             </div>
                                     </div><!-- /.col -->
                                     <div class="col-md-6">
