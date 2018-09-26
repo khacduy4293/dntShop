@@ -69,9 +69,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <thead>
                                                 <tr>
                                                     <th>Full Name</th>
-                                                    <th>Email</th>                                                    
-                                                    <th>Avatar</th>
+                                                    <th>Email</th>                                                                                                       
                                                     <th>Created Date</th>
+                                                    <th>Avatar</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -80,9 +80,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <c:forEach var="e" items="${listEmp}">
                                                 <tr>
                                                     <td>${e.fullName}</td>
-                                                    <td>${e.email}</td>
-                                                    <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>                                 
+                                                    <td>${e.email}</td>                                                              
                                                     <td><fmt:formatDate value="${e.createdDate}" pattern="dd-MM-yyyy" /></td>
+                                                    <td><img src="${e.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/></td>
                                                     <td>                                                       
                                                         <c:if test="${e.isStatus eq true}">
                                                             <span class="label label-success">Active</span>
@@ -128,9 +128,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
             });
         </script>
-        <!-- Optionally, you can add Slimscroll and FastClick plugins.
-              Both of these plugins are recommended to enhance the
-              user experience. Slimscroll is required when using the
-              fixed layout. -->
+        
     </body>
 </html>

@@ -28,13 +28,10 @@
 <script src="Admin/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="Admin/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="Admin/dist/js/pages/dashboard2.js" type="text/javascript"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="Admin/dist/js/demo.js" type="text/javascript"></script>
+
 <!-- DATA TABES SCRIPT -->
-<script src="Admin/plugins/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
-<script src="Admin/plugins/datatables/dataTables.bootstrap.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="Admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="Admin/plugins/datatables/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript" src="Admin/plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="Admin/plugins/datatables/extensions/Buttons/js/buttons.bootstrap.min.js"></script>
 <script type="text/javascript" src="Admin/plugins/datatables/extensions/Buttons/js/jszip.min.js"></script>

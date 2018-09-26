@@ -96,7 +96,7 @@ public class adminAddAccount extends HttpServlet {
                         String fileName = new File(item.getName()).getName();
                         
                         if (fileName.isEmpty()) {
-                            String brandImage = "images/Avatars/default-avatar.jpg";
+                            String brandImage = "images/Avatars/avatar.png";
                             bra.setAvatar(brandImage);
                         } else {
                             String newfileName= fileName.substring(fileName.lastIndexOf('.'));
