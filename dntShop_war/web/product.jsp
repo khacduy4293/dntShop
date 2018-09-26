@@ -197,14 +197,22 @@
                                         <div class="product-img">
                                             <img src="images/Products/${p.image1}" alt="">
                                             <div class="product-label">
-                                                <span class="sale">-${p.discountProduct}%</span>
-                                                <span class="new">${p.feature}</span>
+                                                <c:if test="${p.discountProduct ne 0}">
+                                                    <span class="sale">-${p.discountProduct}%</span>
+                                                </c:if>
+                                                    <c:if test="${p.feature ne '--'}">
+                                                        <span class="new">${p.feature}</span>
+                                                </c:if>         
                                             </div>
                                         </div>
                                         <div class="product-body">
                                             <p class="product-category">${p.categoryID.categoryName}</p>
                                             <h3 class="product-name"><a href="#">${p.productName}</a></h3>
-                                            <h4 class="product-price">$${p.price*(100-p.discountProduct)/100} <del class="product-old-price">$${p.price}</del></h4>
+                                            <h4 class="product-price">$${p.price*(100-p.discountProduct)/100}
+                                                <c:if test="${p.discountProduct ne 0}">
+                                                    <del class="product-old-price">$${p.price}</del>
+                                                </c:if>                                         
+                                            </h4>
                                             <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
