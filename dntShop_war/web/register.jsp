@@ -75,7 +75,8 @@
                                 <div class="form-group">
                                     <h5>Password</h5>
                                     <input class="input" type="password" name="password" placeholder="Enter Password" required="true">
-                                </div>                               
+                                </div>
+                                <input type="submit" class="input order-submit" value="LOGIN">
                                 <a class="primary-btn order-submit" onclick="submitFormLogin()">Login</a>
                             </div>
                         </form>
@@ -116,7 +117,7 @@
                                         <option value="Female">Female</option>
                                     </select>
                                 </div>
-                                <input type="submit" class="primary-btn order-submit" value="OK">
+                                <input type="submit" class="input" value="REGISTER">
                                 <a class="primary-btn order-submit" onclick="submitFormRegis()">Register</a>
                             </div>
                         </form>                       

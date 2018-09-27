@@ -299,6 +299,25 @@
         <!-- /FOOTER -->
 
         <!-- jQuery Plugins -->       
+        <script type="text/javascript">
+            function addProductToCart(productid)
+            {
+                $.ajax({
+                    url: "AddProductToCart?command=plus&productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
 
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+
+        </script>
     </body>
 </html>
