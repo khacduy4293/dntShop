@@ -6,6 +6,9 @@
             <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/adminBrand.jsp</file>
             <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/adminCategories.jsp</file>
         </group>
-        <group name="GitHub"/>
+        <group name="GitHub">
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/index.jsp</file>
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/login.jsp</file>
+        </group>
     </open-files>
 </project-private>
