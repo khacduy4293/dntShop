@@ -844,7 +844,8 @@
 
             <!-- FOOTER -->        
         <jsp:include page="client-footer.jsp"/>
-        <!-- /FOOTER -->    
+        <!-- /FOOTER -->   
+        
 
     </body>
     

@@ -96,10 +96,10 @@
                                 </div>
                                 <div class="cart-summary">
                                     <small><%=cart.countItem()%> Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
+                                    <h5>SUBTOTAL: $<%=cart.totalCart() %></h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="#">View Cart</a>
+                                    <a href="cart.jsp">View Cart</a>
                                     <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
