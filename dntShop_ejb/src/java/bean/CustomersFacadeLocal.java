@@ -30,5 +30,7 @@ public interface CustomersFacadeLocal {
     List<Customers> findRange(int[] range);
 
     int count();
+
+    List<Customers> login(String email, String pass);
     
 }

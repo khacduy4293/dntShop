@@ -82,11 +82,11 @@
                                     <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                                     <div class="product-widget">
                                         <div class="product-img">
-                                            <img src="<%=list.getValue().getProduct().getImage1()%>" alt="">
+                                            <img src="images/Products/<%=list.getValue().getProduct().getImage1()%>" alt="">
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#"><%=list.getValue().getProduct().getProductName()%></a></h3>
-                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity() %></span>$<%=list.getValue().getProduct().getPrice()*list.getValue().getQuantity() %></h4>
+                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity() %>x</span>$<%=list.getValue().getProduct().getPrice()*list.getValue().getQuantity() %></h4>
                                         </div>
                                         <button class="delete"><i class="fa fa-close"></i></button>
                                     </div>

@@ -10,7 +10,7 @@
             <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
             <!-- /HEADER -->
-
+            
             <!-- NAVIGATION -->
             <nav id="navigation">
                 <!-- container -->
@@ -227,7 +227,7 @@
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
-                                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                            <button class="add-to-cart-btn" onclick='addProductToCart("${p.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
                                         </div>
                                     </div>
                                 </div>

@@ -7,9 +7,11 @@
 package bean;
 
 import entity.Customers;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,14 @@ public class CustomersFacade extends AbstractFacade<Customers> implements Custom
 
     public CustomersFacade() {
         super(Customers.class);
+    }
+
+    @Override
+    public List<Customers> login(String email, String pass) {
+        Query q = getEntityManager().createQuery("SELECT c FROM Customers c WHERE c.email = :email and c.password = :pass");
+        q.setParameter("email", email);
+        q.setParameter("pass", pass);
+        return q.getResultList();
     }
     
 }

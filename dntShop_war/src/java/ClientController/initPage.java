@@ -52,6 +52,7 @@ public class initPage extends HttpServlet {
         request.setAttribute("categoriesList", categoriesList);
         List<Brands> brandsList = brandFacade.findAll();
         request.setAttribute("brandsList", brandsList);
+        request.setAttribute("cateL", cateFacade.findAll().size());
     }
 
     
