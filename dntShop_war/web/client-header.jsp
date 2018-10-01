@@ -75,7 +75,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>Your Cart</span>
-                                <div class="qty"><%=cart.countItem()%></div>
+                                <div class="qty"><%=cart.countQty() %></div>
                             </a>
                             <div class="cart-dropdown">
                                 <div class="cart-list">
@@ -95,7 +95,7 @@
                                     %>
                                 </div>
                                 <div class="cart-summary">
-                                    <small><%=cart.countItem()%> Item(s) selected</small>
+                                    <small><%=cart.countQty()%> Item(s) selected</small>
                                     <h5>SUBTOTAL: $<%=cart.totalCart() %></h5>
                                 </div>
                                 <div class="cart-btns">

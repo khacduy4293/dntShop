@@ -103,8 +103,8 @@
                         <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                         <div class="product-cart">
                             <div class="one-forth">
-                                <div class="product-img" style="background-image: url(<%=list.getValue().getProduct().getImage1()%>);">
-                                </div>
+                                <div class="product-img" style="background-image: url(images/Products/product01.png);">
+								</div>
                                 <div class="display-tc">
                                     <h3><%=list.getValue().getProduct().getProductName()%></h3>
                                 </div>

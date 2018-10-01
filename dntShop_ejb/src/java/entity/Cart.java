@@ -70,6 +70,14 @@ public class Cart {
     public int countItem() {
         return cartItems.size();
     }
+    public int countQty(){
+        int count = 0;
+        // count = price * quantity
+        for (Map.Entry<String, Items> list : cartItems.entrySet()) {
+            count += list.getValue().getQuantity();
+        }
+        return count;
+    }
 
     // sum total 
     public double totalCart() {
