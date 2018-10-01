@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Admin Manager                        
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-user-secret"></i> Admin Account</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Admin Account</a></li>
                             <li class="active">Create</li>
                         </ol>
                     </section>

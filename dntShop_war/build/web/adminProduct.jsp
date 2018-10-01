@@ -147,6 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script type="text/javascript">
             $(function() {
                 $('#example1').DataTable({
+                    "order": [[0, "desc"]],
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'excel', 'pdf', 'print'

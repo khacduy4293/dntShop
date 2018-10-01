@@ -63,7 +63,7 @@ public class adminLogin extends HttpServlet {
                 String createDate = formatter.format(adminFacade.login(email, password).get(0).getCreatedDate());  
                 session.setAttribute("admin_login_createdate", createDate);
                 session.setAttribute("admin_login_avatar", adminFacade.login(email, password).get(0).getAvatar());
-                request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+                request.getRequestDispatcher("adminViewDashBoard").forward(request, response);
             } else {
                 session.setAttribute("admin_login_message", "<p class=\"login-box-msg\" style=\"color:red\">your account is banned</p>");
                 request.getRequestDispatcher("adminLogin.jsp").forward(request, response);

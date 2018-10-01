@@ -19,11 +19,17 @@
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminDashboard.jsp"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminViewDashBoard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="#"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
-            <li class="${sessionScope.currentAdminPage.equals("customer")?"active":""}"><a href="adminViewCustomer"><i class="fa fa-users"></i> <span>Customer Account</span></a></li>
+            <li class="treeview ${sessionScope.currentAdminPage.equals("customer")?"active":""}">
+                <a href="#"><i class="fa fa-users"></i> <span>Customer Account</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li class="${sessionScope.currentAdminPageChild.equals("viewCustomer")?"active":""}"><a href="adminViewCustomer"><i class="fa fa-circle-o"></i>View</a></li>
+                    <li class="${sessionScope.currentAdminPageChild.equals("addCustomer")?"active":""}"><a href="adminAddCusAccount.jsp"><i class="fa fa-circle-o"></i>Create</a></li>
+                </ul>
+            </li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("admin")?"active":""}">
-                <a href="#"><i class="fa fa-user-secret"></i> <span>Admin Account</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class="fa fa-user"></i> <span>Admin Account</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li class="${sessionScope.currentAdminPageChild.equals("viewAccount")?"active":""}"><a href="adminViewAccount"><i class="fa fa-circle-o"></i>View</a></li>
                     <li class="${sessionScope.currentAdminPageChild.equals("addAccount")?"active":""}"><a href="adminAddAccount.jsp"><i class="fa fa-circle-o"></i>Create</a></li>

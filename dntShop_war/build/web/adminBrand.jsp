@@ -8,8 +8,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Brands Manager</title>
-        
+            <title>Brands Manager</title>
+
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -121,7 +121,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            
+
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
@@ -129,12 +129,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script type="text/javascript">
             $(function() {
                 $('#example1').DataTable({
+                    "order": [[0, "desc"]],
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'excel', 'pdf', 'print'
                     ]
                 });
             });
+            
         </script>
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
               Both of these plugins are recommended to enhance the

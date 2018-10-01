@@ -51,7 +51,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Admin Manager                           
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-user-secret"></i> Admin Account</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Admin Account</a></li>
                             <li class="active">View</li>
                         </ol>
                     </section>
@@ -68,6 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Full Name</th>
                                                     <th>Email</th>                                                                                                       
                                                     <th>Created Date</th>
@@ -79,6 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tbody>
                                             <c:forEach var="e" items="${listEmp}">
                                                 <tr>
+                                                    <td>${e.adminID}</td>
                                                     <td>${e.fullName}</td>
                                                     <td>${e.email}</td>                                                              
                                                     <td><fmt:formatDate value="${e.createdDate}" pattern="dd-MM-yyyy" /></td>
@@ -121,6 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script type="text/javascript">
             $(function() {
                 $('#example1').DataTable({
+                    "order": [[0, "desc"]],
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'excel', 'pdf', 'print'

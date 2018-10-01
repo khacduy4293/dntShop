@@ -34,6 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <body class="skin-blue sidebar-mini">
         <%
             session.setAttribute("currentAdminPage", "customer");
+            session.setAttribute("currentAdminPageChild", "viewCustomer");
         %>
         <div class="wrapper">
 
@@ -67,6 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <table id="example1" class="table table-bordered table-striped">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>First Name</th>
                                                     <th>Last Name</th>
                                                     <th>Email</th>
@@ -82,6 +84,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tbody>
                                             <c:forEach var="e" items="${listCus}">
                                                 <tr>
+                                                    <td>${e.customerID}</td>
                                                     <td>${e.firstName}</td>
                                                     <td>${e.lastName}</td>
                                                     <td>${e.email}</td>
@@ -137,6 +140,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script type="text/javascript">
             $(function() {
                 $('#example1').DataTable({
+                    "order": [[0, "desc"]],
                     dom: 'Bfrtip',
                     buttons: [
                         'copy', 'excel', 'pdf', 'print'
