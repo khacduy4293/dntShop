@@ -1,4 +1,7 @@
+<%@page import="entity.Categories"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,8 +14,12 @@
         <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
         <!-- /HEADER -->
-        
+        <jsp:include page="client-navigation.jsp"></jsp:include>
         <!-- NAVIGATION -->
+        <%
+            List<Categories> cateList = (List<Categories>) session.getAttribute("categoriesList");
+            String cateN = session.getAttribute("cateL").toString();
+        %>
         <nav id="navigation">
                 <!-- container -->
                 <div class="container">
@@ -21,9 +28,9 @@
                         <!-- NAV -->
                         <ul class="main-nav nav navbar-nav">
                             <li><a href="index.jsp">Home</a></li>
-                            <li class="active"><a href="#">All Products</a></li>
+                            <li class="active"><a href="#">All Products <%= cateN %></a></li>
                             <li><a href="#">Hot Deals</a></li>
-                            <c:forEach items="${categoriesList}" var="c">
+                            <c:forEach items="${cateList}" var="c">
                             <li><a href="#">${c.categoryName}</a></li>
                             </c:forEach>
                     </ul>

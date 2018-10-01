@@ -20,6 +20,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,13 +47,14 @@ public class initPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        HttpSession session = request.getSession();
         List<Products> productList = proFacade.findAll();
-        request.setAttribute("productList", productList);
+        session.setAttribute("productList", productList);
         List<Categories> categoriesList = cateFacade.findAll();
-        request.setAttribute("categoriesList", categoriesList);
+        session.setAttribute("categoriesList", categoriesList);
         List<Brands> brandsList = brandFacade.findAll();
-        request.setAttribute("brandsList", brandsList);
-        request.setAttribute("cateL", cateFacade.findAll().size());
+        session.setAttribute("brandsList", brandsList);
+        session.setAttribute("cateL", cateFacade.findAll().size());
     }
 
     
