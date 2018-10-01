@@ -2,18 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group name="GitHub"/>
-=======
-        <group>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/cart.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/product.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/Client/css/style.css</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/loginForm.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/Client/css/loginStyle.css</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/index.jsp</file>
+        <group name="GitHub">
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/src/java/AdminController/adminUpdateCustomer.java</file>
         </group>
->>>>>>> 0360cfeb24205c57822e93e2c325499930368cb9
     </open-files>
 </project-private>

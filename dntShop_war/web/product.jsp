@@ -11,42 +11,43 @@
         <jsp:include  page="client-header.jsp"></jsp:include>
             <!-- /HEADER -->
             
-            <jsp:include  page="client-navigation.jsp"></jsp:include>           
-
-        <!-- BREADCRUMB -->
-        <div id="breadcrumb" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="breadcrumb-tree">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">All Categories</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li class="active">Headphones (227,490 Results)</li>
-                        </ul>
+            <!-- NAVIGATION -->    
+        <jsp:include  page="client-navigation.jsp"></jsp:include>           
+            <!-- /NAVIGATION -->
+            <!-- BREADCRUMB -->
+            <div id="breadcrumb" class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="breadcrumb-tree">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">All Categories</a></li>
+                                <li><a href="#">Accessories</a></li>
+                                <li class="active">Headphones (227,490 Results)</li>
+                            </ul>
+                        </div>
                     </div>
+                    <!-- /row -->
                 </div>
-                <!-- /row -->
+                <!-- /container -->
             </div>
-            <!-- /container -->
-        </div>
-        <!-- /BREADCRUMB -->
+            <!-- /BREADCRUMB -->
 
-        <!-- SECTION -->
-        <div class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <!-- ASIDE -->
-                    <div id="aside" class="col-md-3">
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <!-- ASIDE -->
+                        <div id="aside" class="col-md-3">
 
-                        <!-- aside Widget -->
-                        <div class="aside">
-                            <h3 class="aside-title">Brand</h3>
-                            <div class="checkbox-filter">
+                            <!-- aside Widget -->
+                            <div class="aside">
+                                <h3 class="aside-title">Brand</h3>
+                                <div class="checkbox-filter">
                                 <c:forEach items="${brandsList}" var="b">
                                     <div class="input-checkbox">                                   
                                         <label for="brand-${b.brandID}">
@@ -179,8 +180,8 @@
                                                 <c:if test="${p.discountProduct ne 0}">
                                                     <span class="sale">-${p.discountProduct}%</span>
                                                 </c:if>
-                                                    <c:if test="${p.feature ne '--'}">
-                                                        <span class="new">${p.feature}</span>
+                                                <c:if test="${p.feature ne '--'}">
+                                                    <span class="new">${p.feature}</span>
                                                 </c:if>         
                                             </div>
                                         </div>

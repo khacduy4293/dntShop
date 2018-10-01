@@ -108,13 +108,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                     </td>
                                                     <td>
-                                                        <div class="btn-group">
-                                                            <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableCusAccount?cus_id=${e.customerID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
-                                                            </c:if>
-                                                            <c:if test="${e.isStatus eq false}">
-                                                                <a href="adminEnableCusAccount?cus_id=${e.customerID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
-                                                            </c:if>
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="adminUpdateCustomer?cus_id=${e.customerID}">Edit</a></li>                                                               
+                                                                    <c:if test="${e.isStatus eq true}">
+                                                                    <li><a href="adminDisableCusAccount?cus_id=${e.customerID}">Banned</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${e.isStatus eq false}">                                                                                                                  
+                                                                    <li><a href="adminEnableCusAccount?cus_id=${e.customerID}">Active</a></li>
+                                                                    </c:if>
+                                                            </ul>
                                                         </div>
                                                     </td>
                                                 </tr>   

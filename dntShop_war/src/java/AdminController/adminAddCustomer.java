@@ -26,8 +26,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  *
  * @author Duy
  */
-@WebServlet(name = "adminAddCusAccount", urlPatterns = {"/adminAddCusAccount"})
-public class adminAddCusAccount extends HttpServlet {
+@WebServlet(name = "adminAddCustomer", urlPatterns = {"/adminAddCustomer"})
+public class adminAddCustomer extends HttpServlet {
 
     @EJB
     CustomersFacadeLocal cusFacade;

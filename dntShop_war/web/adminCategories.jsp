@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th>Category Name</th>
                                                     <th>Image</th>
                                                     <th>Status</th>
-                                                    <th style="width: 70px">Action</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -90,15 +90,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                     </td>
                                                     <td>
-                                                        <div class="btn-group">
-                                                            <a href="adminUpdateCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button></a>  
-                                                            <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
-                                                            </c:if>
-                                                            <c:if test="${e.isStatus eq false}">
-                                                                <a href="adminEnableCategory?cate_id=${e.categoryID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
-                                                            </c:if>
-                                                        </div>
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="adminUpdateCategory?cate_id=${e.categoryID}">Edit</a></li>                                                               
+                                                                    <c:if test="${e.isStatus eq true}">
+                                                                    <li><a href="adminDisableCategory?cate_id=${e.categoryID}">Disable</a></li>
+                                                                    </c:if>
+                                                                    <c:if test="${e.isStatus eq false}">                                                                                                                  
+                                                                    <li><a href="adminEnableCategory?cate_id=${e.categoryID}">Enable</a></li>
+                                                                    </c:if>
+                                                            </ul>
+                                                        </div>                                       
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

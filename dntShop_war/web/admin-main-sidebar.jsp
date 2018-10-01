@@ -25,7 +25,7 @@
                 <a href="#"><i class="fa fa-users"></i> <span>Customer Account</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li class="${sessionScope.currentAdminPageChild.equals("viewCustomer")?"active":""}"><a href="adminViewCustomer"><i class="fa fa-circle-o"></i>View</a></li>
-                    <li class="${sessionScope.currentAdminPageChild.equals("addCustomer")?"active":""}"><a href="adminAddCusAccount.jsp"><i class="fa fa-circle-o"></i>Create</a></li>
+                    <li class="${sessionScope.currentAdminPageChild.equals("addCustomer")?"active":""}"><a href="adminAddCustomer.jsp"><i class="fa fa-circle-o"></i>Create</a></li>
                 </ul>
             </li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("admin")?"active":""}">

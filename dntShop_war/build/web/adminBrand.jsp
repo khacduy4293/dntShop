@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th>Logo</th>
                                                     <th>Descriptions</th>
                                                     <th>Status</th>
-                                                    <th style="width: 70px">Action</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -95,16 +95,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Disable</span>
                                                         </c:if>
                                                     </td>
-                                                    <td>                                                       
-                                                        <div class="btn-group">
-                                                            <a href="adminUpdateBrand?bra_id=${e.brandID}"><button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button></a>
+                                                    <td>    
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="adminUpdateBrand?bra_id=${e.brandID}">Edit</a></li>                                                               
                                                                     <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableBrand?bra_id=${e.brandID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
+                                                                    <li><a href="adminDisableBrand?bra_id=${e.brandID}">Disable</a></li>
                                                                     </c:if>
                                                                     <c:if test="${e.isStatus eq false}">                                                                                                                  
-                                                                <a href="adminEnableBrand?bra_id=${e.brandID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>
+                                                                    <li><a href="adminEnableBrand?bra_id=${e.brandID}">Enable</a></li>
                                                                     </c:if>
-                                                        </div>
+                                                            </ul>
+                                                        </div> 
                                                     </td>
                                                 </tr>   
                                             </c:forEach>
@@ -136,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     ]
                 });
             });
-            
+
         </script>
         <!-- Optionally, you can add Slimscroll and FastClick plugins.
               Both of these plugins are recommended to enhance the

@@ -94,13 +94,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                     </td>
                                                     <td><c:if test="${sessionScope.admin_login_id ne e.adminID}">
-                                                            <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
-                                                                    </c:if>
-                                                                    <c:if test="${e.isStatus eq false}">
-                                                                <a href="adminEnableAccount?admin_id=${e.adminID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
-                                                                    </c:if>   
-                                                                </c:if>                                                                                                                                                             
+                                                            <div class="input-group-btn">
+                                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                                                <ul class="dropdown-menu">
+                                                                    <li><a href="adminUpdateAccount?admin_id=${e.adminID}">Edit</a></li>                                                               
+                                                                        <c:if test="${e.isStatus eq true}">
+                                                                        <li><a href="adminDisableAccount?admin_id=${e.adminID}">Banned</a></li>
+                                                                        </c:if>
+                                                                        <c:if test="${e.isStatus eq false}">                                                                                                                  
+                                                                        <li><a href="adminEnableAccount?admin_id=${e.adminID}">Active</a></li>
+                                                                        </c:if>
+                                                                </ul>
+                                                            </div>
+                                                        </c:if>                                                                                                                                                             
                                                     </td>
                                                 </tr>   
                                             </c:forEach>
@@ -131,6 +137,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
             });
         </script>
-        
+
     </body>
 </html>

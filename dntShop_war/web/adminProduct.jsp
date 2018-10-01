@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <th style="width: 150px">Image</th>                                   
                                                     <th>Feature</th>
                                                     <th>Status</th>
-                                                    <th style="width: 70px">Action</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -112,17 +112,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Disable</span>
                                                         </c:if>
                                                     </td>
-                                                    <td> 
-                                                        <div class="btn-group">
-                                                            <a href="adminUpdateProduct?pro_id=${e.productID}"><button type="button" class="btn btn-default"><i class="fa fa-edit"></i></button></a> 
+                                                    <td>
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a href="adminUpdateProduct?pro_id=${e.productID}">Edit</a></li>                                                               
                                                                     <c:if test="${e.isStatus eq true}">
-                                                                <a href="adminDisableProduct?pro_id=${e.productID}"><button type="button" class="btn btn-success"><i class="fa fa-toggle-on"></i></button></a>
+                                                                    <li><a href="adminDisableProduct?pro_id=${e.productID}">Disable</a></li>
                                                                     </c:if>
-                                                                    <c:if test="${e.isStatus eq false}">
-                                                                <a href="adminEnableProduct?pro_id=${e.productID}"><button type="button" class="btn btn-danger"><i class="fa fa-toggle-off"></i></button></a>                                        
+                                                                    <c:if test="${e.isStatus eq false}">                                                                                                                  
+                                                                    <li><a href="adminEnableProduct?pro_id=${e.productID}">Enable</a></li>
                                                                     </c:if>
-                                                        </div>
-
+                                                            </ul>
+                                                        </div>                                                       
                                                     </td>
                                                 </tr>   
                                             </c:forEach>

@@ -29,7 +29,7 @@ public class adminViewCustomer extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         request.setAttribute("listCus", cusFacade.findAll());
-        request.getRequestDispatcher("adminCusAccount.jsp").forward(request, response);
+        request.getRequestDispatcher("adminCustomer.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

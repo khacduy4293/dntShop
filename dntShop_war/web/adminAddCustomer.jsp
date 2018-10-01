@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Add New Product</title>
+        <title>Add New Customer</title>
         
         </head>
         <!--
@@ -50,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Customer Manager                            
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-users"></i> Customer</a></li>
+                            <li><a href="#"><i class="fa fa-users"></i>Customer Account</a></li>
                             <li class="active">Create</li>
                         </ol>
                     </section>
@@ -58,9 +58,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminAddCusAccount" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+                            <form action="adminAddCustomer" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Create new Customer Account</h3>
+                                    <h3 class="box-title">Create new Customer</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
