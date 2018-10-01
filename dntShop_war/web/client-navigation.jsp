@@ -7,11 +7,10 @@
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li><a href="index.jsp">Home </a></li>
-                <li class="active"><a href="#">All Products</a></li>
-                <li><a href="#">Hot Deals</a></li>
+                <li><a href="index.jsp">Home</a></li>
+                <li><a href="AllProduct">All Products</a></li>
                     <c:forEach items="${sessionScope.categoriesList}" var="c">
-                    <li><a href="#">${c.categoryName}</a></li>
+                    <li><a href="AllProductByCategory?cateid=${c.categoryID}">${c.categoryName}</a></li>
                     </c:forEach>
             </ul>
             <!-- /NAV -->

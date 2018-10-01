@@ -29,7 +29,7 @@ public class TotalProductByBrand extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String brandid= request.getParameter("brandid");
-        request.setAttribute("proBrandTotal", proFacade.TotalProductByBrand(brandid).size());
+        request.setAttribute("proBrandTotal", proFacade.AllProductByBrand(brandid).size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

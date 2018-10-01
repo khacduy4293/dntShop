@@ -7,9 +7,11 @@
 package bean;
 
 import entity.Brands;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,14 @@ public class BrandsFacade extends AbstractFacade<Brands> implements BrandsFacade
     public BrandsFacade() {
         super(Brands.class);
     }
+
+    @Override
+    public List<Brands> AllBrands() {
+        Query q = getEntityManager().createQuery("SELECT b FROM Brands b WHERE b.isStatus = :status");
+        boolean status=true;
+        q.setParameter("status", status);
+        return q.getResultList();
+    }
+    
     
 }

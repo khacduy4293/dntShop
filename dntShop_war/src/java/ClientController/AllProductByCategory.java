@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
-import bean.BrandsFacadeLocal;
-import bean.CategoriesFacadeLocal;
 import bean.ProductsFacadeLocal;
-import entity.Brands;
-import entity.Categories;
-import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,20 +21,19 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duy
  */
-@WebServlet(name = "initPage", urlPatterns = {"/initPage"})
-public class initPage extends HttpServlet {
+@WebServlet(name = "AllProductByCategory", urlPatterns = {"/AllProductByCategory"})
+public class AllProductByCategory extends HttpServlet {
 
-    @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    CategoriesFacadeLocal cateFacade;
-    @EJB
-    BrandsFacadeLocal brandFacade;
-
+    @EJB ProductsFacadeLocal proFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        String cateid=request.getParameter("cateid");
+        session.setAttribute("productList", proFacade.AllProductByCategory(cateid));
+        session.setAttribute("productListCount", proFacade.AllProductByCategory(cateid).size());
+        request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 
     
@@ -47,11 +41,6 @@ public class initPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        HttpSession session = request.getSession();
-        List<Categories> categoriesList = cateFacade.AllCategories();
-        session.setAttribute("categoriesList", categoriesList);
-        List<Brands> brandsList = brandFacade.AllBrands();
-        session.setAttribute("brandsList", brandsList);
     }
 
     

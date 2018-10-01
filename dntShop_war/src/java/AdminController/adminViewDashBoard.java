@@ -8,6 +8,7 @@ package AdminController;
 
 import bean.CategoriesFacadeLocal;
 import bean.CustomersFacadeLocal;
+import bean.OrdersFacadeLocal;
 import bean.ProductsFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,6 +29,7 @@ public class adminViewDashBoard extends HttpServlet {
     @EJB CustomersFacadeLocal cusFacade;
     @EJB ProductsFacadeLocal proFacade;
     @EJB CategoriesFacadeLocal cateFacade;
+    @EJB OrdersFacadeLocal orderFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,6 +37,7 @@ public class adminViewDashBoard extends HttpServlet {
         request.setAttribute("totalUserRegis", cusFacade.findAll().size());
         request.setAttribute("totalProducts", proFacade.findAll().size());
         request.setAttribute("totalCategories", cateFacade.findAll().size());
+        request.setAttribute("totalOrders", orderFacade.findAll().size());
         request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 

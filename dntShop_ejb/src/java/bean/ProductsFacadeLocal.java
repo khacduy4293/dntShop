@@ -31,8 +31,10 @@ public interface ProductsFacadeLocal {
 
     int count();
 
-    List<Products> TotalProductByCategory(String cateid);
+    List<Products> AllProductByCategory(String cateid);
 
-    List<Products> TotalProductByBrand(String brandid);
+    List<Products> AllProductByBrand(String brandid);
+
+    List<Products> AllProduct();
     
 }

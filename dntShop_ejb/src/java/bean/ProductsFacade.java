@@ -32,7 +32,7 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
     }
 
     @Override
-    public List<Products> TotalProductByCategory(String cateid) {
+    public List<Products> AllProductByCategory(String cateid) {
         Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.categoryID.categoryID = :cateid and p.isStatus = :status");
         q.setParameter("cateid", cateid);
         boolean status=true;
@@ -41,9 +41,17 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
     }
 
     @Override
-    public List<Products> TotalProductByBrand(String brandid) {
+    public List<Products> AllProductByBrand(String brandid) {
         Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.brandID.brandID = :brandid and p.isStatus = :status");
         q.setParameter("brandid", brandid);
+        boolean status=true;
+        q.setParameter("status", status);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Products> AllProduct() {
+        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.isStatus = :status");
         boolean status=true;
         q.setParameter("status", status);
         return q.getResultList();

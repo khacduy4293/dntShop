@@ -1,16 +1,18 @@
+<%@page import="entity.Products"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Product</title>
     </head>
-    <body>
-        <jsp:include page="initPage"></jsp:include>
-            <!-- HEADER -->
+    <body>       
+        <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
             <!-- /HEADER -->
-            
+
             <!-- NAVIGATION -->    
         <jsp:include  page="client-navigation.jsp"></jsp:include>           
             <!-- /NAVIGATION -->
@@ -49,14 +51,16 @@
                                 <h3 class="aside-title">Brand</h3>
                                 <div class="checkbox-filter">
                                 <c:forEach items="${brandsList}" var="b">
-                                    <div class="input-checkbox">                                   
-                                        <label for="brand-${b.brandID}">
-                                            <span></span>
-                                            ${b.brandName}
-                                            <jsp:include page="TotalProductByBrand?brandid=${b.brandID}"></jsp:include>
-                                            <small>(${proBrandTotal})</small>
-                                        </label>
-                                    </div>                                                          
+                                    <a href="AllProductByBrand?brandid=${b.brandID}">
+                                        <div class="input-checkbox">                                   
+                                            <label for="brand-${b.brandID}">
+                                                <span></span>
+                                                ${b.brandName}
+                                                <jsp:include page="TotalProductByBrand?brandid=${b.brandID}"/>
+                                                <small>(${proBrandTotal})</small>
+                                            </label>
+                                        </div>
+                                    </a>                                                          
                                 </c:forEach>
                             </div>
                         </div>
@@ -67,14 +71,16 @@
                             <h3 class="aside-title">Categories</h3>
                             <div class="checkbox-filter">
                                 <c:forEach items="${categoriesList}" var="c">
-                                    <div class="input-checkbox">                                       
+                                    <a href="AllProductByCategory?cateid=${c.categoryID}">
+                                        <div class="input-checkbox">                                       
                                         <label for="category-${c.categoryID}">
                                             <span></span>
                                             ${c.categoryName}
-                                            <jsp:include page="TotalProductByCategory?cateid=${c.categoryID}"></jsp:include>
+                                            <jsp:include page="TotalProductByCategory?cateid=${c.categoryID}"/>
                                             <small>(${proCateTotal})</small>
                                         </label>
                                     </div>
+                                    </a>                                    
                                 </c:forEach>
                             </div>
                         </div>
@@ -170,9 +176,10 @@
 
                         <!-- store products -->
                         <div class="row">
-                            <c:forEach items="${productList}" var="p">
+                        <c:forEach items="${productList}" var="p">
                                 <!-- product -->
                                 <div class="col-md-4 col-xs-6">
+                                    
                                     <div class="product">
                                         <div class="product-img">
                                             <img src="images/Products/${p.image1}" alt="">
@@ -203,7 +210,7 @@
                                             <div class="product-btns">
                                                 <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                 <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                                <button class="quick-view" onclick="location.href='ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
                                             </div>
                                         </div>
                                         <div class="add-to-cart">
@@ -213,7 +220,7 @@
                                 </div>
                                 <!-- /product -->
                             </c:forEach>
-
+                           
                         </div>
                         <!-- /store products -->
 
@@ -221,10 +228,9 @@
                         <div class="store-filter clearfix">
                             <span class="store-qty">Showing 20-100 products</span>
                             <ul class="store-pagination">
-                                <li class="active">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
+                                
+                                <li><a href="#">1</a></li>
+                            
                                 <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                             </ul>
                         </div>
@@ -237,42 +243,7 @@
             <!-- /container -->
         </div>
         <!-- /SECTION -->
-
-        <!-- NEWSLETTER -->
-        <div id="newsletter" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="newsletter">
-                            <p>Sign Up for the <strong>NEWSLETTER</strong></p>
-                            <form>
-                                <input class="input" type="email" placeholder="Enter Your Email">
-                                <button class="newsletter-btn"><i class="fa fa-envelope"></i> Subscribe</button>
-                            </form>
-                            <ul class="newsletter-follow">
-                                <li>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /NEWSLETTER -->
+       
 
         <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
@@ -297,7 +268,6 @@
                     }
                 });
             }
-
         </script>
     </body>
 </html>

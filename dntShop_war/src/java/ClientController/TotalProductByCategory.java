@@ -30,7 +30,7 @@ public class TotalProductByCategory extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String cateid= request.getParameter("cateid");
-        request.setAttribute("proCateTotal", proFacade.TotalProductByCategory(cateid).size());
+        request.setAttribute("proCateTotal", proFacade.AllProductByCategory(cateid).size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

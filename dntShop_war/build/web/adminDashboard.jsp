@@ -85,7 +85,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- small box -->
                                 <div class="small-box bg-green">
                                     <div class="inner">
-                                        <h3>0</h3>
+                                        <h3>${totalOrders}</h3>
                                         <p>Orders</p>
                                     </div>
                                     <div class="icon">

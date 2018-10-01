@@ -7,9 +7,11 @@
 package bean;
 
 import entity.Categories;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -27,6 +29,14 @@ public class CategoriesFacade extends AbstractFacade<Categories> implements Cate
 
     public CategoriesFacade() {
         super(Categories.class);
+    }
+
+    @Override
+    public List<Categories> AllCategories() {
+        Query q = getEntityManager().createQuery("SELECT c FROM Categories c WHERE c.isStatus = :status");
+        boolean status=true;
+        q.setParameter("status", status);
+        return q.getResultList();
     }
     
 }
