@@ -83,7 +83,7 @@
                 </div>
                 <div class="row row-pb-md">
                     <div class="col-md-10 col-md-offset-1">
-                        <div class="product-name">
+                        <div class="productname">
                             <div class="one-forth text-center">
                                 <span>Product Details</span>
                             </div>
