@@ -88,7 +88,7 @@
                                             <h3 class="product-name"><a href="#"><%=list.getValue().getProduct().getProductName()%></a></h3>
                                             <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity() %>x</span>$<%=list.getValue().getProduct().getPrice()*list.getValue().getQuantity() %></h4>
                                         </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
+                                        <button class="delete" onclick='RemoveCart("<%=list.getValue().getProduct().getProductID()%>")'><i class="fa fa-close"></i></button>
                                     </div>
                                     <%
                                         }
@@ -123,4 +123,24 @@
         <!-- container -->
     </div>
     <!-- /MAIN HEADER -->
+    <script type="text/javascript">
+        function RemoveCart(productid)
+        {
+            $.ajax({
+                url: "AddProductToCart?command=remove&productID=" + productid,
+                type: "POST",
+                //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                success: function()
+                {
+
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+        }
+
+    </script>
 </header>

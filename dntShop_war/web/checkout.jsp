@@ -92,19 +92,16 @@
                                 <input class="input" type="text" name="first-name" placeholder="First Name" value="<%= cus.getFirstName()%>">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="last-name" placeholder="Last Name">
+                                <input class="input" type="text" name="last-name" placeholder="Last Name" value="<%= cus.getLastName()%>">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="email" name="email" placeholder="Email">
+                                <input class="input" type="email" name="email" placeholder="Email" value="<%= cus.getEmail()%>">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="address" placeholder="Address">
+                                <input class="input" type="text" name="address" placeholder="Address" value="<%= cus.getAddress() %>">
                             </div>
                             <div class="form-group">
-                                <input class="input" type="text" name="city" placeholder="City">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="tel" placeholder="Telephone">
+                                <input class="input" type="tel" name="tel" placeholder="Telephone" value="<%= cus.getPhone()%>">
                             </div>
                         </div>
                         <!-- /Billing Details -->
