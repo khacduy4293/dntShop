@@ -8,7 +8,7 @@
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Product</title>
         <style>
-            /* CSS căn id pagination ra giữa màn hình */
+            /* CSS căn id pagination ra góc phải màn hình */
             #pagination {
                 display: flex;
                 display: -webkit-flex; /* Safari 8 */
