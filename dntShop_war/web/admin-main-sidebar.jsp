@@ -20,7 +20,7 @@
             <li class="header">MAIN NAVIGATION</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminViewDashBoard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="#"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="adminReport.jsp"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("customer")?"active":""}">
                 <a href="#"><i class="fa fa-users"></i> <span>Customer Account</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
