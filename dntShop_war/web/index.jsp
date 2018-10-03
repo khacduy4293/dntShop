@@ -6,8 +6,7 @@
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Home</title>
     </head>
-    <body>
-        <jsp:include page="initPage"></jsp:include>
+    <body>       
             <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
             <!-- /HEADER -->
