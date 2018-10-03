@@ -7,6 +7,17 @@
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Product</title>
+        <style>
+            /* CSS căn id pagination ra giữa màn hình */
+            #pagination {
+                display: flex;
+                display: -webkit-flex; /* Safari 8 */
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap; /* Safari 8 */
+                justify-content: center;
+                -webkit-justify-content: flex-end;
+            }
+        </style>
     </head>
     <body>       
         <!-- HEADER -->
@@ -73,13 +84,13 @@
                                 <c:forEach items="${categoriesList}" var="c">
                                     <a href="AllProductByCategory?cateid=${c.categoryID}">
                                         <div class="input-checkbox">                                       
-                                        <label for="category-${c.categoryID}">
-                                            <span></span>
-                                            ${c.categoryName}
-                                            <jsp:include page="TotalProductByCategory?cateid=${c.categoryID}"/>
-                                            <small>(${proCateTotal})</small>
-                                        </label>
-                                    </div>
+                                            <label for="category-${c.categoryID}">
+                                                <span></span>
+                                                ${c.categoryName}
+                                                <jsp:include page="TotalProductByCategory?cateid=${c.categoryID}"/>
+                                                <small>(${proCateTotal})</small>
+                                            </label>
+                                        </div>
                                     </a>                                    
                                 </c:forEach>
                             </div>
@@ -176,62 +187,60 @@
 
                         <!-- store products -->
                         <div class="row">
-                        <c:forEach items="${productList}" var="p">
+                            <c:forEach items="${productList}" var="p">
                                 <!-- product -->
-                                <div class="col-md-4 col-xs-6">
-                                    
-                                    <div class="product">
-                                        <div class="product-img">
-                                            <img src="images/Products/${p.image1}" alt="">
-                                            <div class="product-label">
-                                                <c:if test="${p.discountProduct ne 0}">
-                                                    <span class="sale">-${p.discountProduct}%</span>
-                                                </c:if>
-                                                <c:if test="${p.feature ne '--'}">
-                                                    <span class="new">${p.feature}</span>
-                                                </c:if>         
+                                <div class="contentPage">
+                                    <div class="col-md-4 col-xs-6">
+
+                                        <div class="product">
+                                            <div class="product-img">
+                                                <img src="images/Products/${p.image1}" alt="">
+                                                <div class="product-label">
+                                                    <c:if test="${p.discountProduct ne 0}">
+                                                        <span class="sale">-${p.discountProduct}%</span>
+                                                    </c:if>
+                                                    <c:if test="${p.feature ne '--'}">
+                                                        <span class="new">${p.feature}</span>
+                                                    </c:if>         
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="product-body">
-                                            <p class="product-category">${p.categoryID.categoryName}</p>
-                                            <h3 class="product-name"><a href="#">${p.productName}</a></h3>
-                                            <h4 class="product-price">$${p.price*(100-p.discountProduct)/100}
-                                                <c:if test="${p.discountProduct ne 0}">
-                                                    <del class="product-old-price">$${p.price}</del>
-                                                </c:if>                                         
-                                            </h4>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
+                                            <div class="product-body">
+                                                <p class="product-category">${p.categoryID.categoryName}</p>
+                                                <h3 class="product-name"><a href="#">${p.productName}</a></h3>
+                                                <h4 class="product-price">$${p.price*(100-p.discountProduct)/100}
+                                                    <c:if test="${p.discountProduct ne 0}">
+                                                        <del class="product-old-price">$${p.price}</del>
+                                                    </c:if>                                         
+                                                </h4>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <div class="product-btns">
+                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                    <button class="quick-view" onclick="location.href = 'ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
+                                                </div>
                                             </div>
-                                            <div class="product-btns">
-                                                <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                                <button class="quick-view" onclick="location.href='ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
+                                            <div class="add-to-cart">
+                                                <button class="add-to-cart-btn" onclick='addProductToCart("${p.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
                                             </div>
-                                        </div>
-                                        <div class="add-to-cart">
-                                            <button class="add-to-cart-btn" onclick='addProductToCart("${p.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- /product -->
                             </c:forEach>
-                           
+
                         </div>
                         <!-- /store products -->
 
                         <!-- store bottom filter -->
                         <div class="store-filter clearfix">
-                            <span class="store-qty">Showing 20-100 products</span>
-                            <ul class="store-pagination">
-                                
-                                <li><a href="#">1</a></li>
-                            
-                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                            <span class="store-qty"></span>
+                            <ul id="pagination" >                               
                             </ul>
                         </div>
                         <!-- /store bottom filter -->
@@ -243,7 +252,7 @@
             <!-- /container -->
         </div>
         <!-- /SECTION -->
-       
+
 
         <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
@@ -268,6 +277,33 @@
                     }
                 });
             }
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                var pageSize = 6; // Hiển thị 6 sản phẩm trên 1 trang
+                showPage = function(page) {
+                    $(".contentPage").hide();
+                    $(".contentPage").each(function(n) {
+                        if (n >= pageSize * (page - 1) && n < pageSize * page)
+                            $(this).show();
+                    });
+                }
+                showPage(1);
+                ///** Cần truyền giá trị vào đây **///
+                var totalRows = ${productListCount}; // Tổng số sản phẩm hiển thị
+                var btnPage = 5; // Số nút bấm hiển thị di chuyển trang
+                var iTotalPages = Math.ceil(totalRows / pageSize);
+
+                var obj = $('#pagination').twbsPagination({
+                    totalPages: iTotalPages,
+                    visiblePages: btnPage,
+                    onPageClick: function(event, page) {
+                        /* console.info(page); */
+                        showPage(page);
+                    }
+                });
+                /*console.info(obj.data());*/
+            });
         </script>
     </body>
 </html>
