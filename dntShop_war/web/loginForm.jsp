@@ -9,16 +9,16 @@
     </div>
 
     <div class="w3-container">
-      <div class="w3-section">
+        <form class="w3-section" action="Login" method="post">
         <label><b>Username</b></label>
-        <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username">
+        <input class="w3-input w3-border w3-margin-bottom" type="email" name="email" placeholder="Enter Email">
 
         <label><b>Password</b></label>
-        <input class="w3-input w3-border" type="password" placeholder="Enter Password">
+        <input class="w3-input w3-border" type="password" name="password" placeholder="Enter Password">
         
         <button class="w3-button w3-block w3-green w3-section w3-padding" onclick="document.getElementById('id01').style.display='none'">Login</button>
         <label><input type="checkbox" checked="checked"> Remember me</label>
-      </div>
+      </form>
     </div>
 
     <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">

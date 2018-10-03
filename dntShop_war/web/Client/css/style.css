@@ -2415,46 +2415,46 @@ textarea.input {
 .process.active p span {
     color: #FFC300; }
 
-.product-cart, .product-name {
+.product-cart, .productname {
     width: 100%;
     display: block;
     float: left;
     border-bottom: 1px solid #e6e6e6;
     padding-bottom: 1em;
     margin-bottom: 1em; }
-.product-cart .one-forth, .product-name .one-forth {
+.product-cart .one-forth, .productname .one-forth {
     width: calc(100% - 520px);
     height: 100px !important;
     display: table;
     float: left; }
 @media screen and (max-width: 768px) {
-    .product-cart .one-forth, .product-name .one-forth {
+    .product-cart .one-forth, .productname .one-forth {
         width: calc(100% - 240px); } }
-.product-cart .one-eight, .product-name .one-eight {
+.product-cart .one-eight, .productname .one-eight {
     width: 130px;
     height: 100px !important;
     display: table;
     float: left; }
 @media screen and (max-width: 768px) {
-    .product-cart .one-eight, .product-name .one-eight {
+    .product-cart .one-eight, .productname .one-eight {
         width: 60px; } }
-.product-cart .display-tc, .product-name .display-tc {
+.product-cart .display-tc, .productname .display-tc {
     display: table-cell;
     vertical-align: middle;
     height: 100px;
     width: 100%; }
-.product-cart .display-tc h3, .product-name .display-tc h3 {
+.product-cart .display-tc h3, .productname .display-tc h3 {
     margin-bottom: 0;
     padding-left: 30px;
     font-size: 14px; }
-.product-cart .display-tc .closed, .product-name .display-tc .closed {
+.product-cart .display-tc .closed, .productname .display-tc .closed {
     display: block;
     margin: 0 auto;
     width: 20px;
     height: 20px;
     background: #f2f2f2;
     position: relative; }
-.product-cart .display-tc .closed:before, .product-cart .display-tc .closed:after, .product-name .display-tc .closed:before, .product-name .display-tc .closed:after {
+.product-cart .display-tc .closed:before, .product-cart .display-tc .closed:after, .productname .display-tc .closed:before, .productname .display-tc .closed:after {
     position: absolute;
     top: 10px;
     bottom: 0;
@@ -2469,32 +2469,32 @@ textarea.input {
     -ms-transform: rotateZ(45deg);
     -o-transform: rotateZ(45deg);
     transform: rotateZ(45deg); }
-.product-cart .display-tc .closed:after, .product-name .display-tc .closed:after {
+.product-cart .display-tc .closed:after, .productname .display-tc .closed:after {
     -webkit-transform: rotateZ(-45deg);
     -moz-transform: rotateZ(-45deg);
     -ms-transform: rotateZ(-45deg);
     -o-transform: rotateZ(-45deg);
     transform: rotateZ(-45deg); }
-.product-cart .product-img, .product-name .product-img {
+.product-cart .product-img, .productname .product-img {
     display: block;
     width: 90px;
     height: 100px;
     float: left; }
 @media screen and (max-width: 768px) {
-    .product-cart .product-img, .product-name .product-img {
+    .product-cart .product-img, .productname .product-img {
         display: none; } }
-.product-cart .form-control, .product-name .form-control {
+.product-cart .form-control, .productname .form-control {
     padding: 0;
     height: 40px;
     width: 50%;
     margin: 0 auto;
     border: 1px solid #f0f0f0 !important; }
 
-.product-name {
+.productname {
     padding: .8em 0;
     background: #f0f0f0;
     border: none; }
-.product-name .one-forth, .product-name .one-eight {
+.productname .one-forth, .productname .one-eight {
     height: initial !important; }
 .product-name .one-forth span, .product-name .one-eight span {
     color: #000;

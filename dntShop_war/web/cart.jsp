@@ -83,7 +83,7 @@
                 </div>
                 <div class="row row-pb-md">
                     <div class="col-md-10 col-md-offset-1">
-                        <div class="product-name">
+                        <div class="productname">
                             <div class="one-forth text-center">
                                 <span>Product Details</span>
                             </div>
@@ -103,8 +103,8 @@
                         <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                         <div class="product-cart">
                             <div class="one-forth">
-                                <div class="product-img" style="background-image: url(images/Products/product01.png);">
-								</div>
+                                <img class="product-img" src="images/Products/<%=list.getValue().getProduct().getImage1()%>">
+								</img>
                                 <div class="display-tc">
                                     <h3><%=list.getValue().getProduct().getProductName()%></h3>
                                 </div>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="one-eight text-center">
                                 <div class="display-tc">
-                                    <a href="#" class="closed"></a>
+                                    <a href="#" class="closed" onclick='RemoveCart("$<%=list.getValue().getProduct().getProductID() %>")'></a>
                                 </div>
                             </div>
                         </div>
@@ -829,6 +829,23 @@
                             }
                         });
                     }
+                    function RemoveCart(productid)
+        {
+            $.ajax({
+                url: "AddProductToCart?command=remove&productID=" + productid,
+                type: "POST",
+                //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                success: function()
+                {
+
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+        }
 
                 </script>
                 </html>

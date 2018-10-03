@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         if (cusFacade.login(email, password).size() > 0) {
             if (cusFacade.login(email, password).get(0).getIsStatus() == true) {
+                session.setAttribute("cust", cusFacade.login(email, password).get(0));
                 session.setAttribute("login_id", cusFacade.login(email, password).get(0).getCustomerID());
                 session.setAttribute("login_email", cusFacade.login(email, password).get(0).getEmail());
                 session.setAttribute("login_pass", cusFacade.login(email, password).get(0).getPassword());

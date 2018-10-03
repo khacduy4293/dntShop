@@ -96,7 +96,7 @@
                     <!-- Product details -->
                     <div class="col-md-5">
                         <div class="product-details">
-                            <h2 class="product-name">${pro.productName}</h2>
+                            <h2 class="product-name" style="background-color: white">${pro.productName}</h2>
                             <div>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
