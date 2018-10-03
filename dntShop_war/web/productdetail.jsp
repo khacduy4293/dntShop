@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <jsp:include page="client-layout.jsp"/>
-        <title>Electro - HTML Ecommerce Template</title>
+        <title>DNTShop</title>
     </head>
     <body>
         <!-- HEADER -->
