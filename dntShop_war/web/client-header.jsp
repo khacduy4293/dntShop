@@ -25,7 +25,16 @@
                         <li><i class="fa fa-user-o"></i><a href="login.jsp">Login</a><a href="register.jsp">/Register</a></li>
                     </c:when>
                     <c:otherwise>
-                    <li><a href="#"><i class="fa fa-user-o"></i>${sessionScope.login_account.email}</a></li>
+                    <li class="nav-item dropdown submenu">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-o"></i>${sessionScope.login_account.email} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-user"></i> My Account</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-shopping-cart"></i>My Orders</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="color: black" href="Logout"><i class="fa fa-sign-out"></i>Logout</a></li>                              
+                                </ul>
+                            </li>
                     </c:otherwise>
                 </c:choose>
             </ul>
