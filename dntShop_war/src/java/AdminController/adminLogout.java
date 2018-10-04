@@ -4,14 +4,11 @@
  * and open the template in the editor.
  */
 
-package ClientController;
+package AdminController;
 
-import bean.ProductsFacadeLocal;
-import entity.Products;
+import bean.AdminsFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Collections;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,21 +21,20 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duy
  */
-@WebServlet(name = "AllProductByBrand", urlPatterns = {"/AllProductByBrand"})
-public class AllProductByBrand extends HttpServlet {
+@WebServlet(name = "adminLogout", urlPatterns = {"/adminLogout"})
+public class adminLogout extends HttpServlet {
 
-    @EJB ProductsFacadeLocal proFacade;
+    @EJB
+    AdminsFacadeLocal adminFacade;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        String brandid=request.getParameter("brandid");
-        List<Products> proList = proFacade.AllProductByBrand(brandid);
-        Collections.reverse(proList);
-        session.setAttribute("productList", proList);
-        session.setAttribute("productListCount", proFacade.AllProductByBrand(brandid).size());
-        request.getRequestDispatcher("product.jsp").forward(request, response);
+        session.setAttribute("admin_login", null);
+        session.setAttribute("admin_login_message", "<p class=\"login-box-msg\">Sign in to start your Admin Page</p>");
+        request.getRequestDispatcher("adminLogin.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

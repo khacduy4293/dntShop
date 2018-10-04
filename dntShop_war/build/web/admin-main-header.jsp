@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <header class="main-header">
 
     <!-- Logo -->
@@ -22,17 +24,17 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="<%= session.getAttribute("admin_login_avatar")%>" class="user-image"/>
+                        <img src="${sessionScope.admin_login.avatar}" class="user-image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs"><%= session.getAttribute("admin_login_name")%></span>
+                        <span class="hidden-xs">${sessionScope.admin_login.fullName}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="<%= session.getAttribute("admin_login_avatar")%>" class="img-circle"/>
+                            <img src="${sessionScope.admin_login.avatar}" class="img-circle"/>
                             <p>
-                                <%= session.getAttribute("admin_login_name")%> - Administrator
-                                <small>Member since <%= session.getAttribute("admin_login_createdate")%></small>
+                                ${sessionScope.admin_login.fullName} - Administrator
+                                <small>Member since <fmt:formatDate value="${sessionScope.admin_login.createdDate}" pattern="dd MMM yyyy"/></small>
                             </p>
                         </li>                       
                         <!-- Menu Footer-->
@@ -41,7 +43,7 @@
                                 <a href="adminChangeProfile.jsp" class="btn btn-default btn-flat">Edit Your Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="adminLogin" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="adminLogout" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>

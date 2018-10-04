@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail">Email<span style="color:red">*</span></label>
-                                            <input type="email" class="form-control" id="exampleInputEmail" name="email" value="${cus.email}" placeholder="Enter email" required="true">
+                                            <input type="email" class="form-control" id="exampleInputEmail" name="email" value="${cus.email}" placeholder="Enter email" disabled="true" required="true">
                                         </div>                                           
                                     </div><!-- /.col -->
                                     <div class="col-md-6">

@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -75,8 +76,8 @@ public class adminChangeInfo extends HttpServlet {
             @SuppressWarnings("unchecked")
             List<FileItem> formItems = upload.parseRequest(request);
             
-            String bra_id = session.getAttribute("admin_login_id").toString();
-            Admins bra = adminFacade.find(bra_id);
+            String bra_id="";
+            Admins bra = new Admins();
             
             if (formItems != null && formItems.size() > 0) {
                 // iterates over form's fields
@@ -85,9 +86,12 @@ public class adminChangeInfo extends HttpServlet {
                     if (item.isFormField()) {
                         // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
                         switch (item.getFieldName()) {
+                            case "adminID":
+                                bra_id=item.getString();
+                                bra = adminFacade.find(bra_id);
+                                continue; 
                             case "fullName":
                                 bra.setFullName(item.getString());
-                                session.setAttribute("admin_login_name", item.getString());
                                 continue;                                                   
                         }
                     } else {                       
@@ -103,12 +107,12 @@ public class adminChangeInfo extends HttpServlet {
                             item.write(storeFile);
                             String brandImage = (UPLOAD_DIRECTORY + "/" + bra_id + newfileName);
                             bra.setAvatar(brandImage); 
-                            session.setAttribute("admin_login_avatar", brandImage);
                         }
                     }
                 }
             }
             adminFacade.edit(bra);
+            session.setAttribute("admin_login", adminFacade.find(bra_id));
         } catch (Exception ex) {
             ex.getStackTrace();
         }

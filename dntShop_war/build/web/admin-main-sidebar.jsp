@@ -6,10 +6,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<%= session.getAttribute("admin_login_avatar") %>" class="img-circle"/>               
+                <img src="${sessionScope.admin_login.avatar}" class="img-circle"/>               
             </div>
             <div class="pull-left info">
-                <p><%= session.getAttribute("admin_login_name") %></p>
+                <p>${sessionScope.admin_login.fullName}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -20,7 +20,7 @@
             <li class="header">MAIN NAVIGATION</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminViewDashBoard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="#"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("report")?"active":""}"><a href="adminReport.jsp"><i class="fa fa-bar-chart"></i> <span>Report</span></a></li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("customer")?"active":""}">
                 <a href="#"><i class="fa fa-users"></i> <span>Customer Account</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">

@@ -111,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="input-group-btn">
                                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="adminUpdateCustomer?cus_id=${e.customerID}">Edit</a></li>                                                               
+                                                                <li><a href="adminUpdateCustomer?cus_id=${e.customerID}">Edit Profile</a></li>                                                               
                                                                     <c:if test="${e.isStatus eq true}">
                                                                     <li><a href="adminDisableCusAccount?cus_id=${e.customerID}">Banned</a></li>
                                                                     </c:if>

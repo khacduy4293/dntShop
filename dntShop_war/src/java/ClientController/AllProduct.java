@@ -7,8 +7,11 @@
 package ClientController;
 
 import bean.ProductsFacadeLocal;
+import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +33,9 @@ public class AllProduct extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        session.setAttribute("productList", proFacade.AllProduct());
+        List<Products> proList = proFacade.AllProduct();
+        Collections.reverse(proList);
+        session.setAttribute("productList", proList);
         session.setAttribute("productListCount", proFacade.AllProduct().size());
         request.getRequestDispatcher("product.jsp").forward(request, response);
     }

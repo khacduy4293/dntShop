@@ -135,3 +135,4 @@
 <script src="Client/js/nouislider.min.js"></script>
 <script src="Client/js/jquery.zoom.min.js"></script>
 <script src="Client/js/main.js"></script>
+<script src="Client/js/jquery.twbsPagination.js" type="text/javascript"></script>
