@@ -43,7 +43,7 @@
                                 <a href="adminChangeProfile.jsp" class="btn btn-default btn-flat">Edit Your Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="adminLogin" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="adminLogout" class="btn btn-default btn-flat">Sign out</a>
                             </div>
                         </li>
                     </ul>
