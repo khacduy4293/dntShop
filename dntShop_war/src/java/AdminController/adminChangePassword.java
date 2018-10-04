@@ -33,11 +33,11 @@ public class adminChangePassword extends HttpServlet {
         HttpSession session = request.getSession();
         String id = request.getParameter("adminID");
         String password =request.getParameter("password");
-        out.println(id+"   "+password);
+        
         Admins ad = adminFacade.find(id);
         ad.setPassword(password);
         adminFacade.edit(ad);
-        session.setAttribute("admin_login_email", password);
+        session.setAttribute("admin_login", adminFacade.find(id));
         request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 

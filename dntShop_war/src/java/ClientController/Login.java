@@ -36,24 +36,16 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
         if (cusFacade.login(email, password).size() > 0) {
             if (cusFacade.login(email, password).get(0).getIsStatus() == true) {
-                session.setAttribute("cust", cusFacade.login(email, password).get(0));
-                session.setAttribute("login_id", cusFacade.login(email, password).get(0).getCustomerID());
-                session.setAttribute("login_email", cusFacade.login(email, password).get(0).getEmail());
-                session.setAttribute("login_pass", cusFacade.login(email, password).get(0).getPassword());
-                session.setAttribute("login_fname", cusFacade.login(email, password).get(0).getFirstName());
-                session.setAttribute("login_lname", cusFacade.login(email, password).get(0).getLastName());
-                SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-                String createDate = formatter.format(cusFacade.login(email, password).get(0).getCreatedDate());  
-                session.setAttribute("login_createdate", createDate);
-                session.setAttribute("login_avatar", cusFacade.login(email, password).get(0).getAvatar());
+                session.setAttribute("login_account", cusFacade.login(email, password).get(0));
+                session.setAttribute("login_message", null);
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             } else {
                 session.setAttribute("login_message", "<p class=\"login-box-msg\" style=\"color:red\">your account is banned</p>");
-                request.getRequestDispatcher("register.jsp").forward(request, response);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         } else {
             session.setAttribute("login_message", "<p class=\"login-box-msg\" style=\"color:red\">email or password incorrect</p>");
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
 

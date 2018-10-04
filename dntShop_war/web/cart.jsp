@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <jsp:include page="client-layout.jsp"/>
+        <jsp:include page="client-layout.jsp"/> 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="Client/css/elegant-icon/style.css">
         <link rel="stylesheet" href="Client/css/line-icon/css/simple-line-icons.css">

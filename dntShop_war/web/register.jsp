@@ -23,10 +23,10 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="breadcrumb-header">Regular Page</h3>
+                            <h3 class="breadcrumb-header">Register Page</h3>
                             <ul class="breadcrumb-tree">
                                 <li><a href="#">Home</a></li>
-                                <li class="active">Blank</li>
+                                <li class="active">Register</li>
                             </ul>
                         </div>
                     </div>
@@ -42,29 +42,8 @@
                 <div class="container">
                     <!-- row -->
                     <div class="row">
-                        <div class="col-md-5 order-details">                      
-                            <!-- Login Account -->
-                            <form id="formLogin" action="Login" method="post">
-                                <div class="billing-details">
-                                    <div class="section-title text-center">
-                                        <h3 class="title">Login Your Account</h3>
-                                    </div>                            
-                                    <div class="form-group">
-                                        <h5>EMAIL</h5>
-                                        <input class="input" type="email" name="email" placeholder="Enter your Email" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>PASSWORD</h5>
-                                        <input class="input" type="password" name="password" placeholder="Enter your Password" required="true">
-                                    </div>
-                                    <input type="submit" class="input order-submit" style="font-weight: bold;" value="LOGIN">                      
-                                </div>
-                            </form>
 
-                            <!-- /Login Account -->
-                        </div>
-
-                        <div class="col-md-1">                        
+                        <div class="col-md-3">                        
                         </div>
 
                         <!-- Register -->
@@ -110,6 +89,9 @@
                         </div>
                         <!-- /Register-->
 
+                        <div class="col-md-3">                        
+                        </div>
+                        
                     </div>
                     <!-- /row -->
                 </div>

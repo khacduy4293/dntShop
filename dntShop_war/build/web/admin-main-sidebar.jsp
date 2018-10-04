@@ -6,10 +6,10 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<%= session.getAttribute("admin_login_avatar") %>" class="img-circle"/>               
+                <img src="${sessionScope.admin_login.avatar}" class="img-circle"/>               
             </div>
             <div class="pull-left info">
-                <p><%= session.getAttribute("admin_login_name") %></p>
+                <p>${sessionScope.admin_login.fullName}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

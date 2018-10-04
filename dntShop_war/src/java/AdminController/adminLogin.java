@@ -55,14 +55,7 @@ public class adminLogin extends HttpServlet {
         String password = request.getParameter("password");
         if (adminFacade.login(email, password).size() > 0) {
             if (adminFacade.login(email, password).get(0).getIsStatus() == true) {
-                session.setAttribute("admin_login_id", adminFacade.login(email, password).get(0).getAdminID());
-                session.setAttribute("admin_login_email", adminFacade.login(email, password).get(0).getEmail());
-                session.setAttribute("admin_login_pass", adminFacade.login(email, password).get(0).getPassword());
-                session.setAttribute("admin_login_name", adminFacade.login(email, password).get(0).getFullName());
-                SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
-                String createDate = formatter.format(adminFacade.login(email, password).get(0).getCreatedDate());  
-                session.setAttribute("admin_login_createdate", createDate);
-                session.setAttribute("admin_login_avatar", adminFacade.login(email, password).get(0).getAvatar());
+                session.setAttribute("admin_login", adminFacade.login(email, password).get(0));
                 request.getRequestDispatcher("adminViewDashBoard").forward(request, response);
             } else {
                 session.setAttribute("admin_login_message", "<p class=\"login-box-msg\" style=\"color:red\">your account is banned</p>");
