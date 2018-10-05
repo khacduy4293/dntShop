@@ -13,6 +13,7 @@ import entity.Categories;
 import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -52,6 +53,12 @@ public class initPage extends HttpServlet {
         session.setAttribute("categoriesList", categoriesList);
         List<Brands> brandsList = brandFacade.AllBrands();
         session.setAttribute("brandsList", brandsList);
+        List<Products> newProductList = proFacade.AllProductNew();
+        Collections.reverse(newProductList);
+        session.setAttribute("newProductList", newProductList);
+        List<Products> hotProductList = proFacade.AllProductHot();
+        Collections.reverse(hotProductList);
+        session.setAttribute("hotProductList", hotProductList);
     }
 
     

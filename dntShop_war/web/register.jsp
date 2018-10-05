@@ -82,7 +82,12 @@
                                             <option value="Female">Female</option>
                                         </select>
                                     </div>
-                                    <input type="submit" class="input order-submit" style="font-weight: bold;" value="REGISTER">                               
+                                    <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="REGISTER">
+                                    <br/>
+                                    <div class="form-group" style="float: right">
+                                    <span>Already have an account?</span> 
+                                    <a href="login.jsp"><span style="color: blue">Login</span></a>
+                                </div>
                                 </div>
                             </form>                       
                             <!-- /Register Account -->

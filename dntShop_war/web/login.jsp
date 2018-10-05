@@ -51,7 +51,7 @@
                             <form id="formLogin" action="Login" method="post">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Login Your Account</h3>
+                                        <h3 class="title">Login To Your Account</h3>
                                     </div>                            
                                     <div class="form-group">
                                         <h5>EMAIL</h5>
@@ -62,16 +62,16 @@
                                         <input class="input" type="password" name="password" placeholder="Enter your Password" required="true">
                                     </div>
                                     <div class="form-group">
-                                    <c:choose>
-                                        <c:when test="${not empty sessionScope.login_message}">
-                                            ${sessionScope.login_message}
-                                        </c:when>
-                                        <c:otherwise>
-                                            
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <c:if test="${not empty sessionScope.login_message}">
+                                        ${sessionScope.login_message}
+                                    </c:if>
                                 </div>
-                                <input type="submit" class="input order-submit" style="font-weight: bold;" value="LOGIN">                      
+                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="LOGIN">
+                                <br/>
+                                <div class="form-group" style="float: right">
+                                    <span>New member?</span> 
+                                    <a href="register.jsp"><span style="color: blue">Register</span></a>
+                                </div>
                             </div>
                         </form>
 

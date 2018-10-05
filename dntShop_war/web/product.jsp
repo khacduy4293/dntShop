@@ -172,9 +172,11 @@
 
                                 <label>
                                     Show:
-                                    <select class="input-select">
-                                        <option value="0">20</option>
-                                        <option value="1">50</option>
+                                    <select class="input-select" id="pageSize">
+                                        <option value="6">6</option>
+                                        <option value="9" selected="true">9</option>
+                                        <option value="12">12</option>
+                                        <option value="15">15</option>
                                     </select>
                                 </label>
                             </div>

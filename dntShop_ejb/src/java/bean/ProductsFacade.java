@@ -56,5 +56,24 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         q.setParameter("status", status);
         return q.getResultList();
     }
+
+    @Override
+    public List<Products> AllProductNew() {
+        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.isStatus = :status and p.feature = :feat");
+        boolean status=true;
+        q.setParameter("status", status);
+        q.setParameter("feat", "New");   
+        return q.getResultList();
+    }
+
+    @Override
+    public List<Products> AllProductHot() {
+        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.isStatus = :status and p.feature = :feat");
+        boolean status=true;
+        q.setParameter("status", status);
+        q.setParameter("feat", "Hot");   
+        return q.getResultList();
+    }
+    
     
 }

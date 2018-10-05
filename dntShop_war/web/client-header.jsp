@@ -15,24 +15,24 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +021-95-51-84</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> +087-65-43-21</a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> dntshop@email.com</a></li>
-                <li><a href="#"><i class="fa fa-map-marker"></i> 590 CMT8 Road</a></li>
+                <li><a href="#"><i class="fa fa-map-marker"></i> 590 CMT8 Road, District 3, Ho Chi Minh City</a></li>
             </ul>
             <ul class="header-links pull-right">
-                <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
                 <c:choose>
                     <c:when test="${empty sessionScope.login_account}">
-                        <li><i class="fa fa-user-o"></i><a href="login.jsp">Login</a><a href="register.jsp">/Register</a></li>
+                        <li><i class="fa fa-user-o"></i><a href="login.jsp">Login</a></li>
                     </c:when>
                     <c:otherwise>
                     <li class="nav-item dropdown submenu">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-user-o"></i>${sessionScope.login_account.email} <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                <i class="fa fa-user-o"></i>${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName} <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-user"></i> My Account</a></li>
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-shopping-cart"></i>My Orders</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="Logout"><i class="fa fa-sign-out"></i>Logout</a></li>                              
                                 </ul>
                             </li>
@@ -63,12 +63,7 @@
                 <div class="col-md-6">
                     <div class="header-search">
                         <form>
-                            <select class="input-select">
-                                <option value="0">All Categories</option>
-                                <option value="1">Category 01</option>
-                                <option value="1">Category 02</option>
-                            </select>
-                            <input class="input" placeholder="Search here">
+                            <input class="input-select" style="width: calc(100% - 180px)" placeholder="Search here">
                             <button class="search-btn">Search</button>
                         </form>
                     </div>

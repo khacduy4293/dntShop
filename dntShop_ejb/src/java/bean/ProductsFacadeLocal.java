@@ -36,5 +36,8 @@ public interface ProductsFacadeLocal {
     List<Products> AllProductByBrand(String brandid);
 
     List<Products> AllProduct();
-    
+
+    List<Products> AllProductNew();
+
+    List<Products> AllProductHot();
 }
