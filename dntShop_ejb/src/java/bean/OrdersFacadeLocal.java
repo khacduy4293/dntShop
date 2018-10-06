@@ -6,6 +6,7 @@
 
 package bean;
 
+import entity.OrderListThisMonth;
 import entity.Orders;
 import java.util.Date;
 import java.util.List;
@@ -31,5 +32,7 @@ public interface OrdersFacadeLocal {
     List<Orders> findRange(int[] range);
 
     int count();
+
+    List<OrderListThisMonth> OrderListThisMonth();
     
 }

@@ -44,11 +44,11 @@ public class adminViewDashBoard extends HttpServlet {
         request.setAttribute("totalCategories", cateFacade.findAll().size());
         request.setAttribute("totalOrders", orderFacade.findAll().size());
         int totalProfit=0;
-//        for (int i = 0; i < orderFacade.OrderListByMonth().size(); i++) {
-//            if(!orderFacade.OrderListByMonth("10").get(i).getProcessStatus().equals("Canceled")){
-//                totalProfit+=orderFacade.OrderListByMonth("10").get(i).getTotal();
-//            }
-//        }
+        for (int i = 0; i < orderFacade.OrderListThisMonth().size(); i++) {
+            if(!orderFacade.OrderListThisMonth().get(i).getProcessStatus().equals("Canceled")){
+                totalProfit+=orderFacade.OrderListThisMonth().get(i).getTotal();
+            }
+        }
         request.setAttribute("totalProfit", totalProfit);
         List<Orders> orderList = orderFacade.findAll();
         Collections.reverse(orderList);

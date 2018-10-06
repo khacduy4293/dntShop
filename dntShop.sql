@@ -111,7 +111,7 @@ create table OrdersDetails (
 )	
 go
 
-create view OrderListByMonth as
+create view OrderListThisMonth as
 	SELECT * FROM Orders WHERE MONTH(OrderDate) = datepart(month,getdate())
 go
 
