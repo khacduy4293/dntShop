@@ -1,4 +1,3 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -7,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Report</title>
+        <title>Reset Password</title>
         
         
                
@@ -33,9 +32,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     |---------------------------------------------------------|
     -->
     <body class="skin-blue sidebar-mini">
-        <%
-            session.setAttribute("currentAdminPage", "report");
-        %>
         <div class="wrapper">
 
             <!-- Main Header -->
@@ -48,11 +44,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Report                        
+                            Customer Manager                        
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-bar-chart"></i>Report</a></li>
-                            <li class="active">Create</li>
+                            <li><a href="#"><i class="fa fa-users"></i> Customer Account</a></li>
+                            <li class="active">Reset Password</li>
                         </ol>
                     </section>
 
@@ -62,28 +58,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="#" method="post" enctype="multipart/form-data">
+                                        <form action="adminResetPasswordCustomer" method="post">
                                             <div class="modal-header">                                           
-                                                <h4 class="modal-title">Choose a report</h4>
+                                                <h4 class="modal-title">Reset Password</h4>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body">                                             
                                                 <div class="form-group">
-                                                    <label for="exampleInputFullName">Full name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputName" name="fullName" placeholder="Enter fullname">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail">Email address<span style="color:red">*</span></label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter email">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputPassword">Password<span style="color:red">*</span></label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password">
+                                                    <label for="exampleInputPassword">New Password<span style="color:red">*</span></label>
+                                                    <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Enter New Password" required="true">
                                                 </div>                                               
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Image input</label>
-                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
-                                                    <p class="help-block"><img id="blah" src="#" alt="" class="img-circle" width="80px" height="80px"/></p>
-                                                </div>
+                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
@@ -102,22 +86,5 @@ scratch. This page gets rid of all links and provides the needed markup only.
             
         </div><!-- ./wrapper -->   
 
-        <script type="text/javascript">
-            function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
-            }
-        </script>
     </body>
 </html>
-

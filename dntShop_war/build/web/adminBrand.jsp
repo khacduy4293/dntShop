@@ -99,7 +99,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="input-group-btn">
                                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="adminUpdateBrand?bra_id=${e.brandID}">Edit</a></li>                                                               
+                                                                <li><a href="adminUpdateBrand?bra_id=${e.brandID}">Edit</a></li>
+                                                                <li class="divider"></li>
                                                                     <c:if test="${e.isStatus eq true}">
                                                                     <li><a href="adminDisableBrand?bra_id=${e.brandID}">Disable</a></li>
                                                                     </c:if>

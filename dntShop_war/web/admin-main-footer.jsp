@@ -28,6 +28,25 @@
 <script src="Admin/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
 <!-- ChartJS 1.0.1 -->
 <script src="Admin/plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+<!-- Select2 -->
+<script src="Admin/plugins/select2/select2.full.min.js" type="text/javascript"></script>
+<!-- InputMask -->
+<script src="Admin/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+<script src="Admin/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+<script src="Admin/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
+<!-- date-range-picker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
+<script src="Admin/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
+<!-- bootstrap color picker -->
+<script src="Admin/plugins/colorpicker/bootstrap-colorpicker.min.js" type="text/javascript"></script>
+<!-- bootstrap time picker -->
+<script src="Admin/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+<!-- SlimScroll 1.3.0 -->
+<script src="Admin/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+<!-- iCheck 1.0.1 -->
+<script src="Admin/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+<!-- FastClick -->
+<script src="Admin/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 
 <!-- DATA TABES SCRIPT -->
 <script type="text/javascript" src="Admin/plugins/datatables/jquery.dataTables.min.js"></script>
