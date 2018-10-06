@@ -23,6 +23,16 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<!-- daterange picker -->
+<link href="Admin/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
+<!-- iCheck for checkboxes and radio inputs -->
+<link href="Admin/plugins/iCheck/all.css" rel="stylesheet" type="text/css" />
+<!-- Bootstrap Color Picker -->
+<link href="Admin/plugins/colorpicker/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" />
+<!-- Bootstrap time Picker -->
+<link href="Admin/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" type="text/css" />
+<!-- Select2 -->
+<link href="Admin/plugins/select2/select2.min.css" rel="stylesheet" type="text/css" />
 <!-- DATA TABLES -->
 <link href="Admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />      
 <link href="Admin/plugins/datatables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet">

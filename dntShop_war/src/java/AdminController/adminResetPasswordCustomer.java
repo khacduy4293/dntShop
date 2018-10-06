@@ -6,17 +6,10 @@
 
 package AdminController;
 
-import bean.CategoriesFacadeLocal;
 import bean.CustomersFacadeLocal;
-import bean.OrdersFacadeLocal;
-import bean.ProductsFacadeLocal;
-import entity.Orders;
+import entity.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,46 +21,34 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminViewDashBoard", urlPatterns = {"/adminViewDashBoard"})
-public class adminViewDashBoard extends HttpServlet {
-
+@WebServlet(name = "adminResetPasswordCustomer", urlPatterns = {"/adminResetPasswordCustomer"})
+public class adminResetPasswordCustomer extends HttpServlet {
+    String cus_id="";
     @EJB CustomersFacadeLocal cusFacade;
-    @EJB ProductsFacadeLocal proFacade;
-    @EJB CategoriesFacadeLocal cateFacade;
-    @EJB OrdersFacadeLocal orderFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        request.setAttribute("totalUserRegis", cusFacade.findAll().size());
-        request.setAttribute("totalProducts", proFacade.findAll().size());
-        request.setAttribute("totalCategories", cateFacade.findAll().size());
-        request.setAttribute("totalOrders", orderFacade.findAll().size());
-        int totalProfit=0;
-        for (int i = 0; i < orderFacade.OrderListThisMonth().size(); i++) {
-            if(!orderFacade.OrderListThisMonth().get(i).getProcessStatus().equals("Canceled")){
-                totalProfit+=orderFacade.OrderListThisMonth().get(i).getTotal();
-            }
-        }
-        request.setAttribute("totalProfit", totalProfit);
-        List<Orders> orderList = orderFacade.findAll();
-        Collections.reverse(orderList);
-        request.setAttribute("orderList", orderList);
-        request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        cus_id=request.getParameter("cus_id");
+        request.setAttribute("cus", cusFacade.find(cus_id));
+        request.getRequestDispatcher("adminResetPasswordCustomer.jsp").forward(request, response);
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        Customers cus = cusFacade.find(cus_id);
+        String password = request.getParameter("password");
+        cus.setPassword(password);
+        cusFacade.edit(cus);
+        request.getRequestDispatcher("adminViewCustomer").forward(request, response);
     }
 
     /**

@@ -110,6 +110,11 @@ create table OrdersDetails (
 	IsStatus bit default 1
 )	
 go
+
+create view OrderListThisMonth as
+	SELECT * FROM Orders WHERE MONTH(OrderDate) = datepart(month,getdate())
+go
+
 insert Admins(AdminID, Email, [Password], FullName, Avatar) values
 ('AD001','duy@mail.com', '123456', 'Tu Khac Duy', 'images/Avatars/default-avatar.jpg'),
 ('AD002','thao@mail.com', '123456', 'Le Phuong Thao', 'images/Avatars/default-avatar3.jpg'),
@@ -192,13 +197,16 @@ insert Categories(CategoryID, CategoryName, CategoryImage) values
 go
 
 insert Products(ProductID, ProductName, Price,DiscountProduct, CategoryID, BrandID, Descriptions, Feature, Image1, Image2, Image3, Image4) values
-('PR001', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR002', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR003', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR004', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR005', 'Product Name goes here', 6,10,'CA001', 'BR001','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR006', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR007', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR008', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png'),
-('PR009', 'Product Name goes here', 6,10,'CA003', 'BR002','Product Description:..................','New','product01.png', 'product03.png','product06.png','product08.png')
+('PR001', 'Product 1', 100,10,'CA001', 'BR001','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product01.png', 'product02.png','product03.png','product04.png'),
+('PR002', 'Product 2', 199,0,'CA002', 'BR002','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product02.png', 'product03.png','product04.png','product05.png'),
+('PR003', 'Product 3', 499,30,'CA003', 'BR003','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product03.png', 'product04.png','product05.png','product06.png'),
+('PR004', 'Product 4', 520,20,'CA004', 'BR004','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product06.png', 'product07.png','product08.png','product09.png'),
+('PR005', 'Product 5', 300,10,'CA001', 'BR001','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product01.png', 'product02.png','product03.png','product04.png'),
+('PR006', 'Product 6', 120,0,'CA002', 'BR002','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product02.png', 'product03.png','product04.png','product05.png'),
+('PR007', 'Product 7', 249,30,'CA003', 'BR003','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','Hot','product03.png', 'product04.png','product05.png','product06.png'),
+('PR008', 'Product 8', 99,20,'CA004', 'BR004','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product06.png', 'product07.png','product08.png','product09.png'),
+('PR009', 'Product 9', 150,10,'CA001', 'BR001','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','New','product01.png', 'product02.png','product03.png','product04.png'),
+('PR010', 'Product 10', 235,0,'CA002', 'BR002','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product02.png', 'product03.png','product04.png','product05.png'),
+('PR011', 'Product 11', 450,30,'CA003', 'BR003','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','Hot','product03.png', 'product04.png','product05.png','product06.png'),
+('PR012', 'Product 12', 110,20,'CA004', 'BR004','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','New','product06.png', 'product07.png','product08.png','product09.png')
 go

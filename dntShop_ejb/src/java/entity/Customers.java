@@ -46,6 +46,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Customers.findByCreatedDate", query = "SELECT c FROM Customers c WHERE c.createdDate = :createdDate"),
     @NamedQuery(name = "Customers.findByIsStatus", query = "SELECT c FROM Customers c WHERE c.isStatus = :isStatus")})
 public class Customers implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customerID")
+    private Collection<OrderListThisMonth> orderListThisMonthCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -254,6 +256,15 @@ public class Customers implements Serializable {
     @Override
     public String toString() {
         return "entity.Customers[ customerID=" + customerID + " ]";
+    }
+
+    @XmlTransient
+    public Collection<OrderListThisMonth> getOrderListThisMonthCollection() {
+        return orderListThisMonthCollection;
+    }
+
+    public void setOrderListThisMonthCollection(Collection<OrderListThisMonth> orderListThisMonthCollection) {
+        this.orderListThisMonthCollection = orderListThisMonthCollection;
     }
     
 }

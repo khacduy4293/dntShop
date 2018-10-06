@@ -6,10 +6,14 @@
 
 package bean;
 
+import entity.OrderListThisMonth;
 import entity.Orders;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +32,12 @@ public class OrdersFacade extends AbstractFacade<Orders> implements OrdersFacade
     public OrdersFacade() {
         super(Orders.class);
     }
+
+    @Override
+    public List<OrderListThisMonth> OrderListThisMonth() {
+        Query q = getEntityManager().createQuery("SELECT o FROM OrderListThisMonth o");
+        return q.getResultList();
+    }
+    
     
 }
