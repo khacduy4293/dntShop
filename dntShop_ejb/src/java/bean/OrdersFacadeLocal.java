@@ -7,6 +7,7 @@
 package bean;
 
 import entity.Orders;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 

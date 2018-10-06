@@ -10,8 +10,13 @@ import bean.CategoriesFacadeLocal;
 import bean.CustomersFacadeLocal;
 import bean.OrdersFacadeLocal;
 import bean.ProductsFacadeLocal;
+import entity.Orders;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,6 +43,16 @@ public class adminViewDashBoard extends HttpServlet {
         request.setAttribute("totalProducts", proFacade.findAll().size());
         request.setAttribute("totalCategories", cateFacade.findAll().size());
         request.setAttribute("totalOrders", orderFacade.findAll().size());
+        int totalProfit=0;
+//        for (int i = 0; i < orderFacade.OrderListByMonth().size(); i++) {
+//            if(!orderFacade.OrderListByMonth("10").get(i).getProcessStatus().equals("Canceled")){
+//                totalProfit+=orderFacade.OrderListByMonth("10").get(i).getTotal();
+//            }
+//        }
+        request.setAttribute("totalProfit", totalProfit);
+        List<Orders> orderList = orderFacade.findAll();
+        Collections.reverse(orderList);
+        request.setAttribute("orderList", orderList);
         request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 

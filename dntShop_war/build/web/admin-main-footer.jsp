@@ -4,7 +4,7 @@
         <!--   Anything you want -->
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2018 <a href="#">DNT Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2018 <a href="#">DNT Team</a>.</strong> All rights reserved.
 </footer>
 <!-- /.control-sidebar -->
 <!-- Add the sidebar's background. This div must be placed

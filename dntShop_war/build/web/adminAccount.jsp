@@ -93,7 +93,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <span class="label label-danger">Banned</span>
                                                         </c:if>
                                                     </td>
-                                                    <td><c:if test="${sessionScope.admin_login_id ne e.adminID}">
+                                                    <td><c:if test="${sessionScope.admin_login.adminID ne e.adminID}">
                                                             <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                                 <ul class="dropdown-menu">
