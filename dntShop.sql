@@ -115,6 +115,22 @@ create view OrderListThisMonth as
 	SELECT * FROM Orders WHERE MONTH(OrderDate) = datepart(month,getdate())
 go
 
+Create view TopSellingThisYear as 
+select TOP 10 p.ProductID, p.ProductName, p.Image1, p.Price, p.DiscountProduct, c.CategoryName, SUM(convert(decimal(4,0),r.Quantity)) as TopSelling
+	from Products p join OrdersDetails r on p.ProductID = r.ProductID join Categories c on p.CategoryID = c.CategoryID join Orders o on o.OrderID = r.OrderID
+	WHERE YEAR(o.OrderDate) = datepart(YEAR,getdate())
+	group by p.ProductName, p.ProductID, p.Image1, p.Price, p.DiscountProduct,c.CategoryName
+	ORDER BY TopSelling DESC, p.Price DESC
+	go
+
+Create view TopRatingThisYear as 	
+	select TOP 10 p.ProductID, p.ProductName, p.Image1, p.Price, p.DiscountProduct, c.CategoryName,AVG(convert(decimal(4,2),r.Rate)) as averageRating, COUNT(convert(decimal(4,0),r.Rate)) as countRating
+	from Products p join Ratings r on p.ProductID = r.ProductID join Categories c on p.CategoryID = c.CategoryID
+	WHERE YEAR(r.RatingDate) = datepart(YEAR,getdate())
+	group by p.ProductName, p.ProductID,p.Image1,p.Price,p.DiscountProduct,c.CategoryName
+	ORDER BY averageRating DESC, countRating DESC
+go
+
 insert Admins(AdminID, Email, [Password], FullName, Avatar) values
 ('AD001','duy@mail.com', '123456', 'Tu Khac Duy', 'images/Avatars/default-avatar.jpg'),
 ('AD002','thao@mail.com', '123456', 'Le Phuong Thao', 'images/Avatars/default-avatar3.jpg'),

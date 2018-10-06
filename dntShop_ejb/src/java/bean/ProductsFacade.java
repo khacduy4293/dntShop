@@ -7,6 +7,8 @@
 package bean;
 
 import entity.Products;
+import entity.TopRatingThisYear;
+import entity.TopSellingThisYear;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -72,6 +74,18 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         boolean status=true;
         q.setParameter("status", status);
         q.setParameter("feat", "Hot");   
+        return q.getResultList();
+    }
+
+    @Override
+    public List<TopSellingThisYear> TopSellingThisYear() {
+        Query q = getEntityManager().createQuery("SELECT t FROM TopSellingThisYear t");
+        return q.getResultList();
+    }
+
+    @Override
+    public List<TopRatingThisYear> TopRatingThisYear() {
+        Query q = getEntityManager().createQuery("SELECT t FROM TopRatingThisYear t");
         return q.getResultList();
     }
     

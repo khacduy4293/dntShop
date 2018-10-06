@@ -25,7 +25,6 @@
                 <ul class="treeview-menu">
                     <li class="${sessionScope.currentAdminPageChild.equals("addReportProduct")?"active":""}"><a href="adminReportProduct"><i class="fa fa-circle-o"></i>Product Report</a></li>
                     <li class="${sessionScope.currentAdminPageChild.equals("addReportCustomer")?"active":""}"><a href="adminReportCustomer"><i class="fa fa-circle-o"></i>Customer Report</a></li>
-                    <li class="${sessionScope.currentAdminPageChild.equals("addCustomerReport")?"active":""}"><a href="#"><i class="fa fa-circle-o"></i>Customer Report</a></li>
                 </ul>
             </li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("customer")?"active":""}">

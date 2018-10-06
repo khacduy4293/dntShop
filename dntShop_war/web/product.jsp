@@ -1,6 +1,7 @@
 <%@page import="entity.Products"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,38 +121,21 @@
                         <!-- aside Widget -->
                         <div class="aside">
                             <h3 class="aside-title">Top selling</h3>
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
+                        <c:forEach var="n" items="${topSellingList}" begin="0" end="2">
+                                <div class="product-widget">
+                                    <div class="product-img">
+                                        <img src="images/Products/${n.image1}" alt="">
+                                    </div>
+                                    <div class="product-body">
+                                        <p class="product-category">${n.categoryName}</p>
+                                        <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
+                                        <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                            <c:if test="${n.discountProduct ne 0}">
+                                            <del class="product-old-price">$${n.price}</del></h4>
+                                            </c:if>
+                                    </div>
                                 </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product02.png" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
-
-                            <div class="product-widget">
-                                <div class="product-img">
-                                    <img src="./img/product03.png" alt="">
-                                </div>
-                                <div class="product-body">
-                                    <p class="product-category">Category</p>
-                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                </div>
-                            </div>
+                            </c:forEach>                          
                         </div>
                         <!-- /aside Widget -->
                     </div>
@@ -208,8 +192,8 @@
                                             </div>
                                             <div class="product-body">
                                                 <p class="product-category">${p.categoryID.categoryName}</p>
-                                                <h3 class="product-name"><a href="#">${p.productName}</a></h3>
-                                                <h4 class="product-price">$${p.price*(100-p.discountProduct)/100}
+                                                <h3 class="product-name"><a href="ProductDetail?proid=${p.productID}">${p.productName}</a></h3>
+                                                <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
                                                     <c:if test="${p.discountProduct ne 0}">
                                                         <del class="product-old-price">$${p.price}</del>
                                                     </c:if>                                         
