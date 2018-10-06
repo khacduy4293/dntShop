@@ -1,3 +1,4 @@
+<%@page import="entity.Customers"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.Map"%>
@@ -6,9 +7,16 @@
 <header>
     <%
         Cart cart = (Cart) session.getAttribute("cart");
+        String checkout="";
+        Customers cus = (Customers) session.getAttribute("login_account");
         if (cart == null) {
             cart = new Cart();
             session.setAttribute("cart", cart);
+        }
+        if (cus == null) {
+            checkout="login.jsp";
+        }else{
+            checkout="checkout.jsp";
         }
     %>
     <!-- TOP HEADER -->
@@ -113,7 +121,9 @@
                                 </div>
                                 <div class="cart-btns">
                                     <a href="cart.jsp">View Cart</a>
-                                    <a href="checkout.jsp">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="<%= checkout%>">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                              
+                                    
                                 </div>
                             </div>
                         </div>

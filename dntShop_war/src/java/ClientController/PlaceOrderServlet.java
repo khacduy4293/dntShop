@@ -81,7 +81,7 @@ public class PlaceOrderServlet extends HttpServlet {
         for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {
             int numOdd = ordersDetailsFacade.count() + 1;
             int orderDetailid = numOdd + 1;
-            OrdersDetails ordersDetails=new OrdersDetails();
+            OrdersDetails ordersDetails = new OrdersDetails();
             ordersDetails.setOdID(orderDetailid);
             ordersDetails.setOrderID(orders);
             ordersDetails.setProductID(list.getValue().getProduct());
@@ -90,6 +90,8 @@ public class PlaceOrderServlet extends HttpServlet {
             ordersDetails.setIsStatus(true);
             ordersDetailsFacade.create(ordersDetails);
         }
+        session.removeAttribute("cart");
+        request.getRequestDispatcher("orderComplete.jsp").forward(request, response);
 
     }
 
