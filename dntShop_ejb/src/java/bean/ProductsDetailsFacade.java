@@ -7,9 +7,11 @@
 package bean;
 
 import entity.ProductsDetails;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,13 @@ public class ProductsDetailsFacade extends AbstractFacade<ProductsDetails> imple
     public ProductsDetailsFacade() {
         super(ProductsDetails.class);
     }
+
+    @Override
+    public List<ProductsDetails> FindProductDetailsByProID(String productID) {
+        Query q = getEntityManager().createQuery("SELECT p FROM ProductsDetails p WHERE p.productID.productID = :proID");
+        q.setParameter("proID", productID);
+        return q.getResultList();
+    }
+    
     
 }

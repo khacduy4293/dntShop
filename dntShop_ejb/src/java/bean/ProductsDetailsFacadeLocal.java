@@ -30,5 +30,7 @@ public interface ProductsDetailsFacadeLocal {
     List<ProductsDetails> findRange(int[] range);
 
     int count();
+
+    List<ProductsDetails> FindProductDetailsByProID(String productID);
     
 }
