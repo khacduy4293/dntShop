@@ -32,7 +32,7 @@ public interface ProductsFacadeLocal {
     List<Products> findRange(int[] range);
 
     int count();
-
+    
     List<Products> AllProductByCategory(String cateid);
 
     List<Products> AllProductByBrand(String brandid);

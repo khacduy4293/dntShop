@@ -45,6 +45,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Products.findByImage4", query = "SELECT p FROM Products p WHERE p.image4 = :image4"),
     @NamedQuery(name = "Products.findByIsStatus", query = "SELECT p FROM Products p WHERE p.isStatus = :isStatus")})
 public class Products implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productID")
+    private Collection<ProductsDetails> productsDetailsCollection;
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -266,6 +268,15 @@ public class Products implements Serializable {
     @Override
     public String toString() {
         return "entity.Products[ productID=" + productID + " ]";
+    }
+
+    @XmlTransient
+    public Collection<ProductsDetails> getProductsDetailsCollection() {
+        return productsDetailsCollection;
+    }
+
+    public void setProductsDetailsCollection(Collection<ProductsDetails> productsDetailsCollection) {
+        this.productsDetailsCollection = productsDetailsCollection;
     }
     
 }

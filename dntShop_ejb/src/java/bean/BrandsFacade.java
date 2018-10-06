@@ -30,7 +30,7 @@ public class BrandsFacade extends AbstractFacade<Brands> implements BrandsFacade
     public BrandsFacade() {
         super(Brands.class);
     }
-
+    
     @Override
     public List<Brands> AllBrands() {
         Query q = getEntityManager().createQuery("SELECT b FROM Brands b WHERE b.isStatus = :status");
@@ -38,6 +38,5 @@ public class BrandsFacade extends AbstractFacade<Brands> implements BrandsFacade
         q.setParameter("status", status);
         return q.getResultList();
     }
-    
     
 }
