@@ -94,16 +94,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                     </td>
                                                     <td><c:if test="${sessionScope.admin_login.adminID ne e.adminID}">
-                                                            <div class="input-group-btn">
+                                                            <div class="btn-group">
                                                                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                                 <ul class="dropdown-menu">
                                                                     <li><a href="adminUpdateAccount?admin_id=${e.adminID}">Edit Profile</a></li>
-                                                                    <li class="divider"></li>
                                                                         <c:if test="${e.isStatus eq true}">
-                                                                        <li><a href="adminDisableAccount?admin_id=${e.adminID}">Banned</a></li>
+                                                                        <li><a href="adminDisableAccount?admin_id=${e.adminID}"><span style="color: red">Banned</span></a></li>
                                                                         </c:if>
                                                                         <c:if test="${e.isStatus eq false}">                                                                                                                  
-                                                                        <li><a href="adminEnableAccount?admin_id=${e.adminID}">Active</a></li>
+                                                                        <li><a href="adminEnableAccount?admin_id=${e.adminID}"><span style="color: green">Active</span></a></li>
                                                                         </c:if>
                                                                 </ul>
                                                             </div>

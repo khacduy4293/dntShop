@@ -113,16 +113,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         </c:if>
                                                     </td>
                                                     <td>
-                                                        <div class="input-group-btn">
+                                                        <div class="btn-group">
                                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                             <ul class="dropdown-menu">
                                                                 <li><a href="adminUpdateProduct?pro_id=${e.productID}">Edit</a></li>
-                                                                <li class="divider"></li>
                                                                     <c:if test="${e.isStatus eq true}">
-                                                                    <li><a href="adminDisableProduct?pro_id=${e.productID}">Disable</a></li>
+                                                                    <li><a href="adminDisableProduct?pro_id=${e.productID}"><span style="color: red">Disable</span></a></li>
                                                                     </c:if>
                                                                     <c:if test="${e.isStatus eq false}">                                                                                                                  
-                                                                    <li><a href="adminEnableProduct?pro_id=${e.productID}">Enable</a></li>
+                                                                    <li><a href="adminEnableProduct?pro_id=${e.productID}"><span style="color: green">Enable</span></a></li>
                                                                     </c:if>
                                                             </ul>
                                                         </div>                                                       

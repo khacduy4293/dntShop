@@ -3,7 +3,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="#" class="logo">
+    <a href="adminViewDashBoard" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>DNT</b></span>
         <!-- logo for regular state and mobile devices -->
@@ -22,7 +22,7 @@
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <a href="adminViewDashBoard" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
                         <img src="${sessionScope.admin_login.avatar}" class="user-image"/>
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->

@@ -33,9 +33,8 @@ public class OrdersDetailsFacade extends AbstractFacade<OrdersDetails> implement
     
 @Override
     public List<OrdersDetails> findByOrderId(String id) {
-        Query q=em.createQuery("SELECT o FROM OrdersDetails o WHERE o.orderID = :orderid");
+        Query q=em.createQuery("SELECT o FROM OrdersDetails o WHERE o.orderID.orderID = :orderid");
         q.setParameter("orderid", id);
-                
         return q.getResultList();
     }
     
