@@ -7,8 +7,10 @@ package AdminController;
 
 import bean.BrandsFacadeLocal;
 import bean.CategoriesFacadeLocal;
+import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
 import entity.Products;
+import entity.ProductsDetails;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -36,7 +38,9 @@ public class adminAddProduct extends HttpServlet {
     CategoriesFacadeLocal cateFacade;
     @EJB
     ProductsFacadeLocal proFacade;
-
+    @EJB
+    ProductsDetailsFacadeLocal prodetailFacade;
+    
     private static final long serialVersionUID = 1L;
 
     // location to store file uploaded
@@ -80,6 +84,7 @@ public class adminAddProduct extends HttpServlet {
             List<FileItem> formItems = upload.parseRequest(request);
 
             Products bra = new Products();
+            ProductsDetails pde = new ProductsDetails();
             //auto create pro_id 
             int num = proFacade.count() + 1;
             String id = num + "";
@@ -91,6 +96,7 @@ public class adminAddProduct extends HttpServlet {
             String bra_id = "PR" + id;
             //setProID
             bra.setProductID(bra_id);
+            pde.setProductID(bra);
             //setStatus
             bra.setIsStatus(Boolean.TRUE);
 
@@ -129,6 +135,31 @@ public class adminAddProduct extends HttpServlet {
                                 //System.out.println("Description: " + item.getString());
                                 bra.setFeature(item.getString());
                                 continue;
+                            case "CPU":
+                                pde.setCpu(item.getString());
+                                continue;
+                            case "Memory":
+                                pde.setMemory(item.getString());
+                                continue;
+                            case "VGA":
+                                pde.setVga(item.getString());
+                                continue;
+                            case "HDD":
+                                pde.setHdd(item.getString());
+                                continue;
+                            case "Camera":
+                                pde.setCamera(item.getString());
+                                continue;
+                            case "Display":
+                                pde.setDisplay(item.getString());
+                                continue;
+                            case "Battery":
+                                pde.setBattery(item.getString());
+                                continue;
+                            case "Weight":
+                                pde.setWeights(item.getString());
+                                continue;
+                            
                         }
                     } else {
                         switch (item.getFieldName()) {
@@ -196,6 +227,7 @@ public class adminAddProduct extends HttpServlet {
                 }
             }
             proFacade.create(bra);
+            prodetailFacade.create(pde);
         } catch (Exception ex) {
             ex.getStackTrace();
         }

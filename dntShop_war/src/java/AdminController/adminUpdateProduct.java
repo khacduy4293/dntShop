@@ -7,8 +7,10 @@ package AdminController;
 
 import bean.BrandsFacadeLocal;
 import bean.CategoriesFacadeLocal;
+import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
 import entity.Products;
+import entity.ProductsDetails;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,6 +40,8 @@ public class adminUpdateProduct extends HttpServlet {
     CategoriesFacadeLocal cateFacade;
     @EJB
     ProductsFacadeLocal proFacade;
+    @EJB
+    ProductsDetailsFacadeLocal prodetailFacade;
 
     private static final long serialVersionUID = 1L;
 
@@ -56,6 +60,7 @@ public class adminUpdateProduct extends HttpServlet {
         processRequest(request, response);
         bra_id = request.getParameter("pro_id");
         request.setAttribute("pro", proFacade.find(bra_id));
+        request.setAttribute("prodetails", prodetailFacade.FindProductDetailsByProID(bra_id).get(0));
         request.setAttribute("listBrand", brandFacade.findAll());
         request.setAttribute("listCate", cateFacade.findAll());
         request.getRequestDispatcher("adminUpdateProduct.jsp").forward(request, response);
@@ -84,7 +89,8 @@ public class adminUpdateProduct extends HttpServlet {
             List<FileItem> formItems = upload.parseRequest(request);
 
             Products bra = proFacade.find(bra_id);
-
+            ProductsDetails pde = prodetailFacade.FindProductDetailsByProID(bra_id).get(0);
+            
             if (formItems != null && formItems.size() > 0) {
                 // iterates over form's fields
                 for (FileItem item : formItems) {
@@ -120,6 +126,31 @@ public class adminUpdateProduct extends HttpServlet {
                                 //System.out.println("Description: " + item.getString());
                                 bra.setFeature(item.getString());
                                 continue;
+                            case "CPU":
+                                pde.setCpu(item.getString());
+                                continue;
+                            case "Memory":
+                                pde.setMemory(item.getString());
+                                continue;
+                            case "VGA":
+                                pde.setVga(item.getString());
+                                continue;
+                            case "HDD":
+                                pde.setHdd(item.getString());
+                                continue;
+                            case "Camera":
+                                pde.setCamera(item.getString());
+                                continue;
+                            case "Display":
+                                pde.setDisplay(item.getString());
+                                continue;
+                            case "Battery":
+                                pde.setBattery(item.getString());
+                                continue;
+                            case "Weight":
+                                pde.setWeights(item.getString());
+                                continue;
+                                
                         }
                     } else {
                         switch (item.getFieldName()) {
@@ -183,6 +214,7 @@ public class adminUpdateProduct extends HttpServlet {
                 }
             }
             proFacade.edit(bra);
+            prodetailFacade.edit(pde);
         } catch (Exception ex) {
             ex.getStackTrace();
         }

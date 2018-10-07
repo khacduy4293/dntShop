@@ -6,7 +6,7 @@
 
 package bean;
 
-import entity.Categories;
+import entity.ProductsDetails;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -18,7 +18,7 @@ import javax.persistence.Query;
  * @author Duy
  */
 @Stateless
-public class CategoriesFacade extends AbstractFacade<Categories> implements CategoriesFacadeLocal {
+public class ProductsDetailsFacade extends AbstractFacade<ProductsDetails> implements ProductsDetailsFacadeLocal {
     @PersistenceContext(unitName = "dntShop_ejbPU")
     private EntityManager em;
 
@@ -27,16 +27,16 @@ public class CategoriesFacade extends AbstractFacade<Categories> implements Cate
         return em;
     }
 
-    public CategoriesFacade() {
-        super(Categories.class);
+    public ProductsDetailsFacade() {
+        super(ProductsDetails.class);
     }
-    
+
     @Override
-    public List<Categories> AllCategories() {
-        Query q = getEntityManager().createQuery("SELECT c FROM Categories c WHERE c.isStatus = :status");
-        boolean status=true;
-        q.setParameter("status", status);
+    public List<ProductsDetails> FindProductDetailsByProID(String productID) {
+        Query q = getEntityManager().createQuery("SELECT p FROM ProductsDetails p WHERE p.productID.productID = :proID");
+        q.setParameter("proID", productID);
         return q.getResultList();
     }
+    
     
 }

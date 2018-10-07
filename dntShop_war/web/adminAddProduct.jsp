@@ -7,8 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Add New Product</title>
-        
+            <title>Add New Product</title>
+
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -31,13 +31,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         |---------------------------------------------------------|
         -->
         <body class="skin-blue sidebar-mini">
-            <%
+        <%
             session.setAttribute("currentAdminPage", "product");
             session.setAttribute("currentAdminPageChild", "addProduct");
         %>
-            <div class="wrapper">
+        <div class="wrapper">
 
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -60,7 +60,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box box-default">
                             <form action="adminAddProduct" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Create new Product</h3>
+                                    <h3 class="box-title">CREATE NEW PRODUCT</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div><!-- /.col -->
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Brand</label>
+                                                <label>Brand<span style="color:red">*</span></label>
                                                 <select class="form-control" name="brandID" required="true">
                                                 <c:forEach var="b" items="${listBrand}">
                                                     <option value="${b.brandID}">${b.brandName}</option>
@@ -88,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Category</label>
+                                            <label>Category<span style="color:red">*</span></label>
                                             <select class="form-control" name="cateID" required="true">
                                                 <c:forEach var="c" items="${listCate}">
                                                     <option value="${c.categoryID}">${c.categoryName}</option>     
@@ -96,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Feature</label>
+                                            <label>Feature<span style="color:red">*</span></label>
                                             <select class="form-control" name="feature">
                                                 <option>--</option>
                                                 <option value="New" selected="true">New</option>
@@ -144,6 +144,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </div>
                             </div><!-- /.box-body -->
+                            <div class="box-header with-border">
+                                <h3 class="box-title">DETAILS</h3>                              
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputCPU">CPU</label>
+                                                <input type="text" class="form-control" id="exampleInputCPU" name="CPU" placeholder="Core i3-8130U 2.20Ghz....">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputMemory">Memory</label>
+                                                <input type="text" class="form-control" id="exampleInputMemory" name="Memory" placeholder="4GB DDR4 Bus 2400Mhz...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputVGA">VGA</label>
+                                                <input type="text" class="form-control" id="exampleInputVGA" name="VGA" placeholder="Intel UHD 620M....">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputHDD">HDD</label>
+                                                <input type="text" class="form-control" id="exampleInputHDD" name="HDD" placeholder="1 TB SATA3 + SSD M.2 PCIe....">
+                                            </div>
+                                        </div><!-- /.col -->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                                <label for="exampleInputCamera">Camera</label>
+                                                <input type="text" class="form-control" id="exampleInputCamera" name="Camera" placeholder="16 MP & 2MP (2 camera) ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputDisplay">Display</label>
+                                                <input type="text" class="form-control" id="exampleInputDisplay" name="Display" placeholder="15.6 inch backlit FHD(1920x1080) IPS...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputBattery">Battery</label>
+                                                <input type="text" class="form-control" id="exampleInputBattery" name="Battery" placeholder="3500 mAh, 3 Cells 42Whrs, ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputWeight">Weight</label>
+                                                <input type="text" class="form-control" id="exampleInputWeight" name="Weight" placeholder="1.6 Kg ....">
+                                            </div>
+                                    </div><!-- /.col -->       
+                                </div><!-- /.row -->
+                            </div>
                             <div class="box-footer">
                                 <div class="box-tools pull-right">
                                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -156,7 +199,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-           
+
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->

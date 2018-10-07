@@ -56,9 +56,8 @@ public class initPage extends HttpServlet {
         List<Products> newProductList = proFacade.AllProductNew();
         Collections.reverse(newProductList);
         session.setAttribute("newProductList", newProductList);
-        List<Products> hotProductList = proFacade.AllProductHot();
-        Collections.reverse(hotProductList);
-        session.setAttribute("hotProductList", hotProductList);
+        session.setAttribute("topRatingList", proFacade.TopRatingThisYear());
+        session.setAttribute("topSellingList", proFacade.TopSellingThisYear());
     }
 
     

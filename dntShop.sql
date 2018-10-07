@@ -47,6 +47,20 @@ create table Products (
 	CONSTRAINT FK_ProductsBrands FOREIGN KEY (BrandID) REFERENCES Brands(BrandID)
 )
 go
+create table ProductsDetails (
+	ProductDetailsID int identity(1,1) primary key,
+	ProductID varchar(10) not null,
+	CPU	nvarchar(200),
+	Memory nvarchar(200),
+	VGA nvarchar(200),
+	HDD nvarchar(200),
+	Camera nvarchar(200),
+	Display nvarchar(300),	
+	Battery nvarchar(100),
+	Weights nvarchar(20),
+	CONSTRAINT FK_ProductsProDetails FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+)
+go
 
 create table Customers (
 	CustomerID varchar(10) primary key,
@@ -113,6 +127,22 @@ go
 
 create view OrderListThisMonth as
 	SELECT * FROM Orders WHERE MONTH(OrderDate) = datepart(month,getdate())
+go
+
+Create view TopSellingThisYear as 
+select TOP 10 p.ProductID, p.ProductName, p.Image1, p.Price, p.DiscountProduct, c.CategoryName, SUM(convert(decimal(4,0),r.Quantity)) as TopSelling
+	from Products p join OrdersDetails r on p.ProductID = r.ProductID join Categories c on p.CategoryID = c.CategoryID join Orders o on o.OrderID = r.OrderID
+	WHERE YEAR(o.OrderDate) = datepart(YEAR,getdate())
+	group by p.ProductName, p.ProductID, p.Image1, p.Price, p.DiscountProduct,c.CategoryName
+	ORDER BY TopSelling DESC, p.Price DESC
+	go
+
+Create view TopRatingThisYear as 	
+	select TOP 10 p.ProductID, p.ProductName, p.Image1, p.Price, p.DiscountProduct, c.CategoryName,AVG(convert(decimal(4,2),r.Rate)) as averageRating, COUNT(convert(decimal(4,0),r.Rate)) as countRating
+	from Products p join Ratings r on p.ProductID = r.ProductID join Categories c on p.CategoryID = c.CategoryID
+	WHERE YEAR(r.RatingDate) = datepart(YEAR,getdate())
+	group by p.ProductName, p.ProductID,p.Image1,p.Price,p.DiscountProduct,c.CategoryName
+	ORDER BY averageRating DESC, countRating DESC
 go
 
 insert Admins(AdminID, Email, [Password], FullName, Avatar) values
@@ -209,4 +239,19 @@ insert Products(ProductID, ProductName, Price,DiscountProduct, CategoryID, Brand
 ('PR010', 'Product 10', 235,0,'CA002', 'BR002','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','--','product02.png', 'product03.png','product04.png','product05.png'),
 ('PR011', 'Product 11', 450,30,'CA003', 'BR003','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','Hot','product03.png', 'product04.png','product05.png','product06.png'),
 ('PR012', 'Product 12', 110,20,'CA004', 'BR004','A mobile phone is a wireless handheld device that allows users to make and receive calls and to send text messages, among other features. ','New','product06.png', 'product07.png','product08.png','product09.png')
+go
+
+insert ProductsDetails(ProductID, CPU, Memory, VGA, HDD, Camera, Display, Battery, Weights) values
+('PR001','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR002','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR003','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR004','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR005','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR006','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR007','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR008','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR009','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR010','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR011','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg'),
+('PR012','Core i3-8130U 2.20Ghz','4GB DDR4 Bus 2400Mhz','Intel UHD 620M','1 TB SATA3 + SSD M.2 PCIe','2MP','15.6 inch backlit FHD(1920x1080) IPS','3 Cells 42Whrs','1.6 Kg')
 go

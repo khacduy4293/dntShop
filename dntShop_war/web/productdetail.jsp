@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -108,7 +109,7 @@
                                 <a class="review-link" href="#">10 Review(s) | Add your review</a>
                             </div>
                             <div>
-                                <h3 class="product-price">$${pro.price*(100-pro.discountProduct)/100} <del class="product-old-price">$${pro.price}</del></h3>
+                                <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> <del class="product-old-price">$${pro.price}</del></h3>
                                 <span class="product-available">In Stock</span>
                             </div>
                             <p>${pro.descriptions}</p>

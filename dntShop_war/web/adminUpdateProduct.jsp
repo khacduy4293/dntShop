@@ -56,7 +56,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box box-default">
                             <form action="adminUpdateProduct" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Edit Product</h3>
+                                    <h3 class="box-title">EDIT PRODUCT</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div><!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Brand</label>
+                                            <label>Brand<span style="color:red">*</span></label>
                                             <select class="form-control" name="brandID" required="true">
                                                 <c:forEach var="b" items="${listBrand}">
                                                     <c:choose>
@@ -91,7 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Category</label>
+                                            <label>Category<span style="color:red">*</span></label>
                                             <select class="form-control" name="cateID" required="true">
                                                 <c:forEach var="c" items="${listCate}">
                                                     <c:choose>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label>Feature</label>
+                                            <label>Feature<span style="color:red">*</span></label>
                                             <select class="form-control" name="feature">
                                                 <c:choose>
                                                     <c:when test="${pro.feature eq '--'}">
@@ -211,6 +211,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </div>
                             </div><!-- /.box-body -->
+                            <div class="box-header with-border">
+                                <h3 class="box-title">DETAILS</h3>                              
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="exampleInputCPU">CPU</label>
+                                                <input type="text" class="form-control" id="exampleInputCPU" name="CPU" value="${prodetails.cpu}" placeholder="Core i3-8130U 2.20Ghz....">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputMemory">Memory</label>
+                                                <input type="text" class="form-control" id="exampleInputMemory" name="Memory" value="${prodetails.memory}" placeholder="4GB DDR4 Bus 2400Mhz...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputVGA">VGA</label>
+                                                <input type="text" class="form-control" id="exampleInputVGA" name="VGA" value="${prodetails.vga}" placeholder="Intel UHD 620M....">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputHDD">HDD</label>
+                                                <input type="text" class="form-control" id="exampleInputHDD" name="HDD" value="${prodetails.hdd}" placeholder="1 TB SATA3 + SSD M.2 PCIe....">
+                                            </div>
+                                        </div><!-- /.col -->
+                                        <div class="col-md-6">
+                                          <div class="form-group">
+                                                <label for="exampleInputCamera">Camera</label>
+                                                <input type="text" class="form-control" id="exampleInputCamera" name="Camera" value="${prodetails.camera}" placeholder="16 MP & 2MP (2 camera) ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputDisplay">Display</label>
+                                                <input type="text" class="form-control" id="exampleInputDisplay" name="Display" value="${prodetails.display}" placeholder="15.6 inch backlit FHD(1920x1080) IPS...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputBattery">Battery</label>
+                                                <input type="text" class="form-control" id="exampleInputBattery" name="Battery" value="${prodetails.battery}" placeholder="3500 mAh, 3 Cells 42Whrs, ...">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputWeight">Weight</label>
+                                                <input type="text" class="form-control" id="exampleInputWeight" name="Weight" value="${prodetails.weights}" placeholder="1.6 Kg ....">
+                                            </div>
+                                    </div><!-- /.col -->       
+                                </div><!-- /.row -->
+                            </div>
                             <div class="box-footer">
                                 <div class="box-tools pull-right">
                                     <button type="submit" class="btn btn-primary">Save changes</button>

@@ -7,6 +7,8 @@
 package bean;
 
 import entity.Products;
+import entity.TopRatingThisYear;
+import entity.TopSellingThisYear;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -30,7 +32,7 @@ public interface ProductsFacadeLocal {
     List<Products> findRange(int[] range);
 
     int count();
-
+    
     List<Products> AllProductByCategory(String cateid);
 
     List<Products> AllProductByBrand(String brandid);
@@ -40,4 +42,8 @@ public interface ProductsFacadeLocal {
     List<Products> AllProductNew();
 
     List<Products> AllProductHot();
+
+    List<TopSellingThisYear> TopSellingThisYear();
+
+    List<TopRatingThisYear> TopRatingThisYear();
 }
