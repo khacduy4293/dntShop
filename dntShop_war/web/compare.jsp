@@ -1,7 +1,9 @@
+<%@page import="entity.Products"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Map"%>
 <%@page import="entity.Items"%>
-<%@page import="entity.Cart"%>
+<%@page import="entity.ComparedProduct"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,10 +18,10 @@
         <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
         <%
-            Cart cart = (Cart) session.getAttribute("cart");
-            if (cart == null) {
-                cart = new Cart();
-                session.setAttribute("cart", cart);
+            ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
+            if (compare == null) {
+                compare = new ComparedProduct();
+                session.setAttribute("compare", compare);
             }
         %>
         <!-- /HEADER -->
@@ -35,7 +37,7 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="breadcrumb-header">Shopping cart</h3>                       
+                            <h3 class="breadcrumb-header">Compare Product</h3>                       
                         </div>
                     </div>
                     <!-- /row -->
@@ -53,31 +55,26 @@
                             <thead>
                                 <tr>
                                     <th scope="col"></th>
-                                    <th scope="col">Samsunga galaxy l7</th>
-                                    <th scope="col">xiaomi redmi note 4</th>
+                                <% for(Products p : compare.getComparedProducts()){%>
+                                    <th scope="col"><%= p.getProductName()%></th>
+                                    <%}%>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th scope="row"><span>Summary</span></th>
+                                    <% for(Products p : compare.getComparedProducts()){%>
                                     <td>
-                                        <img src="img/product/compare/compare-1.png" alt="">
-                                        <h3><span>Price</span> $250.00</h3>
+                                        
+                                        <img src="images/Products/<%= p.getImage1()%>" alt="">
+                                        <h3><span>Price</span> $<%= p.getPrice()%></h3>
                                         <ul>
                                             <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
                                             <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
                                             <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
                                         </ul>
                                     </td>
-                                    <td>
-                                        <img src="img/product/compare/compare-2.png" alt="">
-                                        <h3><span>Price</span> $200.00</h3>
-                                        <ul>
-                                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                        </ul>
-                                    </td>
+                                    <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>Network</span></th>

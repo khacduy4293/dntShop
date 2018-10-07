@@ -2650,4 +2650,124 @@ textarea.input {
         margin-top: 10px;
     }
 }
+product_compare_area {
+  padding: 100px 0px 50px 0px;
+}
+
+.compare_table .table {
+  border-left: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-top: 1px solid #cccccc;
+  margin-bottom: 0px;
+}
+
+.compare_table .table thead {
+  text-align: center;
+}
+
+.compare_table .table thead tr th {
+  border-top: 0px;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  font-size: 16px;
+  color: #000;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .40px;
+}
+
+.compare_table .table thead tr th:first-child {
+  border-bottom: 1px solid #fff;
+}
+
+.compare_table .table tbody {
+  text-align: center;
+}
+
+.compare_table .table tbody tr th {
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  padding-top: 16px;
+  padding-bottom: 15px;
+}
+
+.compare_table .table tbody tr th:first-child {
+  width: 270px;
+  text-align: left;
+  padding-left: 80px;
+  vertical-align: middle;
+}
+
+.compare_table .table tbody tr th span {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: .35px;
+  font-weight: 600;
+}
+
+.compare_table .table tbody tr td {
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  padding-top: 16px;
+  padding-bottom: 15px;
+}
+
+.compare_table .table tbody tr td:last-child {
+  padding-left: 4.5px;
+  padding-right: 4.5px;
+}
+
+.compare_table .table tbody tr td img {
+  padding-top: 25px;
+}
+
+.compare_table .table tbody tr td h3 {
+  color: #d91522;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  padding: 30px 0px;
+}
+
+.compare_table .table tbody tr td h3 span {
+  color: #000;
+  font-size: 16px;
+  font-weight: normal;
+  font-family: "Poppins", sans-serif;
+}
+
+.compare_table .table tbody tr td ul {
+  padding-bottom: 30px;
+}
+
+.compare_table .table tbody tr td ul li {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.compare_table .table tbody tr td ul li:last-child {
+  margin-right: 0px;
+  margin-left: 7px;
+}
+
+.compare_table .table tbody tr td h6 {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #666666;
+}
+
+.compare_table .table tbody tr:first-child th {
+  text-transform: uppercase;
+}
+
+.compare_table .continue {
+  padding: 0px 25px;
+  line-height: 48px;
+  margin-top: 30px;
+}
+
+/* End Compare Area css
+============================================================================================ */
 

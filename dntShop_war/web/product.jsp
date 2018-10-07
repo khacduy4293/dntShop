@@ -223,7 +223,7 @@
                                                 </div>
                                                 <div class="product-btns">
                                                     <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                                    <button class="add-to-compare" onclick='addProductToCompare("${p.productID}")'><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
                                                     <button class="quick-view" onclick="location.href = 'ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
                                                 </div>
                                             </div>
@@ -266,6 +266,23 @@
             {
                 $.ajax({
                     url: "AddProductToCart?command=plus&productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function addProductToCompare(productid)
+            {
+                $.ajax({
+                    url: "ProductCompareAddServlet?productID=" + productid,
                     type: "POST",
                     //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                     success: function()
