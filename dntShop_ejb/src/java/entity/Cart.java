@@ -52,7 +52,7 @@ public class Cart {
             if (quantity_old <= 1) {
                 cartItems.remove(key);
             } else {
-                item.setQuantity(quantity_old - 1);
+                item.setQuantity(quantity_old);
                 cartItems.put(key, item);
             }
         }

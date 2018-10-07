@@ -1,3 +1,4 @@
+<%@page import="entity.ProductsDetails"%>
 <%@page import="entity.Products"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -66,7 +67,7 @@
                                     <% for(Products p : compare.getComparedProducts()){%>
                                     <td>
                                         
-                                        <img src="images/Products/<%= p.getImage1()%>" alt="">
+                                        <img class="product-img" src="images/Products/<%= p.getImage1()%>" alt="" >
                                         <h3><span>Price</span> $<%= p.getPrice()%></h3>
                                         <ul>
                                             <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
@@ -77,41 +78,48 @@
                                     <%}%>
                                 </tr>
                                 <tr>
-                                    <th scope="row"><span>Network</span></th>
+                                    <th scope="row"><span>CPU</span></th>
+                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
                                     <td>
-                                        <h6>GSM / HSPA / LTE</h6>
+                                        <h6><%= pd.getCpu()%></h6>
                                     </td>
-                                    <td><h6>GSM / HSPA / LTE</h6></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Launch</span></th>
-                                    <td><h6>2016, August</h6></td>
-                                    <td><h6>2016, August</h6></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Body</span></th>
-                                    <td><h6>151.7 x 75 x 8 mm</h6></td>
-                                    <td><h6>151.7 x 75 x 8 mm</h6></td>
-                                </tr>
+                                     <%}%>
+                                </tr>                              
                                 <tr>
                                     <th scope="row"><span>Display</span></th>
-                                    <td><h6>PLS TFT Capacitive Touchscreen</h6></td>
-                                    <td><h6>PLS TFT Capacitive Touchscreen</h6></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Platform</span></th>
-                                    <td><h6>Android OS</h6></td>
-                                    <td><h6>Android OS</h6></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Memory</span></th>
-                                    <td><h6>MicroSD,Up to 256 GB</h6></td>
-                                    <td><h6>MicroSD,Up to 256 GB</h6></td>
+                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getDisplay()%></h6></td>
+                                    <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>Camera</span></th>
-                                    <td><h6>13 MP, f/1.9 28, Autofocus</h6></td>
-                                    <td><h6>13 MP, f/1.9 28, Autofocus</h6></td>
+                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getCamera()%></h6></td>
+                                    <%}%>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><span>Memory</span></th>
+                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getMemory() %></h6></td>
+                                    <%}%>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><span>HDD</span></th>
+                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getHdd()%></h6></td>
+                                    <%}%>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><span>VGA</span></th>
+                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getVga()%></h6></td>
+                                    <%}%>
+                                </tr>
+                                <tr>
+                                    <th scope="row"><span>Battery</span></th>
+                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <td><h6><%= pd.getBattery()%></h6></td>
+                                    <%}%>
                                 </tr>
                             </tbody>
                         </table>

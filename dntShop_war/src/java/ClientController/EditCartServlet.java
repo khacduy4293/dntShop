@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
-import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
-import entity.ComparedProduct;
+import entity.Cart;
 import entity.Items;
 import entity.Products;
-import entity.ProductsDetails;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -25,46 +24,35 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nam_Nguyen
  */
-@WebServlet(name = "ProductCompareAddServlet", urlPatterns = {"/ProductCompareAddServlet"})
-public class ProductCompareAddServlet extends HttpServlet {
-
+@WebServlet(name = "EditCartServlet", urlPatterns = {"/EditCartServlet"})
+public class EditCartServlet extends HttpServlet {
     @EJB
     private ProductsFacadeLocal productsFacade;
-    @EJB
-    private ProductsDetailsFacadeLocal productDetailsFacade;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         String productID = request.getParameter("productID");
-        String messasge = "";
-        ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
-        if(compare==null){
-            compare=new ComparedProduct();
-        }
+            int quantity=Integer.parseInt(request.getParameter("quantity"));
+        Cart cart = (Cart) session.getAttribute("cart");
         try {
-
+            
             Products product = productsFacade.find(productID);
-            ProductsDetails productDetail=productDetailsFacade.find(productID);
-            compare.addToComparedList(product);
-            //compare.addDetailList(productDetail);
-            /* if (compare.getComparedProducts().contains(product)) {
-             messasge = "product already exists";
-             } else {
-             compare.addToComparedList(product);
-             messasge = "The product has been added to the comparison list";
-             }*/
-
+            cart.subToCart(productID, new Items(product,
+                                quantity));     
+            
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("index.jsp");
         }
-        session.setAttribute("compare", compare);
+        session.setAttribute("cart", cart);
+                
+            
+        
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

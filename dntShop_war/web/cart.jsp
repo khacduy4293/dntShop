@@ -1,3 +1,4 @@
+<%@page import="entity.Customers"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.Map"%>
 <%@page import="entity.Items"%>
@@ -17,9 +18,16 @@
         <jsp:include  page="client-header.jsp"></jsp:include>
         <%
             Cart cart = (Cart) session.getAttribute("cart");
+            String checkout = "";
+            Customers cus = (Customers) session.getAttribute("login_account");
             if (cart == null) {
                 cart = new Cart();
                 session.setAttribute("cart", cart);
+            }
+            if (cus == null) {
+                checkout = "login.jsp";
+            } else {
+                checkout = "checkout.jsp";
             }
         %>
         <!-- /HEADER -->
@@ -105,7 +113,7 @@
                                         </div>
                                         <div class="one-eight text-center">
                                             <div class="display-tc">
-                                                <input type="text" id="quantity" name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="100">
+                                                <input type="text" id="qt<%=list.getValue().getProduct().getProductID()%>" onchange='edit_posale("<%=list.getValue().getProduct().getProductID()%>")' name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="100">
                                             </div>
                                         </div>
                                         <div class="one-eight text-center">
@@ -115,7 +123,7 @@
                                         </div>
                                         <div class="one-eight text-center">
                                             <div class="display-tc">
-                                                <a href="#" class="closed" onclick='RemoveCart("$<%=list.getValue().getProduct().getProductID()%>")'></a>
+                                                <a href="#" class="closed" onclick='RemoveCart("<%=list.getValue().getProduct().getProductID()%>")'></a>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +159,7 @@
                                                         <p><span><strong>Total:</strong></span> <span>$<%=cart.totalCart()%></span></p>
                                                     </div>
                                                     <div class="col-md-12" style="padding: 40px 0px;">
-                                                        <input type="submit" onclick="document.getElementById('id01').style.display = 'block'" value="Check out" class="btn btn-primary">
+                                                        <input type="submit" onclick="location.href='<%=checkout%>'" value="Check out" class="btn btn-primary">
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,6 +219,29 @@
                         alert("error");
                     }
                 });
+            }
+            function edit_posale(productid)
+            {
+                var qt1 = $('#qt' +  productid).val();
+                if (qt1 > 9) {
+                    swal("Quantity isn't more than 9");
+                } else
+                {
+                    $.ajax({
+                        url: "EditCartServlet?productID="+productid+"&quantity="+qt1,
+                        type: "POST",
+                        success: function()
+                        {
+                            location.reload();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(orderid + "\n" + qt1 + "\n" + productid);
+                        }
+                    });
+
+                }
+
             }
 
         </script>
