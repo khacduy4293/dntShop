@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 
-package AdminController;
+package ClientController;
 
+import bean.OrdersDetailsFacadeLocal;
 import bean.OrdersFacadeLocal;
 import entity.Orders;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.util.Collections;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +24,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminUpdateSaleProcessStatus", urlPatterns = {"/adminUpdateSaleProcessStatus"})
-public class adminUpdateSaleProcessStatus extends HttpServlet {
+@WebServlet(name = "ViewMyOrdersByCusID", urlPatterns = {"/ViewMyOrdersByCusID"})
+public class ViewMyOrdersByCusID extends HttpServlet {
 
     @EJB OrdersFacadeLocal orderFacade;
+    @EJB OrdersDetailsFacadeLocal orderdetailFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String orderid=request.getParameter("orderid");
-        String pstatus=request.getParameter("pstatus");
-        Orders or=orderFacade.find(orderid);
-        or.setProcessStatus(pstatus);
-        Date date = new Date();
-        or.setShipDate(date);
-        orderFacade.edit(or);
-        request.getRequestDispatcher("adminViewSale").forward(request, response);
+        String cusID = request.getParameter("cusid");
+        List<Orders> orList = orderFacade.AllOrderByCusID(cusID);
+        Collections.reverse(orList);
+        request.setAttribute("orList", orList);
+        request.setAttribute("orListCount", orList.size());
+        request.setAttribute("orDetailList", orderdetailFacade.findAll());
+        request.getRequestDispatcher("myOrders.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
