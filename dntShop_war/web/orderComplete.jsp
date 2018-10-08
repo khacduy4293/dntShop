@@ -51,7 +51,7 @@
                                 <p><span>02</span></p>
                                 <h3>Checkout</h3>
                             </div>
-                            <div class="process text-center">
+                            <div class="process text-center active">
                                 <p><span>03</span></p>
                                 <h3>Order Complete</h3>
                             </div>
@@ -64,8 +64,7 @@
     color: #d30819;"></i></span>
                         <h2>Thank you for purchasing, Your order is complete</h2>
                         <p>
-                            <a href="index.html" class="newsletter-btn">Home</a>
-                            <a href="shop.html" class="newsletter-btn">Continue Shopping</a>
+                            <a href="AllProduct" class="newsletter-btn">Continue Shopping</a>
                         </p>
                     </div>
                 </div>
