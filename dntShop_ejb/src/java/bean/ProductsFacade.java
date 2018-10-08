@@ -71,15 +71,6 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
     }
 
     @Override
-    public List<Products> AllProductHot() {
-        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.isStatus = :status and p.feature = :feat");
-        boolean status=true;
-        q.setParameter("status", status);
-        q.setParameter("feat", "Hot");   
-        return q.getResultList();
-    }
-
-    @Override
     public List<TopSellingThisYear> TopSellingThisYear() {
         Query q = getEntityManager().createQuery("SELECT t FROM TopSellingThisYear t");
         return q.getResultList();
@@ -97,6 +88,16 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         q.setParameter("pro", pro_id);
         q.setParameter("startDate", startDate);
         q.setParameter("endDate", endDate);
+        return q.getResultList();
+    }
+    
+    @Override
+    public List<Products> AllProductByPrice(float min, float max) {
+        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.price*(100-p.discountProduct)/100 >= :min and p.price*(100-p.discountProduct)/100 <= :max and p.isStatus = :status ORDER BY p.price*(100-p.discountProduct)/100");
+        q.setParameter("min", min);
+        q.setParameter("max", max);
+        boolean status=true;
+        q.setParameter("status", status);
         return q.getResultList();
     }
 }

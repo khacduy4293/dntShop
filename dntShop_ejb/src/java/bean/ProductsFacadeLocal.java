@@ -43,11 +43,11 @@ public interface ProductsFacadeLocal {
 
     List<Products> AllProductNew();
 
-    List<Products> AllProductHot();
-
     List<TopSellingThisYear> TopSellingThisYear();
 
     List<TopRatingThisYear> TopRatingThisYear();
     
     List<Report> ProductReport(String pro_id, Date startDate, Date endDate);
+    
+    List<Products> AllProductByPrice(float min, float max);
 }
