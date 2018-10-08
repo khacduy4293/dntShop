@@ -3,39 +3,43 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
-import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
+import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Duy
  */
-@WebServlet(name = "ProductDetail", urlPatterns = {"/ProductDetail"})
-public class ProductDetail extends HttpServlet {
+@WebServlet(name = "AllProductByPrice", urlPatterns = {"/AllProductByPrice"})
+public class AllProductByPrice extends HttpServlet {
 
-    @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    ProductsDetailsFacadeLocal prodetailFacade;
-
+    @EJB ProductsFacadeLocal proFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String pro_id = request.getParameter("proid");
-        request.setAttribute("pro", proFacade.find(pro_id));
-        request.setAttribute("prodetail", prodetailFacade.FindProductDetailsByProID(pro_id).get(0));
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        Float min=Float.parseFloat(request.getParameter("minprice"));
+        Float max=Float.parseFloat(request.getParameter("maxprice"));
+        List<Products> proList = proFacade.AllProductByPrice(min, max);
+        Collections.reverse(proList);
+        session.setAttribute("productList", proList);
+        session.setAttribute("productListCount", proFacade.AllProductByPrice(min, max).size());
+        request.getRequestDispatcher("product.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

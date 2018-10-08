@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminAddProduct" method="post" enctype="multipart/form-data">
+                            <form action="adminAddProduct" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">CREATE NEW PRODUCT</h3>
                                 </div><!-- /.box-header -->
@@ -113,37 +113,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                     </div>
                                 </div>
+                            </div><!-- /.box-body -->
+                            <div class="box-header with-border">
+                                <h3 class="box-title">PRODUCT IMAGE</h3>                              
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
                                 <div class="row">                                   
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Product Image <span style="color:red">*</span></label>
-                                            <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" required="true">
+                                            <label for="exampleInputFile">Image 1<span style="color:red">*</span></label>
+                                            <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" style="display: none;" accept="image/*">
+                                            <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile1').click();"/>
                                             <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 2</label>
-                                            <input type="file" id="exampleInputFile2" name="inputImage2" onchange="readURL2(this);" >
+                                            <input type="file" id="exampleInputFile2" name="inputImage2" onchange="readURL2(this);" style="display: none;" accept="image/*">
+                                            <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile2').click();"/>
                                             <p class="help-block"><img id="blah2" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 3</label>
-                                            <input type="file" id="exampleInputFile3" name="inputImage3" onchange="readURL3(this);">
+                                            <input type="file" id="exampleInputFile3" name="inputImage3" onchange="readURL3(this);" style="display: none;" accept="image/*">
+                                            <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile3').click();"/>
                                             <p class="help-block"><img id="blah3" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 4</label>
-                                            <input type="file" id="exampleInputFile4" name="inputImage4" onchange="readURL4(this);">
+                                            <input type="file" id="exampleInputFile4" name="inputImage4" onchange="readURL4(this);" style="display: none;" accept="image/*">
+                                            <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile4').click();"/>
                                             <p class="help-block"><img id="blah4" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
                                     </div>
                                 </div>
-                            </div><!-- /.box-body -->
+                            </div>
                             <div class="box-header with-border">
                                 <h3 class="box-title">DETAILS</h3>                              
                             </div><!-- /.box-header -->
@@ -205,59 +214,106 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- REQUIRED JS SCRIPTS -->
         <script type="text/javascript">
             function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
+                /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile1');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah').attr('src', '#');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
             }
             function readURL2(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah2')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
+                /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile2');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah2').attr('src', '#');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah2')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
             }
             function readURL3(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah3')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
+                /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile3');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah3').attr('src', '#');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah3')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
             }
             function readURL4(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah4')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
+                /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile4');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah4').attr('src', '#');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah4')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+            }
+            function checkForm() {
+                var fileInput = $('#exampleInputFile1').val()
+                if (fileInput=='') {
+                    alert("Please chooes image to continue");
+                    event.preventDefault();
                 }
             }
         </script>

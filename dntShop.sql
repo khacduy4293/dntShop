@@ -144,6 +144,10 @@ Create view TopRatingThisYear as
 	group by p.ProductName, p.ProductID,p.Image1,p.Price,p.DiscountProduct,c.CategoryName
 	ORDER BY averageRating DESC, countRating DESC
 go
+create view Report as
+	Select row_number() over (order by a.OrderID) as rowid, a.OrderID, b.ProductID,c.ProductName, a.OrderDate, a.ShipDate,b.SellingPrice, b.Quantity, d.CustomerID, d.FirstName,d.LastName,a.ShipName, a.ProcessStatus,Total=(b.SellingPrice*b.Quantity)      
+	from Orders a join OrdersDetails b on a.OrderID = b.OrderID join Products c on b.ProductID=c.ProductID join Customers d on a.CustomerID =d.CustomerID
+	go
 
 insert Admins(AdminID, Email, [Password], FullName, Avatar) values
 ('AD001','duy@mail.com', '123456', 'Tu Khac Duy', 'images/Avatars/default-avatar.jpg'),

@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClientController;
 
-import bean.ProductsDetailsFacadeLocal;
-import bean.ProductsFacadeLocal;
+package AdminController;
+
+import bean.OrdersFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -20,22 +20,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "ProductDetail", urlPatterns = {"/ProductDetail"})
-public class ProductDetail extends HttpServlet {
+@WebServlet(name = "adminViewSale", urlPatterns = {"/adminViewSale"})
+public class adminViewSale extends HttpServlet {
 
-    @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    ProductsDetailsFacadeLocal prodetailFacade;
-
+    @EJB OrdersFacadeLocal orderFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String pro_id = request.getParameter("proid");
-        request.setAttribute("pro", proFacade.find(pro_id));
-        request.setAttribute("prodetail", prodetailFacade.FindProductDetailsByProID(pro_id).get(0));
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+        request.setAttribute("orderList", orderFacade.findAll());
+        request.getRequestDispatcher("adminSale.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

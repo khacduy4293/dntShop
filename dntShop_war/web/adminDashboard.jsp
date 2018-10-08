@@ -137,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <tbody>
                                                 <c:forEach var="o" items="${orderList}" begin="0" end="6">
                                                     <tr>
-                                                        <td><a href="#">${o.orderID}</a></td>
+                                                        <td><a href="adminViewOrderDetails?orderid=${o.orderID}">${o.orderID}</a></td>
                                                         <td>${o.customerID.firstName} ${o.customerID.lastName}</td>
                                                         <c:if test="${o.processStatus eq 'Completed'}">
                                                             <td><span class="label label-success">${o.processStatus}</span></td>
@@ -159,12 +159,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div><!-- /.table-responsive -->
                                 </div><!-- /.box-body -->
                                 <div class="box-footer clearfix">
-                                    <a href="javascript::;" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+                                    <a href="adminViewSale" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
                                 </div><!-- /.box-footer -->
                             </div><!-- /.box -->
                         </div><!-- /.col -->
 
                         <div class="col-md-4">
+                            <div class="info-box bg-red">
+                                <span class="info-box-icon"><i class="fa fa-trash-o"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Canceled Orders</span>
+                                    <span class="info-box-number">114,381</span>
+                                    <div class="progress">
+                                        <div class="progress-bar" ></div>
+                                    </div>
+                                    <span class="progress-description">
+                                        70% Increase in 30 Days
+                                    </span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
                             <!-- Info Boxes Style 2 -->
                             <div class="info-box bg-yellow">
                                 <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
@@ -192,19 +205,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
-                            <div class="info-box bg-red">
-                                <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Downloads</span>
-                                    <span class="info-box-number">114,381</span>
-                                    <div class="progress">
-                                        <div class="progress-bar" style="width: 70%"></div>
-                                    </div>
-                                    <span class="progress-description">
-                                        70% Increase in 30 Days
-                                    </span>
-                                </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->
+                            
                             <div class="info-box bg-aqua">
                                 <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
                                 <div class="info-box-content">

@@ -35,4 +35,5 @@ public interface OrdersFacadeLocal {
 
     List<OrderListThisMonth> OrderListThisMonth();
     
+    List<Orders> CustomerReport(String cus_id, Date startDate, Date endDate);
 }

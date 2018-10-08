@@ -100,28 +100,31 @@
 
                         <!-- aside Widget -->
                         <div class="aside">
-                            <h3 class="aside-title">Price</h3>
-                            <div class="price-filter">
-                                <div id="price-slider"></div>
-                                <div class="input-number price-min">
-                                    <input id="price-min" type="number">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
+                            <h3 class="aside-title">Price</h3>                          
+                            <form action="AllProductByPrice" method="post">
+                                <div class="price-filter">
+                                    <div id="price-slider"></div>
+                                    <div class="input-number price-min">
+                                        <input id="price-min" name="minprice" type="number">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
+                                    <span>-</span>
+                                    <div class="input-number price-max">
+                                        <input id="price-max" name="maxprice" type="number">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
                                 </div>
-                                <span>-</span>
-                                <div class="input-number price-max">
-                                    <input id="price-max" type="number">
-                                    <span class="qty-up">+</span>
-                                    <span class="qty-down">-</span>
-                                </div>
-                            </div>
+                                <input type="submit" class="btn-danger pull-right" value="Filter"/>
+                            </form>
                         </div>
                         <!-- /aside Widget -->                        
 
                         <!-- aside Widget -->
                         <div class="aside">
                             <h3 class="aside-title">Top selling</h3>
-                        <c:forEach var="n" items="${topSellingList}" begin="0" end="2">
+                            <c:forEach var="n" items="${topSellingList}" begin="0" end="2">
                                 <div class="product-widget">
                                     <div class="product-img">
                                         <img src="images/Products/${n.image1}" alt="">
@@ -131,7 +134,7 @@
                                         <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
                                         <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                             <c:if test="${n.discountProduct ne 0}">
-                                            <del class="product-old-price">$${n.price}</del></h4>
+                                                <del class="product-old-price">$${n.price}</del></h4>
                                             </c:if>
                                     </div>
                                 </div>

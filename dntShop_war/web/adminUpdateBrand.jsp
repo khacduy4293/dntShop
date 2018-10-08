@@ -72,7 +72,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>                                         
                                             <div class="form-group">
                                                 <label for="exampleInputFile">Logo input</label>
-                                                <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
+                                                <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" style="display: none;" accept="image/*">
+                                                <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
                                                 <p class="help-block"><img id="blah" src="${bra.brandImages}" alt="" class="img-circle" width="80px" height="80px"/></p>
                                             </div>
                                         </div>
@@ -96,18 +97,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- REQUIRED JS SCRIPTS -->
         <script type="text/javascript">
             function readURL(input) {
-                if (input.files && input.files[0]) {
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        $('#blah')
-                                .attr('src', e.target.result)
-                                .width(80)
-                                .height(80);
-                    };
-
-                    reader.readAsDataURL(input.files[0]);
-                }
+                /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah').attr('src', '${bra.brandImages}');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
             }
         </script>
     </body>

@@ -5,8 +5,8 @@
  */
 package ClientController;
 
-import bean.ProductsDetailsFacadeLocal;
-import bean.ProductsFacadeLocal;
+import bean.CustomersFacadeLocal;
+import entity.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.ejb.EJB;
@@ -15,27 +15,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Duy
  */
-@WebServlet(name = "ProductDetail", urlPatterns = {"/ProductDetail"})
-public class ProductDetail extends HttpServlet {
+@WebServlet(name = "EditMyProfile", urlPatterns = {"/EditMyProfile"})
+public class EditMyProfile extends HttpServlet {
 
     @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    ProductsDetailsFacadeLocal prodetailFacade;
+    CustomersFacadeLocal cusFacade;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String pro_id = request.getParameter("proid");
-        request.setAttribute("pro", proFacade.find(pro_id));
-        request.setAttribute("prodetail", prodetailFacade.FindProductDetailsByProID(pro_id).get(0));
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        String cusid = request.getParameter("customerID");
+        Customers cus = cusFacade.find(cusid);
+        String fName = request.getParameter("first-name");
+        cus.setFirstName(fName);
+        String lName = request.getParameter("last-name");
+        cus.setLastName(lName);
+        String phone = request.getParameter("tel");
+        cus.setPhone(phone);
+        String address = request.getParameter("address");
+        cus.setAddress(address);
+        String gender = request.getParameter("gender");
+        if (gender.equals("Male")) {
+            cus.setGender(Boolean.TRUE);
+        } else {
+            cus.setGender(Boolean.FALSE);
+        }
+        cusFacade.edit(cus);
+        session.setAttribute("login_account", cusFacade.find(cusid));
+        request.getRequestDispatcher("myAccount.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

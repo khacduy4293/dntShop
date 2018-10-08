@@ -6,8 +6,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Edit Account</title>
-        
+            <title>Edit Account</title>
+
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -53,20 +53,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="row">
-                        <!-- right column -->
-                        <div class="col-md-6">
-                            <!-- Horizontal Form -->
-                            <div class="box box-info">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title">Edit Account</h3>
-                                </div><!-- /.box-header -->
-                                <!-- form start -->
-                                <form class="form-horizontal" action="adminUpdateAccount" method="post" enctype="multipart/form-data">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" value="${ad.email}" disabled="true">
+                            <!-- right column -->
+                            <div class="col-md-6">
+                                <!-- Horizontal Form -->
+                                <div class="box box-info">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title">Edit Account</h3>
+                                    </div><!-- /.box-header -->
+                                    <!-- form start -->
+                                    <form class="form-horizontal" action="adminUpdateAccount" method="post" enctype="multipart/form-data">
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                                                <div class="col-sm-10">
+                                                    <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" value="${ad.email}" disabled="true">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -78,8 +78,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="form-group">
                                             <label for="inputFullName" class="col-sm-2 control-label">Avatar</label>
                                             <div class="col-sm-10">
-                                                <img id="blah" src="${ad.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/>
-                                                <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
+                                                <img id="blah" src="${ad.avatar}" class="img-circle" width="80px" height="80px" alt="User Image" style="margin-bottom: 10px"/><br/>
+                                                <input type="file" id="exampleInputFile" name="inputImage" accept="image/*" onchange="readURL(this);" style="display: none;">
+                                                <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
                                             </div>
                                         </div>
                                     </div><!-- /.box-body -->
@@ -95,7 +96,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-                
+
             </div><!-- ./wrapper -->
 
             <!-- REQUIRED JS SCRIPTS -->
@@ -105,29 +106,39 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     var newPass = $('#password').val();
                     var rePass = $('#repassword').val();
                     if (oldPass !== "<%= session.getAttribute("admin_login_pass")%>") {
-                        alert("Old password don't Match");
+                        alert("Old password don't match");
                         event.preventDefault();
                         $('#oldpassword').focus();
                     } else if (newPass !== rePass) {
-                        alert("Password don't Match");
+                        alert("Password don't match");
                         event.preventDefault();
                         $('#password').focus();
                     } else {
-                        alert("Change Password successfully!!!");
+                        alert("Change password successfully!!!");
                     }
                 }
                 function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(e) {
-                            $('#blah')
-                                    .attr('src', e.target.result)
-                                    .width(80)
-                                    .height(80);
-                        };
-
-                        reader.readAsDataURL(input.files[0]);
+                    /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        $('#blah').attr('src', '${ad.avatar}');
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
                     }
                 }
         </script>
