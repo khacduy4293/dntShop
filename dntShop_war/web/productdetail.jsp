@@ -181,9 +181,66 @@
                                 <!-- tab2  -->
                                 <div id="tab2" class="tab-pane fade in">
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <div class="compare_table">
+                                                <div class="table-responsive-md">
+                                                    <table class="table">                                                   
+                                                        <tbody>
+                                                            <c:if test="${not empty prodetail.cpu}">
+                                                                <tr>
+                                                                    <th scope="row"><span>CPU</span></th>
+                                                                    <td><h6>${prodetail.cpu}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.memory}">
+                                                                <tr>
+                                                                    <th scope="row"><span>Memory</span></th>
+                                                                    <td><h6>${prodetail.memory}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.vga}">
+                                                                <tr>
+                                                                    <th scope="row"><span>VGA</span></th>
+                                                                    <td><h6>${prodetail.vga}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.hdd}">
+                                                                <tr>
+                                                                    <th scope="row"><span>HDD</span></th>
+                                                                    <td><h6>${prodetail.hdd}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.camera}">
+                                                                <tr>
+                                                                    <th scope="row"><span>Camera</span></th>
+                                                                    <td><h6>${prodetail.camera}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.display}">
+                                                                <tr>
+                                                                    <th scope="row"><span>Display</span></th>
+                                                                    <td><h6>${prodetail.display}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.battery}">
+                                                                <tr>
+                                                                    <th scope="row"><span>Battery</span></th>
+                                                                    <td><h6>${prodetail.battery}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                                <c:if test="${not empty prodetail.weights}">
+                                                                <tr>
+                                                                    <th scope="row"><span>Weight</span></th>
+                                                                    <td><h6>${prodetail.weights}</h6></td>   
+                                                                </tr>
+                                                            </c:if>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
+                                        <div class="col-md-2"></div>
                                     </div>
                                 </div>
                                 <!-- /tab2  -->
