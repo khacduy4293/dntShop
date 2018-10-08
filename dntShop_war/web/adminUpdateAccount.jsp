@@ -106,15 +106,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     var newPass = $('#password').val();
                     var rePass = $('#repassword').val();
                     if (oldPass !== "<%= session.getAttribute("admin_login_pass")%>") {
-                        alert("Old password don't Match");
+                        alert("Old password don't match");
                         event.preventDefault();
                         $('#oldpassword').focus();
                     } else if (newPass !== rePass) {
-                        alert("Password don't Match");
+                        alert("Password don't match");
                         event.preventDefault();
                         $('#password').focus();
                     } else {
-                        alert("Change Password successfully!!!");
+                        alert("Change password successfully!!!");
                     }
                 }
                 function readURL(input) {
@@ -125,6 +125,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah').attr('src', '${ad.avatar}');
                         return false;
                     } else {
                         //Image preview

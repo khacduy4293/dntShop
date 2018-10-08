@@ -288,6 +288,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        if(${not empty pro.image1}){
+                        $('#blah').attr('src', 'images/Products/${pro.image1}');
+                        }else{
+                        $('#blah').attr('src', '#');    
+                        }
                         return false;
                     } else {
                         //Image preview
@@ -311,6 +316,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        if(${not empty pro.image2}){
+                        $('#blah2').attr('src', 'images/Products/${pro.image2}');
+                        }else{
+                        $('#blah2').attr('src', '#');    
+                        }
                         return false;
                     } else {
                         //Image preview
@@ -334,6 +344,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        if(${not empty pro.image3}){
+                        $('#blah3').attr('src', 'images/Products/${pro.image3}');
+                        }else{
+                        $('#blah3').attr('src', '#');    
+                        }
                         return false;
                     } else {
                         //Image preview
@@ -357,6 +372,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        if(${not empty pro.image4}){
+                        $('#blah4').attr('src', 'images/Products/${pro.image4}');
+                        }else{
+                        $('#blah4').attr('src', '#');    
+                        }
                         return false;
                     } else {
                         //Image preview

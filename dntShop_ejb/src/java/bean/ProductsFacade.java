@@ -7,8 +7,10 @@
 package bean;
 
 import entity.Products;
+import entity.Report;
 import entity.TopRatingThisYear;
 import entity.TopSellingThisYear;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -89,4 +91,12 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         return q.getResultList();
     }
     
+    @Override
+    public List<Report> ProductReport(String pro_id, Date startDate, Date endDate) {
+        Query q=em.createQuery("SELECT r FROM Report r WHERE r.productID = :pro and r.orderDate >= :startDate and r.orderDate <= :endDate");
+        q.setParameter("pro", pro_id);
+        q.setParameter("startDate", startDate);
+        q.setParameter("endDate", endDate);
+        return q.getResultList();
+    }
 }

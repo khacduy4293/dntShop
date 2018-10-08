@@ -58,7 +58,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminAddProduct" method="post" enctype="multipart/form-data">
+                            <form action="adminAddProduct" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">CREATE NEW PRODUCT</h3>
                                 </div><!-- /.box-header -->
@@ -122,7 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="exampleInputFile">Image 1<span style="color:red">*</span></label>
-                                            <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" required="true" style="display: none;" accept="image/*">
+                                            <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" style="display: none;" accept="image/*">
                                             <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile1').click();"/>
                                             <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                         </div>
@@ -221,6 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
@@ -244,6 +245,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah2').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
@@ -267,6 +269,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah3').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
@@ -290,6 +293,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah4').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
@@ -304,6 +308,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             reader.readAsDataURL(input.files[0]);
                         }
                     }
+            }
+            function checkForm() {
+                var fileInput = $('#exampleInputFile1').val()
+                if (fileInput=='') {
+                    alert("Please chooes image to continue");
+                    event.preventDefault();
+                }
             }
         </script>
     </body>

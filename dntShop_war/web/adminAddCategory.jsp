@@ -59,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddCategory" method="post" enctype="multipart/form-data">
+                                        <form action="adminAddCategory" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                             <div class="modal-header">                                             
                                                 <h4 class="modal-title">Create new Category</h4>
                                             </div>                                        
@@ -70,7 +70,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>                                                                                 
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input<span style="color:red">*</span></label>
-                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" required="true" style="display: none;" accept="image/*">
+                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" style="display: none;" accept="image/*">
                                                     <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
                                                     <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
                                                 </div>
@@ -102,6 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
@@ -116,6 +117,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             reader.readAsDataURL(input.files[0]);
                         }
                     }
+            }
+            function checkForm() {
+                var fileInput = $('#exampleInputFile').val()
+                if (fileInput=='') {
+                    alert("Please chooes image to continue");
+                    event.preventDefault();
+                }
             }
         </script>
     </body>

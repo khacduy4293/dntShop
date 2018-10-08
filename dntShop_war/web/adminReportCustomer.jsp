@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="#" method="post">
+                                        <form action="adminReportCustomer" method="post">
                                             <div class="modal-header">                                           
                                                 <h4 class="modal-title">Customer Report</h4>
                                             </div>
@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="input-group-addon">
                                                             <i class="fa fa-calendar"></i>
                                                         </div>
-                                                        <input type="text" class="form-control pull-right" id="reservation"/>   
+                                                        <input type="text" class="form-control pull-right" name="dateRange" id="reservation"/>   
                                                     </div><!-- /.input group -->
                                                 </div><!-- /.form group -->
                                                 <div class="form-group">

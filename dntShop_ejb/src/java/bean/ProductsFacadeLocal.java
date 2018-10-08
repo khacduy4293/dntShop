@@ -7,8 +7,10 @@
 package bean;
 
 import entity.Products;
+import entity.Report;
 import entity.TopRatingThisYear;
 import entity.TopSellingThisYear;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -46,4 +48,6 @@ public interface ProductsFacadeLocal {
     List<TopSellingThisYear> TopSellingThisYear();
 
     List<TopRatingThisYear> TopRatingThisYear();
+    
+    List<Report> ProductReport(String pro_id, Date startDate, Date endDate);
 }

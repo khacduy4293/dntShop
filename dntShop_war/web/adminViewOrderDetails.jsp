@@ -124,7 +124,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row">
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
-                            <p class="lead">Payment Methods: ${order.paymentMethod}</p>
+                            <p class="lead"><b>Payment Methods:</b> ${order.paymentMethod}</p>
                             <img src="Admin/dist/img/credit/visa.png" alt="Visa"/>
                             <img src="Admin/dist/img/credit/mastercard.png" alt="Mastercard"/>
                             <img src="Admin/dist/img/credit/american-express.png" alt="American Express"/>

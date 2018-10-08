@@ -7,6 +7,8 @@
 package bean;
 
 import entity.Customers;
+import entity.Report;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

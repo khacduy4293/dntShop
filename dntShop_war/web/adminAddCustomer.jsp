@@ -157,6 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
+                        $('#blah').attr('src', '#');
                         return false;
                     } else {
                         //Image preview
