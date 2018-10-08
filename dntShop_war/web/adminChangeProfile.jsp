@@ -110,8 +110,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="form-group">
                                             <label for="inputFullName" class="col-sm-2 control-label">Avatar</label>
                                             <div class="col-sm-10">
-                                                <img id="blah" src="${sessionScope.admin_login.avatar}" class="img-circle" width="80px" height="80px" alt="User Image"/>
-                                                <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);">
+                                                <img id="blah" src="${sessionScope.admin_login.avatar}" class="img-circle" width="80px" height="80px" alt="User Image" style="margin-bottom: 10px"/><br/>
+                                                <input type="file" id="exampleInputFile" name="inputImage" accept="image/*" onchange="readURL(this);" style="display: none;">
+                                                <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
                                             </div>
                                         </div>
                                     </div><!-- /.box-body -->
@@ -149,17 +150,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
                 }
                 function readURL(input) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-
-                        reader.onload = function(e) {
-                            $('#blah')
-                                    .attr('src', e.target.result)
-                                    .width(80)
-                                    .height(80);
-                        };
-
-                        reader.readAsDataURL(input.files[0]);
+                    /*************** check image **********/
+                    var fileInput = document.getElementById('exampleInputFile');
+                    var filePath = fileInput.value;
+                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                    if (!allowedExtensions.exec(filePath)) {
+                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                        fileInput.value = '';
+                        return false;
+                    } else {
+                        //Image preview
+                        if (fileInput.files && fileInput.files[0]) {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                                $('#blah')
+                                        .attr('src', e.target.result)
+                                        .width(80)
+                                        .height(80);
+                            };
+                            reader.readAsDataURL(input.files[0]);
+                        }
                     }
                 }
         </script>

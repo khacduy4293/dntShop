@@ -88,7 +88,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <td>${e.shipPhone}</td>
                                                     <td>${e.shipAddress}</td>
                                                     <td>${e.paymentMethod}</td>
-                                                    <td>${e.total}</td>                                           
+                                                    <td>$${e.total}</td>                                           
                                                     <td><fmt:formatDate value="${e.orderDate}" pattern="dd-MM-yyyy" /></td>
                                                     <td>                                                       
                                                         <c:if test="${e.processStatus eq 'Completed'}">
@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             </ul>
                                                         </div>     
                                                     </td>
-                                                </tr>   
+                                                </tr>
                                             </c:forEach>
                                         </tbody>
                                     </table>
