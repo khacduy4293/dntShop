@@ -55,7 +55,7 @@
                                     </div>                            
                                     <div class="form-group">
                                         <h5>EMAIL</h5>
-                                        <input class="input" type="email" name="email" placeholder="Enter your Email" required="true">
+                                        <input class="input" type="email" name="email" value="${sessionScope.login_account}" placeholder="Enter your Email" required="true">
                                     </div>
                                     <div class="form-group">
                                         <h5>PASSWORD</h5>

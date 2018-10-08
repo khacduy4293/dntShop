@@ -38,7 +38,7 @@
                                 <i class="fa fa-user-o"></i>${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName} <i class="fa fa-angle-down" aria-hidden="true"></i>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-user"></i> My Account</a></li>
+                                    <li class="nav-item"><a class="nav-link" style="color: black" href="myAccount.jsp"><i class="fa fa-user"></i> My Account</a></li>
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-shopping-cart"></i>My Orders</a></li>
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                     <li class="nav-item"><a class="nav-link" style="color: black" href="Logout"><i class="fa fa-sign-out"></i>Logout</a></li>                              
