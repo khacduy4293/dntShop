@@ -62,22 +62,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddAccount" method="post" enctype="multipart/form-data">
+                                        <form id="addAccount" action="adminAddAccount" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                           
                                                 <h4 class="modal-title">Create new Account</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="exampleInputFullName">Full name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputName" name="fullName" placeholder="Enter fullname">
+                                                    <input type="text" class="form-control" id="exampleInputName" name="fullName" placeholder="Enter fullname" required="true">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail">Email address<span style="color:red">*</span></label>
-                                                    <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter email">
+                                                    <span id="email-result" value="false"></span>
+                                                    <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter email" required="true">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword">Password<span style="color:red">*</span></label>
-                                                    <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password">
+                                                    <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password" required="true">
                                                 </div>                                               
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input</label>
@@ -87,7 +88,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
@@ -128,6 +128,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
             }
+            
+            /*************** check proName unique **********/
+            $(document).ready(function() {
+                var x_timer;
+                $("#exampleInputEmail").keyup(function(e) {
+                    clearTimeout(x_timer);
+                    var email = $(this).val();
+                    x_timer = setTimeout(function() {
+                        check_email_ajax(email);
+                    }, 1000);
+                });
+
+                function check_email_ajax(email) {
+                    $("#email-result").html("<img src='img/ajax-loader.gif'/>");
+                    $.post('adminCheckAddEmailAccount', {'email': email}, function(data) {
+                        $("#email-result").html(data);
+                    });
+                }
+            });
+            /*************** focus proName error  **********/
+            $('#addAccount').submit(function(event) {
+                var errors = $('#email-result').attr('value');
+                if (errors == 'false') {
+                    $('#exampleInputEmail').focus();
+                    event.preventDefault();
+                }
+            });
         </script>
     </body>
 </html>
