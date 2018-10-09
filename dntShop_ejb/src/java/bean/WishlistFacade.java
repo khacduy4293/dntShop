@@ -7,9 +7,11 @@
 package bean;
 
 import entity.Wishlist;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +30,13 @@ public class WishlistFacade extends AbstractFacade<Wishlist> implements Wishlist
     public WishlistFacade() {
         super(Wishlist.class);
     }
+
+    @Override
+    public List<Wishlist> findbyCustomer(String cusId) {
+        Query q=em.createQuery("SELECT w FROM Wishlist w WHERE w.customerID.customerID = :cusId");
+        q.setParameter("cusId", cusId);
+        return q.getResultList();
+    }
+    
     
 }

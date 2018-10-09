@@ -83,10 +83,10 @@
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
+                            <a href="getWishlistServet?customerId=${sessionScope.login_account.customerID}">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">2</div>
+                                <div class="qty">${sessionScope.countWishlist}</div>
                             </a>
                         </div>
                         <!-- /Wishlist -->
