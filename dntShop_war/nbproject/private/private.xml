@@ -22,11 +22,15 @@
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/PlaceOrderServlet.java</file>
         </group>
+<<<<<<< HEAD
 =======
         <group>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/compare.jsp</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ProductCompareAddServlet.java</file>
         </group>
+        <group name="GitHub"/>
+>>>>>>> bb1dc87d8b7eed7b6a9e0a28ced53afc7ccdfe63
+=======
         <group name="GitHub"/>
 >>>>>>> bb1dc87d8b7eed7b6a9e0a28ced53afc7ccdfe63
     </open-files>
