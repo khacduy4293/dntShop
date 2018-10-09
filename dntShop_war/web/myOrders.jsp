@@ -64,7 +64,7 @@
                                             <h5><fmt:formatDate value="${o.orderDate}" pattern="dd-MM-yyyy" /> 
                                                 / <span style="color: red">${o.processStatus}</span> 
                                                 <c:if test="${o.processStatus eq 'Pending'}">                               
-                                                <a href="#" class="closed"><i class="fa fa-trash-o"></i></a> 
+                                                    <a href="CanceledMyOrders?orderid=${o.orderID}&cusid=${sessionScope.login_account.customerID}" class="closed"><i class="fa fa-trash-o"></i></a> 
                                                 </c:if>
                                             </h5>
                                             </div>

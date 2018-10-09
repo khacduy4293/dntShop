@@ -6,12 +6,6 @@
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/compare.jsp</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ProductCompareAddServlet.java</file>
         </group>
-        <group name="GitHub">
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/myOrders.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/product.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/adminCustomer.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/src/java/AdminController/adminUpdateSaleProcessStatus.java</file>
-        </group>
+        <group name="GitHub"/>
     </open-files>
 </project-private>
