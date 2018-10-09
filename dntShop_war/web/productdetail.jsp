@@ -109,26 +109,34 @@
                                 <a class="review-link" href="#">10 Review(s) | Add your review</a>
                             </div>
                             <div>
-                                <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> <del class="product-old-price">$${pro.price}</del></h3>
+                                <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> 
+                                    <c:if test="${pro.discountProduct ne 0}">
+                                        <del class="product-old-price">$${pro.price}</del>
+                                    </c:if>
+                                </h3>
                                 <span class="product-available">In Stock</span>
                             </div>
-                            <p>${pro.descriptions}</p>
+                            <p>${pro.descriptions}</p>                       
 
-                            <div class="product-options">
-                                <label>
-                                    Size
-                                    <select class="input-select">
-                                        <option value="0">X</option>
-                                    </select>
-                                </label>
-                                <label>
-                                    Color
-                                    <select class="input-select">
-                                        <option value="0">Red</option>
-                                    </select>
-                                </label>
-                            </div>
-
+                            <ul class="product-links">
+                                <li>Category:</li>
+                                <li><a href="AllProductByCategory?cateid=${pro.categoryID.categoryID}">${pro.categoryID.categoryName}</a></li>
+                            </ul>
+                            <ul class="product-links">
+                                <li>Brand:</li>
+                                <li><a href="AllProductByBrand?brandid=${pro.brandID.brandID}">
+                                        <c:choose>
+                                            <c:when test="${not empty pro.brandID.brandImages}">
+                                                <img class="img-circle" src="${pro.brandID.brandImages}" width="30px" height="30px">
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${pro.brandID.brandName}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </a>
+                                </li>
+                            </ul>
+                            <br/>
                             <div class="add-to-cart">
                                 <div class="qty-label">
                                     Qty
@@ -146,10 +154,7 @@
                                 <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
                             </ul>
 
-                            <ul class="product-links">
-                                <li>Category:</li>
-                                <li><a href="AllProductByCategory?cateid=${pro.categoryID.categoryID}">${pro.categoryID.categoryName}</a></li>
-                            </ul>
+
 
                         </div>
                     </div>
@@ -193,43 +198,43 @@
                                                                     <td><h6>${prodetail.cpu}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.memory}">
+                                                            <c:if test="${not empty prodetail.memory}">
                                                                 <tr>
                                                                     <th scope="row"><span>Memory</span></th>
                                                                     <td><h6>${prodetail.memory}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.vga}">
+                                                            <c:if test="${not empty prodetail.vga}">
                                                                 <tr>
                                                                     <th scope="row"><span>VGA</span></th>
                                                                     <td><h6>${prodetail.vga}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.hdd}">
+                                                            <c:if test="${not empty prodetail.hdd}">
                                                                 <tr>
                                                                     <th scope="row"><span>HDD</span></th>
                                                                     <td><h6>${prodetail.hdd}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.camera}">
+                                                            <c:if test="${not empty prodetail.camera}">
                                                                 <tr>
                                                                     <th scope="row"><span>Camera</span></th>
                                                                     <td><h6>${prodetail.camera}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.display}">
+                                                            <c:if test="${not empty prodetail.display}">
                                                                 <tr>
                                                                     <th scope="row"><span>Display</span></th>
                                                                     <td><h6>${prodetail.display}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.battery}">
+                                                            <c:if test="${not empty prodetail.battery}">
                                                                 <tr>
                                                                     <th scope="row"><span>Battery</span></th>
                                                                     <td><h6>${prodetail.battery}</h6></td>   
                                                                 </tr>
                                                             </c:if>
-                                                                <c:if test="${not empty prodetail.weights}">
+                                                            <c:if test="${not empty prodetail.weights}">
                                                                 <tr>
                                                                     <th scope="row"><span>Weight</span></th>
                                                                     <td><h6>${prodetail.weights}</h6></td>   

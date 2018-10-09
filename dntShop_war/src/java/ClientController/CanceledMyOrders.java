@@ -4,13 +4,12 @@
  * and open the template in the editor.
  */
 
-package AdminController;
+package ClientController;
 
 import bean.OrdersFacadeLocal;
 import entity.Orders;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +21,20 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminUpdateSaleProcessStatus", urlPatterns = {"/adminUpdateSaleProcessStatus"})
-public class adminUpdateSaleProcessStatus extends HttpServlet {
+@WebServlet(name = "CanceledMyOrders", urlPatterns = {"/CanceledMyOrders"})
+public class CanceledMyOrders extends HttpServlet {
 
-    @EJB OrdersFacadeLocal orderFacade;
+    @EJB OrdersFacadeLocal orFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String orderid=request.getParameter("orderid");
-        String pstatus=request.getParameter("pstatus");
-        Orders or=orderFacade.find(orderid);
-        or.setProcessStatus(pstatus);
-        Date date = new Date();
-        or.setShipDate(date);
-        orderFacade.edit(or);
-        request.getRequestDispatcher("adminViewSale").forward(request, response);
+        String orderID = request.getParameter("orderid");
+        String cusID = request.getParameter("cusid");
+        Orders order = orFacade.find(orderID);
+        order.setProcessStatus("Canceled");
+        orFacade.edit(order);
+        request.getRequestDispatcher("ViewMyOrdersByCusID?cusid="+cusID).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

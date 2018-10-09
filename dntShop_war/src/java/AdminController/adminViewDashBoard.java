@@ -53,6 +53,28 @@ public class adminViewDashBoard extends HttpServlet {
         List<Orders> orderList = orderFacade.findAll();
         Collections.reverse(orderList);
         request.setAttribute("orderList", orderList);
+        int totalCanceled=0;
+        int totalPending=0;
+        int totalShipping=0;
+        int totalCompleted=0;
+        for (int i = 0; i < orderList.size(); i++) {
+            if(orderList.get(i).getProcessStatus().equals("Canceled")){
+                totalCanceled++;
+            }
+            if(orderList.get(i).getProcessStatus().equals("Pending")){
+                totalPending++;
+            }
+            if(orderList.get(i).getProcessStatus().equals("Completed")){
+                totalCompleted++;
+            }
+            if(orderList.get(i).getProcessStatus().equals("Shipping")){
+                totalShipping++;
+            }
+        }
+        request.setAttribute("totalCanceled", totalCanceled);
+        request.setAttribute("totalPending", totalPending);
+        request.setAttribute("totalShipping", totalShipping);
+        request.setAttribute("totalCompleted", totalCompleted);
         request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 

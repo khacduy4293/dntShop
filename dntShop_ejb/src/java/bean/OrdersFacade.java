@@ -47,4 +47,13 @@ public class OrdersFacade extends AbstractFacade<Orders> implements OrdersFacade
         q.setParameter("endDate", endDate);
         return q.getResultList();
     }
+
+    @Override
+    public List<Orders> AllOrderByCusID(String cusID) {
+        Query q=em.createQuery("SELECT o FROM Orders o WHERE o.customerID.customerID = :cusID");
+        q.setParameter("cusID", cusID);
+        return q.getResultList();
+    }
+    
+    
 }

@@ -169,53 +169,53 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <span class="info-box-icon"><i class="fa fa-trash-o"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Canceled Orders</span>
-                                    <span class="info-box-number">114,381</span>
+                                    <span class="info-box-number">${totalCanceled}</span>
                                     <div class="progress">
-                                        <div class="progress-bar" ></div>
+                                        <div class="progress-bar" style="width: ${totalCanceled/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        70% Increase in 30 Days
+                                        ${totalCanceled/totalOrders*100}% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
                             <!-- Info Boxes Style 2 -->
                             <div class="info-box bg-yellow">
-                                <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
+                                <span class="info-box-icon"><i class="fa fa-cart-arrow-down"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Inventory</span>
-                                    <span class="info-box-number">5,200</span>
+                                    <span class="info-box-text">Pending Orders</span>
+                                    <span class="info-box-number">${totalPending}</span>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 50%"></div>
+                                        <div class="progress-bar" style="width: ${totalPending/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        50% Increase in 30 Days
+                                        ${totalPending/totalOrders*100}% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
                             <div class="info-box bg-green">
-                                <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
+                                <span class="info-box-icon"><i class="fa fa-check"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Mentions</span>
-                                    <span class="info-box-number">92,050</span>
+                                    <span class="info-box-text">Completed Orders</span>
+                                    <span class="info-box-number">${totalCompleted}</span>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 20%"></div>
+                                        <div class="progress-bar" style="width: ${totalCompleted/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        20% Increase in 30 Days
+                                        ${totalCompleted/totalOrders*100}% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
                             
                             <div class="info-box bg-aqua">
-                                <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
+                                <span class="info-box-icon"><i class="fa fa-truck"></i></span>
                                 <div class="info-box-content">
-                                    <span class="info-box-text">Direct Messages</span>
-                                    <span class="info-box-number">163,921</span>
+                                    <span class="info-box-text">Shipping Orders</span>
+                                    <span class="info-box-number">${totalShipping}</span>
                                     <div class="progress">
-                                        <div class="progress-bar" style="width: 40%"></div>
+                                        <div class="progress-bar" style="width: ${totalShipping/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        40% Increase in 30 Days
+                                        ${totalShipping/totalOrders*100}% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->                                                   

@@ -6,11 +6,11 @@
 
 package AdminController;
 
-import bean.OrdersFacadeLocal;
-import entity.Orders;
+import bean.AdminsFacadeLocal;
+import entity.Admins;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +22,27 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminUpdateSaleProcessStatus", urlPatterns = {"/adminUpdateSaleProcessStatus"})
-public class adminUpdateSaleProcessStatus extends HttpServlet {
+@WebServlet(name = "adminCheckAddEmailAccount", urlPatterns = {"/adminCheckAddEmailAccount"})
+public class adminCheckAddEmailAccount extends HttpServlet {
 
-    @EJB OrdersFacadeLocal orderFacade;
+    @EJB AdminsFacadeLocal adminFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String orderid=request.getParameter("orderid");
-        String pstatus=request.getParameter("pstatus");
-        Orders or=orderFacade.find(orderid);
-        or.setProcessStatus(pstatus);
-        Date date = new Date();
-        or.setShipDate(date);
-        orderFacade.edit(or);
-        request.getRequestDispatcher("adminViewSale").forward(request, response);
+        String email = request.getParameter("email");
+        List<Admins> adminList=adminFacade.findAll();
+        int check=0;
+        for (int i = 0; i < adminList.size(); i++) {
+            if(adminList.get(i).getEmail().equals(email)){
+                check++;
+            }
+        }
+        if(check==0){
+            response.getWriter().write("<label class=\"control-label pull-right\" id=\"proName-result\" value=\"true\" style=\"color: #00ca6d\"><i class=\"fa fa-check\"></i> Input with success</label>");
+        }else{
+            response.getWriter().write("<label class=\"control-label pull-right\" id=\"proName-result\" value=\"false\" style=\"color: tomato\"><i class=\"fa fa-times-circle-o\"></i> Input with error</label>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
