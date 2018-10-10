@@ -33,7 +33,7 @@ public class Logout extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("login_account", null);
         session.setAttribute("login_message", null);
-        session.setAttribute("countWishlist",0);
+        session.setAttribute("countWishlist", null);
         session.setAttribute("wishlist", null);
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }

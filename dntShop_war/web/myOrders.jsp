@@ -53,6 +53,11 @@
             <div class="container">
                 <!-- row -->
                 <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="breadcrumb-header" style="text-align: center;">My Orders</h3>                       
+                        </div>
+                    </div>
+                <div class="row">
                     <div class="colorlib-shop p_100">
                         <div class="container">                              
                             <div class="row row-pb-md">
