@@ -7,20 +7,20 @@
 <header>
     <%
         Cart cart = (Cart) session.getAttribute("cart");
-        String checkout="";
-        String checkWishPage="";
+        String checkout = "";
+        String checkWishPage = "";
         Customers cus = (Customers) session.getAttribute("login_account");
         if (cart == null) {
             cart = new Cart();
             session.setAttribute("cart", cart);
         }
         if (cus == null) {
-            checkout="login.jsp";
-            checkWishPage="login.jsp";
-        }else{
-            checkout="checkout.jsp";
-            checkWishPage="getWishlistServet?customerId="+cus.getCustomerID();
-            
+            checkout = "login.jsp";
+            checkWishPage = "login.jsp";
+        } else {
+            checkout = "checkout.jsp";
+            checkWishPage = "getWishlistServet?customerId=" + cus.getCustomerID();
+
         }
     %>
     <!-- TOP HEADER -->
@@ -35,19 +35,19 @@
                 <c:choose>
                     <c:when test="${empty sessionScope.login_account}">
                         <li><i class="fa fa-user-o"></i><a href="login.jsp">Login</a></li>
-                    </c:when>
-                    <c:otherwise>
-                    <li class="nav-item dropdown submenu">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            </c:when>
+                            <c:otherwise>
+                        <li class="nav-item dropdown submenu">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-user-o"></i>${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName} <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" style="color: black" href="myAccount.jsp"><i class="fa fa-user"></i> My Account</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="color: black" href="ViewMyOrdersByCusID?cusid=${sessionScope.login_account.customerID}"><i class="fa fa-shopping-cart"></i>My Orders</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="color: black" href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
-                                    <li class="nav-item"><a class="nav-link" style="color: black" href="Logout"><i class="fa fa-sign-out"></i>Logout</a></li>                              
-                                </ul>
-                            </li>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link" style="color: black" href="myAccount.jsp"><i class="fa fa-user"></i> My Account</a></li>
+                                <li class="nav-item"><a class="nav-link" style="color: black" href="ViewMyOrdersByCusID?cusid=${sessionScope.login_account.customerID}"><i class="fa fa-shopping-cart"></i>My Orders</a></li>
+                                <li class="nav-item"><a class="nav-link" style="color: black" href="getWishlistServet?customerId=${sessionScope.login_account.customerID}"><i class="fa fa-heart"></i>My Wishlist</a></li>
+                                <li class="nav-item"><a class="nav-link" style="color: black" href="Logout"><i class="fa fa-sign-out"></i>Logout</a></li>                              
+                            </ul>
+                        </li>
                     </c:otherwise>
                 </c:choose>
             </ul>
@@ -90,7 +90,14 @@
                             <a href="<%= checkWishPage%>">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">${sessionScope.countWishlist}</div>
+                                <c:choose>
+                                    <c:when test="${empty sessionScope.countWishlist}">
+                                        <div class="qty">0</div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="qty">${sessionScope.countWishlist}</div>
+                                    </c:otherwise>
+                                </c:choose>
                             </a>
                         </div>
                         <!-- /Wishlist -->
@@ -126,8 +133,8 @@
                                 <div class="cart-btns">
                                     <a href="cart.jsp">View Cart</a>
                                     <a href="<%= checkout%>">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                              
-                                    
+
+
                                 </div>
                             </div>
                         </div>

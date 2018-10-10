@@ -2,36 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group name="GitHub">
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/product.jsp</file>
-            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/productdetail.jsp</file>
-        </group>
-        <group>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToCart.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/compare.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/EditCartServlet.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AllProduct.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/nbproject/build-impl.xml</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/wishlist.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/cart.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/product.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/getWishlistServet.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToWishlist.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ProductCompareAddServlet.java</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/PlaceOrderServlet.java</file>
-        </group>
-<<<<<<< HEAD
-=======
-        <group>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/compare.jsp</file>
-            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ProductCompareAddServlet.java</file>
-        </group>
         <group name="GitHub"/>
->>>>>>> bb1dc87d8b7eed7b6a9e0a28ced53afc7ccdfe63
-=======
-        <group name="GitHub"/>
->>>>>>> bb1dc87d8b7eed7b6a9e0a28ced53afc7ccdfe63
     </open-files>
 </project-private>
