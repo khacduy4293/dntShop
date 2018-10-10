@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -31,6 +32,8 @@ public class getWishlistServet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String cusId=request.getParameter("customerId");
         request.setAttribute("wishlist", wishlistFacade.findbyCustomer(cusId));
+        HttpSession session=request.getSession();
+       
         request.getRequestDispatcher("wishlist.jsp").forward(request, response);
     }
 

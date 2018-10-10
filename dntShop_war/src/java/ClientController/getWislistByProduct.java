@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
-import bean.CustomersFacadeLocal;
 import bean.WishlistFacadeLocal;
-import entity.Products;
-import entity.Wishlist;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,44 +19,21 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Duy
+ * @author Nam_Nguyen
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+@WebServlet(name = "getWislistByProduct", urlPatterns = {"/getWislistByProduct"})
+public class getWislistByProduct extends HttpServlet {
 
-    @EJB
-    CustomersFacadeLocal cusFacade;
     @EJB
     WishlistFacadeLocal wishlistFacade;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        HttpSession session = request.getSession();
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        if (cusFacade.login(email, password).size() > 0) {
-            if (cusFacade.login(email, password).get(0).getIsStatus() == true) {
-                session.setAttribute("login_account", cusFacade.login(email, password).get(0));
-                session.setAttribute("login_message", null);
-                session.setAttribute("countWishlist", wishlistFacade.findbyCustomer(cusFacade.login(email, password).get(0).getCustomerID()).size());
-                List<Products> productList = new ArrayList<>();
-
-                for (Wishlist item : wishlistFacade.findbyCustomer(cusFacade.login(email, password).get(0).getCustomerID())) {
-                    productList.add(item.getProductID());
-
-                }
-                session.setAttribute("wishlist", productList);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            } else {
-                session.setAttribute("login_message", "<p class=\"login-box-msg\" style=\"color:red\">your account is banned</p>");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-        } else {
-            session.setAttribute("login_message", "<p class=\"login-box-msg\" style=\"color:red\">email or password incorrect</p>");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        String cusId=request.getParameter("customerId");
+        String prId=request.getParameter("productId");
+        request.setAttribute("wishlistCheck", wishlistFacade.findbyProduct(prId, cusId).get(0));
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

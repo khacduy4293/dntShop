@@ -14,7 +14,9 @@ import entity.Products;
 import entity.Wishlist;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,7 +55,14 @@ public class AddProductToWishlist extends HttpServlet {
             wishlist.setDateCreated(date);
             wishlistFacade.create(wishlist);
             HttpSession session=request.getSession();
-            session.setAttribute("countWishlist", wishlistFacade.findAll().size());
+            session.setAttribute("countWishlist", wishlistFacade.findbyCustomer(customerId).size());
+            List<Products> productList= new ArrayList<>();
+            
+            for (Wishlist item :  wishlistFacade.findbyCustomer(customerId)) {
+                productList.add(item.getProductID());
+                
+            }
+            session.setAttribute("wishlist",productList);
         } catch (Exception e) {
         }
     }

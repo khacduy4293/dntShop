@@ -34,7 +34,7 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="breadcrumb-header" style="text-align: center;">Your Wishlist</h3>                       
+                            <h2 class="breadcrumb-header" style="text-align: center;">My Wishlist</h3>                       
                         </div>
                     </div>
                     <div class="row">
@@ -98,6 +98,7 @@
     <!-- /FOOTER -->
 
     <script type="text/javascript">
+        
         function addProductToCart(productid)
         {
             $.ajax({

@@ -32,5 +32,7 @@ public interface WishlistFacadeLocal {
     int count();
 
     List<Wishlist> findbyCustomer(String cusId);
+
+    List<Wishlist> findbyProduct(String productId,String cusId);
     
 }

@@ -37,6 +37,16 @@ public class WishlistFacade extends AbstractFacade<Wishlist> implements Wishlist
         q.setParameter("cusId", cusId);
         return q.getResultList();
     }
+
+    @Override
+    public List<Wishlist> findbyProduct(String productId,String cusId) {
+        Query q=em.createQuery("SELECT w FROM Wishlist w WHERE w.productID.productID = :productId and w.customerID.customerID = :cusId");
+        q.setParameter("productId", productId);
+        q.setParameter("cusId", cusId);
+        return q.getResultList();
+        
+    }
+    
     
     
 }

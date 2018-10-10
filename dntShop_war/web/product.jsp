@@ -209,7 +209,15 @@
                                                     <i class="fa fa-star"></i>
                                                 </div>
                                                 <div class="product-btns">
-                                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                                    <c:choose>
+                                                        <c:when test="${sessionScope.wishlist.contains(p) eq true}">
+                                                             <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                             <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" ></i><span class="tooltipp">add to wishlist</span></button>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                   
                                                     <button class="add-to-compare" onclick='addProductToCompare("${p.productID}")'><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
                                                     <button class="quick-view" onclick="location.href = 'ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
                                                 </div>
@@ -266,6 +274,41 @@
                     }
                 });
             }
+            function addProductWishlist(productid, customerId)
+            {
+                $.ajax({
+                    url: "AddProductToWishlist?productId=" + productid + "&cusId=" + customerId,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function removeProductWishlist(productid, customerId)
+            {
+                $.ajax({
+                    url: "RemoveProductoutWislist?productId=" + productid + "&cusId=" + customerId,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            
             function addProductToCompare(productid)
             {
                 $.ajax({
