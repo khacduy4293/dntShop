@@ -8,6 +8,7 @@
     <%
         Cart cart = (Cart) session.getAttribute("cart");
         String checkout="";
+        String checkWishPage="";
         Customers cus = (Customers) session.getAttribute("login_account");
         if (cart == null) {
             cart = new Cart();
@@ -15,8 +16,11 @@
         }
         if (cus == null) {
             checkout="login.jsp";
+            checkWishPage="login.jsp";
         }else{
             checkout="checkout.jsp";
+            checkWishPage="getWishlistServet?customerId="+cus.getCustomerID();
+            
         }
     %>
     <!-- TOP HEADER -->
@@ -83,10 +87,10 @@
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
+                            <a href="<%= checkWishPage%>">
                                 <i class="fa fa-heart-o"></i>
                                 <span>Your Wishlist</span>
-                                <div class="qty">2</div>
+                                <div class="qty">${sessionScope.countWishlist}</div>
                             </a>
                         </div>
                         <!-- /Wishlist -->

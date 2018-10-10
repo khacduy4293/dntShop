@@ -30,5 +30,9 @@ public interface WishlistFacadeLocal {
     List<Wishlist> findRange(int[] range);
 
     int count();
+
+    List<Wishlist> findbyCustomer(String cusId);
+
+    List<Wishlist> findbyProduct(String productId,String cusId);
     
 }
