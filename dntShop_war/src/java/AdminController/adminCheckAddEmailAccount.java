@@ -39,9 +39,9 @@ public class adminCheckAddEmailAccount extends HttpServlet {
             }
         }
         if(check==0){
-            response.getWriter().write("<label class=\"control-label pull-right\" id=\"proName-result\" value=\"true\" style=\"color: #00ca6d\"><i class=\"fa fa-check\"></i> Input with success</label>");
+            response.getWriter().write("<label class=\"control-label pull-right\" id=\"email-resultError\" value=\"true\" style=\"color: #00ca6d\"><i class=\"fa fa-check\"></i> Input with success</label>");
         }else{
-            response.getWriter().write("<label class=\"control-label pull-right\" id=\"proName-result\" value=\"false\" style=\"color: tomato\"><i class=\"fa fa-times-circle-o\"></i> Input with error</label>");
+            response.getWriter().write("<label class=\"control-label pull-right\" id=\"email-resultError\" value=\"false\" style=\"color: tomato\"><i class=\"fa fa-times-circle-o\"></i> Input with error</label>");
         }
     }
 

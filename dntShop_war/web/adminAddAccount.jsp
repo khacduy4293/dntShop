@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputEmail">Email address<span style="color:red">*</span></label>
-                                                    <span id="email-result" value="false"></span>
+                                                    <span id="email-result"></span>
                                                     <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter email" required="true">
                                                 </div>
                                                 <div class="form-group">
@@ -129,7 +129,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
             }
             
-            /*************** check proName unique **********/
+            /*************** check Email unique **********/
             $(document).ready(function() {
                 var x_timer;
                 $("#exampleInputEmail").keyup(function(e) {
@@ -141,16 +141,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 });
 
                 function check_email_ajax(email) {
-                    $("#email-result").html("<img src='img/ajax-loader.gif'/>");
+                    $("#email-result").html('<label id="email-resultError" class="control-label pull-right" value="false" style="color: orange"><i class="fa fa-bell-o"></i> Waiting ...</label>');
                     $.post('adminCheckAddEmailAccount', {'email': email}, function(data) {
                         $("#email-result").html(data);
                     });
                 }
             });
-            /*************** focus proName error  **********/
+            /*************** focus Email error  **********/
             $('#addAccount').submit(function(event) {
-                var errors = $('#email-result').attr('value');
-                if (errors == 'false') {
+                var errors = $('#email-resultError').attr('value');
+                if (errors == 'false' || errors == null) {
                     $('#exampleInputEmail').focus();
                     event.preventDefault();
                 }
