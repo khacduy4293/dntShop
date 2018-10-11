@@ -109,7 +109,7 @@
                                     <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                                     <div class="order-col">
                                         <div><%=list.getValue().getQuantity()%>x <%=list.getValue().getProduct().getProductName()%></div>
-                                        <div>$<%=list.getValue().getProduct().getPrice() * list.getValue().getQuantity()%></div>
+                                        <div>$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100 * list.getValue().getQuantity()%></div>
                                     </div>
                                     <%
                                         }

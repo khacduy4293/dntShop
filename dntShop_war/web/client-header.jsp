@@ -118,7 +118,7 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#"><%=list.getValue().getProduct().getProductName()%></a></h3>
-                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity()%>x</span>$<%=list.getValue().getProduct().getPrice()%></h4>
+                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity()%>x</span>$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100%></h4>
                                         </div>
                                         <button class="delete" onclick='RemoveCart("<%=list.getValue().getProduct().getProductID()%>")'><i class="fa fa-close"></i></button>
                                     </div>
