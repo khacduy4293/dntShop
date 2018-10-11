@@ -67,13 +67,13 @@
                                                     <span class="price">$${w.productID.getPrice()}</span>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <div class="one-eight text-center">
-                                            <div class="display-tc">
-                                                <a href="#" class="closed"></a>
+                                            <div class="one-eight text-center">
+                                                <div class="display-tc">
+                                                    <a href="#" class="closed" onclick='removeProductWishlist("${w.productID.getProductID()}", "${w.customerID.getCustomerID()}")'></a>
+                                                </div>
                                             </div>
                                         </div>
+
 
                                     </c:forEach>
                                 </div>
@@ -94,11 +94,28 @@
     <!-- /FOOTER -->
 
     <script type="text/javascript">
-        
+
         function addProductToCart(productid)
         {
             $.ajax({
                 url: "AddProductToCart?command=plus&productID=" + productid,
+                type: "POST",
+                //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                success: function()
+                {
+
+                    location.reload();
+                },
+                error: function(jqXHR, textStatus, errorThrown)
+                {
+                    alert("error");
+                }
+            });
+        }
+        function removeProductWishlist(productid, customerId)
+        {
+            $.ajax({
+                url: "RemoveProductoutWislist?productId=" + productid + "&cusId=" + customerId,
                 type: "POST",
                 //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                 success: function()
