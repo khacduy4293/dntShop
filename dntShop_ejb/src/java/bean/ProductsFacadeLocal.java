@@ -6,6 +6,7 @@
 
 package bean;
 
+import entity.AverageRatings;
 import entity.Products;
 import entity.Report;
 import entity.TopRatingThisYear;
@@ -52,4 +53,6 @@ public interface ProductsFacadeLocal {
     List<Products> AllProductByPrice(float min, float max);
 
     List<Products> SearchProductByName(String proName);
+
+    List<AverageRatings> AverageRatingsProductID(String proid);
 }
