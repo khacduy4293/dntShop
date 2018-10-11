@@ -7,6 +7,7 @@ package ClientController;
 
 import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
+import entity.ComparedDetailProduct;
 import entity.ComparedProduct;
 import entity.Items;
 import entity.Products;
@@ -41,15 +42,17 @@ public class ProductCompareAddServlet extends HttpServlet {
         String productID = request.getParameter("productID");
         String messasge = "";
         ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
+        ComparedDetailProduct detailProduct=(ComparedDetailProduct) session.getAttribute("details");
         if(compare==null){
             compare=new ComparedProduct();
+            detailProduct=new ComparedDetailProduct();
         }
         try {
 
             Products product = productsFacade.find(productID);
-            ProductsDetails productDetail=productDetailsFacade.find(productID);
+            ProductsDetails productDetail=productDetailsFacade.FindProductDetailsByProID(productID).get(0);
             compare.addToComparedList(product);
-            //compare.addDetailList(productDetail);
+            detailProduct.addToDetailsList(productDetail);
             /* if (compare.getComparedProducts().contains(product)) {
              messasge = "product already exists";
              } else {
@@ -62,6 +65,7 @@ public class ProductCompareAddServlet extends HttpServlet {
             response.sendRedirect("index.jsp");
         }
         session.setAttribute("compare", compare);
+        session.setAttribute("details", detailProduct);
     }
 
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

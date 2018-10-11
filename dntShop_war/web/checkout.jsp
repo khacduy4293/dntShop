@@ -109,7 +109,7 @@
                                     <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                                     <div class="order-col">
                                         <div><%=list.getValue().getQuantity()%>x <%=list.getValue().getProduct().getProductName()%></div>
-                                        <div>$<%=list.getValue().getProduct().getPrice() * list.getValue().getQuantity()%></div>
+                                        <div>$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100 * list.getValue().getQuantity()%></div>
                                     </div>
                                     <%
                                         }
@@ -126,7 +126,7 @@
                             </div>
                             <div class="payment-method">
                                 <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-1">
+                                    <input type="radio" name="payment"  id="payment-1">
                                     <label for="payment-1">
                                         <span></span>
                                         Bank Transfer
@@ -146,7 +146,7 @@
                                     </div>
                                 </div>
                                 <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-3" checked="true">
+                                    <input type="radio" name="payment" value="Cash" id="payment-3" checked="true">
                                     <label for="payment-3">
                                         <span></span>
                                         Cash

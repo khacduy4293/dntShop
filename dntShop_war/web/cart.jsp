@@ -108,7 +108,7 @@
                                         </div>
                                         <div class="one-eight text-center">
                                             <div class="display-tc">
-                                                <span class="price">$<%=list.getValue().getProduct().getPrice()%></span>
+                                                <span class="price">$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100%></span>
                                             </div>
                                         </div>
                                         <div class="one-eight text-center">

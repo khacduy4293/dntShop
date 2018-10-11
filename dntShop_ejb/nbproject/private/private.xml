@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/bean/WishlistFacade.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/Cart.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/bean/WishlistFacadeLocal.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/Items.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/Wishlist.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/Customers.java</file>
         </group>

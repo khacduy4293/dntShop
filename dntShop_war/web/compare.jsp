@@ -1,3 +1,4 @@
+<%@page import="entity.ComparedDetailProduct"%>
 <%@page import="entity.ProductsDetails"%>
 <%@page import="entity.Products"%>
 <%@page import="java.util.List"%>
@@ -20,9 +21,14 @@
         <jsp:include  page="client-header.jsp"></jsp:include>
         <%
             ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
+            ComparedDetailProduct detailProduct=(ComparedDetailProduct) session.getAttribute("details");
             if (compare == null) {
                 compare = new ComparedProduct();
                 session.setAttribute("compare", compare);
+            }
+            if(detailProduct==null){
+                detailProduct=new ComparedDetailProduct();
+                session.setAttribute("details", detailProduct);
             }
         %>
         <!-- /HEADER -->
@@ -77,9 +83,10 @@
                                     </td>
                                     <%}%>
                                 </tr>
+                                
                                 <tr>
                                     <th scope="row"><span>CPU</span></th>
-                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td>
                                         <h6><%= pd.getCpu()%></h6>
                                     </td>
@@ -87,40 +94,41 @@
                                 </tr>                              
                                 <tr>
                                     <th scope="row"><span>Display</span></th>
-                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getDisplay()%></h6></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>Camera</span></th>
-                                    <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getCamera()%></h6></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>Memory</span></th>
-                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getMemory() %></h6></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>HDD</span></th>
-                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getHdd()%></h6></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>VGA</span></th>
-                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getVga()%></h6></td>
                                     <%}%>
                                 </tr>
                                 <tr>
                                     <th scope="row"><span>Battery</span></th>
-                                   <% for(ProductsDetails pd : compare.getDetailsProducts()){%>
+                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
                                     <td><h6><%= pd.getBattery()%></h6></td>
                                     <%}%>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
