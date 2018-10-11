@@ -50,4 +50,6 @@ public interface ProductsFacadeLocal {
     List<Report> ProductReport(String pro_id, Date startDate, Date endDate);
     
     List<Products> AllProductByPrice(float min, float max);
+
+    List<Products> SearchProductByName(String proName);
 }

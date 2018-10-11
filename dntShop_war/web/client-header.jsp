@@ -74,9 +74,9 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-                            <input class="input-select" style="width: calc(100% - 180px)" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                        <form id="SearchForm" action="SearchAllProductByName" method="post">
+                            <input class="input-select" name="pname" style="width: calc(100% - 180px)" placeholder="Search here">
+                            <button class="search-btn" onclick="document.getElementById('SearchForm').submit();">Search</button>
                         </form>
                     </div>
                 </div>

@@ -27,27 +27,7 @@
         <!-- /HEADER -->
 
         <!-- NAVIGATION -->
-        <nav id="navigation">
-            <!-- container -->
-            <div class="container">
-                <!-- responsive-nav -->
-                <div id="responsive-nav">
-                    <!-- NAV -->
-                    <ul class="main-nav nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#">Hot Deals</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Accessories</a></li>
-                    </ul>
-                    <!-- /NAV -->
-                </div>
-                <!-- /responsive-nav -->
-            </div>
-            <!-- /container -->
-        </nav>
+        <jsp:include  page="client-navigation.jsp"></jsp:include>
         <!-- /NAVIGATION -->
 
         <!-- SECTION -->
@@ -149,7 +129,7 @@
                                     <input type="radio" name="payment" id="payment-1">
                                     <label for="payment-1">
                                         <span></span>
-                                        Direct Bank Transfer
+                                        Bank Transfer
                                     </label>
                                     <div class="caption">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -159,25 +139,24 @@
                                     <input type="radio" name="payment" id="payment-2">
                                     <label for="payment-2">
                                         <span></span>
-                                        Cheque Payment
+                                        Credit Card
                                     </label>
                                     <div class="caption">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
                                 </div>
                                 <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-3">
+                                    <input type="radio" name="payment" id="payment-3" checked="true">
                                     <label for="payment-3">
                                         <span></span>
-                                        Paypal System
+                                        Cash
                                     </label>
                                     <div class="caption">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                     </div>
                                 </div>
                             </div>
-                                <input type="submit" class="primary-btn order-submit">Place order</a>
-
+                                <input type="submit" class="primary-btn order-submit" value="Place order">
                         </div>
                         <!-- /Order Details -->
                     </form>
@@ -190,9 +169,6 @@
 
         <!-- /SECTION -->
 
-        <!-- NEWSLETTER -->
-        <!-- /NEWSLETTER -->
-        <!-- /Login Modal -->
 
         <!-- FOOTER -->
 

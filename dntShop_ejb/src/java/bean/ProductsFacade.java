@@ -100,4 +100,14 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         q.setParameter("status", status);
         return q.getResultList();
     }
+
+    @Override
+    public List<Products> SearchProductByName(String proName) {
+        Query q = getEntityManager().createQuery("SELECT p FROM Products p WHERE p.productName LIKE :proName and p.isStatus = :status");
+        q.setParameter("proName", "%"+proName+"%");
+        boolean status=true;
+        q.setParameter("status", status);
+        return q.getResultList();
+    }
+    
 }
