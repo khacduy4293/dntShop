@@ -6,6 +6,17 @@
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop</title>
+        <style>
+            /* CSS căn id pagination ra góc phải màn hình */
+            #pagination {
+                display: flex;
+                display: -webkit-flex; /* Safari 8 */
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap; /* Safari 8 */
+                justify-content: center;
+                -webkit-justify-content: center;
+            }
+        </style>
     </head>
     <body>
         <!-- HEADER -->
@@ -15,7 +26,7 @@
             <!-- NAVIGATION -->
         <jsp:include  page="client-navigation.jsp"></jsp:include>   
             <!-- /NAVIGATION -->
-
+        <jsp:include page="getAVGRatingByProID?proid=${pro.productID}"></jsp:include>
             <!-- BREADCRUMB -->
             <div id="breadcrumb" class="section">
                 <!-- container -->
@@ -100,13 +111,19 @@
                             <h2 class="product-name" style="background-color: white">${pro.productName}</h2>
                             <div>
                                 <div class="product-rating">
+                                    <span>
+                                        <c:choose>
+                                            <c:when test="${empty avgRating}">
+                                                0.0
+                                            </c:when>
+                                            <c:otherwise>
+                                                <fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${avgRating.averageRating}"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </span>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
                                 </div>
-                                <a class="review-link" href="#">10 Review(s) | Add your review</a>
+                                <a class="review-link" href="#">${ratingListCount} Review(s) | Add your review</a>
                             </div>
                             <div>
                                 <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> 
@@ -118,6 +135,10 @@
                             </div>
                             <p>${pro.descriptions}</p>                       
 
+                            <ul class="product-links">
+                                <li>ID:</li>
+                                <li><a href="#">${pro.productID}</a></li>
+                            </ul>
                             <ul class="product-links">
                                 <li>Category:</li>
                                 <li><a href="AllProductByCategory?cateid=${pro.categoryID.categoryID}">${pro.categoryID.categoryName}</a></li>
@@ -167,7 +188,7 @@
                             <ul class="tab-nav">
                                 <li class="active"><a data-toggle="tab" href="#tab1">Description</a></li>
                                 <li><a data-toggle="tab" href="#tab2">Details</a></li>
-                                <li><a data-toggle="tab" href="#tab3">Reviews (3)</a></li>
+                                <li><a data-toggle="tab" href="#tab3">Reviews (${ratingListCount})</a></li>
                             </ul>
                             <!-- /product tab nav -->
 
@@ -257,13 +278,18 @@
                                         <div class="col-md-3">
                                             <div id="rating">
                                                 <div class="rating-avg">
-                                                    <span>4.5</span>
                                                     <div class="rating-stars">
+                                                        <span>
+                                                            <c:choose>
+                                                                <c:when test="${empty avgRating}">
+                                                                    0.0
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${avgRating.averageRating}"/>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </span>
                                                         <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-o"></i>
                                                     </div>
                                                 </div>
                                                 <ul class="rating">
@@ -276,9 +302,9 @@
                                                             <i class="fa fa-star"></i>
                                                         </div>
                                                         <div class="rating-progress">
-                                                            <div style="width: 80%;"></div>
+                                                            <div style="width: ${ratingListCountR5/ratingListCount*100}%;"></div>
                                                         </div>
-                                                        <span class="sum">3</span>
+                                                        <span class="sum">${ratingListCountR5}</span>
                                                     </li>
                                                     <li>
                                                         <div class="rating-stars">
@@ -289,9 +315,9 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="rating-progress">
-                                                            <div style="width: 60%;"></div>
+                                                            <div style="width: ${ratingListCountR4/ratingListCount*100}%;"></div>
                                                         </div>
-                                                        <span class="sum">2</span>
+                                                        <span class="sum">${ratingListCountR4}</span>
                                                     </li>
                                                     <li>
                                                         <div class="rating-stars">
@@ -302,9 +328,9 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="rating-progress">
-                                                            <div></div>
+                                                            <div style="width: ${ratingListCountR3/ratingListCount*100}%;"></div>
                                                         </div>
-                                                        <span class="sum">0</span>
+                                                        <span class="sum">${ratingListCountR3}</span>
                                                     </li>
                                                     <li>
                                                         <div class="rating-stars">
@@ -315,9 +341,9 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="rating-progress">
-                                                            <div></div>
+                                                            <div style="width: ${ratingListCountR2/ratingListCount*100}%;"></div>
                                                         </div>
-                                                        <span class="sum">0</span>
+                                                        <span class="sum">${ratingListCountR2}</span>
                                                     </li>
                                                     <li>
                                                         <div class="rating-stars">
@@ -328,9 +354,9 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </div>
                                                         <div class="rating-progress">
-                                                            <div></div>
+                                                            <div style="width: ${ratingListCountR1/ratingListCount*100}%;"></div>
                                                         </div>
-                                                        <span class="sum">0</span>
+                                                        <span class="sum">${ratingListCountR1}</span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -341,266 +367,268 @@
                                         <div class="col-md-6">
                                             <div id="reviews">
                                                 <ul class="reviews">
-                                                    <li>
-                                                        <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                            <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                            <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="review-heading">
-                                                            <h5 class="name">John</h5>
-                                                            <p class="date">27 DEC 2018, 8:0 PM</p>
-                                                            <div class="review-rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star-o empty"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <ul class="reviews-pagination">
-                                                    <li class="active">1</li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
+                                                    <c:forEach var="r" items="${ratingList}">
+                                                        <li class="contentPage">
+                                                            <div class="review-heading">
+                                                                <h5 class="name">${r.customerID.firstName} ${r.customerID.lastName}</h5>
+                                                                <p class="date"><fmt:formatDate value="${r.ratingDate}" pattern="dd-MM-yyyy" /></p>
+                                                                <div class="review-rating">
+                                                                    <c:forEach begin="1" end="${r.rate}">
+                                                                        <i class="fa fa-star"></i>
+                                                                    </c:forEach>
+                                                                    <c:forEach begin="1" end="${5-r.rate}">
+                                                                        <i class="fa fa-star-o empty"></i>
+                                                                        </c:forEach>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="review-body">
+                                                                    <p>${r.content}</p>
+                                                                </div>
+                                                            </li>
+                                                        </c:forEach>
+                                                    </ul>
+                                                    <ul id="pagination">
+                                                    </ul>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <!-- /Reviews -->
+                                            <!-- /Reviews -->
 
-                                        <!-- Review Form -->
-                                        <div class="col-md-3">
-                                            <div id="review-form">
-                                                <form class="review-form">
-                                                    <input class="input" type="text" placeholder="Your Name">
-                                                    <input class="input" type="email" placeholder="Your Email">
-                                                    <textarea class="input" placeholder="Your Review"></textarea>
-                                                    <div class="input-rating">
-                                                        <span>Your Rating: </span>
-                                                        <div class="stars">
-                                                            <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
-                                                            <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
-                                                            <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
-                                                            <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
-                                                            <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
-                                                        </div>
-                                                    </div>
-                                                    <button class="primary-btn">Submit</button>
-                                                </form>
+                                            <!-- Review Form -->
+                                            <div class="col-md-3">
+                                                <div id="review-form">
+                                                    <c:choose>
+                                                        <c:when test="${empty sessionScope.login_account}">
+                                                            <a class="review-link" href="login.jsp">Login to Add your review</a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <form id="ReviewForm" class="review-form" action="AddYourReview" method="post">
+                                                                <input class="input" type="hidden" name="cusid" value="${sessionScope.login_account.customerID}" >
+                                                                <input class="input" type="hidden" name="proid" value="${pro.productID}" >
+                                                                <input class="input" type="text" value="${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName}" placeholder="Your Name" disabled="true">
+                                                                <input class="input" type="email" value="${sessionScope.login_account.email}" placeholder="Your Email" disabled="true">
+                                                                <textarea class="input" name="content" placeholder="Your Review" required="true"></textarea>
+                                                                <div class="input-rating">
+                                                                    <span>Your Rating: </span>
+                                                                    <div class="stars">
+                                                                        <input id="star5" name="rating" value="5" type="radio"><label for="star5"></label>
+                                                                        <input id="star4" name="rating" value="4" type="radio"><label for="star4"></label>
+                                                                        <input id="star3" name="rating" value="3" type="radio"><label for="star3"></label>
+                                                                        <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
+                                                                        <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
+                                                                    </div>
+                                                                </div>
+                                                                <button class="primary-btn" onclick="document.getElementById('ReviewForm').submit();">Submit</button>
+                                                            </form>
+                                                        </c:otherwise>
+                                                    </c:choose>
+
+                                                </div>
                                             </div>
+                                            <!-- /Review Form -->
                                         </div>
-                                        <!-- /Review Form -->
+                                    </div>
+                                    <!-- /tab3  -->
+                                </div>
+                                <!-- /product tab content  -->
+                            </div>
+                        </div>
+                        <!-- /product tab -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /SECTION -->
+
+            <!-- Section -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="section-title text-center">
+                                <h3 class="title">Related Products</h3>
+                            </div>
+                        </div>
+
+                        <!-- product -->
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="./img/product01.png" alt="">
+                                    <div class="product-label">
+                                        <span class="sale">-30%</span>
                                     </div>
                                 </div>
-                                <!-- /tab3  -->
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <div class="product-rating">
+                                    </div>
+                                    <div class="product-btns">
+                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                    </div>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
                             </div>
-                            <!-- /product tab content  -->
                         </div>
+                        <!-- /product -->
+
+                        <!-- product -->
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="./img/product02.png" alt="">
+                                    <div class="product-label">
+                                        <span class="new">NEW</span>
+                                    </div>
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="product-btns">
+                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                    </div>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product -->
+
+                        <div class="clearfix visible-sm visible-xs"></div>
+
+                        <!-- product -->
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="./img/product03.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <div class="product-btns">
+                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                    </div>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product -->
+
+                        <!-- product -->
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="./img/product04.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                    <div class="product-rating">
+                                    </div>
+                                    <div class="product-btns">
+                                        <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
+                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                    </div>
+                                </div>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /product -->
+
                     </div>
-                    <!-- /product tab -->
+                    <!-- /row -->
                 </div>
-                <!-- /row -->
+                <!-- /container -->
             </div>
-            <!-- /container -->
-        </div>
-        <!-- /SECTION -->
-
-        <!-- Section -->
-        <div class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-
-                    <div class="col-md-12">
-                        <div class="section-title text-center">
-                            <h3 class="title">Related Products</h3>
-                        </div>
-                    </div>
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product01.png" alt="">
-                                <div class="product-label">
-                                    <span class="sale">-30%</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product02.png" alt="">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <div class="clearfix visible-sm visible-xs"></div>
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product03.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product04.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /Section -->
+            <!-- /Section -->
 
 
 
-        <!-- FOOTER -->
-        <jsp:include page="client-footer.jsp"/>
-        <!-- /FOOTER -->
-        <script type="text/javascript">
-            function addProductToCart(productid)
-            {
-                $.ajax({
-                    url: "AddProductToCart?command=plus&productID=" + productid,
-                    type: "POST",
-                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
-                    success: function()
-                    {
+            <!-- FOOTER -->
+            <jsp:include page="client-footer.jsp"/>
+            <!-- /FOOTER -->
+            <script type="text/javascript">
+                function addProductToCart(productid)
+                {
+                    $.ajax({
+                        url: "AddProductToCart?command=plus&productID=" + productid,
+                        type: "POST",
+                        //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                        success: function()
+                        {
 
-                        location.reload();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
-                        alert("error");
+                            location.reload();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert("error");
+                        }
+                    });
+                }
+
+            </script>
+            <script type="text/javascript">
+                $(function() {
+                    var pageSize = 3; // Hiển thị 6 sản phẩm trên 1 trang
+                    showPage = function(page) {
+                        $(".contentPage").hide();
+                        $(".contentPage").each(function(n) {
+                            if (n >= pageSize * (page - 1) && n < pageSize * page)
+                                $(this).show();
+                        });
                     }
+                    showPage(1);
+                    ///** Cần truyền giá trị vào đây **///
+                    var totalRows = ${ratingListCount}; // Tổng số sản phẩm hiển thị
+                    var btnPage = 5; // Số nút bấm hiển thị di chuyển trang
+                    var iTotalPages = Math.ceil(totalRows / pageSize);
+
+                    var obj = $('#pagination').twbsPagination({
+                        totalPages: iTotalPages,
+                        visiblePages: btnPage,
+                        onPageClick: function(event, page) {
+                            /* console.info(page); */
+                            showPage(page);
+                        }
+                    });
+                    /*console.info(obj.data());*/
                 });
-            }
-
-        </script>
-
-    </body>
-</html>
+            </script>
+        </body>
+    </html>

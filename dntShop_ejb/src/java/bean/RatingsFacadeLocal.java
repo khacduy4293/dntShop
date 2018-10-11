@@ -30,5 +30,7 @@ public interface RatingsFacadeLocal {
     List<Ratings> findRange(int[] range);
 
     int count();
+
+    List<Ratings> AllRatingByProductID(String proid);
     
 }

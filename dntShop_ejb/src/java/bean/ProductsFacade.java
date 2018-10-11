@@ -6,6 +6,7 @@
 
 package bean;
 
+import entity.AverageRatings;
 import entity.Products;
 import entity.Report;
 import entity.TopRatingThisYear;
@@ -107,6 +108,13 @@ public class ProductsFacade extends AbstractFacade<Products> implements Products
         q.setParameter("proName", "%"+proName+"%");
         boolean status=true;
         q.setParameter("status", status);
+        return q.getResultList();
+    }
+
+    @Override
+    public List<AverageRatings> AverageRatingsProductID(String proid) {
+        Query q = getEntityManager().createQuery("SELECT a FROM AverageRatings a WHERE a.productID = :proid");
+        q.setParameter("proid", proid);
         return q.getResultList();
     }
     

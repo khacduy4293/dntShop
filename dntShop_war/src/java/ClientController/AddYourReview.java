@@ -5,11 +5,13 @@
  */
 package ClientController;
 
-import bean.ProductsDetailsFacadeLocal;
+import bean.CustomersFacadeLocal;
 import bean.ProductsFacadeLocal;
-import entity.AverageRatings;
+import bean.RatingsFacadeLocal;
+import entity.Ratings;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,22 +23,33 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "ProductDetail", urlPatterns = {"/ProductDetail"})
-public class ProductDetail extends HttpServlet {
+@WebServlet(name = "AddYourReview", urlPatterns = {"/AddYourReview"})
+public class AddYourReview extends HttpServlet {
 
+    @EJB
+    RatingsFacadeLocal ratingFacade;
     @EJB
     ProductsFacadeLocal proFacade;
     @EJB
-    ProductsDetailsFacadeLocal prodetailFacade;
+    CustomersFacadeLocal cusFacade;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String pro_id = request.getParameter("proid");
-        request.setAttribute("pro", proFacade.find(pro_id));
-        request.setAttribute("prodetail", prodetailFacade.FindProductDetailsByProID(pro_id).get(0));
-        request.getRequestDispatcher("productdetail.jsp").forward(request, response);
+        String cusid = request.getParameter("cusid");
+        String proid = request.getParameter("proid");
+        String content = request.getParameter("content");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        Ratings ra = new Ratings();
+        ra.setProductID(proFacade.find(proid));
+        ra.setCustomerID(cusFacade.find(cusid));
+        ra.setContent(content);
+        ra.setRate(rating);
+        Date date = new Date();
+        ra.setRatingDate(date);
+        ratingFacade.create(ra);
+        request.getRequestDispatcher("ProductDetail?proid="+proid).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
