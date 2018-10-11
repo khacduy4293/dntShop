@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
-import bean.CustomersFacadeLocal;
 import bean.ProductsFacadeLocal;
-import bean.RatingsFacadeLocal;
+import entity.AverageRatings;
 import entity.Ratings;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.util.Collections;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,32 +24,21 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "AddYourReview", urlPatterns = {"/AddYourReview"})
-public class AddYourReview extends HttpServlet {
+@WebServlet(name = "ProductStarByProID", urlPatterns = {"/ProductStarByProID"})
+public class ProductStarByProID extends HttpServlet {
 
-    @EJB
-    RatingsFacadeLocal ratingFacade;
-    @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    CustomersFacadeLocal cusFacade;
-
+    @EJB ProductsFacadeLocal proFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String cusid = request.getParameter("cusid");
-        String proid = request.getParameter("proid");
-        String content = request.getParameter("content");
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        Ratings ra = new Ratings();
-        ra.setProductID(proFacade.find(proid));
-        ra.setCustomerID(cusFacade.find(cusid));
-        ra.setContent(content);
-        ra.setRate(rating);
-        Date date = new Date();
-        ra.setRatingDate(date);
-        ratingFacade.create(ra);
+        String proid=request.getParameter("proid");
+        List<AverageRatings> avgRating =proFacade.AverageRatingsProductID(proid);
+        if(avgRating.isEmpty()){
+        request.setAttribute("avgRating", null);  
+        }else{
+        request.setAttribute("avgRating", proFacade.AverageRatingsProductID(proid).get(0));
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

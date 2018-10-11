@@ -87,8 +87,9 @@ create table Ratings (
 	CONSTRAINT FK_RatingEmail FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
 )
 go
+
 create view AverageRatings as
-	select ROW_NUMBER() OVER (ORDER BY p.ProductName) AS id, p.ProductID, p.ProductName, AVG(convert(decimal(4,2),r.Rate)) as averageRating
+	select ROW_NUMBER() OVER (ORDER BY p.ProductName) AS id, p.ProductID, p.ProductName, AVG(convert(decimal(4,2),r.Rate)) as averageRating, AVG(r.Rate) as star
 	from Products p join Ratings r on p.ProductID = r.ProductID
 	group by p.ProductName, p.ProductID
 go

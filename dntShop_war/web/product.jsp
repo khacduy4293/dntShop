@@ -1,4 +1,5 @@
 <%@page import="entity.Products"%>
+<%@page import="entity.AverageRatings"%>
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
@@ -161,7 +162,7 @@
                                     Show:
                                     <select class="input-select" id="pageSize">
                                         <option value="6">6</option>
-                                        <option value="9" selected="true">9</option>
+                                        <option value="9">9</option>
                                         <option value="12">12</option>
                                         <option value="15">15</option>
                                     </select>
@@ -177,6 +178,7 @@
                         <!-- store products -->
                         <div class="row">
                             <c:forEach items="${productList}" var="p">
+                                 <jsp:include page="ProductStarByProID?proid=${p.productID}"/>
                                 <!-- product -->
                                 <div class="contentPage">
                                     <div class="col-md-4 col-xs-6">
@@ -202,22 +204,34 @@
                                                     </c:if>                                         
                                                 </h4>
                                                 <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
+                                                    <c:choose>
+                                                        <c:when test="${empty avgRating}">
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <c:forEach begin="1" end="${avgRating.star}">
+                                                                <i class="fa fa-star"></i>
+                                                            </c:forEach>
+                                                            <c:forEach begin="1" end="${5-avgRating.star}">
+                                                                <i class="fa fa-star-o"></i>
+                                                            </c:forEach>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </div>
                                                 <div class="product-btns">
                                                     <c:choose>
                                                         <c:when test="${sessionScope.wishlist.contains(p) eq true}">
-                                                             <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                             <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" ></i><span class="tooltipp">add to wishlist</span></button>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                   
+                                                            <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                            <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart-o" ></i><span class="tooltipp">add to wishlist</span></button>
+                                                                </c:otherwise>
+                                                            </c:choose>
+
                                                     <button class="add-to-compare" onclick='addProductToCompare("${p.productID}")'><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
                                                     <button class="quick-view" onclick="location.href = 'ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
                                                 </div>
@@ -308,7 +322,7 @@
                     }
                 });
             }
-            
+
             function addProductToCompare(productid)
             {
                 $.ajax({

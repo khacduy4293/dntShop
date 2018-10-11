@@ -34,6 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "AverageRatings.findByProductName", query = "SELECT a FROM AverageRatings a WHERE a.productName = :productName"),
     @NamedQuery(name = "AverageRatings.findByAverageRating", query = "SELECT a FROM AverageRatings a WHERE a.averageRating = :averageRating")})
 public class AverageRatings implements Serializable {
+    @Column(name = "star")
+    private Integer star;
     private static final long serialVersionUID = 1L;
     @Column(name = "id")
     @Id
@@ -85,6 +87,14 @@ public class AverageRatings implements Serializable {
 
     public void setAverageRating(BigDecimal averageRating) {
         this.averageRating = averageRating;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
+
+    public void setStar(Integer star) {
+        this.star = star;
     }
     
 }
