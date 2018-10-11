@@ -52,7 +52,7 @@ public class PlaceOrderServlet extends HttpServlet {
             id = "0" + id;
         }
         String orderid = "OD" + id;
-        String Shipname = request.getParameter("first-name") + request.getParameter("last-name");
+        String Shipname = request.getParameter("first-name") +" "+ request.getParameter("last-name");
         String ShipPhone = request.getParameter("tel");
         String ShipAddress = request.getParameter("address");
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -86,7 +86,7 @@ public class PlaceOrderServlet extends HttpServlet {
             ordersDetails.setOrderID(orders);
             ordersDetails.setProductID(list.getValue().getProduct());
             ordersDetails.setQuantity(list.getValue().getQuantity());
-            ordersDetails.setSellingPrice(list.getValue().getProduct().getPrice());
+            ordersDetails.setSellingPrice(list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100);
             ordersDetails.setIsStatus(true);
             ordersDetailsFacade.create(ordersDetails);
         }
