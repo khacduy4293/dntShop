@@ -34,5 +34,7 @@ public interface CustomersFacadeLocal {
     int count();
 
     List<Customers> login(String email, String pass);
+
+    List<Customers> findByMail(String email);
     
 }

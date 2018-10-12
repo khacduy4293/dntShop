@@ -4,7 +4,7 @@
 <html lang="en">
     <head>
         <jsp:include page="client-layout.jsp"/>
-        <title>DNTShop - Login</title>
+        <title>DNTShop - Forget password</title>
 
     </head>
     <body>
@@ -26,7 +26,7 @@
                             <h3 class="breadcrumb-header">Login Page</h3>
                             <ul class="breadcrumb-tree">
                                 <li><a href="#">Home</a></li>
-                                <li class="active">Login</li>
+                                <li class="active">Reset Password</li>
                             </ul>
                         </div>
                     </div>
@@ -48,33 +48,20 @@
 
                         <div class="col-md-5 order-details">                      
                             <!-- Login Account -->
-                            <form id="formLogin" action="Login" method="post">
+                            <form id="formLogin" action="ForgetPasswordServlet" method="post">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Login To Your Account</h3>
+                                        <h3 class="title">RETRIEVE YOUR PASSWORD</h3>
                                     </div>                            
                                     <div class="form-group">
-                                        <h5>EMAIL</h5>
+                                        <h5>EMAIL ADDRESS</h5>
                                         <input class="input" type="email" name="email" placeholder="Enter your Email" required="true">
                                     </div>
-                                    <div class="form-group">
-                                        <h5>PASSWORD</h5>
-                                        <input class="input" type="password" name="password" placeholder="Enter your Password" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                    <c:if test="${not empty sessionScope.login_message}">
-                                        ${sessionScope.login_message}
+                                    <c:if test="${not empty sessionScope.findUser_message}">
+                                        ${sessionScope.findUser_message}
                                     </c:if>
                                 </div>
-                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="LOGIN">
-                                <br/>
-                                <div class="form-group" style="float: right">
-                                    <span>New member?</span> 
-                                    <a href="register.jsp"><span style="color: blue">Register</span></a>
-                                </div>
-                                <div class="form-group" style="float: left">
-                                    <a href="findUser.jsp"><span style="color: red">Forget Password</span></a>
-                                </div>
+                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="Submit">
                             </div>
                         </form>
 
