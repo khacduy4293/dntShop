@@ -23,10 +23,10 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="breadcrumb-header">Login Page</h3>
+                            <h3 class="breadcrumb-header">My Account</h3>
                             <ul class="breadcrumb-tree">
                                 <li><a href="#">Home</a></li>
-                                <li class="active">Login</li>
+                                <li class="active">Change Password</li>
                             </ul>
                         </div>
                     </div>
@@ -48,30 +48,23 @@
 
                         <div class="col-md-5 order-details">                      
                             <!-- Login Account -->
-                            <form id="formLogin" action="Login" method="post">
+                            <form id="formLogin" action="changePassword" method="post">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
-                                        <h3 class="title">Login To Your Account</h3>
-                                    </div>                            
-                                    <div class="form-group">
-                                        <h5>EMAIL</h5>
-                                        <input class="input" type="email" name="email" placeholder="Enter your Email" required="true">
+                                        <h3 class="title">Change Password</h3>
                                     </div>
                                     <div class="form-group">
-                                        <h5>PASSWORD</h5>
+                                        <h5>NEW PASSWORD</h5>
                                         <input class="input" type="password" name="password" placeholder="Enter your Password" required="true">
                                     </div>
                                     <div class="form-group">
-                                    <c:if test="${not empty sessionScope.login_message}">
-                                        ${sessionScope.login_message}
-                                    </c:if>
+                                        <h5>CONFIRM PASSWORD</h5>
+                                        <input class="input" type="password" name="confirmpass" placeholder="Confirn your Password" required="true">
+                                    </div>
+                                    <div class="form-group">
+                                        <span id="msg"></span>
                                 </div>
-                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="LOGIN">
-                                <br/>
-                                <div class="form-group" style="float: right">
-                                    <span>New member?</span> 
-                                    <a href="register.jsp"><span style="color: blue">Register</span></a>
-                                </div>
+                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="CHANGE">
                             </div>
                         </form>
 
