@@ -48,21 +48,26 @@
 
                         <div class="col-md-5 order-details">                      
                             <!-- Login Account -->
-                            <form id="formLogin" action="changePassword" method="post">
+                            <form id="PasswordForm" action="changePassword" method="post" onsubmit="return checkForm();">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
                                         <h3 class="title">Change Password</h3>
                                     </div>
                                     <div class="form-group">
+                                        <h5>CURRENT PASSWORD</h5>
+                                        <input class="input" type="password" id="curpass" name="curpass" placeholder="Enter current Password" required="true">
+                                    </div>
+                                    <div class="form-group">
                                         <h5>NEW PASSWORD</h5>
-                                        <input class="input" type="password" name="password" placeholder="Enter your Password" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>CONFIRM PASSWORD</h5>
-                                        <input class="input" type="password" name="confirmpass" placeholder="Confirn your Password" required="true">
-                                    </div>
-                                    <div class="form-group">
-                                        <span id="msg"></span>
+                                        <input class="input" type="hidden" id="cusid" name="cusid" value="${sessionScope.login_account.customerID}">
+                                    <input class="input" type="password" id="pass" name="pass" placeholder="Enter new Password" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <h5>CONFIRM PASSWORD</h5>
+                                    <input class="input" type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" required="true">
+                                </div>
+                                <div class="form-group">
+                                    <span id="msg"></span>
                                 </div>
                                 <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="CHANGE">
                             </div>
@@ -84,6 +89,19 @@
         <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
         <!-- /FOOTER -->
-
+        <script type="text/javascript">
+            function checkForm(){
+                var curpass = $('#curpass').val();
+                var pass = $('#pass').val();
+                var confirmpass = $('#confirmpass').val();
+                if (curpass !== "${sessionScope.login_account.password}" ) {
+                    $("#msg").html('<p class="msg" style="color:red">current password incorrect</p>');
+                    event.preventDefault();
+                }else if(pass !== confirmpass){
+                    $("#msg").html('<p class="msg" style="color:red">confirm password incorrect</p>');
+                    event.preventDefault();
+                }
+            }
+        </script>
     </body>
 </html>
