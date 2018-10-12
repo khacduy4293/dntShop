@@ -40,5 +40,13 @@ public class CustomersFacade extends AbstractFacade<Customers> implements Custom
         q.setParameter("pass", pass);
         return q.getResultList();
     }
+
+    @Override
+    public List<Customers> findByMail(String email) {
+        Query q = getEntityManager().createQuery("SELECT c FROM Customers c WHERE c.email = :email");
+        q.setParameter("email", email);
+        return q.getResultList();
+    }
+    
     
 }
