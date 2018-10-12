@@ -38,9 +38,7 @@
                         <div class="col-md-12">
                             <ul class="breadcrumb-tree">
                                 <li><a href="#">Home</a></li>
-                                <li><a href="#">All Categories</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li class="active">Headphones (227,490 Results)</li>
+                                <li class="active">Product Page</li>
                             </ul>
                         </div>
                     </div>
@@ -205,7 +203,7 @@
                                                 </h4>
                                                 <div class="product-rating">
                                                     <c:choose>
-                                                        <c:when test="${empty avgRating}">
+                                                        <c:when test="${empty avgStar}">
                                                             <i class="fa fa-star-o"></i>
                                                             <i class="fa fa-star-o"></i>
                                                             <i class="fa fa-star-o"></i>
@@ -213,10 +211,10 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <c:forEach begin="1" end="${avgRating.star}">
+                                                            <c:forEach begin="1" end="${avgStar}">
                                                                 <i class="fa fa-star"></i>
                                                             </c:forEach>
-                                                            <c:forEach begin="1" end="${5-avgRating.star}">
+                                                            <c:forEach begin="1" end="${5-avgStar}">
                                                                 <i class="fa fa-star-o"></i>
                                                             </c:forEach>
                                                         </c:otherwise>

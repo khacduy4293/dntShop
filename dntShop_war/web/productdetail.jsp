@@ -26,7 +26,6 @@
             <!-- NAVIGATION -->
         <jsp:include  page="client-navigation.jsp"></jsp:include>   
             <!-- /NAVIGATION -->
-        <jsp:include page="getAVGRatingByProID?proid=${pro.productID}"></jsp:include>
             <!-- BREADCRUMB -->
             <div id="breadcrumb" class="section">
                 <!-- container -->
@@ -37,9 +36,8 @@
                             <ul class="breadcrumb-tree">
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">All Categories</a></li>
-                                <li><a href="#">Accessories</a></li>
-                                <li><a href="#">Headphones</a></li>
-                                <li class="active">Product name goes here</li>
+                                <li><a href="#">${pro.categoryID.categoryName}</a></li>
+                                <li class="active">${pro.productName}</li>
                             </ul>
                         </div>
                     </div>
@@ -112,7 +110,7 @@
                             <div>
                                 <div class="product-rating">
                                     <c:choose>
-                                        <c:when test="${empty avgRating}">
+                                        <c:when test="${empty avgStar}">
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
@@ -120,16 +118,16 @@
                                             <i class="fa fa-star-o"></i>
                                         </c:when>
                                         <c:otherwise>
-                                            <c:forEach begin="1" end="${avgRating.star}">
+                                            <c:forEach begin="1" end="${avgStar}">
                                                 <i class="fa fa-star"></i>
                                             </c:forEach>
-                                            <c:forEach begin="1" end="${5-avgRating.star}">
+                                            <c:forEach begin="1" end="${5-avgStar}">
                                                 <i class="fa fa-star-o"></i>
                                             </c:forEach>
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
-                                <a class="review-link" href="#">${ratingListCount} Review(s) | Add your review</a>
+                                <a class="review-link" href="#">${ratingListCount} Review(s)</a>
                             </div>
                             <div>
                                 <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> 
@@ -290,13 +288,13 @@
                                                                 0.0
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${avgRating.averageRating}"/>
+                                                                <fmt:formatNumber type="number" minFractionDigits="1" maxFractionDigits="1" value="${avgRating}"/>
                                                             </c:otherwise>
                                                         </c:choose>
                                                     </span>
                                                     <div class="rating-stars">
                                                         <c:choose>
-                                                            <c:when test="${empty avgRating}">
+                                                            <c:when test="${empty avgStar}">
                                                                 <i class="fa fa-star-o"></i>
                                                                 <i class="fa fa-star-o"></i>
                                                                 <i class="fa fa-star-o"></i>
@@ -304,10 +302,10 @@
                                                                 <i class="fa fa-star-o"></i>
                                                             </c:when>
                                                             <c:otherwise>
-                                                                <c:forEach begin="1" end="${avgRating.star}">
+                                                                <c:forEach begin="1" end="${avgStar}">
                                                                     <i class="fa fa-star"></i>
                                                                 </c:forEach>
-                                                                <c:forEach begin="1" end="${5-avgRating.star}">
+                                                                <c:forEach begin="1" end="${5-avgStar}">
                                                                     <i class="fa fa-star-o"></i>
                                                                 </c:forEach>
                                                             </c:otherwise>
@@ -420,12 +418,10 @@
                                             <div id="review-form">
                                                 <c:choose>
                                                     <c:when test="${empty sessionScope.login_account}">
-                                                        <a class="review-link" href="login.jsp">Login to review</a>
+                                                        <a href="login.jsp"><button class="primary-btn">Login to review</button></a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <form id="ReviewForm" class="review-form">
-                                                            <input class="input" type="hidden" name="cusid" value="${sessionScope.login_account.customerID}" >
-                                                            <input class="input" type="hidden" name="proid" value="${pro.productID}" >
+                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview("${pro.productID}","${sessionScope.login_account.customerID}")'>
                                                             <input class="input" type="text" value="${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName}" placeholder="Your Name" disabled="true">
                                                             <input class="input" type="email" value="${sessionScope.login_account.email}" placeholder="Your Email" disabled="true">
                                                             <textarea class="input" id="content" name="content" placeholder="Your Review" required="true"></textarea>
@@ -438,8 +434,9 @@
                                                                     <input id="star2" name="rating" value="2" type="radio"><label for="star2"></label>
                                                                     <input id="star1" name="rating" value="1" type="radio"><label for="star1"></label>
                                                                 </div>
+                                                                <span id="rating-result"></span>
                                                             </div>
-                                                            <button class="primary-btn" onclick='addNewReview("${pro.productID}","${sessionScope.login_account.customerID}")'>Submit</button>
+                                                            <button class="primary-btn">Submit</button>
                                                         </form>
                                                     </c:otherwise>
                                                 </c:choose>
@@ -627,6 +624,10 @@
             {
                 var content=$('#content').val();
                 var rating = $('input[name=rating]:checked').val();
+                if(rating == null){
+                    $("#rating-result").html('<label class="control-label" style="color: red">You need rating</label>');
+                    event.preventDefault();
+                }
                 $.ajax({
                     url: "AddYourReview?proid=" + proid +"&cusid="+cusid+"&content="+content+"&rating="+rating,
                     type: "POST",
@@ -638,7 +639,7 @@
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {
-                        alert("error");
+                        //alert("error");
                     }
                 });
             }
