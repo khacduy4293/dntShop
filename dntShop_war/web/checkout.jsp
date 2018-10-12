@@ -76,7 +76,7 @@
                                     <input class="input" type="text" name="last-name" placeholder="Last Name" value="<%= cus.getLastName()%>">
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="email" name="email" placeholder="Email" value="<%= cus.getEmail()%>">
+                                    <input class="input" type="email" name="email" placeholder="Email" value="<%= cus.getEmail()%>" disabled="true">
                                 </div>
                                 <div class="form-group">
                                     <input class="input" type="text" name="address" placeholder="Address" value="<%= cus.getAddress()%>">

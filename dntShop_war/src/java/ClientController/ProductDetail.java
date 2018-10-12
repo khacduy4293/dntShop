@@ -7,9 +7,12 @@ package ClientController;
 
 import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
-import entity.AverageRatings;
+import bean.RatingsFacadeLocal;
+import entity.Ratings;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collections;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,7 +31,8 @@ public class ProductDetail extends HttpServlet {
     ProductsFacadeLocal proFacade;
     @EJB
     ProductsDetailsFacadeLocal prodetailFacade;
-
+    @EJB
+    RatingsFacadeLocal ratingsFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -36,6 +40,66 @@ public class ProductDetail extends HttpServlet {
         String pro_id = request.getParameter("proid");
         request.setAttribute("pro", proFacade.find(pro_id));
         request.setAttribute("prodetail", prodetailFacade.FindProductDetailsByProID(pro_id).get(0));
+        
+        List<Ratings> ratingList = ratingsFacade.AllRatingByProductID(pro_id);     
+        if (ratingList.isEmpty()) {
+            request.setAttribute("avgRating", null);
+            request.setAttribute("avgStar", null);
+            request.setAttribute("ratingList", null);
+            request.setAttribute("ratingListCount", 0);
+            request.setAttribute("ratingListCountR1", 0);
+            request.setAttribute("ratingListCountR2", 0);
+            request.setAttribute("ratingListCountR3", 0);
+            request.setAttribute("ratingListCountR4", 0);
+            request.setAttribute("ratingListCountR5", 0);
+        } else {
+            Collections.reverse(ratingList);            
+            request.setAttribute("ratingList", ratingList);
+            request.setAttribute("ratingListCount", ratingList.size());
+            float TotalRating=0;
+            int TotalStar=0;
+            int r1 = 0;
+            int r2 = 0;
+            int r3 = 0;
+            int r4 = 0;
+            int r5 = 0;
+            for (int i = 0; i < ratingList.size(); i++) {
+                if (ratingList.get(i).getRate() == 1) {
+                    r1++;
+                    TotalRating+=ratingList.get(i).getRate();
+                    TotalStar+=ratingList.get(i).getRate();
+                }
+                if (ratingList.get(i).getRate() == 2) {
+                    r2++;
+                    TotalRating+=ratingList.get(i).getRate();
+                    TotalStar+=ratingList.get(i).getRate();
+                }
+                if (ratingList.get(i).getRate() == 3) {
+                    r3++;
+                    TotalRating+=ratingList.get(i).getRate();
+                    TotalStar+=ratingList.get(i).getRate();
+                }
+                if (ratingList.get(i).getRate() == 4) {
+                    r4++;
+                    TotalRating+=ratingList.get(i).getRate();
+                    TotalStar+=ratingList.get(i).getRate();
+                }
+                if (ratingList.get(i).getRate() == 5) {
+                    r5++;
+                    TotalRating+=ratingList.get(i).getRate();
+                    TotalStar+=ratingList.get(i).getRate();
+                }
+            }
+            float avgRating= TotalRating/ratingList.size();
+            int avgStar= TotalStar/ratingList.size();
+            request.setAttribute("ratingListCountR1", r1);
+            request.setAttribute("ratingListCountR2", r2);
+            request.setAttribute("ratingListCountR3", r3);
+            request.setAttribute("ratingListCountR4", r4);
+            request.setAttribute("ratingListCountR5", r5);
+            request.setAttribute("avgRating", avgRating);
+            request.setAttribute("avgStar", avgStar);
+        }
         request.getRequestDispatcher("productdetail.jsp").forward(request, response);
     }
 

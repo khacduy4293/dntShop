@@ -22,5 +22,13 @@
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/Login.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/RemoveProductoutWislist.java</file>
         </group>
+<<<<<<< HEAD
+=======
+        <group name="GitHub">
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/myOrders.jsp</file>
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/changePassword.jsp</file>
+            <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/checkout.jsp</file>
+        </group>
+>>>>>>> 1baef2b245b5e87f98141d331b98969c24a38cbd
     </open-files>
 </project-private>

@@ -83,6 +83,10 @@
                                     </select>
                                 </div>
                                 <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="SAVE">
+                                <br/>
+                                    <div class="form-group" style="float: right">
+                                    <a href="login.jsp"><span style="color: blue">Change password</span></a>
+                                </div>
                             </div>
                         </form>
                         <!-- /Register Account -->

@@ -7,6 +7,7 @@
 package ClientController;
 
 import bean.ProductsFacadeLocal;
+import bean.RatingsFacadeLocal;
 import entity.AverageRatings;
 import entity.Ratings;
 import java.io.IOException;
@@ -27,17 +28,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ProductStarByProID", urlPatterns = {"/ProductStarByProID"})
 public class ProductStarByProID extends HttpServlet {
 
-    @EJB ProductsFacadeLocal proFacade;
+    @EJB
+    RatingsFacadeLocal ratingsFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String proid=request.getParameter("proid");
-        List<AverageRatings> avgRating =proFacade.AverageRatingsProductID(proid);
-        if(avgRating.isEmpty()){
-        request.setAttribute("avgRating", null);  
-        }else{
-        request.setAttribute("avgRating", proFacade.AverageRatingsProductID(proid).get(0));
+        String pro_id = request.getParameter("proid");
+        List<Ratings> ratingList = ratingsFacade.AllRatingByProductID(pro_id);
+        if (ratingList.isEmpty()) {
+            request.setAttribute("avgStar", null);
+        } else {
+            int TotalStar = 0;
+            for (int i = 0; i < ratingList.size(); i++) {
+                TotalStar += ratingList.get(i).getRate();
+            }
+            int avgStar = TotalStar / ratingList.size();
+            request.setAttribute("avgStar", avgStar);
         }
     }
 
