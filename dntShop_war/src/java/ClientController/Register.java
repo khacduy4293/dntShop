@@ -66,7 +66,7 @@ public class Register extends HttpServlet {
         String avatar="images/Avatars/avatar.png";
         cus.setAvatar(avatar);
         cusFacade.create(cus);
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("registerSuccess.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

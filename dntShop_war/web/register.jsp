@@ -54,7 +54,7 @@
                         <!-- Register -->
                         <div class="col-md-6 order-details">
                             <!-- Register Account -->
-                            <form id="formRegis" action="" method="post">
+                            <form id="formRegis" action="Register" method="post">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
                                         <h3 class="title">Register</h3>
