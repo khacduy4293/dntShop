@@ -69,11 +69,11 @@
                                 <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="LOGIN">
                                 <br/>
                                 <div class="form-group" style="float: right">
-                                    <span>New member?</span> 
-                                    <a href="register.jsp"><span style="color: blue">Register</span></a>
+                                    <a href="findUser.jsp"><span style="color: blue">Forgot Password?</span></a>
                                 </div>
                                 <div class="form-group" style="float: left">
-                                    <a href="findUser.jsp"><span style="color: red">Forget Password</span></a>
+                                    <span>New member?</span> 
+                                    <a href="register.jsp"><span style="color: blue">Register</span></a>
                                 </div>
                             </div>
                         </form>

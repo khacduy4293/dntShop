@@ -5,10 +5,15 @@
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Create New Account</title>
-
+        <style>
+            label.error{
+                color: red;
+                font-weight: normal;
+            }
+        </style>
     </head>
     <body>
-            <!-- HEADER -->
+        <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
             <!-- /HEADER -->
 
@@ -49,34 +54,42 @@
                         <!-- Register -->
                         <div class="col-md-6 order-details">
                             <!-- Register Account -->
-                            <form id="formRegis" action="Register" method="post">
+                            <form id="formRegis" action="" method="post">
                                 <div class="billing-details">
                                     <div class="section-title text-center">
                                         <h3 class="title">Register</h3>
                                     </div>                            
                                     <div class="form-group">
-                                        <input class="input" type="text" name="first-name" placeholder="First Name" required="true">
+                                        <h5>FIRST NAME<span style="color: red">*</span></h5>
+                                        <input class="input" type="text" name="first-name" placeholder="First Name">
                                     </div>
                                     <div class="form-group">
-                                        <input class="input" type="text" name="last-name" placeholder="Last Name" required="true">
+                                        <h5>LAST NAME<span style="color: red">*</span></h5>
+                                        <input class="input" type="text" name="last-name" placeholder="Last Name">
                                     </div>
                                     <div class="form-group">
-                                        <input class="input" type="email" name="email" placeholder="Email" required="true">
+                                        <h5>EMAIL<span style="color: red">*</span></h5>
+                                        <input class="input" type="email" name="email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <input class="input" type="password" name="password" placeholder="Password">
+                                        <h5>PASSWORD<span style="color: red">*</span></h5>
+                                        <input class="input" type="password" id="password" name="password" placeholder="Password">
                                     </div>  
                                     <div class="form-group">
-                                        <input class="input" type="password" name="password" placeholder="Confirm Password" required="true">
+                                        <h5>CONFIRM PASSWORD<span style="color: red">*</span></h5>
+                                        <input class="input" type="password" name="confirmpass" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
+                                        <h5>ADDRESS<span style="color: red">*</span></h5>
                                         <input class="input" type="text" name="address" placeholder="Address">
                                     </div>                           
                                     <div class="form-group">
-                                        <input class="input" type="tel" name="tel" placeholder="Telephone">
+                                        <h5>PHONE<span style="color: red">*</span></h5>
+                                        <input class="input" type="text" id="tel" name="tel" placeholder="Telephone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                     <div class="form-group">
-                                        <select class="input" name="gender" required="true">
+                                        <h5>GENDER<span style="color: red">*</span></h5>
+                                        <select class="input" name="gender">
                                             <option value="">Choose a gender</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
@@ -85,9 +98,9 @@
                                     <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="REGISTER">
                                     <br/>
                                     <div class="form-group" style="float: right">
-                                    <span>Already have an account?</span> 
-                                    <a href="login.jsp"><span style="color: blue">Login</span></a>
-                                </div>
+                                        <span>Already have an account?</span> 
+                                        <a href="login.jsp"><span style="color: blue">Login</span></a>
+                                    </div>
                                 </div>
                             </form>                       
                             <!-- /Register Account -->
@@ -96,7 +109,7 @@
 
                         <div class="col-md-3">                        
                         </div>
-                        
+
                     </div>
                     <!-- /row -->
                 </div>
@@ -107,6 +120,89 @@
             <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
         <!-- /FOOTER -->
-
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#formRegis").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "first-name": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "last-name": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "email": {
+                            required: true,
+                            email: true,
+                            maxlength: 100
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 30
+                        },
+                        "confirmpass": {
+                            required: true,
+                            equalTo: "#password",
+                            minlength: 6
+                        },
+                        "address": {
+                            required: true
+                        },
+                        "tel": {
+                            required: true,
+                            validatePhone: true
+                        },
+                        "gender": {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        "first-name": {
+                            required: "Please enter a first name",
+                            maxlength: "Your first name must be maximum 50 characters"
+                        },
+                        "last-name": {
+                            required: "Please enter a last name",
+                            maxlength: "Your last name must be maximum 50 characters"
+                        },
+                        "email": {
+                            required: "Please enter a valid email address",
+                            email: "Please enter a valid email address",
+                            maxlength: "Your email must be maximum 100 characters"
+                        },
+                        "password": {
+                            required: "Please provide a password",
+                            minlength: "Your password must consist of at least 6 characters",
+                            maxlength: "Your password must be maximum 30 characters"
+                        },
+                        "confirmpass": {
+                            required: "Please provide a password",
+                            equalTo: "Please enter the same password as above",
+                            minlength: "Your password must consist of at least 6 characters"
+                        },
+                        "address": {
+                            required: "Please enter a your address"
+                        },
+                        "tel": {
+                            required: "Please enter a phone number"
+                        },
+                        "gender": {
+                            required: "Please choose a gender"
+                        }
+                    }
+                });
+                $.validator.addMethod("validatePhone", function(value, element) {
+                    return this.optional(element) || /^[(]{1}[0]{1}[0-9\-\s\)\+]{12}$/i.test(value);
+                },"Please enter a valid phone number");
+            });
+            $(function() {
+                $("[data-mask]").inputmask();
+            });
+        </script>
     </body>
 </html>

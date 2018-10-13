@@ -102,7 +102,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPhone">Phone<span style="color:red">*</span></label>
-                                            <input type="tel" class="form-control" id="exampleInputPhone" name="phone" value="${cus.phone}" placeholder="Enter phone" required="true">
+                                            <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="phone" name="phone" value="${cus.phone}" data-inputmask='"mask": "(999) 999-9999"' data-mask />
+                                                </div>
                                         </div>  
                                         <div class="form-group">
                                             <label for="exampleInputAddress">Address</label>
@@ -162,6 +167,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
             }
+        </script>
+        <script type="text/javascript">
+            $(function() {
+                $("[data-mask]").inputmask();
+            });
         </script>
     </body>
 </html>
