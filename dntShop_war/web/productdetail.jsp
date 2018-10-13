@@ -37,27 +37,27 @@
                                 <li><a href="#">Home</a></li>
                                 <li><a href="#">All Categories</a></li>
                                 <li><a href="#">${pro.categoryID.categoryName}</a></li>
-                                <li class="active">${pro.productName}</li>
-                            </ul>
-                        </div>
+                            <li class="active">${pro.productName}</li>
+                        </ul>
                     </div>
-                    <!-- /row -->
                 </div>
-                <!-- /container -->
+                <!-- /row -->
             </div>
-            <!-- /BREADCRUMB -->
+            <!-- /container -->
+        </div>
+        <!-- /BREADCRUMB -->
 
-            <!-- SECTION -->
-            <div class="section">
-                <!-- container -->
-                <div class="container">
-                    <!-- row -->
-                    <div class="row">
-                        <!-- Product main img -->
-                        <div class="col-md-5 col-md-push-2">
-                            <div id="product-main-img">
-                                <div class="product-preview">
-                                    <img src="images/Products/${pro.image1}" alt="">
+        <!-- SECTION -->
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- Product main img -->
+                    <div class="col-md-5 col-md-push-2">
+                        <div id="product-main-img">
+                            <div class="product-preview">
+                                <img src="images/Products/${pro.image1}" alt="">
                             </div>
                             <c:if test="${not empty pro.image2}">
                                 <div class="product-preview">
@@ -421,10 +421,11 @@
                                                         <a href="login.jsp"><button class="primary-btn">Login to review</button></a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview("${pro.productID}","${sessionScope.login_account.customerID}")'>
+                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview("${pro.productID}", "${sessionScope.login_account.customerID}")'>
                                                             <input class="input" type="text" value="${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName}" placeholder="Your Name" disabled="true">
                                                             <input class="input" type="email" value="${sessionScope.login_account.email}" placeholder="Your Email" disabled="true">
                                                             <textarea class="input" id="content" name="content" placeholder="Your Review" required="true"></textarea>
+                                                            <span id="content-result"></span>
                                                             <div class="input-rating">
                                                                 <span>Your Rating: </span>
                                                                 <div class="stars">
@@ -468,127 +469,74 @@
 
                     <div class="col-md-12">
                         <div class="section-title text-center">
-                            <h3 class="title">Related Products</h3>
+                            <h3 class="title">New Products</h3>
                         </div>
                     </div>
 
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product01.png" alt="">
-                                <div class="product-label">
-                                    <span class="sale">-30%</span>
+                    <c:forEach var="p" items="${sessionScope.newProductList}" begin="0" end="3">
+                        <!-- product -->
+                        <jsp:include page="ProductStarByProID?proid=${p.productID}"/>
+                        <div class="col-md-3 col-xs-6">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="images/Products/${p.image1}" alt="">
+                                    <div class="product-label">
+                                        <c:if test="${p.discountProduct ne 0}">
+                                            <span class="sale">-${p.discountProduct}%</span>
+                                        </c:if>
+                                        <c:if test="${p.feature ne '--'}">
+                                            <span class="new">${p.feature}</span>
+                                        </c:if> 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
+                                <div class="product-body">
+                                    <p class="product-category">${p.categoryID.categoryName}</p>
+                                    <h3 class="product-name"><a href="ProductDetail?proid=${p.productID}">${p.productName}</a></h3>
+                                    <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
+                                        <c:if test="${p.discountProduct ne 0}">
+                                            <del class="product-old-price">$${p.price}</del>
+                                        </c:if>
+                                    </h4>
+                                    <div class="product-rating">
+                                        <c:choose>
+                                            <c:when test="${empty avgStars}">
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:forEach begin="1" end="${avgStars}">
+                                                    <i class="fa fa-star"></i>
+                                                </c:forEach>
+                                                <c:forEach begin="1" end="${5-avgStars}">
+                                                    <i class="fa fa-star-o"></i>
+                                                </c:forEach>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div class="product-btns">
+                                        <c:choose>
+                                            <c:when test="${sessionScope.wishlist.contains(p) eq true}">
+                                                <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart-o" ></i><span class="tooltipp">add to wishlist</span></button>
+                                                    </c:otherwise>
+                                                </c:choose>
+
+                                        <button class="add-to-compare" onclick='addProductToCompare("${p.productID}")'><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
+                                        <button class="quick-view" onclick="location.href = 'ProductDetail?proid=${p.productID}'"><i class="fa fa-eye"></i><span class="tooltipp">view</span></button>
+                                    </div>
                                 </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+                                <div class="add-to-cart">
+                                    <button class="add-to-cart-btn" onclick='addProductToCart("${p.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
                                 </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
                             </div>
                         </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product02.png" alt="">
-                                <div class="product-label">
-                                    <span class="new">NEW</span>
-                                </div>
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <div class="clearfix visible-sm visible-xs"></div>
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product03.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
-
-                    <!-- product -->
-                    <div class="col-md-3 col-xs-6">
-                        <div class="product">
-                            <div class="product-img">
-                                <img src="./img/product04.png" alt="">
-                            </div>
-                            <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-                                <div class="product-rating">
-                                </div>
-                                <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
-                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span></button>
-                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-                                </div>
-                            </div>
-                            <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /product -->
+                        <!-- /product -->
+                    </c:forEach>     
 
                 </div>
                 <!-- /row -->
@@ -620,16 +568,16 @@
                     }
                 });
             }
-            function addNewReview(proid,cusid)
+            function addNewReview(proid, cusid)
             {
-                var content=$('#content').val();
+                var content = $('#content').val();
                 var rating = $('input[name=rating]:checked').val();
-                if(rating == null){
-                    $("#rating-result").html('<label class="control-label" style="color: red">You need rating</label>');
+                if (rating === undefined) {
+                    $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need rating</label>');
                     event.preventDefault();
                 }
                 $.ajax({
-                    url: "AddYourReview?proid=" + proid +"&cusid="+cusid+"&content="+content+"&rating="+rating,
+                    url: "AddYourReview?proid=" + proid + "&cusid=" + cusid + "&content=" + content + "&rating=" + rating,
                     type: "POST",
                     //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                     success: function()
@@ -653,7 +601,7 @@
                         if (n >= pageSize * (page - 1) && n < pageSize * page)
                             $(this).show();
                     });
-                }
+                };
                 showPage(1);
                 ///** Cần truyền giá trị vào đây **///
                 var totalRows = ${ratingListCount}; // Tổng số sản phẩm hiển thị

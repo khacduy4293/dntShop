@@ -203,7 +203,7 @@
                                                 </h4>
                                                 <div class="product-rating">
                                                     <c:choose>
-                                                        <c:when test="${empty avgStar}">
+                                                        <c:when test="${empty avgStars}">
                                                             <i class="fa fa-star-o"></i>
                                                             <i class="fa fa-star-o"></i>
                                                             <i class="fa fa-star-o"></i>
@@ -211,10 +211,10 @@
                                                             <i class="fa fa-star-o"></i>
                                                         </c:when>
                                                         <c:otherwise>
-                                                            <c:forEach begin="1" end="${avgStar}">
+                                                            <c:forEach begin="1" end="${avgStars}">
                                                                 <i class="fa fa-star"></i>
                                                             </c:forEach>
-                                                            <c:forEach begin="1" end="${5-avgStar}">
+                                                            <c:forEach begin="1" end="${5-avgStars}">
                                                                 <i class="fa fa-star-o"></i>
                                                             </c:forEach>
                                                         </c:otherwise>
