@@ -5,7 +5,12 @@
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Create New Account</title>
-
+        <style>
+            label.error{
+                color: red;
+                font-weight: normal;
+            }
+        </style>
     </head>
     <body>
         <!-- HEADER -->
@@ -61,7 +66,7 @@
                                 </div>                           
                                 <div class="form-group">
                                     <h5>PHONE</h5>
-                                    <input class="input" type="tel" name="tel" value="${sessionScope.login_account.phone}" placeholder="Telephone">
+                                    <input class="input" type="text" id="tel" name="tel" value="${sessionScope.login_account.phone}" placeholder="Telephone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                                 <div class="form-group">
                                     <h5>ADDRESS</h5>
@@ -84,8 +89,8 @@
                                 </div>
                                 <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="SAVE">
                                 <br/>
-                                    <div class="form-group" style="float: right">
-                                    <a href="login.jsp"><span style="color: blue">Change password</span></a>
+                                <div class="form-group" style="float: right">
+                                    <a href="changePassword.jsp"><span style="color: blue">Change password</span></a>
                                 </div>
                             </div>
                         </form>
@@ -103,11 +108,12 @@
                                     <h3 class="title">AVATAR</h3>
                                 </div>                            
                                 <div class="form-group">
-                                    <input class="input" type="hidden" name="cusID" value="${sessionScope.login_account.customerID}" required="true">
+                                    <input class="input" type="hidden" name="cusID" value="${sessionScope.login_account.customerID}">
                                     <img class="img-rounded" id="blah" src="${sessionScope.login_account.avatar}" style="margin:auto; width:150px;display:block;" onclick="document.getElementById('exampleInputFile').click();">
                                     <input type="file" id="exampleInputFile" name="inputImage" accept="image/*" onchange="readURL(this);" style="display: none;">
+                                    <br/><span>Click on the image to change your avatar</span>
                                     <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="SAVE">
-                                </div>                    
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -147,6 +153,70 @@
                     }
                 }
             }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#formRegis").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "first-name": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "last-name": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "email": {
+                            required: true,
+                            email: true,
+                            maxlength: 100
+                        },
+                        "address": {
+                            required: true
+                        },
+                        "tel": {
+                            required: true,
+                            validatePhone: true
+                        },
+                        "gender": {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        "first-name": {
+                            required: "Please enter a first name",
+                            maxlength: "Your first name must be maximum 50 characters"
+                        },
+                        "last-name": {
+                            required: "Please enter a last name",
+                            maxlength: "Your last name must be maximum 50 characters"
+                        },
+                        "email": {
+                            required: "Please enter a valid email address",
+                            email: "Please enter a valid email address",
+                            maxlength: "Your email must be maximum 100 characters"
+                        },
+                        "address": {
+                            required: "Please enter a your address"
+                        },
+                        "tel": {
+                            required: "Please enter a phone number"
+                        },
+                        "gender": {
+                            required: "Please choose a gender"
+                        }
+                    }
+                });
+                $.validator.addMethod("validatePhone", function(value, element) {
+                    return this.optional(element) || /^[(]{1}[0]{1}[0-9\-\s\)\+]{12}$/i.test(value);
+                }, "Please enter a valid phone number");
+            });
+            $(function() {
+                $("[data-mask]").inputmask();
+            });
         </script>
     </body>
 </html>

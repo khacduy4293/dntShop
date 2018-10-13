@@ -47,6 +47,8 @@
 <script src="Admin/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
 <!-- FastClick -->
 <script src="Admin/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
+<!-- Valid -->
+<script src="Admin/jquery.validate.min.js" type="text/javascript"></script>
 
 <!-- DATA TABES SCRIPT -->
 <script type="text/javascript" src="Admin/plugins/datatables/jquery.dataTables.min.js"></script>

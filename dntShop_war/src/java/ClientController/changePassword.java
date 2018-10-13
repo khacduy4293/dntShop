@@ -10,63 +10,34 @@ import bean.CustomersFacadeLocal;
 import entity.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Duy
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "changePassword", urlPatterns = {"/changePassword"})
+public class changePassword extends HttpServlet {
 
-    @EJB
-    CustomersFacadeLocal cusFacade;
+    @EJB CustomersFacadeLocal cusFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        Customers cus = new Customers();
-        //auto create brand_id 
-        int num = cusFacade.count() + 1;
-        String id = num + "";
-        int lenNum = 3;
-        int lenZero = lenNum - id.length();
-        for (int i = 0; i < lenZero; i++) {
-            id = "0" + id;
-        }
-        String cus_id = "CS" + id;
-        cus.setCustomerID(cus_id);
-        String fname=request.getParameter("first-name");
-        cus.setFirstName(fname);
-        String lname=request.getParameter("last-name");
-        cus.setLastName(lname);
-        String email=request.getParameter("email");
-        cus.setEmail(email);
-        String pass=request.getParameter("password");
+        HttpSession session = request.getSession();
+        String cusid=request.getParameter("cusid");
+        String pass=request.getParameter("pass");
+        Customers cus = cusFacade.find(cusid);
         cus.setPassword(pass);
-        String address=request.getParameter("address");
-        cus.setAddress(address);
-        String phone=request.getParameter("tel");
-        cus.setPhone(phone);
-        String gender=request.getParameter("gender");
-        if(gender.equals("Male")){
-             cus.setGender(Boolean.TRUE); 
-        }else{
-             cus.setGender(Boolean.FALSE); 
-        }          
-        Date createDate = new Date();
-        cus.setCreatedDate(createDate);
-        cus.setIsStatus(Boolean.TRUE);
-        String avatar="images/Avatars/avatar.png";
-        cus.setAvatar(avatar);
-        cusFacade.create(cus);
-        request.getRequestDispatcher("registerSuccess.jsp").forward(request, response);
+        cusFacade.edit(cus);
+        session.setAttribute("login_account", cusFacade.find(cusid));
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

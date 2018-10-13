@@ -137,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     var oldPass = $('#oldpassword').val();
                     var newPass = $('#password').val();
                     var rePass = $('#repassword').val();
-                    if (oldPass !== "<%= session.getAttribute("admin_login_pass")%>") {
+                    if (oldPass !== "${sessionScope.login_account.password}") {
                         alert("Old password don't Match");
                         event.preventDefault();
                         $('#oldpassword').focus();

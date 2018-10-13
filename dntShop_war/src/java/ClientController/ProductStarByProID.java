@@ -37,14 +37,14 @@ public class ProductStarByProID extends HttpServlet {
         String pro_id = request.getParameter("proid");
         List<Ratings> ratingList = ratingsFacade.AllRatingByProductID(pro_id);
         if (ratingList.isEmpty()) {
-            request.setAttribute("avgStar", null);
+            request.setAttribute("avgStars", null);
         } else {
             int TotalStar = 0;
             for (int i = 0; i < ratingList.size(); i++) {
                 TotalStar += ratingList.get(i).getRate();
             }
             int avgStar = TotalStar / ratingList.size();
-            request.setAttribute("avgStar", avgStar);
+            request.setAttribute("avgStars", avgStar);
         }
     }
 

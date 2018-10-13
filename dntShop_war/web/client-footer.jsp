@@ -136,3 +136,8 @@
 <script src="Client/js/jquery.zoom.min.js"></script>
 <script src="Client/js/main.js"></script>
 <script src="Client/js/jquery.twbsPagination.js" type="text/javascript"></script>
+<script src="Client/js/jquery.validate.min.js" type="text/javascript"></script>
+<!-- InputMask -->
+<script src="Admin/plugins/input-mask/jquery.inputmask.js" type="text/javascript"></script>
+<script src="Admin/plugins/input-mask/jquery.inputmask.date.extensions.js" type="text/javascript"></script>
+<script src="Admin/plugins/input-mask/jquery.inputmask.extensions.js" type="text/javascript"></script>
