@@ -38,6 +38,7 @@ public class ForgetPasswordServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         String email = request.getParameter("email");
+      
         if (cusFacade.findByMail(email).size() > 0) {
                 session.setAttribute("findUser_message", null);
                 Random rd = new Random();
@@ -45,11 +46,112 @@ public class ForgetPasswordServlet extends HttpServlet {
                 System.out.println(""+number);
                 session.setAttribute("numberResetPass", number);
                 session.setAttribute("userResetPass", cusFacade.findByMail(email).get(0));
+                  String content="<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n" +
+"\n" +
+"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
+"\n" +
+"<head>\n" +
+"\n" +
+"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n" +
+"\n" +
+"    <title>Forgot Password</title>\n" +
+"\n" +
+"    <style>\n" +
+"\n" +
+"        body {\n" +
+"\n" +
+"            background-color: #FFFFFF; padding: 0; margin: 0;\n" +
+"\n" +
+"        }\n" +
+"\n" +
+"    </style>\n" +
+"\n" +
+"</head>\n" +
+"\n" +
+"<body style=\"background-color: #FFFFFF; padding: 0; margin: 0;\">\n" +
+"\n" +
+"<table border=\"0\" cellpadding=\"0\" cellspacing=\"10\" height=\"100%\" bgcolor=\"#FFFFFF\" width=\"100%\" style=\"max-width: 650px;\" id=\"bodyTable\">\n" +
+"\n" +
+"    <tr>\n" +
+"\n" +
+"        <td align=\"center\" valign=\"top\">\n" +
+"\n" +
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" id=\"emailContainer\" style=\"font-family:Arial; color: #333333;\">\n" +
+"\n" +
+"                <!-- Logo -->\n" +
+"\n" +
+"                <tr>\n" +
+"\n" +
+"                    <td align=\"left\" valign=\"top\" colspan=\"2\" style=\"border-bottom: 1px solid #CCCCCC; padding-bottom: 10px;\">\n" +
+"\n" +
+"                        <img  border=\"0\" src=\"./img/logo.png\" alt=\"DTNShop\"  class=\"sitelogo\" width=\"60%\" style=\"max-width:250px;\" />\n" +
+"\n" +
+"                    </td>\n" +
+"\n" +
+"                </tr>\n" +
+"\n" +
+"                <!-- Title -->\n" +
+"\n" +
+"                <tr>\n" +
+"\n" +
+"                    <td align=\"left\" valign=\"top\" colspan=\"2\" style=\"border-bottom: 1px solid #CCCCCC; padding: 20px 0 10px 0;\">\n" +
+"\n" +
+"                        <span style=\"font-size: 18px; font-weight: normal;\">FORGOT PASSWORD</span>\n" +
+"\n" +
+"                    </td>\n" +
+"\n" +
+"                </tr>\n" +
+"\n" +
+"                <!-- Messages -->\n" +
+"\n" +
+"                <tr>\n" +
+"\n" +
+"                    <td align=\"left\" valign=\"top\" colspan=\"2\" style=\"padding-top: 10px;\">\n" +
+"\n" +
+"                        <span style=\"font-size: 12px; line-height: 1.5; color: #333333;\">\n" +
+"\n" +
+"                            We have sent you this email in response to your request to reset your password on DNTShop." +
+"\n" +
+"                            <br/><br/>\n" +
+"\n" +
+"                            To reset your password for yout account, please follow the link below:\n" +
+"\n" +
+"                            <a href=\"http://localhost:8080/dntShop_war/getLinkresetPasswordServlet?resetCode="+number+"\"\">http://localhost:8080/dntShop_war/getLinkresetPasswordServlet?resetCode="+number+"</a>\n" +
+"\n" +
+"                            <br/><br/>\n" +
+"\n" +
+"                            We recommend that you keep your password secure and not share it with anyone.If you feel your password has been compromised, you can change it by going to your ${site-name} My Account Page and clicking on the \"Change Email Address or Password\" link.\n" +
+"\n" +
+"                            <br/><br/>\n" +
+"\n" +
+"                            If you need help, or you have any other questions, feel free to email DNTShop@gmail.com, or call 0987184873 customer service toll-free at 0987184873.\n" +
+"\n" +
+"                            <br/><br/>\n" +
+"\n" +
+"\n" +
+"                        </span>\n" +
+"\n" +
+"                    </td>\n" +
+"\n" +
+"                </tr>\n" +
+"\n" +
+"            </table>\n" +
+"\n" +
+"        </td>\n" +
+"\n" +
+"    </tr>\n" +
+"\n" +
+"</table>\n" +
+"\n" +
+"</body>\n" +
+"\n" +
+"</html>";
                 SendMail sm=new SendMail();
-                sm.sendMail(email, " Change your password", 
+                /*sm.sendMail(email, " Change your password", 
                         "Hello "+cusFacade.findByMail(email).get(0).getFirstName()+"!!!"+"\n"+"Somebody recently asked to reset your password."+"\n"
-                                +"Clich http://localhost:8080/dntShop_war/getLinkresetPasswordServlet?resetCode="+number+" to change your password");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                                +"Click http://localhost:8080/dntShop_war/getLinkresetPasswordServlet?resetCode="+number+" to change your password");*/
+                sm.sendMail(email,"Reset your password", content);
+                request.getRequestDispatcher("messageMail.jsp").forward(request, response);
         } else {
             session.setAttribute("findUser_message", "<p class=\"login-box-msg\" style=\"color:red\">email incorrect</p>");
             request.getRequestDispatcher("findUser.jsp").forward(request, response);

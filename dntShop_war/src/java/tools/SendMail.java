@@ -39,7 +39,7 @@ public class SendMail {
             message.setFrom(new InternetAddress("quynh.lele97@gmail.com"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
-            message.setText(text);
+            message.setContent(text,"text/html");
             Transport.send(message);
         } catch (MessagingException e) {
             return false;

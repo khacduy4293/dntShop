@@ -5,6 +5,7 @@
         <group name="GitHub"/>
         <group>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/Categories.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/bean/CustomersFacadeLocal.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/ComparedProduct.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/bean/WishlistFacade.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_ejb/src/java/entity/ComparedDetailProduct.java</file>
