@@ -60,35 +60,36 @@
                                         <h3 class="title">Register</h3>
                                     </div>                            
                                     <div class="form-group">
-                                        <h5>FIRST NAME<span style="color: red">*</span></h5>
+                                        <label>FIRST NAME<span style="color: red">*</span></label>
                                         <input class="input" type="text" name="first-name" placeholder="First Name">
                                     </div>
                                     <div class="form-group">
-                                        <h5>LAST NAME<span style="color: red">*</span></h5>
+                                        <label>LAST NAME<span style="color: red">*</span></label>
                                         <input class="input" type="text" name="last-name" placeholder="Last Name">
                                     </div>
                                     <div class="form-group">
-                                        <h5>EMAIL<span style="color: red">*</span></h5>
-                                        <input class="input" type="email" name="email" placeholder="Email">
+                                        <label>EMAIL<span style="color: red">*</span></label>
+                                        <span id="email-result"></span>
+                                        <input class="input" type="email" id="email" name="email" placeholder="Email">
                                     </div>
                                     <div class="form-group">
-                                        <h5>PASSWORD<span style="color: red">*</span></h5>
+                                        <label>PASSWORD<span style="color: red">*</span></label>
                                         <input class="input" type="password" id="password" name="password" placeholder="Password">
                                     </div>  
                                     <div class="form-group">
-                                        <h5>CONFIRM PASSWORD<span style="color: red">*</span></h5>
+                                        <label>CONFIRM PASSWORD<span style="color: red">*</span></label>
                                         <input class="input" type="password" name="confirmpass" placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group">
-                                        <h5>ADDRESS<span style="color: red">*</span></h5>
+                                        <label>ADDRESS<span style="color: red">*</span></label>
                                         <input class="input" type="text" name="address" placeholder="Address">
                                     </div>                           
                                     <div class="form-group">
-                                        <h5>PHONE<span style="color: red">*</span></h5>
+                                        <label>PHONE<span style="color: red">*</span></label>
                                         <input class="input" type="text" id="tel" name="tel" placeholder="Telephone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                     </div>
                                     <div class="form-group">
-                                        <h5>GENDER<span style="color: red">*</span></h5>
+                                        <label>GENDER<span style="color: red">*</span></label>
                                         <select class="input" name="gender">
                                             <option value="">Choose a gender</option>
                                             <option value="Male">Male</option>
@@ -206,6 +207,33 @@
             });
             $(function() {
                 $("[data-mask]").inputmask();
+            });
+            
+            /*************** check Email unique **********/
+            $(document).ready(function() {
+                var x_timer;
+                $("#email").keyup(function(e) {
+                    clearTimeout(x_timer);
+                    var email = $(this).val();
+                    x_timer = setTimeout(function() {
+                        check_email_ajax(email);
+                    }, 1000);
+                });
+
+                function check_email_ajax(email) {
+                    $("#email-result").html('<label id="email-resultError" class="control-label pull-right" value="false" style="color: orange"><i class="fa fa-bell-o"></i> Waiting ...</label>');
+                    $.post('adminCheckAddEmailCustomer', {'email': email}, function(data) {
+                        $("#email-result").html(data);
+                    });
+                }
+            });
+            /*************** focus Email error  **********/
+            $('#formRegis').submit(function(event) {
+                var errors = $('#email-resultError').attr('value');
+                if (errors === 'false' || errors === null) {
+                    $('#email').focus();
+                    event.preventDefault();
+                }
             });
         </script>
     </body>

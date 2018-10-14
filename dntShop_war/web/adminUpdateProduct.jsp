@@ -68,6 +68,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputProductName">Product Name<span style="color:red">*</span></label>
+                                                <span id="email-result"></span>
                                                 <input type="text" class="form-control" id="exampleInputProName" name="productName" value="${pro.productName}" placeholder="Enter product name" required="true">
                                         </div>
                                         <div class="form-group">
@@ -397,6 +398,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
             }
+            /*************** check Email unique **********/
+            $(document).ready(function() {
+                var x_timer;
+                $("#exampleInputProName").keyup(function(e) {
+                    clearTimeout(x_timer);
+                    var name = $(this).val();
+                    var id = '${pro.productID}';
+                    x_timer = setTimeout(function() {
+                        check_name_ajax(id,name);
+                    }, 1000);
+                });
+
+                function check_name_ajax(id,name) {
+                    $("#email-result").html('<label id="email-resultError" class="control-label pull-right" value="false" style="color: orange"><i class="fa fa-bell-o"></i> Waiting ...</label>');
+                    $.post('adminCheckUpdateProductName', {'id': id,'name': name}, function(data) {
+                        $("#email-result").html(data);
+                    });
+                }
+            });
+            /*************** focus Email error  **********/
+            $('#updateProForm').submit(function(event) {
+                var errors = $('#email-resultError').attr('value');
+                if (errors === 'false' || errors === null) {
+                    $('#exampleInputProName').focus();
+                    event.preventDefault();
+                }
+            });
         </script>
         <script type="text/javascript">
             $().ready(function() {
