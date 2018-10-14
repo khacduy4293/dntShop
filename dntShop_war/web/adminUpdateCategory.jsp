@@ -7,7 +7,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         <title>Edit Category</title>
-        
+        <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
     </head>
     <!--
     BODY TAG OPTIONS:
@@ -56,9 +61,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminUpdateCategory" method="post" enctype="multipart/form-data">
+                                        <form id="updateCateForm" action="adminUpdateCategory" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                             
-                                                <h4 class="modal-title">Edit Category</h4>
+                                                <h4 class="modal-title">EDIT CATEGORY</h4>
                                             </div>                                        
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -73,7 +78,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
@@ -115,6 +119,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
             }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#updateCateForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "cateName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "cateName": {
+                            required: "Please enter a category name",
+                            maxlength: "Category name must be maximum 50 characters"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

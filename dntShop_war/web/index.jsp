@@ -96,7 +96,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 
@@ -117,7 +117,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 
@@ -149,7 +149,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 
@@ -170,7 +170,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 
@@ -204,7 +204,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryID.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/> 
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/> 
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 
@@ -225,7 +225,7 @@
                                         <div class="product-body">
                                             <p class="product-category">${n.categoryID.categoryName}</p>
                                             <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                            <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/> 
+                                            <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/> 
                                                 <c:if test="${n.discountProduct ne 0}">
                                                     <del class="product-old-price">$${n.price}</del>
                                                 </c:if> 

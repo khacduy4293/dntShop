@@ -27,7 +27,7 @@
     <div id="top-header">
         <div class="container">
             <ul class="header-links pull-left">
-                <li><a href="#"><i class="fa fa-phone"></i> +087-65-43-21</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> (098) 765-4321</a></li>
                 <li><a href="#"><i class="fa fa-envelope-o"></i> dntshop@email.com</a></li>
                 <li><a href="#"><i class="fa fa-map-marker"></i> 590 CMT8 Road, District 3, Ho Chi Minh City</a></li>
             </ul>

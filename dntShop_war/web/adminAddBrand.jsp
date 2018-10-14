@@ -6,9 +6,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Add Brand</title>
-
-        
+            <title>Add Brand</title>
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
 
         </head>
         <!--
@@ -32,13 +36,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
         |---------------------------------------------------------|
         -->
         <body class="skin-blue sidebar-mini">
-            <%
+        <%
             session.setAttribute("currentAdminPage", "brand");
             session.setAttribute("currentAdminPageChild", "addBrand");
         %>
-            <div class="wrapper">
+        <div class="wrapper">
 
-                <!-- Main Header -->
+            <!-- Main Header -->
             <jsp:include page="admin-main-header.jsp"></jsp:include>
                 <!-- Left side column. contains the logo and sidebar -->
             <jsp:include page="admin-main-sidebar.jsp"></jsp:include>
@@ -62,9 +66,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddBrand" method="post" enctype="multipart/form-data">
+                                        <form id="addBrandForm" action="adminAddBrand" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                                
-                                                <h4 class="modal-title">Create new Brand</h4>
+                                                <h4 class="modal-title">CREATE NEW BRAND</h4>
                                             </div>                                       
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -83,8 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="submit" class="btn btn-primary">Create</button>
                                             </div>
                                         </form>    
                                     </div><!-- /.modal-content -->
@@ -96,35 +99,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            
+
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->
         <script type="text/javascript">
             function readURL(input) {
                 /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
+                var fileInput = document.getElementById('exampleInputFile');
+                var filePath = fileInput.value;
+                var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                    fileInput.value = '';
+                    $('#blah').attr('src', '#');
+                    return false;
+                } else {
+                    //Image preview
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#blah')
+                                    .attr('src', e.target.result)
+                                    .width(80)
+                                    .height(80);
+                        };
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#addBrandForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "brandName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "brandName": {
+                            required: "Please enter a brand name",
+                            maxlength: "Brand name must be maximum 50 characters"
                         }
                     }
-            }
+                });
+            });
         </script>
     </body>
 </html>

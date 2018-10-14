@@ -49,6 +49,9 @@
 <script src="Admin/plugins/fastclick/fastclick.min.js" type="text/javascript"></script>
 <!-- Valid -->
 <script src="Admin/jquery.validate.min.js" type="text/javascript"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="Admin/plugins/morris/morris.min.js" type="text/javascript"></script>
 
 <!-- DATA TABES SCRIPT -->
 <script type="text/javascript" src="Admin/plugins/datatables/jquery.dataTables.min.js"></script>

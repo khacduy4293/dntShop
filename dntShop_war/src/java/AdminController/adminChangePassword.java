@@ -38,7 +38,7 @@ public class adminChangePassword extends HttpServlet {
         ad.setPassword(password);
         adminFacade.edit(ad);
         session.setAttribute("admin_login", adminFacade.find(id));
-        request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("adminViewDashBoard").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

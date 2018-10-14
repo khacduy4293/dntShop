@@ -6,8 +6,8 @@
 
 package AdminController;
 
-import bean.AdminsFacadeLocal;
-import entity.Admins;
+import bean.CustomersFacadeLocal;
+import entity.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,19 +22,19 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminCheckAddEmailAccount", urlPatterns = {"/adminCheckAddEmailAccount"})
-public class adminCheckAddEmailAccount extends HttpServlet {
+@WebServlet(name = "adminCheckAddEmailCustomer", urlPatterns = {"/adminCheckAddEmailCustomer"})
+public class adminCheckAddEmailCustomer extends HttpServlet {
 
-    @EJB AdminsFacadeLocal adminFacade;
+    @EJB CustomersFacadeLocal cusFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
-        List<Admins> adminList=adminFacade.findAll();
+        List<Customers> cusList=cusFacade.findAll();
         int check=0;
-        for (int i = 0; i < adminList.size(); i++) {
-            if(adminList.get(i).getEmail().equals(email)){
+        for (int i = 0; i < cusList.size(); i++) {
+            if(cusList.get(i).getEmail().equals(email)){
                 check++;
             }
         }

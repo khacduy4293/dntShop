@@ -79,6 +79,29 @@
 
                         <!-- aside Widget -->
                         <div class="aside">
+                            <h3 class="aside-title">Price</h3>                          
+                            <form action="AllProductByPrice" method="post">
+                                <div class="price-filter">
+                                    <div id="price-slider"></div>
+                                    <div class="input-number price-min">
+                                        <input id="price-min" name="minprice" type="number">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
+                                    <span>-</span>
+                                    <div class="input-number price-max">
+                                        <input id="price-max" name="maxprice" type="number">
+                                        <span class="qty-up">+</span>
+                                        <span class="qty-down">-</span>
+                                    </div>
+                                </div>
+                                <input type="submit" class="btn-danger pull-right" value="Filter"/>
+                            </form>
+                        </div>
+                        <!-- /aside Widget -->  
+                        
+                        <!-- aside Widget -->
+                        <div class="aside">
                             <h3 class="aside-title">Categories</h3>
                             <div class="checkbox-filter">
                                 <c:forEach items="${categoriesList}" var="c">
@@ -99,29 +122,6 @@
 
                         <!-- aside Widget -->
                         <div class="aside">
-                            <h3 class="aside-title">Price</h3>                          
-                            <form action="AllProductByPrice" method="post">
-                                <div class="price-filter">
-                                    <div id="price-slider"></div>
-                                    <div class="input-number price-min">
-                                        <input id="price-min" name="minprice" type="number">
-                                        <span class="qty-up">+</span>
-                                        <span class="qty-down">-</span>
-                                    </div>
-                                    <span>-</span>
-                                    <div class="input-number price-max">
-                                        <input id="price-max" name="maxprice" type="number">
-                                        <span class="qty-up">+</span>
-                                        <span class="qty-down">-</span>
-                                    </div>
-                                </div>
-                                <input type="submit" class="btn-danger pull-right" value="Filter"/>
-                            </form>
-                        </div>
-                        <!-- /aside Widget -->                        
-
-                        <!-- aside Widget -->
-                        <div class="aside">
                             <h3 class="aside-title">Top selling</h3>
                             <c:forEach var="n" items="${topSellingList}" begin="0" end="2">
                                 <div class="product-widget">
@@ -131,7 +131,7 @@
                                     <div class="product-body">
                                         <p class="product-category">${n.categoryName}</p>
                                         <h3 class="product-name"><a href="ProductDetail?proid=${n.productID}">${n.productName}</a></h3>
-                                        <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
+                                        <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${n.price*(100-n.discountProduct)/100}"/>
                                             <c:if test="${n.discountProduct ne 0}">
                                                 <del class="product-old-price">$${n.price}</del></h4>
                                             </c:if>
@@ -145,33 +145,6 @@
 
                     <!-- STORE -->
                     <div id="store" class="col-md-9">
-                        <!-- store top filter -->
-                        <div class="store-filter clearfix">
-                            <div class="store-sort">
-                                <label>
-                                    Sort By:
-                                    <select class="input-select">
-                                        <option value="0">Popular</option>
-                                        <option value="1">Position</option>
-                                    </select>
-                                </label>
-
-                                <label>
-                                    Show:
-                                    <select class="input-select" id="pageSize">
-                                        <option value="6">6</option>
-                                        <option value="9">9</option>
-                                        <option value="12">12</option>
-                                        <option value="15">15</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <ul class="store-grid">
-                                <li class="active"><i class="fa fa-th"></i></li>
-                                <li><a href="#"><i class="fa fa-th-list"></i></a></li>
-                            </ul>
-                        </div>
-                        <!-- /store top filter -->
 
                         <!-- store products -->
                         <div class="row">
@@ -196,7 +169,7 @@
                                             <div class="product-body">
                                                 <p class="product-category">${p.categoryID.categoryName}</p>
                                                 <h3 class="product-name"><a href="ProductDetail?proid=${p.productID}">${p.productName}</a></h3>
-                                                <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
+                                                <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
                                                     <c:if test="${p.discountProduct ne 0}">
                                                         <del class="product-old-price">$${p.price}</del>
                                                     </c:if>                                         

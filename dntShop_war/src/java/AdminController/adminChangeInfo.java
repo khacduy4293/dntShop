@@ -117,7 +117,7 @@ public class adminChangeInfo extends HttpServlet {
             ex.getStackTrace();
         }
         // redirects client to message page        
-        getServletContext().getRequestDispatcher("/adminDashboard.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/adminViewDashBoard").forward(request, response);
     }
 
 }

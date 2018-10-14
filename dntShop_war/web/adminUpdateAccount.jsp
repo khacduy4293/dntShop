@@ -7,7 +7,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
             <title>Edit Account</title>
-
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -58,10 +63,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- Horizontal Form -->
                                 <div class="box box-info">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Edit Account</h3>
+                                        <h3 class="box-title">EDIT ACCOUNT</h3>
                                     </div><!-- /.box-header -->
                                     <!-- form start -->
-                                    <form class="form-horizontal" action="adminUpdateAccount" method="post" enctype="multipart/form-data">
+                                    <form id="updateAccForm" class="form-horizontal" action="adminUpdateAccount" method="post" enctype="multipart/form-data">
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -141,6 +146,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
                 }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#updateAccForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "fullName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "fullName": {
+                            required: "Please enter a full name",
+                            maxlength: "Your full name must be maximum 50 characters"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

@@ -6,8 +6,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Admin Profile</title>
-        
+            <title>Admin Profile</title>
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -45,7 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             Your Admin Profile
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-user-secret"></i> Admin</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> Admin</a></li>
                             <li class="active">Profile</li>
                         </ol>
                     </section>
@@ -61,12 +66,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <h3 class="box-title">Change Password</h3>
                                     </div><!-- /.box-header -->
                                     <!-- form start -->
-                                    <form action="adminChangePassword" method="post" onsubmit="return checkForm();">
+                                    <form id="changePassForm" action="adminChangePassword" method="post">
                                         <div class="box-body">
                                             <div class="form-group">
                                                 <label for="exampleOldPassword">Old Password<span style="color:red">*</span></label>
                                                 <input type="hidden" class="form-control" id="adminID" name="adminID" value="${sessionScope.admin_login.adminID}">
-                                            <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Password">
+                                            <input type="hidden" class="form-control" id="curpass" name="curpass" value="${sessionScope.admin_login.password}">
+                                            <input type="password" class="form-control" id="oldpassword" name="oldpassword" placeholder="Password">                                  
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleNewPassword">New Password<span style="color:red">*</span></label>
@@ -92,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <h3 class="box-title">Change Info</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
-                                <form class="form-horizontal" action="adminChangeInfo" method="post" enctype="multipart/form-data">
+                                <form id="changeInfoForm" class="form-horizontal" action="adminChangeInfo" method="post" enctype="multipart/form-data">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
@@ -128,27 +134,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-                
+
             </div><!-- ./wrapper -->
 
             <!-- REQUIRED JS SCRIPTS -->
             <script type="text/javascript">
-                function checkForm() {
-                    var oldPass = $('#oldpassword').val();
-                    var newPass = $('#password').val();
-                    var rePass = $('#repassword').val();
-                    if (oldPass !== "${sessionScope.login_account.password}") {
-                        alert("Old password don't Match");
-                        event.preventDefault();
-                        $('#oldpassword').focus();
-                    } else if (newPass !== rePass) {
-                        alert("Password don't Match");
-                        event.preventDefault();
-                        $('#password').focus();
-                    } else {
-                        alert("Change Password successfully!!!");
-                    }
-                }
                 function readURL(input) {
                     /*************** check image **********/
                     var fileInput = document.getElementById('exampleInputFile');
@@ -173,6 +163,64 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
                 }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#changePassForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "oldpassword": {
+                            required: true,
+                            equalTo: "#curpass"
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 30
+                        },
+                        "repassword": {
+                            required: true,
+                            equalTo: "#password",
+                            minlength: 6
+                        }
+                    },
+                    messages: {
+                        "oldpassword": {
+                            required: "Please provide a password",
+                            equalTo: "old password incorrect"
+                        },
+                        "password": {
+                            required: "Please provide a password",
+                            minlength: "Your password must consist of at least 6 characters",
+                            maxlength: "Your password must be maximum 30 characters"
+                        },
+                        "repassword": {
+                            required: "Please provide a password",
+                            equalTo: "Please enter the same password as above",
+                            minlength: "Your password must consist of at least 6 characters"
+                        }
+                    }
+                });
+                $("#changeInfoForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "fullName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "fullName": {
+                            required: "Please enter a full name",
+                            maxlength: "Your full name must be maximum 50 characters"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

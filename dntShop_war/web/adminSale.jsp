@@ -58,6 +58,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-yellow"><i class="fa fa-cart-arrow-down"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">PENDING</span>
+                                        <span class="info-box-number">${totalPending}</span>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-aqua"><i class="fa fa-truck"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">SHIPPING</span>
+                                        <span class="info-box-number">${totalShipping}</span>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">COMPLETED</span>
+                                        <span class="info-box-number">${totalCompleted}</span>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->                        
+                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                <div class="info-box">
+                                    <span class="info-box-icon bg-red"><i class="fa fa-trash-o"></i></span>
+                                    <div class="info-box-content">
+                                        <span class="info-box-text">CANCELED</span>
+                                        <span class="info-box-number">${totalCanceled}</span>
+                                    </div><!-- /.info-box-content -->
+                                </div><!-- /.info-box -->
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+
+                        <div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
                                     <div class="box-header">

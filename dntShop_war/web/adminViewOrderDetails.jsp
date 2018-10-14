@@ -73,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <address>
                                 <strong>DNTShop</strong><br>
                                 590 CMT8 Road, District 3, Ho Chi Minh City<br>
-                                <b>Phone:</b> (087) 65 43 21<br/>
+                                <b>Phone:</b> (098) 765-4321<br/>
                                 <b>Email:</b> dntshop@email.com
                             </address>
                         </div><!-- /.col -->

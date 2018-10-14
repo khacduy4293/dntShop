@@ -7,6 +7,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         <title>Add Account</title>
+        <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
     </head>
     <!--
     BODY TAG OPTIONS:
@@ -59,25 +65,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminAddCategory" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+                                        <form id="addCateForm" action="adminAddCategory" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                             <div class="modal-header">                                             
-                                                <h4 class="modal-title">Create new Category</h4>
+                                                <h4 class="modal-title">CREATE NEW CATEGORY</h4>
                                             </div>                                        
                                             <div class="modal-body">
                                                 <div class="form-group">
                                                     <label for="exampleInputCateName">Category Name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputCateName" name="cateName" placeholder="Enter fullname" required="true">
+                                                    <input type="text" class="form-control" id="exampleInputCateName" name="cateName" placeholder="Enter fullname">
                                                 </div>                                                                                 
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input<span style="color:red">*</span></label>
                                                     <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" style="display: none;" accept="image/*">
                                                     <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
                                                     <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
+                                                    <span id="msg"></span>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="submit" class="btn btn-primary">Create</button>
                                             </div>
                                         </form>
                                     </div><!-- /.modal-content -->
@@ -119,12 +125,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
             }
             function checkForm() {
-                var fileInput = $('#exampleInputFile').val()
-                if (fileInput=='') {
-                    alert("Please chooes image to continue");
+                var fileInput = $('#exampleInputFile').val();
+                if (fileInput==='') {
+                    $('#msg').html('<label style="color:red;font-weight: normal;">Please choose image</label>');
                     event.preventDefault();
+                }else{
+                    $('#msg').html('');
                 }
             }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#addCateForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "cateName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "cateName": {
+                            required: "Please enter a category name",
+                            maxlength: "Category name must be maximum 50 characters"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

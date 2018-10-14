@@ -175,7 +175,8 @@
                             maxlength: 100
                         },
                         "address": {
-                            required: true
+                            required: true,
+                            validateAddress: true
                         },
                         "tel": {
                             required: true,
@@ -213,6 +214,9 @@
                 $.validator.addMethod("validatePhone", function(value, element) {
                     return this.optional(element) || /^[(]{1}[0]{1}[0-9\-\s\)\+]{12}$/i.test(value);
                 }, "Please enter a valid phone number");
+                $.validator.addMethod("validateAddress", function(value, element) {
+                    return this.optional(element) || /^\d+[ |/](?:[/A-Za-z0-9-]+[ ]?)+(?:,)+(?:[ A-Za-z0-9-]+[ ]?)+(?:,)+(?:[A-Za-z0-9 -]+[ ]?)?(?:,)?(?:[A-Za-z -]+[ ]?)$/i.test(value);
+                },"Please enter a valid address (ex: 50 Vo Van Kiet, district 1, Ho Chi Minh city)");
             });
             $(function() {
                 $("[data-mask]").inputmask();

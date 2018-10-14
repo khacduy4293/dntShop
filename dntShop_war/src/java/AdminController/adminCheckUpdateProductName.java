@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package AdminController;
 
-import bean.AdminsFacadeLocal;
-import entity.Admins;
+import bean.ProductsFacadeLocal;
+import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,26 +21,29 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "adminCheckAddEmailAccount", urlPatterns = {"/adminCheckAddEmailAccount"})
-public class adminCheckAddEmailAccount extends HttpServlet {
+@WebServlet(name = "adminCheckUpdateProductName", urlPatterns = {"/adminCheckUpdateProductName"})
+public class adminCheckUpdateProductName extends HttpServlet {
 
-    @EJB AdminsFacadeLocal adminFacade;
+    @EJB
+    ProductsFacadeLocal proFacade;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String email = request.getParameter("email");
-        List<Admins> adminList=adminFacade.findAll();
-        int check=0;
-        for (int i = 0; i < adminList.size(); i++) {
-            if(adminList.get(i).getEmail().equals(email)){
+        String id = request.getParameter("id");
+        String name = request.getParameter("name");
+        List<Products> proList = proFacade.findAll();
+        int check = 0;
+        for (int i = 0; i < proList.size(); i++) {
+            if (proList.get(i).getProductName().equals(name) && !proList.get(i).getProductID().equals(id)) {
                 check++;
             }
         }
-        if(check==0){
+        if (check == 0) {
             response.getWriter().write("<label class=\"control-label pull-right\" id=\"email-resultError\" value=\"true\" style=\"color: #00ca6d\"><i class=\"fa fa-check\"></i></label>");
-        }else{
-            response.getWriter().write("<label class=\"control-label pull-right\" id=\"email-resultError\" value=\"false\" style=\"color: tomato\"><i class=\"fa fa-times-circle-o\"></i> Email already exists</label>");
+        } else {
+            response.getWriter().write("<label class=\"control-label pull-right\" id=\"email-resultError\" value=\"false\" style=\"color: tomato\"><i class=\"fa fa-times-circle-o\"></i> Name already exists</label>");
         }
     }
 

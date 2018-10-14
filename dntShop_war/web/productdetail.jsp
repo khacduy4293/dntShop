@@ -130,7 +130,7 @@
                                 <a class="review-link" href="#">${ratingListCount} Review(s)</a>
                             </div>
                             <div>
-                                <h3 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> 
+                                <h3 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${pro.price*(100-pro.discountProduct)/100}"/> 
                                     <c:if test="${pro.discountProduct ne 0}">
                                         <del class="product-old-price">$${pro.price}</del>
                                     </c:if>
@@ -492,7 +492,7 @@
                                 <div class="product-body">
                                     <p class="product-category">${p.categoryID.categoryName}</p>
                                     <h3 class="product-name"><a href="ProductDetail?proid=${p.productID}">${p.productName}</a></h3>
-                                    <h4 class="product-price">$<fmt:formatNumber type="number" minFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
+                                    <h4 class="product-price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${p.price*(100-p.discountProduct)/100}"/>
                                         <c:if test="${p.discountProduct ne 0}">
                                             <del class="product-old-price">$${p.price}</del>
                                         </c:if>

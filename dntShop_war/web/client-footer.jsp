@@ -46,7 +46,7 @@
                         <p>Best choice for your online store. Let purchase it to enjoy now.</p>
                         <ul class="footer-links">
                             <li><a href="#"><i class="fa fa-map-marker"></i>590 CMT8 Road, District 3, Ho Chi Minh City</a></li>
-                            <li><a href="#"><i class="fa fa-phone"></i>+087-65-43-21</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>(098) 765-4321</a></li>
                             <li><a href="#"><i class="fa fa-envelope-o"></i>dntshop@email.com</a></li>
                         </ul>
                     </div>
