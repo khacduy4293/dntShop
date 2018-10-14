@@ -11,6 +11,12 @@
         <link rel="stylesheet" href="Client/css/line-icon/css/simple-line-icons.css">
         <link type="text/css" rel="stylesheet" href="Client/css/responsive.css"/>
         <title>DTNShop</title>
+        <style>
+            label.error{
+                color: red;
+                font-weight: normal;
+            }
+        </style>
     </head>
     <body>
         <!-- HEADER -->
@@ -28,49 +34,49 @@
 
         <!-- NAVIGATION -->
         <jsp:include  page="client-navigation.jsp"></jsp:include>
-        <!-- /NAVIGATION -->
+            <!-- /NAVIGATION -->
 
-        <!-- SECTION -->
+            <!-- SECTION -->
 
-        <!-- /SECTION -->
-        <!--================End Categories Banner Area =================-->
+            <!-- /SECTION -->
+            <!--================End Categories Banner Area =================-->
 
-        <!--================Shopping Cart Area =================-->
-        <div id="breadcrumb" class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <h3 class="breadcrumb-header">Checkout</h3>
-                        <ul class="breadcrumb-tree">
-                            <li><a href="#">Home</a></li>
-                            <li class="active">Checkout</li>
-                        </ul>
+            <!--================Shopping Cart Area =================-->
+            <div id="breadcrumb" class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="breadcrumb-header">Checkout</h3>
+                            <ul class="breadcrumb-tree">
+                                <li><a href="#">Home</a></li>
+                                <li class="active">Checkout</li>
+                            </ul>
+                        </div>
                     </div>
+                    <!-- /row -->
                 </div>
-                <!-- /row -->
+                <!-- /container -->
             </div>
-            <!-- /container -->
-        </div>
-        <!-- /BREADCRUMB -->
+            <!-- /BREADCRUMB -->
 
-        <!-- SECTION -->
-        <div class="section">
-            <!-- container -->
-            <div class="container">
-                <!-- row -->
-                <div class="row">
-                    <form action="PlaceOrderServlet" method="post">
-                        <div class="col-md-7">
-                            <!-- Billing Details -->
-                            <div class="billing-details">
+            <!-- SECTION -->
+            <div class="section">
+                <!-- container -->
+                <div class="container">
+                    <!-- row -->
+                    <div class="row">
+                        <form id="PlaceOrderForm" action="PlaceOrderServlet" method="post">
+                            <div class="col-md-7">
+                                <!-- Billing Details -->
+                                <div class="billing-details">
 
-                                <div class="section-title">
-                                    <h3 class="title">Billing address</h3>
-                                </div>
-                                <div class="form-group">
-                                    <input class="input" type="text" name="first-name" placeholder="First Name" value="<%= cus.getFirstName()%>">
+                                    <div class="section-title">
+                                        <h3 class="title">Billing address</h3>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="input" type="text" name="first-name" placeholder="First Name" value="<%= cus.getFirstName()%>">
                                 </div>
                                 <div class="form-group">
                                     <input class="input" type="text" name="last-name" placeholder="Last Name" value="<%= cus.getLastName()%>">
@@ -82,7 +88,7 @@
                                     <input class="input" type="text" name="address" placeholder="Address" value="<%= cus.getAddress()%>">
                                 </div>
                                 <div class="form-group">
-                                    <input class="input" type="tel" name="tel" placeholder="Telephone" value="<%= cus.getPhone()%>">
+                                    <input class="input" type="text" id="tel" name="tel" placeholder="Telephone" value="<%= cus.getPhone()%>" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                 </div>
                             </div>
                             <!-- /Billing Details -->
@@ -109,14 +115,14 @@
                                     <% for (Map.Entry<String, Items> list : cart.getCartItems().entrySet()) {%>
                                     <div class="order-col">
                                         <div><%=list.getValue().getQuantity()%>x <%=list.getValue().getProduct().getProductName()%></div>
-                                        <div>$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100 * list.getValue().getQuantity()%></div>
+                                        <div>$<%=list.getValue().getProduct().getPrice() * (100 - list.getValue().getProduct().getDiscountProduct()) / 100 * list.getValue().getQuantity()%></div>
                                     </div>
                                     <%
                                         }
                                     %>
                                 </div>
                                 <div class="order-col">
-                                    <div>Shiping</div>
+                                    <div>Shipped</div>
                                     <div><strong>FREE</strong></div>
                                 </div>
                                 <div class="order-col">
@@ -125,26 +131,6 @@
                                 </div>
                             </div>
                             <div class="payment-method">
-                                <div class="input-radio">
-                                    <input type="radio" name="payment"  id="payment-1">
-                                    <label for="payment-1">
-                                        <span></span>
-                                        Bank Transfer
-                                    </label>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
-                                <div class="input-radio">
-                                    <input type="radio" name="payment" id="payment-2">
-                                    <label for="payment-2">
-                                        <span></span>
-                                        Credit Card
-                                    </label>
-                                    <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                    </div>
-                                </div>
                                 <div class="input-radio">
                                     <input type="radio" name="payment" value="Cash" id="payment-3" checked="true">
                                     <label for="payment-3">
@@ -156,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                                <input type="submit" class="primary-btn order-submit" value="Place order">
+                            <input type="submit" class="primary-btn order-submit" value="Place order">
                         </div>
                         <!-- /Order Details -->
                     </form>
@@ -176,8 +162,6 @@
 
         <!-- bottom footer -->
         <jsp:include page="client-footer.jsp"/>
-
-    </body>
     <script type="text/javascript">
         function addProductToCart(productid)
         {
@@ -196,6 +180,66 @@
                 }
             });
         }
-
+        $().ready(function() {
+            $("#PlaceOrderForm").validate({
+                onfocusout: false,
+                onkeyup: false,
+                onclick: false,
+                rules: {
+                    "first-name": {
+                        required: true,
+                        maxlength: 50
+                    },
+                    "last-name": {
+                        required: true,
+                        maxlength: 50
+                    },
+                    "email": {
+                        required: true,
+                        email: true,
+                        maxlength: 100
+                    },
+                    "address": {
+                        required: true,
+                        validateAddress: true
+                    },
+                    "tel": {
+                        required: true,
+                        validatePhone: true
+                    }
+                },
+                messages: {
+                    "first-name": {
+                        required: "Please enter a first name",
+                        maxlength: "Your first name must be maximum 50 characters"
+                    },
+                    "last-name": {
+                        required: "Please enter a last name",
+                        maxlength: "Your last name must be maximum 50 characters"
+                    },
+                    "email": {
+                        required: "Please enter a valid email address",
+                        email: "Please enter a valid email address",
+                        maxlength: "Your email must be maximum 100 characters"
+                    },
+                    "address": {
+                        required: "Please enter a your address"
+                    },
+                    "tel": {
+                        required: "Please enter a phone number"
+                    }
+                }
+            });
+            $.validator.addMethod("validatePhone", function(value, element) {
+                return this.optional(element) || /^[(]{1}[0]{1}[0-9\-\s\)\+]{12}$/i.test(value);
+            }, "Please enter a valid phone number");
+            $.validator.addMethod("validateAddress", function(value, element) {
+                return this.optional(element) || /^\d+[ |/](?:[/A-Za-z0-9-]+[ ]?)+(?:,)+(?:[ A-Za-z0-9-]+[ ]?)+(?:,)+(?:[A-Za-z0-9 -]+[ ]?)?(?:,)?(?:[A-Za-z -]+[ ]?)$/i.test(value);
+            }, "Please enter a valid address (ex: 50 Vo Van Kiet, district 1, Ho Chi Minh city)");
+        });
+        $(function() {
+            $("[data-mask]").inputmask();
+        });
     </script>
+    </body> 
 </html>
