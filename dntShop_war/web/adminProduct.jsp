@@ -8,8 +8,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Products Manager</title>
-        
+            <title>Products Manager</title>
+
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -116,8 +116,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="adminUpdateProduct?pro_id=${e.productID}">Edit</a></li>
-                                                                    <c:if test="${e.isStatus eq true}">
+                                                                <li><a href="adminUpdateProduct?pro_id=${e.productID}"><i class="fa fa-edit"></i>Edit</a></li>
+                                                                <li><a href="adminPrintBarCode?barcode=${e.productID}" target="_blank"><i class="fa fa-barcode"></i>Barcode</a></li>
+                                                                <li class="divider"></li>
+                                                                <c:if test="${e.isStatus eq true}">
                                                                     <li><a href="adminDisableProduct?pro_id=${e.productID}"><span style="color: red">Disable</span></a></li>
                                                                     </c:if>
                                                                     <c:if test="${e.isStatus eq false}">                                                                                                                  
@@ -141,7 +143,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            
+
         </div><!-- ./wrapper -->
 
         <!-- REQUIRED JS SCRIPTS -->

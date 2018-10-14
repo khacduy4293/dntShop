@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Add New Category</title>
+        <title>Barcode</title>
         <style>
                 label.error{
                     color: red;
@@ -36,8 +36,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <body class="skin-blue sidebar-mini">
         <%
-            session.setAttribute("currentAdminPage", "category");
-            session.setAttribute("currentAdminPageChild", "addCategory");
+            session.setAttribute("currentAdminPage", "barcode");
         %>
         <div class="wrapper">
 
@@ -51,11 +50,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Category Manager
+                            BARCODE
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="#"><i class="fa fa-list"></i> Categories</a></li>
-                            <li class="active">Create</li>
+                            <li><a href="#"><i class="fa fa-barcode"></i> Barcode</a></li>
+                            <li class="active">Print</li>
                         </ol>
                     </section>
 
@@ -65,25 +64,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form id="addCateForm" action="adminAddCategory" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+                                        <form id="BarcodeForm" method="post" action="adminPrintBarCode" target="_blank">
                                             <div class="modal-header">                                             
-                                                <h4 class="modal-title">CREATE NEW CATEGORY</h4>
+                                                <h4 class="modal-title">PRINT BARCODE</h4>
                                             </div>                                        
                                             <div class="modal-body">
                                                 <div class="form-group">
-                                                    <label for="exampleInputCateName">Category Name<span style="color:red">*</span></label>
-                                                    <input type="text" class="form-control" id="exampleInputCateName" name="cateName" placeholder="Enter fullname">
-                                                </div>                                                                                 
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Image input<span style="color:red">*</span></label>
-                                                    <input type="file" id="exampleInputFile" name="inputImage" onchange="readURL(this);" style="display: none;" accept="image/*">
-                                                    <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile').click();"/>
-                                                    <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
-                                                    <span id="msg"></span>
+                                                    <label for="exampleInputCateName">Code<span style="color:red">*</span></label>
+                                                    <input type="text" class="form-control" id="barcode" name="barcode" placeholder="Input barcode">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Create</button>
+                                                <button type="submit" class="btn btn-default"><i class="fa fa-print"></i>Print</button>
                                             </div>
                                         </form>
                                     </div><!-- /.modal-content -->
@@ -100,56 +92,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED JS SCRIPTS -->
         <script type="text/javascript">
-            function readURL(input) {
-                /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        }
-                    }
-            }
-            function checkForm() {
-                var fileInput = $('#exampleInputFile').val();
-                if (fileInput==='') {
-                    $('#msg').html('<label style="color:red;font-weight: normal;">Please choose image</label>');
-                    event.preventDefault();
-                }else{
-                    $('#msg').html('');
-                }
-            }
-        </script>
-        <script type="text/javascript">
             $().ready(function() {
-                $("#addCateForm").validate({
+                $("#BarcodeForm").validate({
                     onfocusout: false,
                     onkeyup: false,
                     onclick: false,
                     rules: {
-                        "cateName": {
-                            required: true,
-                            maxlength: 50
+                        "barcode": {
+                            required: true
                         }
                     },
                     messages: {
-                        "cateName": {
-                            required: "Please enter a category name",
-                            maxlength: "Category name must be maximum 50 characters"
+                        "barcode": {
+                            required: "Please enter a barcode"
                         }
                     }
                 });

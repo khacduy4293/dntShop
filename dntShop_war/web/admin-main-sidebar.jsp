@@ -21,6 +21,7 @@
             <!-- Optionally, you can add icons to the links -->
             <li class="${sessionScope.currentAdminPage.equals("dashboard")?"active":""}"><a href="adminViewDashBoard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <li class="${sessionScope.currentAdminPage.equals("sales")?"active":""}"><a href="adminViewSale"><i class="fa fa-shopping-cart"></i> <span>Sale</span></a></li>
+            <li class="${sessionScope.currentAdminPage.equals("barcode")?"active":""}"><a href="adminBarcode.jsp"><i class="fa fa-barcode"></i> <span>Barcode</span></a></li>
             <li class="treeview ${sessionScope.currentAdminPage.equals("report")?"active":""}">
                 <a href="#"><i class="fa fa-bar-chart"></i> <span>Report</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
