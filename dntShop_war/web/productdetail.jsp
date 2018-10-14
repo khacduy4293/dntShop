@@ -576,6 +576,7 @@
                 });
             }
 <<<<<<< HEAD
+<<<<<<< HEAD
             function addProductToCartWithQuantity(productid)
             {
                 var quantity=$("#quantity").val();
@@ -595,6 +596,9 @@
                 });
             }
             function addNewReview(proid, cusid)
+=======
+            function addNewReview()
+>>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
 =======
             function addNewReview()
 >>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
@@ -620,6 +624,7 @@
                         }
                     });
                 }
+<<<<<<< HEAD
             }
             function addProductWishlist(productid, customerId)
             {
@@ -654,6 +659,8 @@
                         alert("error");
                     }
                 });
+=======
+>>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
             }
         </script>
         <script type="text/javascript">
