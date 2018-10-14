@@ -577,19 +577,20 @@
                 if (rating === undefined) {
                     $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need rating</label>');
                     event.preventDefault();
+                } else {
+                    $.ajax({
+                        url: "AddYourReview?proid=" + proid + "&cusid=" + cusid + "&content=" + content + "&rating=" + rating,
+                        type: "POST",
+                        //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                        success: function()
+                        {
+                            location.reload();
+                        },
+                        error: function() {
+                            //
+                        }
+                    });
                 }
-                $.ajax({
-                    url: "AddYourReview?proid=" + proid + "&cusid=" + cusid + "&content=" + content + "&rating=" + rating,
-                    type: "POST",
-                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
-                    success: function()
-                    {
-                        location.reload();
-                    },
-                    error: function() {
-                        //
-                    }
-                });
             }
         </script>
         <script type="text/javascript">
