@@ -55,11 +55,11 @@
                                     </div>                            
                                     <div class="form-group">
                                         <h5>NEW PASSWORD</h5>
-                                        <input class="input" type="password" name="password" placeholder="Enter your new Password" required="true">
+                                        <input class="input" type="password" id="password" name="password" placeholder="Enter your new Password" >
                                     </div>
                                     <div class="form-group">
                                         <h5>CONFIRM PASSWORD</h5>
-                                        <input class="input" type="password" name="confimpassword" placeholder="Confrim Password" required="true">
+                                        <input class="input" type="password" id="password_confirm" name="password_confirm"  placeholder="Confrim Password" >
                                     </div>
                                     <div id="message" class="form-group">
                                     </div>
@@ -79,7 +79,18 @@
             <!-- /container -->
         </div>
         <!-- /SECTION -->
-
+        <script type="text/javascript">
+            jQuery('.validatedForm').validate({
+            rules : {
+                password : {
+                    minlength : 5
+                },
+                password_confirm : {
+                    minlength : 5,
+                    equalTo : "#password"
+                }
+            }
+        </script>
         <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
         <!-- /FOOTER -->
