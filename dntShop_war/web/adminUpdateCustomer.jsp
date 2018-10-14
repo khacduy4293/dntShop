@@ -65,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box box-default">
                             <form id="UpdateCusForm" action="adminUpdateCustomer" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Edit Customer</h3>
+                                    <h3 class="box-title">EDIT CUSTOMER</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">

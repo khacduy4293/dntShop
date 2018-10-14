@@ -69,7 +69,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="modal-content">
                                         <form id="addAccount" action="adminAddAccount" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                           
-                                                <h4 class="modal-title">Create new Account</h4>
+                                                <h4 class="modal-title">CREATE NEW ACCOUNT</h4>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -97,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="submit" class="btn btn-primary">Create</button>
                                             </div>
                                         </form>
                                     </div><!-- /.modal-content -->
@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             /*************** focus Email error  **********/
             $('#addAccount').submit(function(event) {
                 var errors = $('#email-resultError').attr('value');
-                if (errors == 'false' || errors == null) {
+                if (errors === 'false' || errors === null) {
                     $('#exampleInputEmail').focus();
                     event.preventDefault();
                 }

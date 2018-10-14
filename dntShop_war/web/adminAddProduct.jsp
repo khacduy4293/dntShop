@@ -103,7 +103,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="form-group">
                                             <label>Feature<span style="color:red">*</span></label>
                                             <select class="form-control" name="feature">
-                                                <option>--</option>
+                                                <option value="--">--</option>
                                                 <option value="New" selected="true">New</option>
                                                 <option value="Hot">Hot</option>                                             
                                             </select>
@@ -204,7 +204,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                             <div class="box-footer">
                                 <div class="box-tools pull-right">
-                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>                           
                             </div>
                         </form>
@@ -345,6 +345,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             required: true,
                             min: 0,
                             max: 75
+                        },
+                        "brandID": {
+                            required: true
+                        },
+                        "cateID": {
+                            required: true
+                        },
+                        "feature": {
+                            required: true
                         }
                     },
                     messages: {
@@ -361,7 +370,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             required: "Please enter a discount",
                             min: "Discount values from 0 to 75",
                             max: "Discount values from 0 to 75"
+                        },
+                        "brandID": {
+                            required: "Please enter a brand"
+                        },
+                        "cateID": {
+                            required: "Please enter a category"
+                        },
+                        "feature": {
+                            required: "Please enter a feature"
                         }
+                        
                     }
                 });
             });

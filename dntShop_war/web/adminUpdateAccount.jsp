@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- Horizontal Form -->
                                 <div class="box box-info">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title">Edit Account</h3>
+                                        <h3 class="box-title">EDIT ACCOUNT</h3>
                                     </div><!-- /.box-header -->
                                     <!-- form start -->
                                     <form id="updateAccForm" class="form-horizontal" action="adminUpdateAccount" method="post" enctype="multipart/form-data">

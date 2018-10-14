@@ -83,7 +83,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                     <label>Choose a Product</label>
                                                     <select class="form-control" name="productID" required="true">
                                                         <c:forEach var="b" items="${proList}">
-                                                        <option value="${b.productID}">${b.productName}</option>
+                                                        <option value="${b.productID}">${b.productName} - ${b.categoryID.categoryName}</option>
                                                     </c:forEach>                                                                                    
                                                 </select>
                                             </div>                                                   

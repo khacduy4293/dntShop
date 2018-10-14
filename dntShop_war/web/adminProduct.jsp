@@ -85,8 +85,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <tr>
                                                     <td>${e.productID}</td>
                                                     <td>${e.productName}</td>                                                   
-                                                    <td>${e.price}</td>
-                                                    <td>${e.discountProduct}</td>
+                                                    <td>$${e.price}</td>
+                                                    <td>${e.discountProduct}%</td>
                                                     <td>${e.categoryID.categoryName}</td>
                                                     <td>${e.brandID.brandName}</td>
                                                     <td>

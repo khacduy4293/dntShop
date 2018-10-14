@@ -66,7 +66,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <div class="box box-default">
                             <form id="AddCusForm" action="adminAddCustomer" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Create new Customer</h3>
+                                    <h3 class="box-title">CREATE NEW CUSTOMER</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <div class="row">
@@ -81,6 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail">Email<span style="color:red">*</span></label>
+                                                <span id="email-result"></span>
                                                 <input type="email" class="form-control" id="exampleInputEmail" name="email" placeholder="Enter email" required="true">
                                             </div>                                           
                                         </div><!-- /.col -->
@@ -130,7 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div><!-- /.box-body -->
                                 <div class="box-footer">
                                     <div class="box-tools pull-right">
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Create</button>
                                     </div>                           
                                 </div>
                             </form>
@@ -169,6 +170,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     }
                 }
             }
+            /*************** check Email unique **********/
+            $(document).ready(function() {
+                var x_timer;
+                $("#exampleInputEmail").keyup(function(e) {
+                    clearTimeout(x_timer);
+                    var email = $(this).val();
+                    x_timer = setTimeout(function() {
+                        check_email_ajax(email);
+                    }, 1000);
+                });
+
+                function check_email_ajax(email) {
+                    $("#email-result").html('<label id="email-resultError" class="control-label pull-right" value="false" style="color: orange"><i class="fa fa-bell-o"></i> Waiting ...</label>');
+                    $.post('adminCheckAddEmailCustomer', {'email': email}, function(data) {
+                        $("#email-result").html(data);
+                    });
+                }
+            });
+            /*************** focus Email error  **********/
+            $('#AddCusForm').submit(function(event) {
+                var errors = $('#email-resultError').attr('value');
+                if (errors === 'false' || errors === null) {
+                    $('#exampleInputEmail').focus();
+                    event.preventDefault();
+                }
+            });
         </script>
         <script type="text/javascript">
             $().ready(function() {

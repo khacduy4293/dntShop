@@ -71,11 +71,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <input type="text" class="form-control" id="exampleInputProName" name="productName" value="${pro.productName}" placeholder="Enter product name" required="true">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPrice">Price<span style="color:red">*</span></label>
+                                            <label for="exampleInputPrice">Price($)<span style="color:red">*</span></label>
                                             <input type="number" class="form-control" id="exampleInputPrice" name="price" value="${pro.price}" placeholder="Enter price" required="true">
                                         </div>
                                         <div class="form-group">
-                                                <label for="exampleInputDiscount">Discount<span style="color:red">*</span></label>
+                                                <label for="exampleInputDiscount">Discount(%)<span style="color:red">*</span></label>
                                                 <input type="number" class="form-control" id="exampleInputDiscount" name="discount" value="${pro.discountProduct}" placeholder="Enter discount" required="true">
                                             </div>
                                     </div><!-- /.col -->
@@ -115,10 +115,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <select class="form-control" name="feature">
                                                 <c:choose>
                                                     <c:when test="${pro.feature eq '--'}">
-                                                        <option selected="true">--</option> 
+                                                        <option value="--" selected="true">--</option> 
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <option>--</option>
+                                                        <option value="--">--</option>
                                                     </c:otherwise>
                                                 </c:choose>
                                                 <c:choose>
@@ -418,6 +418,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             required: true,
                             min: 0,
                             max: 75
+                        },
+                        "brandID": {
+                            required: true
+                        },
+                        "cateID": {
+                            required: true
+                        },
+                        "feature": {
+                            required: true
                         }
                     },
                     messages: {
@@ -434,6 +443,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             required: "Please enter a discount",
                             min: "Discount values from 0 to 75",
                             max: "Discount values from 0 to 75"
+                        },
+                        "brandID": {
+                            required: "Please enter a brand"
+                        },
+                        "cateID": {
+                            required: "Please enter a category"
+                        },
+                        "feature": {
+                            required: "Please enter a feature"
                         }
                     }
                 });

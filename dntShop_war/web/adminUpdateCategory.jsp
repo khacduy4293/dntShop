@@ -63,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="modal-content">
                                         <form id="updateCateForm" action="adminUpdateCategory" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                             
-                                                <h4 class="modal-title">Edit Category</h4>
+                                                <h4 class="modal-title">EDIT CATEGORY</h4>
                                             </div>                                        
                                             <div class="modal-body">
                                                 <div class="form-group">
