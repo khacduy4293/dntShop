@@ -166,16 +166,23 @@
                                 <div class="qty-label">
                                     Qty
                                     <div class="input-number">
-                                        <input type="number" value="1">
+                                        <input id="quantity" type="number" value="1" min="1" max="9">
                                         <span class="qty-up">+</span>
                                         <span class="qty-down">-</span>
                                     </div>
                                 </div>
-                                <button class="add-to-cart-btn" onclick='addProductToCart("${pro.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <button class="add-to-cart-btn" onclick='addProductToCartWithQuantity("${pro.productID}")'><i class="fa fa-shopping-cart"></i> add to cart</button>
                             </div>
 
                             <ul class="product-btns">
-                                <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
+                                <c:choose>
+                                    <c:when test="${sessionScope.wishlist.contains(pro) eq true}">
+                                        <li><a href="#" onclick='removeProductWishlist("${pro.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i> remove from wishlist</a></li>
+                                            </c:when>
+                                            <c:otherwise>
+                                        <li><a href="#" onclick='addProductWishlist("${pro.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" ></i> add to wishlist</a></li>
+                                            </c:otherwise>
+                                        </c:choose>
                                 <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
                             </ul>
 
@@ -568,6 +575,24 @@
                     }
                 });
             }
+            function addProductToCartWithQuantity(productid)
+            {
+                var quantity=$("#quantity").val();
+                $.ajax({
+                    url: "AddProductToCartWithQuatityServlet?command=plus&productID=" + productid+"&quantity="+quantity,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
             function addNewReview(proid, cusid)
             {
                 var content = $('#content').val();
@@ -588,6 +613,40 @@
                     error: function(jqXHR, textStatus, errorThrown)
                     {
                         //alert("error");
+                    }
+                });
+            }
+            function addProductWishlist(productid, customerId)
+            {
+                $.ajax({
+                    url: "AddProductToWishlist?productId=" + productid + "&cusId=" + customerId,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function removeProductWishlist(productid, customerId)
+            {
+                $.ajax({
+                    url: "RemoveProductoutWislist?productId=" + productid + "&cusId=" + customerId,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
                     }
                 });
             }

@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="one-eight text-center">
                                             <div class="display-tc">
-                                                <input type="text" id="qt<%=list.getValue().getProduct().getProductID()%>" onchange='edit_posale("<%=list.getValue().getProduct().getProductID()%>")' name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="100">
+                                                <input type="number" id="qt<%=list.getValue().getProduct().getProductID()%>" onchange='edit_posale("<%=list.getValue().getProduct().getProductID()%>")' name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="9">
                                             </div>
                                         </div>
                                         <div class="one-eight text-center">
