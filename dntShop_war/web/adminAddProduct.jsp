@@ -8,7 +8,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
             <title>Add New Product</title>
-
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -58,7 +63,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminAddProduct" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+                            <form id="addProForm" action="adminAddProduct" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">CREATE NEW PRODUCT</h3>
                                 </div><!-- /.box-header -->
@@ -67,15 +72,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="exampleInputProductName">Product Name<span style="color:red">*</span></label>
-                                                <input type="text" class="form-control" id="exampleInputProName" name="productName" placeholder="Enter product name" required="true">
+                                                <input type="text" class="form-control" id="exampleInputProName" name="productName" placeholder="Enter product name">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPrice">Price<span style="color:red">*</span></label>
-                                                <input type="number" class="form-control" id="exampleInputPrice" name="price" placeholder="Enter price" required="true">
+                                                <label for="exampleInputPrice">Price($)<span style="color:red">*</span></label>
+                                                <input type="number" class="form-control" id="exampleInputPrice" name="price" placeholder="Enter price">
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputDiscount">Discount<span style="color:red">*</span></label>
-                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" placeholder="Enter discount" required="true">
+                                                <label for="exampleInputDiscount">Discount(%)<span style="color:red">*</span></label>
+                                                <input type="number" class="form-control" id="exampleInputDiscount" name="discount" placeholder="Enter discount">
                                             </div>                                           
                                         </div><!-- /.col -->
                                         <div class="col-md-6">
@@ -125,6 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <input type="file" id="exampleInputFile1" name="inputImage1" onchange="readURL(this);" style="display: none;" accept="image/*">
                                             <input type="button" value="Choose image" onclick="document.getElementById('exampleInputFile1').click();"/>
                                             <p class="help-block"><img id="blah" src="#" alt="" class="user-image" width="80px" height="80px"/></p>
+                                            <span id="msg"></span>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -158,41 +164,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div><!-- /.box-header -->
                             <div class="box-body">
                                 <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="exampleInputCPU">CPU</label>
-                                                <input type="text" class="form-control" id="exampleInputCPU" name="CPU" placeholder="Core i3-8130U 2.20Ghz....">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputMemory">Memory</label>
-                                                <input type="text" class="form-control" id="exampleInputMemory" name="Memory" placeholder="4GB DDR4 Bus 2400Mhz...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputVGA">VGA</label>
-                                                <input type="text" class="form-control" id="exampleInputVGA" name="VGA" placeholder="Intel UHD 620M....">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputHDD">HDD</label>
-                                                <input type="text" class="form-control" id="exampleInputHDD" name="HDD" placeholder="1 TB SATA3 + SSD M.2 PCIe....">
-                                            </div>
-                                        </div><!-- /.col -->
-                                        <div class="col-md-6">
-                                          <div class="form-group">
-                                                <label for="exampleInputCamera">Camera</label>
-                                                <input type="text" class="form-control" id="exampleInputCamera" name="Camera" placeholder="16 MP & 2MP (2 camera) ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputDisplay">Display</label>
-                                                <input type="text" class="form-control" id="exampleInputDisplay" name="Display" placeholder="15.6 inch backlit FHD(1920x1080) IPS...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputBattery">Battery</label>
-                                                <input type="text" class="form-control" id="exampleInputBattery" name="Battery" placeholder="3500 mAh, 3 Cells 42Whrs, ...">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="exampleInputWeight">Weight</label>
-                                                <input type="text" class="form-control" id="exampleInputWeight" name="Weight" placeholder="1.6 Kg ....">
-                                            </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputCPU">CPU</label>
+                                            <input type="text" class="form-control" id="exampleInputCPU" name="CPU" placeholder="Core i3-8130U 2.20Ghz....">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputMemory">Memory</label>
+                                            <input type="text" class="form-control" id="exampleInputMemory" name="Memory" placeholder="4GB DDR4 Bus 2400Mhz...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputVGA">VGA</label>
+                                            <input type="text" class="form-control" id="exampleInputVGA" name="VGA" placeholder="Intel UHD 620M....">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputHDD">HDD</label>
+                                            <input type="text" class="form-control" id="exampleInputHDD" name="HDD" placeholder="1 TB SATA3 + SSD M.2 PCIe....">
+                                        </div>
+                                    </div><!-- /.col -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="exampleInputCamera">Camera</label>
+                                            <input type="text" class="form-control" id="exampleInputCamera" name="Camera" placeholder="16 MP & 2MP (2 camera) ...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputDisplay">Display</label>
+                                            <input type="text" class="form-control" id="exampleInputDisplay" name="Display" placeholder="15.6 inch backlit FHD(1920x1080) IPS...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputBattery">Battery</label>
+                                            <input type="text" class="form-control" id="exampleInputBattery" name="Battery" placeholder="3500 mAh, 3 Cells 42Whrs, ...">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputWeight">Weight</label>
+                                            <input type="text" class="form-control" id="exampleInputWeight" name="Weight" placeholder="1.6 Kg ....">
+                                        </div>
                                     </div><!-- /.col -->       
                                 </div><!-- /.row -->
                             </div>
@@ -215,107 +221,150 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <script type="text/javascript">
             function readURL(input) {
                 /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile1');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        }
+                var fileInput = document.getElementById('exampleInputFile1');
+                var filePath = fileInput.value;
+                var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                    fileInput.value = '';
+                    $('#blah').attr('src', '#');
+                    return false;
+                } else {
+                    //Image preview
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#blah')
+                                    .attr('src', e.target.result)
+                                    .width(80)
+                                    .height(80);
+                        };
+                        reader.readAsDataURL(input.files[0]);
                     }
+                }
             }
             function readURL2(input) {
                 /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile2');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah2').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah2')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        }
+                var fileInput = document.getElementById('exampleInputFile2');
+                var filePath = fileInput.value;
+                var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                    fileInput.value = '';
+                    $('#blah2').attr('src', '#');
+                    return false;
+                } else {
+                    //Image preview
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#blah2')
+                                    .attr('src', e.target.result)
+                                    .width(80)
+                                    .height(80);
+                        };
+                        reader.readAsDataURL(input.files[0]);
                     }
+                }
             }
             function readURL3(input) {
                 /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile3');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah3').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah3')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        }
+                var fileInput = document.getElementById('exampleInputFile3');
+                var filePath = fileInput.value;
+                var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                    fileInput.value = '';
+                    $('#blah3').attr('src', '#');
+                    return false;
+                } else {
+                    //Image preview
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#blah3')
+                                    .attr('src', e.target.result)
+                                    .width(80)
+                                    .height(80);
+                        };
+                        reader.readAsDataURL(input.files[0]);
                     }
+                }
             }
             function readURL4(input) {
                 /*************** check image **********/
-                    var fileInput = document.getElementById('exampleInputFile4');
-                    var filePath = fileInput.value;
-                    var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
-                    if (!allowedExtensions.exec(filePath)) {
-                        alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
-                        fileInput.value = '';
-                        $('#blah4').attr('src', '#');
-                        return false;
-                    } else {
-                        //Image preview
-                        if (fileInput.files && fileInput.files[0]) {
-                            var reader = new FileReader();
-                            reader.onload = function(e) {
-                                $('#blah4')
-                                        .attr('src', e.target.result)
-                                        .width(80)
-                                        .height(80);
-                            };
-                            reader.readAsDataURL(input.files[0]);
-                        }
+                var fileInput = document.getElementById('exampleInputFile4');
+                var filePath = fileInput.value;
+                var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
+                if (!allowedExtensions.exec(filePath)) {
+                    alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
+                    fileInput.value = '';
+                    $('#blah4').attr('src', '#');
+                    return false;
+                } else {
+                    //Image preview
+                    if (fileInput.files && fileInput.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            $('#blah4')
+                                    .attr('src', e.target.result)
+                                    .width(80)
+                                    .height(80);
+                        };
+                        reader.readAsDataURL(input.files[0]);
                     }
-            }
-            function checkForm() {
-                var fileInput = $('#exampleInputFile1').val()
-                if (fileInput=='') {
-                    alert("Please chooes image to continue");
-                    event.preventDefault();
                 }
             }
+            function checkForm() {
+                var fileInput = $('#exampleInputFile1').val();
+                if (fileInput === '') {
+                    $('#msg').html('<label style="color:red;font-weight: normal;">Please choose image 1</label>');
+                    event.preventDefault();
+                }else{
+                    $('#msg').html('');
+                }
+            }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#addProForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "productName": {
+                            required: true,
+                            maxlength: 100
+                        },
+                        "price": {
+                            required: true,
+                            min: 1,
+                            max: 3000
+                        },
+                        "discount": {
+                            required: true,
+                            min: 0,
+                            max: 75
+                        }
+                    },
+                    messages: {
+                        "productName": {
+                            required: "Please enter a product name",
+                            maxlength: "Product name must be maximum 100 characters"
+                        },
+                        "price": {
+                            required: "Please enter a price",
+                            min: "Price values from 1 to 3000",
+                            max: "Price values from 1 to 3000"
+                        },
+                        "discount": {
+                            required: "Please enter a discount",
+                            min: "Discount values from 0 to 75",
+                            max: "Discount values from 0 to 75"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

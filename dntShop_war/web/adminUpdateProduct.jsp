@@ -8,7 +8,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         <title>Edit Product</title>
-        
+        <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -54,7 +59,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminUpdateProduct" method="post" enctype="multipart/form-data">
+                            <form id="updateProForm" action="adminUpdateProduct" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">EDIT PRODUCT</h3>
                                 </div><!-- /.box-header -->
@@ -392,6 +397,47 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         }
                     }
             }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#updateProForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "productName": {
+                            required: true,
+                            maxlength: 100
+                        },
+                        "price": {
+                            required: true,
+                            min: 1,
+                            max: 3000
+                        },
+                        "discount": {
+                            required: true,
+                            min: 0,
+                            max: 75
+                        }
+                    },
+                    messages: {
+                        "productName": {
+                            required: "Please enter a product name",
+                            maxlength: "Product name must be maximum 100 characters"
+                        },
+                        "price": {
+                            required: "Please enter a price",
+                            min: "Price values from 1 to 3000",
+                            max: "Price values from 1 to 3000"
+                        },
+                        "discount": {
+                            required: "Please enter a discount",
+                            min: "Discount values from 0 to 75",
+                            max: "Discount values from 0 to 75"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>

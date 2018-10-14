@@ -8,7 +8,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
         <title>Add Account</title>
         
-        
+        <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
                
     </head>
     <!--
@@ -79,7 +84,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                 <div class="form-group">
                                                     <label for="exampleInputPassword">Password<span style="color:red">*</span></label>
                                                     <input type="password" class="form-control" id="exampleInputPassword" name="password" placeholder="Password" required="true">
-                                                </div>                                               
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInputRePassword">Re-password<span style="color:red">*</span></label>
+                                                    <input type="password" class="form-control" id="exampleInputRePassword" name="repassword" placeholder="Password" required="true">
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="exampleInputFile">Image input</label>
                                                     <input type="file" id="exampleInputFile" name="inputImage" accept="image/*" onchange="readURL(this);" style="display: none;">
@@ -154,6 +163,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     $('#exampleInputEmail').focus();
                     event.preventDefault();
                 }
+            });
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#addAccount").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "fullName": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "email": {
+                            required: true,
+                            email: true,
+                            maxlength: 100
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 30
+                        },
+                        "repassword": {
+                            required: true,
+                            equalTo: "#exampleInputPassword",
+                            minlength: 6
+                        }
+                    },
+                    messages: {
+                        "fullName": {
+                            required: "Please enter a full name",
+                            maxlength: "Your full name must be maximum 50 characters"
+                        },
+                        "email": {
+                            required: "Please enter a valid email address",
+                            email: "Please enter a valid email address",
+                            maxlength: "Your email must be maximum 100 characters"
+                        },
+                        "password": {
+                            required: "Please provide a password",
+                            minlength: "Your password must consist of at least 6 characters",
+                            maxlength: "Your password must be maximum 30 characters"
+                        },
+                        "repassword": {
+                            required: "Please provide a password",
+                            equalTo: "Please enter the same password as above",
+                            minlength: "Your password must consist of at least 6 characters"
+                        }
+                    }
+                });
             });
         </script>
     </body>

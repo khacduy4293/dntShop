@@ -174,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="progress-bar" style="width: ${totalCanceled/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        ${totalCanceled/totalOrders*100}% Increase
+                                        <fmt:formatNumber type="number" maxFractionDigits="0" value="${totalCanceled/totalOrders*100}"/>% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
@@ -188,7 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="progress-bar" style="width: ${totalPending/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        ${totalPending/totalOrders*100}% Increase
+                                        <fmt:formatNumber type="number" maxFractionDigits="0" value="${totalPending/totalOrders*100}"/>% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
@@ -201,7 +201,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="progress-bar" style="width: ${totalCompleted/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        ${totalCompleted/totalOrders*100}% Increase
+                                        <fmt:formatNumber type="number" maxFractionDigits="0" value="${totalCompleted/totalOrders*100}"/>% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
@@ -215,7 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="progress-bar" style="width: ${totalShipping/totalOrders*100}%"></div>
                                     </div>
                                     <span class="progress-description">
-                                        ${totalShipping/totalOrders*100}% Increase
+                                        <fmt:formatNumber type="number" maxFractionDigits="0" value="${totalShipping/totalOrders*100}"/>% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->                                                   

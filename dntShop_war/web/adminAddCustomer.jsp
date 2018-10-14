@@ -9,7 +9,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
             <title>Add New Customer</title>
-
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -59,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Main content -->
                     <section class="content">
                         <div class="box box-default">
-                            <form action="adminAddCustomer" method="post" enctype="multipart/form-data" onsubmit="return checkForm();">
+                            <form id="AddCusForm" action="adminAddCustomer" method="post" enctype="multipart/form-data">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Create new Customer</h3>
                                 </div><!-- /.box-header -->
@@ -90,12 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleInputPhone">Phone<span style="color:red">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="fa fa-phone"></i>
-                                                    </div>
-                                                    <input type="text" class="form-control" id="phone" name="phone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
-                                                </div>
+                                                <input type="text" class="form-control" id="phone" name="phone" data-inputmask='"mask": "(999) 999-9999"' data-mask />
                                             </div>  
                                             <div class="form-group">
                                                 <label for="exampleInputAddress">Address</label>
@@ -145,17 +145,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- REQUIRED JS SCRIPTS -->
         <script type="text/javascript">
-            function checkForm() {
-                var phone = $('#phone').val();
-                alert(phone);
-                var newPass = $('#exampleInputPassword').val();
-                var rePass = $('#exampleInputRepass').val();
-                if (newPass !== rePass) {
-                    alert("Password don't Match");
-                    event.preventDefault();
-                    $('#password').focus();
-                }
-            }
             function readURL(input) {
                 /*************** check image **********/
                 var fileInput = document.getElementById('exampleInputFile');
@@ -182,6 +171,89 @@ scratch. This page gets rid of all links and provides the needed markup only.
             }
         </script>
         <script type="text/javascript">
+            $().ready(function() {
+                $("#AddCusForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "fName": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "lName": {
+                            required: true,
+                            maxlength: 50
+                        },
+                        "email": {
+                            required: true,
+                            email: true,
+                            maxlength: 100
+                        },
+                        "password": {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 30
+                        },
+                        "repassword": {
+                            required: true,
+                            equalTo: "#exampleInputPassword",
+                            minlength: 6
+                        },
+                        "address": {
+                            required: true,
+                            validateAddress: true
+                        },
+                        "phone": {
+                            required: true,
+                            validatePhone: true
+                        },
+                        "gender": {
+                            required: true
+                        }
+                    },
+                    messages: {
+                        "fName": {
+                            required: "Please enter a first name",
+                            maxlength: "Your first name must be maximum 50 characters"
+                        },
+                        "lName": {
+                            required: "Please enter a last name",
+                            maxlength: "Your last name must be maximum 50 characters"
+                        },
+                        "email": {
+                            required: "Please enter a valid email address",
+                            email: "Please enter a valid email address",
+                            maxlength: "Your email must be maximum 100 characters"
+                        },
+                        "password": {
+                            required: "Please provide a password",
+                            minlength: "Your password must consist of at least 6 characters",
+                            maxlength: "Your password must be maximum 30 characters"
+                        },
+                        "repassword": {
+                            required: "Please provide a password",
+                            equalTo: "Please enter the same password as above",
+                            minlength: "Your password must consist of at least 6 characters"
+                        },
+                        "address": {
+                            required: "Please enter a your address"
+                        },
+                        "phone": {
+                            required: "Please enter a phone number"
+                        },
+                        "gender": {
+                            required: "Please choose a gender"
+                        }
+                    }
+                });
+                $.validator.addMethod("validatePhone", function(value, element) {
+                    return this.optional(element) || /^[(]{1}[0]{1}[0-9\-\s\)\+]{12}$/i.test(value);
+                }, "Please enter a valid phone number");
+                $.validator.addMethod("validateAddress", function(value, element) {
+                    return this.optional(element) || /^\d+[ |/](?:[/A-Za-z0-9-]+[ ]?)+(?:,)+(?:[ A-Za-z0-9-]+[ ]?)+(?:,)+(?:[A-Za-z0-9 -]+[ ]?)?(?:,)?(?:[A-Za-z -]+[ ]?)$/i.test(value);
+                }, "Please enter a valid address (ex: 50 Vo Van Kiet, district 1, Ho Chi Minh city)");
+            });
             $(function() {
                 $("[data-mask]").inputmask();
             });

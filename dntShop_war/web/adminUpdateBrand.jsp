@@ -6,9 +6,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
-        <title>Edit Brand</title>
+            <title>Edit Brand</title>
 
-
+            <style>
+                label.error{
+                    color: red;
+                    font-weight: normal;
+                }
+            </style>
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -57,9 +62,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="modal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
-                                        <form action="adminUpdateBrand" method="post" enctype="multipart/form-data">
+                                        <form id="updateBrandForm" action="adminUpdateBrand" method="post" enctype="multipart/form-data">
                                             <div class="modal-header">                                                
-                                                <h4 class="modal-title">Edit Brand</h4>
+                                                <h4 class="modal-title">EDIT BRAND</h4>
                                             </div>                                       
                                             <div class="modal-body">
                                                 <div class="form-group">
@@ -78,7 +83,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Save changes</button>
                                         </div>
                                     </form>    
@@ -91,20 +95,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
-            
-        </div><!-- ./wrapper -->
 
-        <!-- REQUIRED JS SCRIPTS -->
-        <script type="text/javascript">
-            function readURL(input) {
-                /*************** check image **********/
+            </div><!-- ./wrapper -->
+
+            <!-- REQUIRED JS SCRIPTS -->
+            <script type="text/javascript">
+                function readURL(input) {
+                    /*************** check image **********/
                     var fileInput = document.getElementById('exampleInputFile');
                     var filePath = fileInput.value;
                     var allowedExtensions = /(\.jpg|\.png|\.jpeg|\.gif)$/i;
                     if (!allowedExtensions.exec(filePath)) {
                         alert('Please upload file having extensions .jpg/.png/.jpeg/.gif only.');
                         fileInput.value = '';
-                        $('#blah').attr('src', '${bra.brandImages}');
+                    $('#blah').attr('src', '${bra.brandImages}');
                         return false;
                     } else {
                         //Image preview
@@ -119,7 +123,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             reader.readAsDataURL(input.files[0]);
                         }
                     }
-            }
+                }
+        </script>
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#updateBrandForm").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "brandName": {
+                            required: true,
+                            maxlength: 50
+                        }
+                    },
+                    messages: {
+                        "brandName": {
+                            required: "Please enter a brand name",
+                            maxlength: "Brand name must be maximum 50 characters"
+                        }
+                    }
+                });
+            });
         </script>
     </body>
 </html>
