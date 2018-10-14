@@ -1,3 +1,4 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -9,7 +10,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <head>
         <jsp:include page="admin-main-layout.jsp"></jsp:include>
             <title>Admin | Dashboard</title>
-
         </head>
         <!--
         BODY TAG OPTIONS:
@@ -151,9 +151,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                             <c:if test="${o.processStatus eq 'Canceled'}">
                                                             <td><span class="label label-danger">${o.processStatus}</span></td>
                                                             </c:if>
-                                                            <td>$<fmt:formatNumber type="number" minFractionDigits="0" value="${o.total}"/></td>
-                                                </tr>   
-                                            </c:forEach>                                                                                        
+                                                        <td>$<fmt:formatNumber type="number" minFractionDigits="0" value="${o.total}"/></td>
+                                                    </tr>   
+                                                </c:forEach>                                                                                        
                                             </tbody>
                                         </table>
                                     </div><!-- /.table-responsive -->
@@ -161,6 +161,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="box-footer clearfix">
                                     <a href="adminViewSale" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
                                 </div><!-- /.box-footer -->
+                            </div><!-- /.box -->
+                            
+                            <!-- BAR CHART -->
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Top Selling This Year Chart</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body chart-responsive">
+                                    <div class="chart" id="bar-chart" style="height: 300px;"></div>
+                                </div><!-- /.box-body -->
                             </div><!-- /.box -->
                         </div><!-- /.col -->
 
@@ -205,7 +219,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </span>
                                 </div><!-- /.info-box-content -->
                             </div><!-- /.info-box -->
-                            
+
                             <div class="info-box bg-aqua">
                                 <span class="info-box-icon"><i class="fa fa-truck"></i></span>
                                 <div class="info-box-content">
@@ -218,7 +232,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <fmt:formatNumber type="number" maxFractionDigits="0" value="${totalShipping/totalOrders*100}"/>% Increase
                                     </span>
                                 </div><!-- /.info-box-content -->
-                            </div><!-- /.info-box -->                                                   
+                            </div><!-- /.info-box -->
+
+                            <!-- PRODUCT LIST -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Recently Added Products</h3>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <ul class="products-list product-list-in-box">
+                                        <c:forEach var="t" items="${newProList}" begin="0" end="3">
+                                            <li class="item">
+                                                <div class="product-img">
+                                                    <img src="images/Products/${t.image1}" alt="ProImage" />
+                                                </div>
+                                                <div class="product-info">
+                                                    <a class="product-title">${t.productName} <span class="label label-danger pull-right">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${t.price*(100-t.discountProduct)/100}"/></span></a>
+                                                    <span class="product-description">
+                                                        ${t.descriptions}
+                                                    </span>
+                                                </div>
+                                            </li><!-- /.item -->
+                                        </c:forEach>
+                                    </ul>
+                                </div><!-- /.box-body -->
+                                <div class="box-footer text-center">
+                                    <a href="adminViewProduct" class="uppercase">View All Products</a>
+                                </div><!-- /.box-footer -->
+                            </div><!-- /.box -->
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </section><!-- /.content -->
@@ -227,9 +272,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Main Footer -->
             <jsp:include page="admin-main-footer.jsp"></jsp:include>
 
-        </div><!-- ./wrapper -->
+            </div><!-- ./wrapper -->
 
-        <!-- REQUIRED JS SCRIPTS -->
-
+            <!-- REQUIRED JS SCRIPTS -->
+            <script type="text/javascript">
+                $(function() {
+                    "use strict";
+                    //BAR CHART
+                    var bar = new Morris.Bar({
+                        element: 'bar-chart',
+                        resize: true,
+                        data: [
+                            {y: '${topSellList.get(0).productName}', a: ${topSellList.get(0).topSelling}},
+                            {y: '${topSellList.get(1).productName}', a: ${topSellList.get(1).topSelling}},
+                            {y: '${topSellList.get(2).productName}', a: ${topSellList.get(2).topSelling}},
+                            {y: '${topSellList.get(3).productName}', a: ${topSellList.get(3).topSelling}},
+                            {y: '${topSellList.get(4).productName}', a: ${topSellList.get(4).topSelling}},
+                            {y: '${topSellList.get(5).productName}', a: ${topSellList.get(5).topSelling}}
+                        ],
+                        barColors: ['#00a65a', '#f56954'],
+                        xkey: 'y',
+                        ykeys: ['a'],
+                        labels: ['Quantity'],
+                        hideHover: 'auto'
+                    });
+                });
+        </script>
     </body>
 </html>

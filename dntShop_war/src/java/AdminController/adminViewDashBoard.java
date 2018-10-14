@@ -11,6 +11,7 @@ import bean.CustomersFacadeLocal;
 import bean.OrdersFacadeLocal;
 import bean.ProductsFacadeLocal;
 import entity.Orders;
+import entity.Products;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
@@ -75,6 +76,10 @@ public class adminViewDashBoard extends HttpServlet {
         request.setAttribute("totalPending", totalPending);
         request.setAttribute("totalShipping", totalShipping);
         request.setAttribute("totalCompleted", totalCompleted);
+        List<Products> newProductList = proFacade.AllProduct();
+        Collections.reverse(newProductList);
+        request.setAttribute("newProList", newProductList);
+        request.setAttribute("topSellList", proFacade.TopSellingThisYear());
         request.getRequestDispatcher("adminDashboard.jsp").forward(request, response);
     }
 

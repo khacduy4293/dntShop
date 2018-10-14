@@ -36,7 +36,8 @@
 <!-- DATA TABLES -->
 <link href="Admin/plugins/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />      
 <link href="Admin/plugins/datatables/extensions/Buttons/css/buttons.bootstrap.min.css" rel="stylesheet">
-
+<!-- Morris charts -->
+<link href="Admin/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
 <style>
     .example-modal .modal {
         position: relative;
