@@ -80,7 +80,7 @@
         </div>
         <!-- /SECTION -->
         <script type="text/javascript">
-            jQuery('.validatedForm').validate({
+            jQuery('.formLogin').validate({
             rules : {
                 password : {
                     minlength : 5
