@@ -421,7 +421,7 @@
                                                         <a href="login.jsp"><button class="primary-btn">Login to review</button></a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview("${pro.productID}", "${sessionScope.login_account.customerID}")'>
+                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview()'>
                                                             <input class="input" type="text" value="${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName}" placeholder="Your Name" disabled="true">
                                                             <input class="input" type="email" value="${sessionScope.login_account.email}" placeholder="Your Email" disabled="true">
                                                             <textarea class="input" id="content" name="content" placeholder="Your Review" required="true"></textarea>
@@ -568,8 +568,10 @@
                     }
                 });
             }
-            function addNewReview(proid, cusid)
+            function addNewReview()
             {
+                var proid = '${pro.productID}';
+                var cusid = '${sessionScope.login_account.customerID}';
                 var content = $('#content').val();
                 var rating = $('input[name=rating]:checked').val();
                 if (rating === undefined) {
@@ -582,12 +584,10 @@
                     //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                     success: function()
                     {
-
                         location.reload();
                     },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
-                        //alert("error");
+                    error: function() {
+                        //
                     }
                 });
             }
