@@ -3,16 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ClientController;
 
-import bean.CustomersFacadeLocal;
-import bean.ProductsFacadeLocal;
-import bean.RatingsFacadeLocal;
-import entity.Ratings;
+package AdminController;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,44 +18,46 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Duy
  */
-@WebServlet(name = "AddYourReview", urlPatterns = {"/AddYourReview"})
-public class AddYourReview extends HttpServlet {
+@WebServlet(name = "adminPrintBarCode", urlPatterns = {"/adminPrintBarCode"})
+public class adminPrintBarCode extends HttpServlet {
 
-    @EJB
-    RatingsFacadeLocal ratingFacade;
-    @EJB
-    ProductsFacadeLocal proFacade;
-    @EJB
-    CustomersFacadeLocal cusFacade;
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String value=request.getParameter("barcode");
+        request.setAttribute("value", value);
+        request.getRequestDispatcher("barcode-print.jsp").forward(request, response);
     }
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String cusid = request.getParameter("cusid");
-        String proid = request.getParameter("proid");
-        String content = request.getParameter("content");
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        Ratings ra = new Ratings();
-        ra.setProductID(proFacade.find(proid));
-        ra.setCustomerID(cusFacade.find(cusid));
-        ra.setContent(content);
-        ra.setRate(rating);
-        Date date = new Date();
-        ra.setRatingDate(date);
-        ratingFacade.create(ra);
     }
 
     /**

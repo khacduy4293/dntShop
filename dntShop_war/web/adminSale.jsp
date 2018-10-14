@@ -147,7 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">Action <span class="fa fa-caret-down"></span></button>
                                                             <ul class="dropdown-menu">
-                                                                <li><a href="adminViewOrderDetails?orderid=${e.orderID}">View Details</a></li>
+                                                                <li><a href="adminViewOrderDetails?orderid=${e.orderID}"><i class="fa fa-search"></i>Details</a></li>
                                                                 <li class="divider"></li>
                                                                     <c:if test="${e.processStatus eq 'Completed'}">
                                                                     <li><a href="adminUpdateSaleProcessStatus?orderid=${e.orderID}&pstatus=Shipping"><span style="color: blue">Shipping</span></a></li>                                                                
