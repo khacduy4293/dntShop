@@ -87,7 +87,7 @@
                                         </c:choose>
                                     </select>
                                 </div>
-                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="SAVE">
+                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="CHANGE">
                                 <br/>
                                 <div class="form-group" style="float: right">
                                     <a href="changePassword.jsp"><span style="color: blue">Change password</span></a>
@@ -112,7 +112,7 @@
                                     <img class="img-rounded" id="blah" src="${sessionScope.login_account.avatar}" style="margin:auto; width:150px;display:block;" onclick="document.getElementById('exampleInputFile').click();">
                                     <input type="file" id="exampleInputFile" name="inputImage" accept="image/*" onchange="readURL(this);" style="display: none;">
                                     <br/><span>Click on the image to change your avatar</span>
-                                    <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="SAVE">
+                                    <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="CHANGE">
                                 </div>
                             </div>
                         </form>

@@ -3,11 +3,12 @@
 <%@page import="java.util.Map"%>
 <%@page import="entity.Items"%>
 <%@page import="entity.Cart"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <jsp:include page="client-layout.jsp"/> 
-        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="Client/css/elegant-icon/style.css">
         <link rel="stylesheet" href="Client/css/line-icon/css/simple-line-icons.css">
@@ -64,7 +65,7 @@
                                             </div>
                                             <div class="one-eight text-center">
                                                 <div class="display-tc">
-                                                    <span class="price">$${w.productID.getPrice()}</span>
+                                                    <span class="price">$<fmt:formatNumber type="number" maxFractionDigits="0" value="${w.productID.getPrice()*(100-w.productID.getDiscountProduct())/100}"/></span>
                                                 </div>
                                             </div>
                                             <div class="one-eight text-center">
