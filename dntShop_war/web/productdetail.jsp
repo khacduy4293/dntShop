@@ -428,7 +428,7 @@
                                                         <a href="login.jsp"><button class="primary-btn">Login to review</button></a>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <form id="ReviewForm" class="review-form" method="post" onsubmit='addNewReview()'>
+                                                        <form id="ReviewForm" class="review-form" method="post">
                                                             <input class="input" type="text" value="${sessionScope.login_account.firstName} ${sessionScope.login_account.lastName}" placeholder="Your Name" disabled="true">
                                                             <input class="input" type="email" value="${sessionScope.login_account.email}" placeholder="Your Email" disabled="true">
                                                             <textarea class="input" id="content" name="content" placeholder="Your Review" required="true"></textarea>
@@ -444,7 +444,7 @@
                                                                 </div>
                                                                 <span id="rating-result"></span>
                                                             </div>
-                                                            <button class="primary-btn">Submit</button>
+                                                            <button class="primary-btn" onclick="addNewReview()">Submit</button>
                                                         </form>
                                                     </c:otherwise>
                                                 </c:choose>
@@ -575,8 +575,7 @@
                     }
                 });
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
+            
             function addProductToCartWithQuantity(productid)
             {
                 var quantity=$("#quantity").val();
@@ -595,20 +594,19 @@
                     }
                 });
             }
-            function addNewReview(proid, cusid)
-=======
+            
             function addNewReview()
->>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
-=======
-            function addNewReview()
->>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
             {
                 var proid = '${pro.productID}';
                 var cusid = '${sessionScope.login_account.customerID}';
                 var content = $('#content').val();
                 var rating = $('input[name=rating]:checked').val();
-                if (rating === undefined) {
-                    $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need rating</label>');
+                if (content.trim() === "") {
+                    $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need review product</label>');
+                    event.preventDefault();
+                }
+                else if (rating === undefined) {
+                    $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need rating product</label>');
                     event.preventDefault();
                 } else {
                     $.ajax({
@@ -624,8 +622,8 @@
                         }
                     });
                 }
-<<<<<<< HEAD
             }
+            
             function addProductWishlist(productid, customerId)
             {
                 $.ajax({
@@ -643,6 +641,7 @@
                     }
                 });
             }
+            
             function removeProductWishlist(productid, customerId)
             {
                 $.ajax({
@@ -659,8 +658,6 @@
                         alert("error");
                     }
                 });
-=======
->>>>>>> 3b33aecc68c59bb0c5bcb90eb8a20f4c3045f8c6
             }
         </script>
         <script type="text/javascript">

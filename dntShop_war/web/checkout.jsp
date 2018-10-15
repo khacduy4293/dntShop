@@ -132,13 +132,13 @@
                             </div>
                             <div class="payment-method">
                                 <div class="input-radio">
-                                    <input type="radio" name="payment" value="Cash" id="payment-3" checked="true">
+                                    <input type="radio" name="payment" value="Cash On Delivery" id="payment-3" checked="true">
                                     <label for="payment-3">
                                         <span></span>
-                                        Cash
+                                        Cash On Delivery
                                     </label>
                                     <div class="caption">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        <p>Payment method in which ordered goods are carried to the buyer's place but are handed over only upon full payment. Also called collect on delivery.</p>
                                     </div>
                                 </div>
                             </div>

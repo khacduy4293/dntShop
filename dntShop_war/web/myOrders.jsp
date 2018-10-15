@@ -53,10 +53,10 @@
             <div class="container">
                 <!-- row -->
                 <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="breadcrumb-header" style="text-align: center;">My Orders</h3>                       
-                        </div>
+                    <div class="col-md-12">
+                        <h2 class="breadcrumb-header" style="text-align: center;">My Orders</h3>                       
                     </div>
+                </div>
                 <div class="row">
                     <div class="colorlib-shop p_100">
                         <div class="container">                              
@@ -65,13 +65,24 @@
                                     <c:forEach var="o" items="${orList}">
                                         <div class="contentPage">
                                             <div class="col-md-10">
-                                            <h3 style="color: blue">#${o.orderID}</h3>
-                                            <h5><fmt:formatDate value="${o.orderDate}" pattern="dd-MM-yyyy" /> 
-                                                / <span style="color: red">${o.processStatus}</span> 
-                                                <c:if test="${o.processStatus eq 'Pending'}">                               
-                                                    <a href="CanceledMyOrders?orderid=${o.orderID}&cusid=${sessionScope.login_account.customerID}" class="closed"><i class="fa fa-trash-o"></i></a> 
-                                                </c:if>
-                                            </h5>
+                                                <h3 style="color: blue">#${o.orderID}</h3>
+                                                <h5><fmt:formatDate value="${o.orderDate}" pattern="dd-MM-yyyy" /> / 
+                                                    <c:choose>
+                                                        <c:when test="${o.processStatus eq 'Pending'}">
+                                                            <span style="color: orange">${o.processStatus}</span>
+                                                            <a href="CanceledMyOrders?orderid=${o.orderID}&cusid=${sessionScope.login_account.customerID}" class="closed" onclick="return confirm('Are You Sure?')"><i class="fa fa-trash-o"></i></a>
+                                                        </c:when>
+                                                        <c:when test="${o.processStatus eq 'Completed'}">
+                                                            <span style="color: green">${o.processStatus}</span>
+                                                        </c:when>
+                                                            <c:when test="${o.processStatus eq 'Shipping'}">
+                                                            <span style="color: blue">${o.processStatus}</span>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <span style="color: red">${o.processStatus}</span>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </h5>
                                             </div>
                                             <div class="productname">
                                                 <div class="one-forth text-center">
@@ -94,7 +105,7 @@
                                                             <img class="product-img" src="images/Products/${c.productID.image1}">
                                                             </img>
                                                             <div class="display-tc">
-                                                                <h3>${c.productID.productName}</h3>
+                                                                <a href="ProductDetail?proid=${c.productID.productID}"><h3>${c.productID.productName}</h3></a>
                                                             </div>
                                                         </div>
                                                         <div class="one-eight text-center">
