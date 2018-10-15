@@ -104,6 +104,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <th>Qty</th>
                                         <th>Product Name</th>
                                         <th>Serial #</th>
+                                        <th>Price</th>
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
@@ -113,6 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <td>${d.quantity}</td>
                                             <td>${d.productID.productName}</td>
                                             <td>${d.productID.productID}</td>
+                                            <td>$${d.sellingPrice}</td>
                                             <td>$${d.sellingPrice*d.quantity}</td>
                                         </tr>
                                     </c:forEach>                                                                      

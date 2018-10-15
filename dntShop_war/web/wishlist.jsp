@@ -60,7 +60,7 @@
                                                 <img class="product-img" src="images/Products/${w.productID.getImage1()}">
                                                 </img>
                                                 <div class="display-tc">
-                                                    <h3>${w.productID.getProductName()}</h3>
+                                                    <a href="ProductDetail?proid=${w.productID.productID}"><h3>${w.productID.getProductName()}</h3></a>
                                                 </div>
                                             </div>
                                             <div class="one-eight text-center">

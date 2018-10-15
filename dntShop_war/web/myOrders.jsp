@@ -105,7 +105,7 @@
                                                             <img class="product-img" src="images/Products/${c.productID.image1}">
                                                             </img>
                                                             <div class="display-tc">
-                                                                <h3>${c.productID.productName}</h3>
+                                                                <a href="ProductDetail?proid=${c.productID.productID}"><h3>${c.productID.productName}</h3></a>
                                                             </div>
                                                         </div>
                                                         <div class="one-eight text-center">
