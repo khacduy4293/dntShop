@@ -2,6 +2,9 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group name="GitHub"/>
+=======
         <group name="GitHub">
             <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/myOrders.jsp</file>
         </group>
@@ -40,5 +43,6 @@
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/PlaceOrderServlet.java</file>
             <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/RemoveProductoutWislist.java</file>
         </group>
+>>>>>>> 8de508ad7b2a267b0d54719c0c27a34a417f60a9
     </open-files>
 </project-private>
