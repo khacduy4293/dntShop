@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="one-eight text-center">
                                             <div class="display-tc">
-                                                <input type="number" id="qt<%=list.getValue().getProduct().getProductID()%>" onchange='edit_posale("<%=list.getValue().getProduct().getProductID()%>")' name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="9">
+                                                <input type="number" id="qt<%=list.getValue().getProduct().getProductID()%>" onchange='edit_posale("<%=list.getValue().getProduct().getProductID()%>")' name="quantity" class="form-control input-number text-center" value="<%=list.getValue().getQuantity()%>" min="1" max="99">
                                             </div>
                                         </div>
                                         <div class="one-eight text-center">
@@ -137,16 +137,6 @@
                                     <div class="total-wrap">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <form action="#">
-                                                    <div class="row form-group">
-                                                        <div class="col-md-9">
-                                                            <input type="text" name="quantity" class="form-control input-number" placeholder="Your Coupon Number...">
-                                                        </div>
-                                                        <div class="col-md-3">
-                                                            <input type="submit" value="Apply Coupon" class="btn btn-primary">
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                             <div class="col-md-3 col-md-push-1 text-center">
                                                 <div class="total">
@@ -220,8 +210,8 @@
             function edit_posale(productid)
             {
                 var qt1 = $('#qt' +  productid).val();
-                if (qt1 > 9) {
-                    swal("Quantity isn't more than 9");
+                if (qt1 > 99) {
+                    swal("Quantity isn't more than 99");
                 } else
                 {
                     $.ajax({
