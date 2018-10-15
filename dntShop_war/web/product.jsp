@@ -303,7 +303,7 @@
                     success: function()
                     {
 
-                        location.reload();
+                        location.href='compare.jsp';
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {

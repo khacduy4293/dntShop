@@ -16,18 +16,122 @@
         <link type="text/css" rel="stylesheet" href="Client/css/responsive.css"/>
         <title>DNTShop - Shopping Cart</title>
     </head>
+    <style type="text/css">
+        div.comparisontable{
+            display: flex;
+            flex-direction: column;
+        }
+
+        div.comparisontable img{
+            max-width: 100%;
+            width: auto;
+            height: auto;
+        }
+
+
+        div.comparisontable ul.row{
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        div.comparisontable ul.row li{
+            background: #c9f4ca;
+            flex: 1;
+            padding: 10px;
+            border-bottom: 1px solid gray;
+        }
+
+        div.comparisontable ul.row li.legend{
+            background: #6640d8;
+            color: white;
+            font-weight: bold;
+            border: none;
+            width: 200px;
+            border-bottom: 1px solid white;
+        }
+
+        div.comparisontable ul.row li:last-of-type{
+        }
+
+        /* very first row */
+        div.comparisontable ul.row:first-of-type li{
+            text-align: center;
+        }
+
+        /* very last row */
+        div.comparisontable ul.row:last-of-type li{
+            text-align: center;
+            border-bottom: none;
+            box-shadow: 0 6px 6px rgba(0,0,0,0.23);
+        }
+
+        div.comparisontable a.calltoaction{
+            color: white;
+            background: #e12525;
+            display: inline-block;
+            padding: 8px 10px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: .1em auto;
+        }
+
+        div.comparisontable a.calltoaction:hover{
+            background: #d11212;
+        }
+
+
+        /* first and last cell within legend column */
+        div.comparisontable ul.row:first-of-type li.legend.legend,
+        div.comparisontable ul.row:last-of-type li.legend{
+            background: transparent;
+            box-shadow: none;
+        }
+
+        @media screen and (max-width:650px){
+
+            div.comparisontable ul.row{
+                flex-direction: column;
+            }
+
+            div.comparisontable img{
+                width: auto;
+                height: auto;
+            }
+
+            div.comparisontable ul.row li{
+                margin-right: 0;
+                flex: auto;
+                width: auto;
+            }
+
+            /* first and last cell within legend column */
+            div.comparisontable ul.row:first-of-type li.legend.legend,
+            div.comparisontable ul.row:last-of-type li.legend{
+                display: none;
+            }
+
+            div.comparisontable ul.row li.legend{
+                width: auto;
+            }
+        }
+    </style>
     <body>
         <!-- HEADER -->
         <jsp:include  page="client-header.jsp"></jsp:include>
         <%
             ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
-            ComparedDetailProduct detailProduct=(ComparedDetailProduct) session.getAttribute("details");
+            ComparedDetailProduct detailProduct = (ComparedDetailProduct) session.getAttribute("details");
             if (compare == null) {
                 compare = new ComparedProduct();
                 session.setAttribute("compare", compare);
             }
-            if(detailProduct==null){
-                detailProduct=new ComparedDetailProduct();
+            if (detailProduct == null) {
+                detailProduct = new ComparedDetailProduct();
                 session.setAttribute("details", detailProduct);
             }
         %>
@@ -44,7 +148,7 @@
                     <!-- row -->
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="breadcrumb-header">Compare Product</h3>                       
+                            <h3 style="text-align: center">Compare Product</h3>                       
                         </div>
                     </div>
                     <!-- /row -->
@@ -54,88 +158,71 @@
             <!-- /BREADCRUMB -->
 
             <!-- SECTION -->
-            <section class="product_compare_area">
-            <div class="container">
-                <div class="compare_table">
-                    <div class="table-responsive-md">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"></th>
-                                <% for(Products p : compare.getComparedProducts()){%>
-                                    <th scope="col"><%= p.getProductName()%></th>
-                                    <%}%>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"><span>Summary</span></th>
-                                    <% for(Products p : compare.getComparedProducts()){%>
-                                    <td>
-                                        
-                                        <img class="product-img" src="images/Products/<%= p.getImage1()%>" alt="" >
-                                        <h3><span>Price</span> $<%= p.getPrice()%></h3>
-                                        <ul>
-                                            <li class="p_icon"><a href="#"><i class="icon_piechart"></i></a></li>
-                                            <li><a class="add_cart_btn" href="#">Add To Cart</a></li>
-                                            <li class="p_icon"><a href="#"><i class="icon_heart_alt"></i></a></li>
-                                        </ul>
-                                    </td>
-                                    <%}%>
-                                </tr>
-                                
-                                <tr>
-                                    <th scope="row"><span>CPU</span></th>
-                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td>
-                                        <h6><%= pd.getCpu()%></h6>
-                                    </td>
-                                     <%}%>
-                                </tr>                              
-                                <tr>
-                                    <th scope="row"><span>Display</span></th>
-                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getDisplay()%></h6></td>
-                                    <%}%>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Camera</span></th>
-                                    <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getCamera()%></h6></td>
-                                    <%}%>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Memory</span></th>
-                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getMemory() %></h6></td>
-                                    <%}%>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>HDD</span></th>
-                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getHdd()%></h6></td>
-                                    <%}%>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>VGA</span></th>
-                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getVga()%></h6></td>
-                                    <%}%>
-                                </tr>
-                                <tr>
-                                    <th scope="row"><span>Battery</span></th>
-                                   <% for(ProductsDetails pd : detailProduct.getDetailsProducts()){%>
-                                    <td><h6><%= pd.getBattery()%></h6></td>
-                                    <%}%>
-                                </tr>
+            <div class="comparisontable">
 
-                            </tbody>
-                        </table>
-                    </div>
-                    <a class="add_cart_btn continue" href="#">continue shopping</a>
-                </div>
-            </div>
-        </section>
+
+                <ul class="row">
+                    <li class="legend">Item</li>
+                    <% for (Products p : compare.getComparedProducts()) {%>
+                <li><img src="images/Products/<%= p.getImage1()%>" /><br /><%= p.getProductName()%></li>
+                    <%}%>
+            </ul>
+
+            <ul class="row">
+                <li class="legend">CPU</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getCpu()%></li>
+                    <%}%>
+
+            </ul>
+
+            <ul class="row">
+                <li class="legend">Display</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getDisplay()%></li>
+                    <%}%>
+            </ul>
+
+            <ul class="row">
+                <li class="legend">Camera</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getCamera()%></li>
+                    <%}%>
+            </ul>
+
+            <ul class="row">
+                <li class="legend">HDD</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getHdd()%></li>
+                    <%}%>
+            </ul>
+            <ul class="row">
+                <li class="legend">Memory</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getMemory()%></li>
+                    <%}%>
+            </ul>
+            <ul class="row">
+                <li class="legend">Weights</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getWeights()%></li>
+                    <%}%>
+            </ul>
+            <ul class="row">
+                <li class="legend">Vga</li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><%= pd.getVga()%></li>
+                    <%}%>
+            </ul>
+
+            <ul class="row">
+                <li class="legend"></li>
+                    <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+                <li><a href="#" onclick='addProductToCart(<%= pd.getProductID().getProductID()%>)' class="calltoaction" rel="nofollow">Buy Now</a></li>
+                <%}%>          
+            </ul>
+
+        </div>
         <!-- /SECTION -->
 
 
@@ -147,6 +234,65 @@
         <jsp:include  page="client-footer.jsp"></jsp:include>
         <!-- /FOOTER -->
 
-        
+        <script type="text/javascript">
+            function addProductToCart(productid)
+            {
+                $.ajax({
+                    url: "AddProductToCart?command=plus&productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function RemoveCart(productid)
+            {
+                $.ajax({
+                    url: "AddProductToCart?command=remove&productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function edit_posale(productid)
+            {
+                var qt1 = $('#qt' + productid).val();
+                if (qt1 > 99) {
+                    swal("Quantity isn't more than 99");
+                } else
+                {
+                    $.ajax({
+                        url: "EditCartServlet?productID=" + productid + "&quantity=" + qt1,
+                        type: "POST",
+                        success: function()
+                        {
+                            location.reload();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert(orderid + "\n" + qt1 + "\n" + productid);
+                        }
+                    });
+
+                }
+
+            }
+
+        </script>
     </body>
 </html>
