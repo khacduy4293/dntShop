@@ -49,7 +49,7 @@ public class Cart {
         boolean check = cartItems.containsKey(key);
         if (check) {
             int quantity_old = item.getQuantity();
-            if (quantity_old <= 1) {
+            if (quantity_old < 1) {
                 cartItems.remove(key);
             } else {
                 item.setQuantity(quantity_old);

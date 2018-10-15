@@ -8,11 +8,18 @@
     <%
         Cart cart = (Cart) session.getAttribute("cart");
         String checkout = "";
+        String cartPage = "";
         String checkWishPage = "";
         Customers cus = (Customers) session.getAttribute("login_account");
+        
         if (cart == null) {
             cart = new Cart();
             session.setAttribute("cart", cart);
+        }
+        if (cart.countQty() == 0) {
+            cartPage = "emptyCart.jsp";
+        }else {
+            cartPage = "cart.jsp";
         }
         if (cus == null) {
             checkout = "login.jsp";
@@ -118,7 +125,7 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-name"><a href="#"><%=list.getValue().getProduct().getProductName()%></a></h3>
-                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity()%>x</span>$<%=list.getValue().getProduct().getPrice()*(100-list.getValue().getProduct().getDiscountProduct())/100%></h4>
+                                            <h4 class="product-price"><span class="qty"><%=list.getValue().getQuantity()%>x</span>$<%=list.getValue().getProduct().getPrice() * (100 - list.getValue().getProduct().getDiscountProduct()) / 100%></h4>
                                         </div>
                                         <button class="delete" onclick='RemoveCart("<%=list.getValue().getProduct().getProductID()%>")'><i class="fa fa-close"></i></button>
                                     </div>
@@ -131,7 +138,7 @@
                                     <h5>SUBTOTAL: $<%=cart.totalCart()%></h5>
                                 </div>
                                 <div class="cart-btns">
-                                    <a href="cart.jsp">View Cart</a>
+                                    <a href="<%=cartPage%>">View Cart</a>
                                     <a href="<%= checkout%>">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
 
 
