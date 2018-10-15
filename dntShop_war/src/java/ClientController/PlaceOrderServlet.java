@@ -43,6 +43,9 @@ public class PlaceOrderServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
+        if(cart.countQty()==0){
+            request.getRequestDispatcher("emptyCart.jsp").forward(request, response);
+        }else{
         Customers cus = (Customers) session.getAttribute("login_account");
         int num = ordersFacade.count() + 1;
         String id = num + "";
@@ -92,6 +95,7 @@ public class PlaceOrderServlet extends HttpServlet {
         }
         session.removeAttribute("cart");
         request.getRequestDispatcher("orderComplete.jsp").forward(request, response);
+        }
 
     }
 
