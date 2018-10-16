@@ -74,7 +74,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="col-sm-4 invoice-col">
                                             
                                             <address>
-                                                
+                                                <img src="images/Products/${pro.image1}" class="pull-right" width="100px" height="100px">
                                             </address>
                                         </div><!-- /.col -->
                                         <div class="col-sm-4 invoice-col">

@@ -431,7 +431,7 @@
                                                             <c:if test="${not empty sessionScope.login_msgReview}">
                                                                 ${sessionScope.login_msgReview}
                                                             </c:if>
-                                                            <button class="primary-btn" onclick="loginToReview()">Login</button>
+                                                            <input type="button" class="primary-btn" onclick="loginToReview()" value="Login"/>
                                                         </form>
                                                     </c:when>
                                                     <c:otherwise>
@@ -451,7 +451,7 @@
                                                                 </div>
                                                                 <span id="rating-result"></span>
                                                             </div>
-                                                            <button class="primary-btn" onclick="addNewReview()">Submit</button>
+                                                            <input type="button" class="primary-btn" onclick="addNewReview()" value="Submit">
                                                         </form>
                                                     </c:otherwise>
                                                 </c:choose>
