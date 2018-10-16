@@ -40,7 +40,7 @@
         }
 
         div.comparisontable ul.row li{
-            background: #c9f4ca;
+            background: white;
             flex: 1;
             padding: 10px;
             border-bottom: 1px solid gray;
