@@ -183,7 +183,7 @@
                                         <li><a href="#" onclick='addProductWishlist("${pro.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" ></i> add to wishlist</a></li>
                                             </c:otherwise>
                                         </c:choose>
-                                <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+                                        <li><a href="#" onclick='addProductToCompare("${pro.productID}")'><i class="fa fa-exchange"></i> add to compare</a></li>
                             </ul>
 
 
@@ -568,6 +568,40 @@
                     {
 
                         location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function addProductToCompare(productid)
+            {
+                $.ajax({
+                    url: "ProductCompareAddServlet?productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.href='compare.jsp';
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function addProductToCompare(productid)
+            {
+                $.ajax({
+                    url: "ProductCompareAddServlet?productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.href='compare.jsp';
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {

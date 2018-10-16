@@ -164,9 +164,16 @@
                 <ul class="row">
                     <li class="legend">Item</li>
                     <% for (Products p : compare.getComparedProducts()) {%>
-                <li><img src="images/Products/<%= p.getImage1()%>" /><br /><%= p.getProductName()%>
+                <li><img src="images/Products/<%= p.getImage1()%>" />
                     <br/>
                     <a href="#" class="closed" onclick='RemoveCompare("<%=p.getProductID()%>")'><i class="fa fa-trash-o"></i></a>
+                </li>
+                    <%}%>
+            </ul>
+            <ul class="row">
+                    <li class="legend">Name</li>
+                    <% for (Products p : compare.getComparedProducts()) {%>
+                    <li><a href="ProductDetail?proid=<%= p.getProductID() %>"><%= p.getProductName()%></a>
                 </li>
                     <%}%>
             </ul>
@@ -219,10 +226,12 @@
             </ul>
 
             <ul class="row">
-                <li class="legend"></li>
+                <li class="legend" >Price</li>
                     <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
-                <li><a href="#" onclick='addProductToCart(<%= pd.getProductID().getProductID()%>)' class="calltoaction" rel="nofollow">Buy Now</a></li>
+                <li style="color: red">$<%= pd.getProductID().getPrice()-(100-pd.getProductID().getDiscountProduct())/100%></li>
                 <%}%>          
+            </ul>
+            <ul class="row">        
             </ul>
 
         </div>
