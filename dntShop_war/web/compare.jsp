@@ -228,7 +228,11 @@
             <ul class="row">
                 <li class="legend" >Price</li>
                     <% for (ProductsDetails pd : detailProduct.getDetailsProducts()) {%>
+<<<<<<< HEAD
                 <li style="color: red">$<%= pd.getProductID().getPrice()-(100-pd.getProductID().getDiscountProduct())/100 %></li>
+=======
+                <li style="color: red">$<%= pd.getProductID().getPrice()*(100-pd.getProductID().getDiscountProduct())/100 %></li>
+>>>>>>> a308b41bfef4ffabf0045b993633f6ce0994f020
                 <%}%>          
             </ul>
             <ul class="row">        
