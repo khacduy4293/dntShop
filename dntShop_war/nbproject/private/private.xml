@@ -5,5 +5,45 @@
         <group name="GitHub">
             <file>file:/C:/Users/Duy/Documents/GitHub/dntShop/dntShop_war/web/client-footer.jsp</file>
         </group>
+        <group>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/resetPasswordServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/EditCartServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/Client/css/style.css</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-layout.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/messageChangePass.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/getWislistByProduct.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AllProduct.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/nbproject/build-impl.xml</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/resetPassword.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/wishlist.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/getLinkresetPasswordServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/register.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/AdminController/adminUpdateSaleProcessStatus.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/product.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/emptyCart.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ForgetPasswordServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/checkout.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/ProductCompareAddServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/tools/SendMail.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/Login.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/myOrders.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToCart.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToCartWithQuatityServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/compare.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/productdetail.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/adminSale.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/Logout.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/login.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/findUser.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/cart.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/Register.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/messageMail.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/getWishlistServet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/AddProductToWishlist.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/client-header.jsp</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/PlaceOrderServlet.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/src/java/ClientController/RemoveProductoutWislist.java</file>
+            <file>file:/D:/Aptech_Sem4/GitHub/dntShop/dntShop_war/web/changePassword.jsp</file>
+        </group>
     </open-files>
 </project-private>
