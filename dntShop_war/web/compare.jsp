@@ -164,7 +164,10 @@
                 <ul class="row">
                     <li class="legend">Item</li>
                     <% for (Products p : compare.getComparedProducts()) {%>
-                <li><img src="images/Products/<%= p.getImage1()%>" /><br /><%= p.getProductName()%></li>
+                <li><img src="images/Products/<%= p.getImage1()%>" /><br /><%= p.getProductName()%>
+                    <br/>
+                    <a href="#" class="closed" onclick='RemoveCompare("<%=p.getProductID()%>")'><i class="fa fa-trash-o"></i></a>
+                </li>
                     <%}%>
             </ul>
 
@@ -256,6 +259,23 @@
             {
                 $.ajax({
                     url: "AddProductToCart?command=remove&productID=" + productid,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
+            function RemoveCompare(productid)
+            {
+                $.ajax({
+                    url: "ProductCompareRemoveServlet?productID=" + productid,
                     type: "POST",
                     //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                     success: function()

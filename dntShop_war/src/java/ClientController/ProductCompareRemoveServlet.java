@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package ClientController;
 
 import bean.ProductsDetailsFacadeLocal;
 import bean.ProductsFacadeLocal;
 import entity.ComparedDetailProduct;
 import entity.ComparedProduct;
-import entity.Items;
 import entity.Products;
 import entity.ProductsDetails;
 import java.io.IOException;
@@ -26,14 +26,13 @@ import javax.servlet.http.HttpSession;
  *
  * @author Nam_Nguyen
  */
-@WebServlet(name = "ProductCompareAddServlet", urlPatterns = {"/ProductCompareAddServlet"})
-public class ProductCompareAddServlet extends HttpServlet {
+@WebServlet(name = "ProductCompareRemoveServlet", urlPatterns = {"/ProductCompareRemoveServlet"})
+public class ProductCompareRemoveServlet extends HttpServlet {
 
     @EJB
     private ProductsFacadeLocal productsFacade;
     @EJB
     private ProductsDetailsFacadeLocal productDetailsFacade;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -42,18 +41,13 @@ public class ProductCompareAddServlet extends HttpServlet {
         String productID = request.getParameter("productID");
         ComparedProduct compare = (ComparedProduct) session.getAttribute("compare");
         ComparedDetailProduct detailProduct = (ComparedDetailProduct) session.getAttribute("details");
-        if (compare == null) {
-            compare = new ComparedProduct();
-            detailProduct = new ComparedDetailProduct();
-        }
         try {
 
             Products product = productsFacade.find(productID);
             ProductsDetails productDetail = productDetailsFacade.FindProductDetailsByProID(productID).get(0);
-            if (compare.getComparedProducts().size() < 5) {
-                compare.addToComparedList(product);
-                detailProduct.addToDetailsList(productDetail);
-            }
+            compare.removeFromComparedList(product);
+            detailProduct.getDetailsProducts().remove(productDetail);
+//            detailProduct.removeFromDetailList(productDetail);
 
             /* if (compare.getComparedProducts().contains(product)) {
              messasge = "product already exists";
@@ -69,7 +63,7 @@ public class ProductCompareAddServlet extends HttpServlet {
         session.setAttribute("details", detailProduct);
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

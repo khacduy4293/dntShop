@@ -39,7 +39,7 @@ public class ComparedDetailProduct implements Serializable {
    /* public void addDetailList(ProductsDetails prodetail) {
             detailsProducts.add(prodetail);
     }*/
-    public void removeFromComparedList(Products prod) {
+    public void removeFromDetailList(ProductsDetails prod) {
         if (detailsProducts.contains(prod)) {
             detailsProducts.remove(prod);
         }
