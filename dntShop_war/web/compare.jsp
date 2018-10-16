@@ -238,10 +238,6 @@
         <!-- /SECTION -->
 
 
-        <!-- Login Modal -->
-        <jsp:include page="loginForm.jsp"/>
-        <!-- /Login Modal -->
-
         <!-- FOOTER -->
         <jsp:include  page="client-footer.jsp"></jsp:include>
         <!-- /FOOTER -->
