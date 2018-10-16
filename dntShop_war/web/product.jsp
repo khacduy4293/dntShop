@@ -268,9 +268,7 @@
             }
             function addProductWishlist(productid, customerId)
             {
-                if (customerId == null) {
-                    location.href = 'login.jsp';
-                } else {
+               
                     $.ajax({
                         url: "AddProductToWishlist?productId=" + productid + "&cusId=" + customerId,
                         type: "POST",
@@ -285,7 +283,7 @@
                             alert("error");
                         }
                     });
-                }
+             
             }
             function removeProductWishlist(productid, customerId)
             {
