@@ -25,7 +25,7 @@
                 session.setAttribute("cart", cart);
             }
             if (cus == null) {
-                checkout = "login.jsp";
+                checkout = "loginCheckout.jsp";
             } else {
                 checkout = "checkout.jsp";
             }

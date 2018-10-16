@@ -22,7 +22,7 @@
             cartPage = "cart.jsp";
         }
         if (cus == null) {
-            checkout = "login.jsp";
+            checkout = "loginCheckout.jsp";
             checkWishPage = "login.jsp";
         } else {
             checkout = "checkout.jsp";
