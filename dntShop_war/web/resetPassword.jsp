@@ -5,7 +5,12 @@
     <head>
         <jsp:include page="client-layout.jsp"/>
         <title>DNTShop - Reset Password</title>
-
+        <style>
+            label.error{
+                color: red;
+                font-weight: normal;
+            }
+        </style>
     </head>
     <body>
         <!-- HEADER -->
@@ -63,37 +68,58 @@
                                     </div>
                                     <div id="message" class="form-group">
                                     </div>
-                                <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="Submit">
-                            </div>
-                        </form>
+                                    <input type="submit" class="input order-submit" style="font-weight: bold; color: red;" value="Submit">
+                                </div>
+                            </form>
 
-                        <!-- /Login Account -->
+                            <!-- /Login Account -->
+                        </div>
+
+                        <div class="col-md-4">                        
+                        </div>                
+
                     </div>
-
-                    <div class="col-md-4">                        
-                    </div>                
-
+                    <!-- /row -->
                 </div>
-                <!-- /row -->
+                <!-- /container -->
             </div>
-            <!-- /container -->
-        </div>
-        <!-- /SECTION -->
-        <script type="text/javascript">
-            jQuery('.formLogin').validate({
-            rules : {
-                password : {
-                    minlength : 5
-                },
-                password_confirm : {
-                    minlength : 5,
-                    equalTo : "#password"
-                }
-            }
-        </script>
-        <!-- FOOTER -->
+            <!-- /SECTION -->
+
+            <!-- FOOTER -->
         <jsp:include page="client-footer.jsp"/>
         <!-- /FOOTER -->
-
+        <script type="text/javascript">
+            $().ready(function() {
+                $("#formLogin").validate({
+                    onfocusout: false,
+                    onkeyup: false,
+                    onclick: false,
+                    rules: {
+                        "password": {
+                            required: true,
+                            minlength: 6,
+                            maxlength: 30
+                        },
+                        "password_confirm": {
+                            required: true,
+                            equalTo: "#password",
+                            minlength: 6
+                        }
+                    },
+                    messages: {
+                        "password": {
+                            required: "Please provide a new password",
+                            minlength: "Your password must consist of at least 6 characters",
+                            maxlength: "Your password must be maximum 30 characters"
+                        },
+                        "password_confirm": {
+                            required: "Please provide a new password",
+                            equalTo: "Please enter the same password as above",
+                            minlength: "Your password must consist of at least 6 characters"
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

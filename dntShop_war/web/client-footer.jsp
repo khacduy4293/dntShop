@@ -70,7 +70,7 @@
                             <li><a href="#">View Cart</a></li>
                             <li><a href="#">Wishlist</a></li>
                             <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Help</a></li>
+                            <li><a href="adminLogin">Help</a></li>
                         </ul>
                     </div>
                 </div>
