@@ -43,16 +43,13 @@
                     <!-- row -->
                     <div class="row">
 
-
-                        
-                        <h3 style="text-align: center">
-                                Change Password Successful!!!</h3>
-
-                        <!-- /Login Account -->
-                    </div>
-
-                    <div class="col-md-4">                        
-                    </div>                
+                    <div class="col-md-10 col-md-offset-1 text-center">
+                        <span class="icon"><i class="fa fa-check-circle-o" style="font-size: 100px; color: #31b131;"></i></span>
+                        <h2>Change password successful!</h2>
+                        <p>
+                            <a href="index.jsp" class="newsletter-btn">Go back to Home</a>
+                        </p>
+                    </div>       
 
                 </div>
                 <!-- /row -->

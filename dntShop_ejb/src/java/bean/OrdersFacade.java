@@ -55,5 +55,10 @@ public class OrdersFacade extends AbstractFacade<Orders> implements OrdersFacade
         return q.getResultList();
     }
     
-    
+    public List<Orders> DateRangeReport(Date startDate, Date endDate) {
+        Query q=em.createQuery("SELECT o FROM Orders o WHERE o.orderDate >= :startDate and o.orderDate <= :endDate");
+        q.setParameter("startDate", startDate);
+        q.setParameter("endDate", endDate);
+        return q.getResultList();
+    }
 }

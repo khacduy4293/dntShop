@@ -38,4 +38,6 @@ public interface OrdersFacadeLocal {
     List<Orders> CustomerReport(String cus_id, Date startDate, Date endDate);
 
     List<Orders> AllOrderByCusID(String cusID);
+    
+    List<Orders> DateRangeReport(Date startDate, Date endDate);
 }

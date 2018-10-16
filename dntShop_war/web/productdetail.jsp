@@ -178,12 +178,12 @@
                                 <c:choose>
                                     <c:when test="${sessionScope.wishlist.contains(pro) eq true}">
                                         <li><a href="#" onclick='removeProductWishlist("${pro.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i> remove from wishlist</a></li>
-                                            </c:when>
-                                            <c:otherwise>
+                                        </c:when>
+                                        <c:otherwise>
                                         <li><a href="#" onclick='addProductWishlist("${pro.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" ></i> add to wishlist</a></li>
-                                            </c:otherwise>
-                                        </c:choose>
-                                        <li><a href="#" onclick='addProductToCompare("${pro.productID}")'><i class="fa fa-exchange"></i> add to compare</a></li>
+                                        </c:otherwise>
+                                    </c:choose>
+                                <li><a href="#" onclick='addProductToCompare("${pro.productID}")'><i class="fa fa-exchange"></i> add to compare</a></li>
                             </ul>
 
 
@@ -425,7 +425,14 @@
                                             <div id="review-form">
                                                 <c:choose>
                                                     <c:when test="${empty sessionScope.login_account}">
-                                                        <a href="login.jsp"><button class="primary-btn">Login to review</button></a>
+                                                        <form id="LoginForm" class="review-form" method="post">                                                           
+                                                            <input class="input" type="email" id="email" name="email" placeholder="Your Email">
+                                                            <input class="input" type="password" id="password" name="password" placeholder="Your Password">
+                                                            <c:if test="${not empty sessionScope.login_msgReview}">
+                                                                ${sessionScope.login_msgReview}
+                                                            </c:if>
+                                                            <button class="primary-btn" onclick="loginToReview()">Login</button>
+                                                        </form>
                                                     </c:when>
                                                     <c:otherwise>
                                                         <form id="ReviewForm" class="review-form" method="post">
@@ -584,7 +591,7 @@
                     success: function()
                     {
 
-                        location.href='compare.jsp';
+                        location.href = 'compare.jsp';
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {
@@ -601,7 +608,7 @@
                     success: function()
                     {
 
-                        location.href='compare.jsp';
+                        location.href = 'compare.jsp';
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {
@@ -609,12 +616,12 @@
                     }
                 });
             }
-            
+
             function addProductToCartWithQuantity(productid)
             {
-                var quantity=$("#quantity").val();
+                var quantity = $("#quantity").val();
                 $.ajax({
-                    url: "AddProductToCartWithQuatityServlet?command=plus&productID=" + productid+"&quantity="+quantity,
+                    url: "AddProductToCartWithQuatityServlet?command=plus&productID=" + productid + "&quantity=" + quantity,
                     type: "POST",
                     //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                     success: function()
@@ -628,13 +635,11 @@
                     }
                 });
             }
-            
+
             function addNewReview()
             {
-                var proid = '${pro.productID}';
-                var cusid = '${sessionScope.login_account.customerID}';
                 var content = $('#content').val();
-                var rating = $('input[name=rating]:checked').val();
+                var rating = $('input:radio[name="rating"]:checked').val();
                 if (content.trim() === "") {
                     $("#rating-result").html('<label class="control-label" style="color: red; font-weight: normal;">You need review product</label>');
                     event.preventDefault();
@@ -644,20 +649,39 @@
                     event.preventDefault();
                 } else {
                     $.ajax({
-                        url: "AddYourReview?proid=" + proid + "&cusid=" + cusid + "&content=" + content + "&rating=" + rating,
+                        url: "AddYourReview?proid=" + '${pro.productID}' + "&cusid=" + '${sessionScope.login_account.customerID}' + "&content=" + content + "&rating=" + rating,
                         type: "POST",
                         //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
                         success: function()
                         {
                             location.reload();
                         },
-                        error: function() {
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
                             //
                         }
                     });
                 }
             }
-            
+            function loginToReview(productid, customerId)
+            {
+                var email = $('#email').val();
+                var pass = $('#password').val();
+                $.ajax({
+                    url: "LoginToReview?email=" + email + "&password=" + pass,
+                    type: "POST",
+                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                    success: function()
+                    {
+
+                        location.reload();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown)
+                    {
+                        alert("error");
+                    }
+                });
+            }
             function addProductWishlist(productid, customerId)
             {
                 $.ajax({
@@ -675,7 +699,7 @@
                     }
                 });
             }
-            
+
             function removeProductWishlist(productid, customerId)
             {
                 $.ajax({

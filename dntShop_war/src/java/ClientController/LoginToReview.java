@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ClientController;
 
 import bean.CustomersFacadeLocal;
-import entity.Customers;
+import bean.WishlistFacadeLocal;
+import entity.Products;
+import entity.Wishlist;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,22 +25,41 @@ import javax.servlet.http.HttpSession;
  *
  * @author Duy
  */
-@WebServlet(name = "changePassword", urlPatterns = {"/changePassword"})
-public class changePassword extends HttpServlet {
+@WebServlet(name = "LoginToReview", urlPatterns = {"/LoginToReview"})
+public class LoginToReview extends HttpServlet {
 
-    @EJB CustomersFacadeLocal cusFacade;
+    @EJB
+    CustomersFacadeLocal cusFacade;
+    @EJB
+    WishlistFacadeLocal wishlistFacade;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
-        String cusid=request.getParameter("cusid");
-        String pass=request.getParameter("pass");
-        Customers cus = cusFacade.find(cusid);
-        cus.setPassword(pass);
-        cusFacade.edit(cus);
-        session.setAttribute("login_account", cusFacade.find(cusid));
-        request.getRequestDispatcher("messageChangePass.jsp").forward(request, response);
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        if (cusFacade.login(email, password).size() > 0) {
+            if (cusFacade.login(email, password).get(0).getIsStatus() == true) {
+                session.setAttribute("login_account", cusFacade.login(email, password).get(0));
+                session.setAttribute("login_msgReview", null);
+                session.setAttribute("countWishlist", wishlistFacade.findbyCustomer(cusFacade.login(email, password).get(0).getCustomerID()).size());
+                List<Products> productList = new ArrayList<>();
+
+                for (Wishlist item : wishlistFacade.findbyCustomer(cusFacade.login(email, password).get(0).getCustomerID())) {
+                    productList.add(item.getProductID());
+
+                }
+                session.setAttribute("wishlist", productList);
+            } else {
+                session.setAttribute("login_msgReview", "<p class=\"login-box-msg\" style=\"color:red\">your account is banned</p>");
+                
+            }
+        } else {
+            session.setAttribute("login_msgReview", "<p class=\"login-box-msg\" style=\"color:red\">email or password incorrect</p>");
+        
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

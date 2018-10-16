@@ -37,6 +37,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <body class="skin-blue sidebar-mini">
         <%
             session.setAttribute("currentAdminPage", "barcode");
+            session.setAttribute("currentAdminPageChild", "barcode");
         %>
         <div class="wrapper">
 

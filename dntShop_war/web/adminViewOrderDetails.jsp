@@ -127,13 +127,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <!-- accepted payments column -->
                         <div class="col-xs-6">
                             <p class="lead"><b>Payment Methods:</b> ${order.paymentMethod}</p>
-                            <img src="Admin/dist/img/credit/visa.png" alt="Visa"/>
-                            <img src="Admin/dist/img/credit/mastercard.png" alt="Mastercard"/>
-                            <img src="Admin/dist/img/credit/american-express.png" alt="American Express"/>
-                            <img src="Admin/dist/img/credit/paypal2.png" alt="Paypal"/>
+              
                             <c:if test="${not empty order.shipNote}">
                                 <p class="text-muted well well-sm no-shadow" style="margin-top: 10px;">
-                                    ${order.shipNote}
+                                    Ship Note: ${order.shipNote}
                                 </p>
                             </c:if>
                         </div><!-- /.col -->

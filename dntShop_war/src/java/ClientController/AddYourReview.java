@@ -37,6 +37,21 @@ public class AddYourReview extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String cusid = request.getParameter("cusid");
+        String proid = request.getParameter("proid");
+        String content = request.getParameter("content");
+        int rating = Integer.parseInt(request.getParameter("rating"));
+        try {
+            Ratings ra = new Ratings();
+            ra.setProductID(proFacade.find(proid));
+            ra.setCustomerID(cusFacade.find(cusid));
+            ra.setContent(content);
+            ra.setRate(rating);
+            Date date = new Date();
+            ra.setRatingDate(date);
+            ratingFacade.create(ra);
+        } catch (Exception e) {
+        }
     }
 
     @Override
@@ -49,18 +64,6 @@ public class AddYourReview extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String cusid = request.getParameter("cusid");
-        String proid = request.getParameter("proid");
-        String content = request.getParameter("content");
-        int rating = Integer.parseInt(request.getParameter("rating"));
-        Ratings ra = new Ratings();
-        ra.setProductID(proFacade.find(proid));
-        ra.setCustomerID(cusFacade.find(cusid));
-        ra.setContent(content);
-        ra.setRate(rating);
-        Date date = new Date();
-        ra.setRatingDate(date);
-        ratingFacade.create(ra);
     }
 
     /**
