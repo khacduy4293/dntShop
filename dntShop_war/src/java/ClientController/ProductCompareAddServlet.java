@@ -50,10 +50,18 @@ public class ProductCompareAddServlet extends HttpServlet {
 
             Products product = productsFacade.find(productID);
             ProductsDetails productDetail = productDetailsFacade.FindProductDetailsByProID(productID).get(0);
-            if (compare.getComparedProducts().size() < 5) {
-                compare.addToComparedList(product);
-                detailProduct.addToDetailsList(productDetail);
+            if (compare.getComparedProducts().size() == 0) {
+                if (compare.getComparedProducts().size() < 5) {
+                    compare.addToComparedList(product);
+                    detailProduct.addToDetailsList(productDetail);
+                }
+            }else{
+                if (compare.getComparedProducts().size() < 5 && compare.getComparedProducts().get(0).getCategoryID().getCategoryID().equals(product.getCategoryID().getCategoryID())) {
+                    compare.addToComparedList(product);
+                    detailProduct.addToDetailsList(productDetail);
+                }
             }
+
 
             /* if (compare.getComparedProducts().contains(product)) {
              messasge = "product already exists";

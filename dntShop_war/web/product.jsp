@@ -99,7 +99,7 @@
                             </form>
                         </div>
                         <!-- /aside Widget -->  
-                        
+
                         <!-- aside Widget -->
                         <div class="aside">
                             <h3 class="aside-title">Categories</h3>
@@ -149,7 +149,7 @@
                         <!-- store products -->
                         <div class="row">
                             <c:forEach items="${productList}" var="p">
-                                 <jsp:include page="ProductStarByProID?proid=${p.productID}"/>
+                                <jsp:include page="ProductStarByProID?proid=${p.productID}"/>
                                 <!-- product -->
                                 <div class="contentPage">
                                     <div class="col-md-4 col-xs-6">
@@ -195,11 +195,18 @@
                                                 </div>
                                                 <div class="product-btns">
                                                     <c:choose>
-                                                        <c:when test="${sessionScope.wishlist.contains(p) eq true}">
-                                                            <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
+                                                        <c:when test="${sessionScope.login_account eq null}">
+                                                            <button class="add-to-wishlist" onclick='location.href="login.jsp"'><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></button>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                            <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart-o" ></i><span class="tooltipp">add to wishlist</span></button>
+                                                                    <c:choose>
+                                                                        <c:when test="${sessionScope.wishlist.contains(p) eq true}">
+                                                                    <button class="add-to-wishlist" onclick='removeProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart" style="color: red"></i><span class="tooltipp">remove from wishlist</span></button>
+                                                                        </c:when>
+                                                                        <c:otherwise>
+                                                                    <button class="add-to-wishlist" onclick='addProductWishlist("${p.productID}", "${sessionScope.login_account.customerID}")'><i class="fa fa-heart-o" ></i><span class="tooltipp">add to wishlist</span></button>
+                                                                        </c:otherwise>
+                                                                    </c:choose>
                                                                 </c:otherwise>
                                                             </c:choose>
 
@@ -261,20 +268,22 @@
             }
             function addProductWishlist(productid, customerId)
             {
-                $.ajax({
-                    url: "AddProductToWishlist?productId=" + productid + "&cusId=" + customerId,
-                    type: "POST",
-                    //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
-                    success: function()
-                    {
+               
+                    $.ajax({
+                        url: "AddProductToWishlist?productId=" + productid + "&cusId=" + customerId,
+                        type: "POST",
+                        //data: {name: name1, price: price1, product_id: id, number: number, registerid: 75, waiter: waiterID},
+                        success: function()
+                        {
 
-                        location.reload();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown)
-                    {
-                        alert("error");
-                    }
-                });
+                            location.reload();
+                        },
+                        error: function(jqXHR, textStatus, errorThrown)
+                        {
+                            alert("error");
+                        }
+                    });
+             
             }
             function removeProductWishlist(productid, customerId)
             {
@@ -303,7 +312,7 @@
                     success: function()
                     {
 
-                        location.href='compare.jsp';
+                        location.href = 'compare.jsp';
                     },
                     error: function(jqXHR, textStatus, errorThrown)
                     {

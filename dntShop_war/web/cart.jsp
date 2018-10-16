@@ -25,7 +25,7 @@
                 session.setAttribute("cart", cart);
             }
             if (cus == null) {
-                checkout = "login.jsp";
+                checkout = "loginCheckout.jsp";
             } else {
                 checkout = "checkout.jsp";
             }
@@ -140,11 +140,6 @@
                                             </div>
                                             <div class="col-md-3 col-md-push-1 text-center">
                                                 <div class="total">
-                                                    <div class="sub">
-                                                        <p><span>Subtotal:</span> <span>$<%=cart.totalCart()%></span></p>
-                                                        <p><span>Delivery:</span> <span>$0.00</span></p>
-                                                        <p><span>Discount:</span> <span>$0.00</span></p>
-                                                    </div>
                                                     <div class="grand-total">
                                                         <p><span><strong>Total:</strong></span> <span>$<%=cart.totalCart()%></span></p>
                                                     </div>
