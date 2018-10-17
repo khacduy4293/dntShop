@@ -354,13 +354,6 @@ public class adminUpdateSaleProcessStatus extends HttpServlet {
 "                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;\">$"+or.getTotal()+"</td> \n" +
 "                         </tr> \n" +
 "                         <tr style=\"border-collapse:collapse;\"> \n" +
-"                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;\">Flat-rate Shipping:</td> \n" +
-"                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;color:#D48344;\"><strong>FREE</strong></td> \n" +
-"                         </tr> \n" +
-"                         <tr style=\"border-collapse:collapse;\"> \n" +
-"                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;\">Discount:</td> \n" +
-"                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;\">$0.00</td> \n" +
-"                         </tr> \n" +
 "                         <tr style=\"border-collapse:collapse;\"> \n" +
 "                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;\"><strong>Order Total:</strong></td> \n" +
 "                          <td style=\"padding:0;Margin:0;text-align:right;font-size:18px;line-height:150%;color:#D48344;\"><strong>$"+or.getTotal()+"</strong></td> \n" +

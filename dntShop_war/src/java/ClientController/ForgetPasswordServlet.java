@@ -84,8 +84,8 @@ public class ForgetPasswordServlet extends HttpServlet {
 "\n" +
 "                    <td align=\"left\" valign=\"top\" colspan=\"2\" style=\"border-bottom: 1px solid #CCCCCC; padding-bottom: 10px;\">\n" +
 "\n" +
-"                        <img  border=\"0\" src=\"./img/logo.png\" alt=\"DTNShop\"  class=\"sitelogo\" width=\"60%\" style=\"max-width:250px;\" />\n" +
-"\n" +
+"<h3>DNTShop</h3>"+
+                          "\n" +
 "                    </td>\n" +
 "\n" +
 "                </tr>\n" +

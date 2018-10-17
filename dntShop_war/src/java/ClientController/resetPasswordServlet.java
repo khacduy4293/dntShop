@@ -36,6 +36,8 @@ public class resetPasswordServlet extends HttpServlet {
         Customers customers=(Customers) session.getAttribute("userResetPass");
         customers.setPassword(password);
         cusFacade.edit(customers);
+                        session.setAttribute("numberResetPass", null);
+
         request.getRequestDispatcher("messageChangePass.jsp").forward(request, response);
     }
 
